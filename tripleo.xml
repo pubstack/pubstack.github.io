@@ -1,0 +1,23 @@
+---
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title>Anstack Blog - TripleO related articles</title>
+ <link href="http://anstack.github.io/atom.xml" rel="self"/>
+ <link href="http://anstack.github.io/"/>
+ <updated>{{ site.time | date_to_xmlschema }}</updated>
+ <id>http://anstack.github.io/</id>
+ <author>
+   <name>Carlos Camacho</name>
+   <email>me@ccamacho.org</email>
+ </author>
+ {% for post in site.tags.tripleo %}
+ <entry>
+   <title>{{ post.title }}</title>
+   <link href="http://anstack.github.io{{ post.url }}"/>
+   <updated>{{ post.date | date_to_xmlschema }}</updated>
+   <id>http://anstack.github.io{{ post.id }}</id>
+   <content type="html">{{ post.content | xml_escape }}</content>
+ </entry>
+ {% endfor %} 
+</feed>

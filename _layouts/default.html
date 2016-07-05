@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="VikwqTxe7ybu1qSM7LFgIQpvHLN0_j-iVzaLqF88vEw" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carlos Camacho - {{ page.title }}</title>
+  <meta name="author" content="Carlos Camacho" />
+  <meta name="description" content="My stacked answers anout software, book writeups and projects by a software engineer" />
+  
+  <link rel="canonical" href="http://anstack.github.io{{ page.url | replace:'index.html','' }}" />
+
+  <link href="//fonts.googleapis.com/css?family=Nunito:400,700,300|Varela+Round" rel="stylesheet" type="text/css">
+
+  <link rel="shortcut icon" href="/static/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Carlos Camacho's Blog" href="{{site.url}}/atom.xml" />
+
+  {% if site.github %}
+    <link rel="stylesheet" href="/css/site.css?sha={{ site.github.build_revision }}">
+  {% else %}
+    <link rel="stylesheet" href="/css/site.css">
+  {% endif %}
+
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+</head>
+<body>
+  <section>
+    {{ content }}
+  </section>
+</body>
+</html>
