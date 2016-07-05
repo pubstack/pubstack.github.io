@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "How to - TripleO manual deployment"
+title: "Deploying manually TripleO 'master' branch"
 categories:
   - blog
 tags:
   - tripleo
   - openstack
-  - howto
 commentIssueId: 2
 ---
 
 This is a brief recipe about how to
-manually install TripleO in a 32GB RAM box.
+manually install TripleO in a remote
+32GB RAM box.
 
 From the hypervisor run:
 

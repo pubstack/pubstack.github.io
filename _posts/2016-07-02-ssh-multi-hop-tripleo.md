@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to connect from your local machine to
+title: "Connecting from your local machine to
 the TripleO overcloud horizon dashboard"
 categories:
   - blog
