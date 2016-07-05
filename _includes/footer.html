@@ -1,16 +1,19 @@
 <footer>
+  {% unless page.skip_bio %}
+
   <div id="bio">
     <div id="bio-image">
       <img src="/static/me.jpg" alt="Carlos Camacho">
     </div>
     
     <div id="bio-text">
-      <p>Hi, I'm <b>Carlos Camacho</b>.</p>
+      <p>Why it is my picture upside down? Sometimes is good to see everything with a different perspective.</p>
       <div id="bio-social">
         {% include social.html %}
       </div>
     </div>
   </div>
+  {% endunless %}
 
   {% unless page.skip_related %}
   <aside>

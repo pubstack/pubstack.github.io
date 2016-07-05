@@ -2,6 +2,7 @@
 layout: post
 title: Archives
 skip_related: true
+skip_bio: true
 ---
 
 {% assign totalwords = 0 %}

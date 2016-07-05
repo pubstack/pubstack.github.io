@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deploying manually TripleO 'master' branch"
+title: "TripleO manual deployment of 'master' branch"
 categories:
   - blog
 tags:
