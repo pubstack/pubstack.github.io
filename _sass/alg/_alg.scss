@@ -158,6 +158,10 @@ article {
     list-style: decimal-leading-zero;
   }
   
+  pre {
+    overflow: auto;
+  }
+
   pre code {
     border: none;
     font-size: 70%;
