@@ -11,7 +11,7 @@ skip_bio: true
   {% assign totalwords = totalwords | plus: wordcount %}
 {% endfor %}
 
-Since {{ site.posts.last.date | date: "%B %d, %Y" }}, I've written {{ totalwords }} words about software engineering, OpenStack,  professional growth and other miscellaneous topics. I hope you've enjoyed reading at least some of those words. My favorite posts are **bolded** below.
+Since {{ site.posts.last.date | date: "%B %d, %Y" }}, I've written {{ totalwords }} words in {{ site.posts | size }} posts, about software engineering, OpenStack,  professional growth and other miscellaneous topics. I hope you've enjoyed reading at least some of those words. My favorite posts are **bolded** below.
 
 <div id="archive">
 
