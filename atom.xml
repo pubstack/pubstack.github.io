@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>Anstack Blog</title>
- <link href="http://anstack.github.io/atom.xml" rel="alternate"/>
+ <link href="http://anstack.github.io/atom.xml" rel="self"/>
  <link href="http://anstack.github.io/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://anstack.github.io/</id>
