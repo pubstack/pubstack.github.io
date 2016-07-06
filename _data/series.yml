@@ -1,22 +1,27 @@
-- name: TripleO
+- name: TripleO & Openstack
   desc: |
     The journey towards OpenStack deployments using TripleO.
-  tag_name: tripleo
+  tag_name:
+    - tripleo
+    - openstack
 
 - name: Software Development
   desc: |
     Lessons and experiences in validating, building, and supporting software products.
   tag_name: software_dev
 
+- name: All engineering related stuff I like
+  desc: |
+    Electronics, physics, formal methods among others.
+  tag_name:
+    - engineering
+    - physics
+    - formal_methods
+
 - name: Hobbies
   desc: |
     Practicing a little bit about almost anything.
   tag_name: hobbies
-
-- name: All engineering related stuff I like
-  desc: |
-    Electronics, physics, formal methods among others.
-  tag_name: engineering
 
 - name: Reflections
   desc: |

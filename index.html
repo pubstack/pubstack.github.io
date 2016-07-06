@@ -12,10 +12,15 @@ title: writing on software, book writeups, projects
     <p>{{ series.desc }}</p>
 
     <ul>
-      {% for post in site.tags[series.tag_name] %}
-        <li {% if post.favorite %}class="favorite"{% endif %}>
-          <a href="{{ post.url }}">{{ post.title }}</a>
-        </li>
+      {% for post in site.posts %}
+        {% for stag in series.tag_name %}
+          {% if post.tags contains stag %}
+            <li {% if post.favorite %}class="favorite"{% endif %}>
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+            {% break %}
+          {% endif %}
+        {% endfor %}
       {% endfor %}
     </ul>
   {% endfor %}

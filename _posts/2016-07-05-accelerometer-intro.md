@@ -4,7 +4,6 @@ title: "Connecting the ADXL345 accelerometer to the Raspberry Pi 3"
 categories:
   - blog
 tags:
-  - hobbies
   - engineering
 commentIssueId: 3
 ---
