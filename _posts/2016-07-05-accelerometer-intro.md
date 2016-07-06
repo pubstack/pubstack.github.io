@@ -22,7 +22,7 @@ In this case we will use the accelerometer to estimate
 the relative position to a point p, which is derived
 using the double integration of the acceleration metrics.
 
-Until now we have no speed, time, acceleration metrics so
+Until now we have no speed, time or acceleration metrics so
 we are going to start from the very beginning.
 
 The items needed for this project are;
@@ -33,12 +33,12 @@ The items needed for this project are;
 [Jumpers kit](https://www.amazon.es/gp/product/B0144HG2RE),
 [Raspberry Pi 3](https://www.amazon.es/gp/product/B01CD5VC92),
 [Raspberry Pi 3 case](https://www.amazon.es/gp/product/B00W7S1BFG),
-[GPIO board](https://www.amazon.es/gp/product/B0144HFO0A) and
-[Module ADXL345](https://www.amazon.es/gp/product/B0151FIBZO).
+[GPIO board](https://www.amazon.es/gp/product/B0144HFO0A) and the
+[ADXL345 sensor](https://www.amazon.es/gp/product/B0151FIBZO).
 
 Total budged for this project: 105.73 Eur.
 
-First let connect out ADXL module to the Raspberry by connecting
+First let's connect our ADXL345 accelerometer to the Raspberry by connecting
 the jumpers as follow:
 
 | Raspberry GPIO pin | ADXL345 pin |
@@ -54,7 +54,7 @@ This will lead to something like:
 Or a wider view:
 ![](/static/accel/accelerometer-00-build.jpeg)
 
-Once having the Raspberry wired, let's configured it with the following steps.
+Once having the Raspberry wired, let's configure it by the following steps.
 
 * From our Raspberry Pi, install:
 
@@ -68,10 +68,10 @@ sudo apt-get install python-smbus i2c-tools
 sudo raspi-config
 ```
 
-* Then enable I2C kernel module in:
+Now, enable I2C kernel module in:
 Advanced Options -> I2C -> Would you like the ARM module.. -> Would you like it enabled by default..
 
-* Edit the modules file (sudo vim /etc/modules) and make sure contains the following lines:
+* Edit the modules file (sudo vim /etc/modules) and make sure it contains the following lines:
 
 ```bash
 i2c-bcm2708
@@ -79,13 +79,13 @@ i2c-dev
 ```
 
 * Remove I2C from the blacklist file (/etc/modprobe.d/raspi-blacklist.conf)
-commenting the following line if appears:
+commenting the following line if it appears:
 
 ```bash
 #blacklist i2c-bcm2708
 ```
 
-* After all these previous steps reboot the Raspberry Pi
+* After all these previous steps, reboot the Raspberry Pi
 
 ```bash
 sudo reboot
@@ -101,7 +101,7 @@ The command should print the following output:
 
 
 Now, when having the module working properly, we need to get and use
-the python ADXL345 library to have access to the time base data.
+the python ADXL345 library to have access to the time based data.
 
 * Clone the library repository and execute the example code:
 
