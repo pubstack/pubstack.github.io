@@ -21,10 +21,10 @@ you can download a complete [chords sheet](/static/cuatro/cuatro-chords.pdf)
 from The Ukulele Orchestra of Great Britain or
 this [Cuatro method](/static/cuatro/cuatro-method.pdf).
 
-Also you can play these excellent videos from Youtube.
+Also you can listen these excellent videos from Youtube.
 
-{% assign videoId = NZ123ysut9s %}
+{% assign videoId = "NZ123ysut9s" %}
 {% include youtubePlayer.html id=videoId %}
 
-{% assign videoId = 3JqMTEr1HIg %}
+{% assign videoId = "3JqMTEr1HIg" %}
 {% include youtubePlayer.html id=videoId %}
