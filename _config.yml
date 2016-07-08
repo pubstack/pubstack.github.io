@@ -5,4 +5,4 @@ kramdown:
   hard_wrap: false
 exclude: ["CNAME", "README.md", "Rakefile", "generate.rb", "Gemfile", "Gemfile.lock"]
 gems:
-  - jekyll-sitemap
+#  - jekyll-sitemap
