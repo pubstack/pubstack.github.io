@@ -25,7 +25,7 @@ The steps that I'm used to run are:
 
 ```bash
 ssh-keygen -t rsa
-cd .ss	h
+cd .ssh
 cat id_rsa.pub >> authorized_keys
 ```
 
@@ -44,7 +44,7 @@ git clone https://github.com/jistr/inlunch
 
 ```bash
 cd inlunch
-vim  answers.yml.example
+vi answers.yml.example
 ```
 
 * The last but not least [Inlunch](https://github.com/jistr/inlunch)
