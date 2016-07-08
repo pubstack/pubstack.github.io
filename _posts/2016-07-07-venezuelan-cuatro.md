@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Venezuelan Cuatro"
+author: "Carlos Camacho"
 categories:
   - blog
 tags:

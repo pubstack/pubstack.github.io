@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Openstack & TripleO deployment using Inlunch"
+title: "Openstack &amp; TripleO deployment using Inlunch"
+author: "Carlos Camacho"
 categories:
   - blog
 tags:

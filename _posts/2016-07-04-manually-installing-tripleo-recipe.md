@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "TripleO manual deployment of 'master' branch"
+author: "Carlos Camacho"
 categories:
   - blog
 tags:

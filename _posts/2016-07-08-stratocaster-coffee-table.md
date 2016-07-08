@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Fender Stratocaster coffee table"
+author: "Carlos Camacho"
 categories:
   - blog
 tags:

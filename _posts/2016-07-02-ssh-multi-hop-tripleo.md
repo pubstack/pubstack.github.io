@@ -2,6 +2,7 @@
 layout: post
 title: "Connecting from your local machine to
 the TripleO overcloud horizon dashboard"
+author: "Carlos Camacho"
 categories:
   - blog
 tags:

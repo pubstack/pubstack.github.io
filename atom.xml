@@ -13,16 +13,19 @@
  </author>
 
  {% for post in site.posts %}
+   {% unless post.tags contains "draft" %}
+
  <entry>
    <title>{{ post.title }}</title>
    <link href="http://anstack.github.io{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <author>
-     <name>Carlos Camacho</name>
+     <name>{{ post.author }}</name>
    </author>
    <id>http://anstack.github.io{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
+   {% endunless %}
  {% endfor %}
  
 </feed>
