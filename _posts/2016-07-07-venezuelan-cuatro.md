@@ -25,6 +25,6 @@ Also you can listen these excellent videos from Youtube.
 
 {% assign videoId = "NZ123ysut9s" %}
 {% include youtubePlayer.html id=videoId %}
-
+<br />
 {% assign videoId = "3JqMTEr1HIg" %}
 {% include youtubePlayer.html id=videoId %}
