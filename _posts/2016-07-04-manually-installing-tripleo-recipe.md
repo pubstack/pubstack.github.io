@@ -34,10 +34,10 @@ From the hypervisor run:
   #Configure the undercloud deployment
   export NODE_DIST=centos7
   export NODE_CPU=4
-  export NODE_MEM=5000
+  export NODE_MEM=6000
   export NODE_COUNT=4
   export UNDERCLOUD_NODE_CPU=4
-  export UNDERCLOUD_NODE_MEM=8000
+  export UNDERCLOUD_NODE_MEM=7500
   export FS_TYPE=ext4
 
   sudo yum install -y instack-undercloud
