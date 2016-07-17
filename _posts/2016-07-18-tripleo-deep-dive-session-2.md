@@ -34,6 +34,6 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 
 > Sessions index:
 >
-> [TripleO deep dive session #1 (Quickstart deployment)](http://www.anstack.com/blog/2016/07/11/tripleo-deep-dive-session-1.html)
+> &nbsp;&nbsp;&nbsp; * [TripleO deep dive session #1 (Quickstart deployment)](http://www.anstack.com/blog/2016/07/11/tripleo-deep-dive-session-1.html)
 >
-> [TripleO deep dive session #2 (TripleO Heat Templates)](http://www.anstack.com/blog/2016/07/18/tripleo-deep-dive-session-2.html)
+> &nbsp;&nbsp;&nbsp; * [TripleO deep dive session #2 (TripleO Heat Templates)](http://www.anstack.com/blog/2016/07/18/tripleo-deep-dive-session-2.html)

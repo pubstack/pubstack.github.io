@@ -17,7 +17,12 @@ manually install TripleO in a remote
 From the hypervisor run:
 
 ```bash
-  #Add default user
+  #In this dev. env. /var is only 50GB, so I will create
+  #a sym link to another location with more capacity.
+  #It will take easily more tan 50GB deploying a 3+1 overcloud
+  sudo mkdir -p /home/libvirt/
+  sudo ln -sf /home/libvirt/ /var/lib/libvirt
+  #Add default stack user
   sudo useradd stack
   echo "stack:stack" | chpasswd
   echo "stack ALL=(root) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/stack
