@@ -1,35 +1,31 @@
 ---
 layout: post
-title: "TripleO deep dive session #2 (TripleO Heat Templates)"
+title: "TripleO deep dive session #3 (Overcloud deployment debugging)"
 author: "Carlos Camacho"
 categories:
   - blog
 tags:
   - tripleo
   - openstack
-commentIssueId: 7
+commentIssueId: 8
 ---
 
-This is the second video from a series of "Deep Dive" sessions
+This is the third video from a series of "Deep Dive" sessions
 related to [TripleO](http://www.tripleo.org/) deployments.
 
-This session is related to a THT overview
-for all users who want to dig into the 
-project.
+This session is related to how to troubleshoot a
+failed THT deployment.
 
 This video session aims to cover the following topics:
 
-* A THT basic introduction overview.
-* A Template model used.
-* A description of the new composable services approach.
-* A code overview over the related code repositories.
-* A cloud deployment demo session.
-* A demo session with a deployment in live referring to debugging hints.
+* Debug a TripleO failed overcloud deployment.
+* Debugging in real time the deployed resources.
+* Basic Openstack commands to see the deployment status.
 
-So please, check the full [session](https://www.youtube.com/watch?v=gX5AKSqRCiU)
+So please, check the full [session](https://www.youtube.com/watch?v=fspnjD-1DNI)
 content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZGwUELpgaBoLvABsTA/).
 
-{% assign videoId = "gX5AKSqRCiU" %}
+{% assign videoId = "fspnjD-1DNI" %}
 {% include youtubePlayer.html id=videoId %}
 
 > Sessions index:
@@ -39,4 +35,3 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #2 (TripleO Heat Templates)](http://www.anstack.com/blog/2016/07/18/tripleo-deep-dive-session-2.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #3 (Overcloud deployment debugging)](http://www.anstack.com/blog/2016/07/22/tripleo-deep-dive-session-3.html)
-
