@@ -45,7 +45,7 @@ OPTIONS
 WORK
 ----
 
-**RedHat** `Software Engineer` Upstream TripleO development / Bug fixes and code reviews.
+**RedHat** `Software Engineer` Upstream TripleO development / Bug fixes and code reviews. **\*\***
 
 **frontiersin.org** `DevOps Engineer` Automate, create, maintain and monitor the company cloud server infrastructure.
 
@@ -62,7 +62,7 @@ WORK
 STUDY
 -----
 
-**PhD., Computer Engineering** `Universidad Complutense de Madrid`
+**PhD., Computer Engineering** `Universidad Complutense de Madrid` **\*\***
 
 **MSc., Informatics investigation** `Universidad Complutense de Madrid`
 
@@ -88,3 +88,5 @@ SEE ALSO
 --------
 
 **[RedHat](https://www.redhat.com)** **[Wired](https://www.wired.com)** **[MIT-news](http://news.mit.edu/)**
+
+**\*\* Current**
