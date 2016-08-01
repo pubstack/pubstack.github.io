@@ -1,35 +1,33 @@
 ---
 layout: post
-title: "TripleO deep dive session #2 (TripleO Heat Templates)"
+title: "TripleO deep dive session #4 (Puppet modules)"
 author: "Carlos Camacho"
+date: 2016-08-01 10:00:00
 categories:
   - blog
 tags:
   - tripleo
   - openstack
-commentIssueId: 7
+commentIssueId: 10
 ---
 
-This is the second video from a series of "Deep Dive" sessions
+This is the fourth video from a series of "Deep Dive" sessions
 related to [TripleO](http://www.tripleo.org/) deployments.
 
-This session is related to a THT overview
-for all users who want to dig into the 
-project.
+This session will cover a series of basic Puppet topics related to
+TripleO deployments.
 
-This video session aims to cover the following topics:
+This video session aims to cover the following sections:
 
-* A THT basic introduction overview.
-* A Template model used.
-* A description of the new composable services approach.
-* A code overview over the related code repositories.
-* A cloud deployment demo session.
-* A demo session with a deployment in live referring to debugging hints.
+* Introduction about Puppet OpenStack modules.
+* Services deployment using Puppet profiles.
+* Deployment composability with Heat.
+* Bring your own service to TripleO. 
 
-So please, check the full [session](https://www.youtube.com/watch?v=gX5AKSqRCiU)
+So please, check the full [session](https://www.youtube.com/watch?v=-b4cdfzvFDY)
 content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZGwUELpgaBoLvABsTA/).
 
-{% assign videoId = "gX5AKSqRCiU" %}
+{% assign videoId = "fspnjD-1DNI" %}
 {% include youtubePlayer.html id=videoId %}
 
 > Sessions index:
@@ -41,4 +39,3 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #3 (Overcloud deployment debugging)](http://www.anstack.com/blog/2016/07/22/tripleo-deep-dive-session-3.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #4 (Puppet modules)](http://www.anstack.com/blog/2016/08/01/tripleo-deep-dive-session-4.html)
-

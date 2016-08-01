@@ -35,3 +35,6 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #2 (TripleO Heat Templates)](http://www.anstack.com/blog/2016/07/18/tripleo-deep-dive-session-2.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #3 (Overcloud deployment debugging)](http://www.anstack.com/blog/2016/07/22/tripleo-deep-dive-session-3.html)
+>
+> &nbsp;&nbsp;&nbsp; * [TripleO deep dive #4 (Puppet modules)](http://www.anstack.com/blog/2016/08/01/tripleo-deep-dive-session-4.html)
+
