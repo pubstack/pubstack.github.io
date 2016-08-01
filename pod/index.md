@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Picture of the day
+title: Picture of the day (With some intermittency)
 skip_related: true
 skip_bio: true
 ---
