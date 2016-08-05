@@ -27,7 +27,7 @@ This video session aims to cover the following sections:
 So please, check the full [session](https://www.youtube.com/watch?v=-b4cdfzvFDY)
 content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZGwUELpgaBoLvABsTA/).
 
-{% assign videoId = "fspnjD-1DNI" %}
+{% assign videoId = "-b4cdfzvFDY)" %}
 {% include youtubePlayer.html id=videoId %}
 
 > Sessions index:
@@ -39,3 +39,6 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #3 (Overcloud deployment debugging)](http://www.anstack.com/blog/2016/07/22/tripleo-deep-dive-session-3.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #4 (Puppet modules)](http://www.anstack.com/blog/2016/08/01/tripleo-deep-dive-session-4.html)
+>
+> &nbsp;&nbsp;&nbsp; * [TripleO deep dive #5 (Undercloud - Under the hood)](http://www.anstack.com/blog/2016/08/05/tripleo-deep-dive-session-5.html)
+

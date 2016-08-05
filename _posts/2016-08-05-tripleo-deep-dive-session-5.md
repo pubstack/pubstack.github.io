@@ -1,35 +1,35 @@
 ---
 layout: post
-title: "TripleO deep dive session #2 (TripleO Heat Templates)"
+title: "TripleO deep dive session #5 (Undercloud - Under the hood)"
 author: "Carlos Camacho"
+date: 2016-08-05 20:00:00
 categories:
   - blog
 tags:
   - tripleo
   - openstack
-commentIssueId: 7
+commentIssueId: 11
 ---
 
-This is the second video from a series of "Deep Dive" sessions
+This is the fifth video from a series of "Deep Dive" sessions
 related to [TripleO](http://www.tripleo.org/) deployments.
 
-This session is related to a THT overview
-for all users who want to dig into the 
-project.
+In this session James Slagle and Steven Hardy will dig into 
+some underlying aspects related to the TripleO Undercloud.
 
-This video session aims to cover the following topics:
+This video session aims to cover the following sections:
 
-* A THT basic introduction overview.
-* A Template model used.
-* A description of the new composable services approach.
-* A code overview over the related code repositories.
-* A cloud deployment demo session.
-* A demo session with a deployment in live referring to debugging hints.
+* What is under the hood of a TripleO underloud deployment.
+* Description of the undercloud components.
+* Show the undercloud components interaction.
+* Undercloud installing process.
+* Undercloud customization.
+* How to apply and test submissions in instack-undercloud.
 
-So please, check the full [session](https://www.youtube.com/watch?v=gX5AKSqRCiU)
+So please, check the full [session](https://www.youtube.com/watch?v=h32z6Nq8Byg)
 content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZGwUELpgaBoLvABsTA/).
 
-{% assign videoId = "gX5AKSqRCiU" %}
+{% assign videoId = "h32z6Nq8Byg" %}
 {% include youtubePlayer.html id=videoId %}
 
 > Sessions index:
@@ -43,4 +43,3 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #4 (Puppet modules)](http://www.anstack.com/blog/2016/08/01/tripleo-deep-dive-session-4.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #5 (Undercloud - Under the hood)](http://www.anstack.com/blog/2016/08/05/tripleo-deep-dive-session-5.html)
-
