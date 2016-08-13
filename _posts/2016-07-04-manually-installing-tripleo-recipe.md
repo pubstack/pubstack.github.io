@@ -38,11 +38,11 @@ From the hypervisor run:
 
   #Configure the undercloud deployment
   export NODE_DIST=centos7
-  export NODE_CPU=4
-  export NODE_MEM=6000
-  export NODE_COUNT=4
-  export UNDERCLOUD_NODE_CPU=4
-  export UNDERCLOUD_NODE_MEM=7500
+  export NODE_CPU=1
+  export NODE_MEM=7550
+  export NODE_COUNT=3
+  export UNDERCLOUD_NODE_CPU=1
+  export UNDERCLOUD_NODE_MEM=9000
   export FS_TYPE=ext4
 
   sudo yum install -y instack-undercloud
@@ -93,6 +93,10 @@ openstack overcloud deploy \
 --templates /home/stack/tripleo-heat-templates \
 -e /home/stack/tripleo-heat-templates/overcloud-resource-registry-puppet.yaml \
 -e /home/stack/tripleo-heat-templates/environments/puppet-pacemaker.yaml
+#Also can be added:
+#--control-scale 3 \
+#--compute-scale 3 \
+#--ceph-storage-scale 1 -e /home/stack/tripleo-heat-templates/environments/storage-environment.yaml
 ```
 
 This will hopefully deploy the TripleO overcloud, if not,

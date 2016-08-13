@@ -1,35 +1,25 @@
 ---
 layout: post
-title: "TripleO deep dive session #2 (TripleO Heat Templates)"
+title: "TripleO deep dive session #6 (Overcloud - Physical network)"
 author: "Carlos Camacho"
+date: 2016-08-15 12:00:00
 categories:
   - blog
 tags:
   - tripleo
   - openstack
-commentIssueId: 7
+commentIssueId: 12
 ---
 
-This is the second video from a series of "Deep Dive" sessions
+This is the sixth video from a series of "Deep Dive" sessions
 related to [TripleO](http://www.tripleo.org/) deployments.
 
-This session is related to a THT overview
-for all users who want to dig into the 
-project.
+In this session Dan Prince will dig into the physical overcloud networks.
 
-This video session aims to cover the following topics:
-
-* A THT basic introduction overview.
-* A Template model used.
-* A description of the new composable services approach.
-* A code overview over the related code repositories.
-* A cloud deployment demo session.
-* A demo session with a deployment in live referring to debugging hints.
-
-So please, check the full [session](https://www.youtube.com/watch?v=gX5AKSqRCiU)
+So please, check the full [session](https://www.youtube.com/watch?v=zYNq2uT9pfM)
 content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZGwUELpgaBoLvABsTA/).
 
-{% assign videoId = "gX5AKSqRCiU" %}
+{% assign videoId = "zYNq2uT9pfM" %}
 {% include youtubePlayer.html id=videoId %}
 
 > Sessions index:
@@ -45,4 +35,3 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #5 (Undercloud - Under the hood)](http://www.anstack.com/blog/2016/08/05/tripleo-deep-dive-session-5.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #6 (Overcloud - Physical network)](http://www.anstack.com/blog/2016/08/15/tripleo-deep-dive-session-6.html)
-

@@ -39,4 +39,6 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #4 (Puppet modules)](http://www.anstack.com/blog/2016/08/01/tripleo-deep-dive-session-4.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #5 (Undercloud - Under the hood)](http://www.anstack.com/blog/2016/08/05/tripleo-deep-dive-session-5.html)
+>
+> &nbsp;&nbsp;&nbsp; * [TripleO deep dive #6 (Overcloud - Physical network)](http://www.anstack.com/blog/2016/08/15/tripleo-deep-dive-session-6.html)
 
