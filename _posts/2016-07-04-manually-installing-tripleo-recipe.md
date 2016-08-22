@@ -60,6 +60,15 @@ From the undercloud we will install all the
 packages:
 
 ```bash
+  #Add a 4GB swap file to the Undercloud
+  sudo dd if=/dev/zero of=/swapfile bs=1024 count=4194304
+  sudo mkswap /swapfile
+  #Turn ON the swap file
+  sudo chmod 600 /swapfile
+  sudo swapon /swapfile
+  #Enable it on start
+  sudo echo "/swapfile          swap            swap    defaults        0 0" >> /etc/fstab
+
   #Login as the stack user
   su - stack
   sudo yum -y install yum-plugin-priorities
@@ -103,3 +112,7 @@ This will hopefully deploy the TripleO overcloud, if not,
 refer to the [troubleshooting](http://tripleo.org/troubleshooting/troubleshooting.html) section in the official
 site.
 
+```bash
+#Configure a DNS for the OC subnet, do this before deploying the Overcloud
+neutron subnet-update `neutron subnet-list -f value | awk '{print $1}'` --dns-nameserver 192.168.122.1
+```
