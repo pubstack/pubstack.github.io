@@ -68,16 +68,16 @@ STUDY
 
 **BASc., Computer Sciences** `Universidad Central de Venezuela`
 
-RESEARCH ARTICLES
------------------
+RESEARCH WORK
+-------------
 
-**[PhD dissertation](https://github.com/ccamacho/papers/blob/master/NaN.pdf)**
+**[PhD dissertation](https://github.com/ccamacho/papers/blob/master/NaN.pdf)** **\*\***
 
-**[Probabilistic product lines](https://github.com/ccamacho/papers/blob/master/NaN.pdf)**
+**[Probabilistic product lines](https://github.com/ccamacho/papers/blob/master/NaN.pdf)** **\*\***
 
-**[Cost-related interface for software product lines](https://github.com/ccamacho/papers/blob/master/1-s2.0-S2352220815000917-main.pdf)**
+**[Cost-related interface for software product lines](https://github.com/ccamacho/papers/blob/master/1-s2.0-S2352220815000917-main.pdf)** ``http://dx.doi.org/10.1016/j.jlamp.2015.09.009``
 
-**[A formal framework for software product lines](https://github.com/ccamacho/papers/blob/master/1-s2.0-S0950584913001262-main.pdf)**
+**[A formal framework for software product lines](https://github.com/ccamacho/papers/blob/master/1-s2.0-S0950584913001262-main.pdf)** ``http://dx.doi.org/10.1016/j.infsof.2013.05.005``
 
 SOCIAL
 ------
