@@ -36,9 +36,10 @@ Also when deploying the Overcloud nodes the controller might face
 some RAM usage peaks, in which case, create a swap file in each
 Overcloud node by using the extraconfig swap template:
 
-To achieve this, edit in THT the file `overcloud-resource-registry-puppet.yaml`,
-find the all nodes estra config resource registry entry `OS::TripleO::AllNodesExtraConfig`
-and replace `OS::Heat::None` by extraconfig/all_nodes/swap.yaml
+To achieve this second part, edit the file
+`tripleo-heat-templates/overcloud-resource-registry-puppet.yaml`,
+find the AllNodesExtraConfig resource registry entry `OS::TripleO::AllNodesExtraConfig`
+and replace `OS::Heat::None` by `extraconfig/all_nodes/swap.yaml`.
 
 The last two hints will provide a swap file of 4GB in
 both Undercloud and Overcloud nodes.
