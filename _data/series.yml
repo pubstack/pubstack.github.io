@@ -12,9 +12,10 @@
 
 - name: All engineering related stuff I like
   desc: |
-    Electronics, physics, formal methods among others.
+    RedHat, Linux, Electronics, physics, formal methods among others.
   tag_name:
     - engineering
+    - RedHat
     - physics
     - formal_methods
 
