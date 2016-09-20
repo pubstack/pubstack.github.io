@@ -8,6 +8,7 @@ tags:
   - Engineering
   - RedHat
   - RHCSA
+favorite: true
 commentIssueId: 15
 ---
 
