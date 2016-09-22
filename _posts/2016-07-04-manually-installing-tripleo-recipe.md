@@ -38,10 +38,10 @@ From the hypervisor run:
 
   #Configure the undercloud deployment
   export NODE_DIST=centos7
-  export NODE_CPU=1
-  export NODE_MEM=7550
-  export NODE_COUNT=3
-  export UNDERCLOUD_NODE_CPU=1
+  export NODE_CPU=4
+  export NODE_MEM=9000
+  export NODE_COUNT=6
+  export UNDERCLOUD_NODE_CPU=4
   export UNDERCLOUD_NODE_MEM=9000
   export FS_TYPE=ext4
 
