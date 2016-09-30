@@ -84,7 +84,7 @@ SOCIAL
 
 **blog** `https://www.anstack.com`
 
-**linkedin** `https://www.linkedin.com/in/carlosdcg`
+**linkedin** `https://www.linkedin.com/in/ccamacho-`
 
 **github** `https://www.github.com/ccamacho`
 
