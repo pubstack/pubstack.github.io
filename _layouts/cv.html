@@ -18,7 +18,7 @@ layout: default
     {% else %}
       <span>
         {% if tag_count > 0 %}
-          Series:
+          Tags:
           {% for sn in page.tags %}
             {% if forloop.last %}
               <a href="/#{{ sn }}">{{ sn | replace: "_", " " }}</a>

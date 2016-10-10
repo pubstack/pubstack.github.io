@@ -10,7 +10,7 @@ CCAMACHO Linux "User Manuals"
 NAME
 ----
 
-ccamacho - I hear and I forget, I see and I remember, I do and I understand..
+ccamacho - A software engineer from Madrid (Spain) working @ Red Hat. #MakeIt #BreakIt #FixIt #OwnIt
 
 SYNOPSIS
 --------
@@ -40,7 +40,7 @@ OPTIONS
   How cool is it?
 
 `--research`
-  What I really love to do.
+  What I love to do.
 
 WORK
 ----
