@@ -1,0 +1,22 @@
+---
+layout: load-planet-js
+---
+
+{% include header.html %}
+
+<article>
+  <h1 class="title">
+    Planet
+  </h1>
+
+<div id="archive"><ul id="archiveul"></ul></div>
+
+  {% unless page.skip_footer %}
+    <hr class="fin"/>
+  {% endunless %}
+</article>
+
+
+{% unless page.skip_footer %}
+  {% include footer.html %}
+{% endunless %}

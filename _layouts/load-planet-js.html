@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="VikwqTxe7ybu1qSM7LFgIQpvHLN0_j-iVzaLqF88vEw" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carlos Camacho - {{ page.title }}</title>
+  <meta name="author" content="Carlos Camacho" />
+  <meta name="description" content="Stacked answers about software, book writeups and geeky projects by a software engineer" />
+  <meta property="og:title" content="{{ page.title }}"/>
+  <meta property="og:image" content="http://www.anstack.com/static/me.jpg"/>
+  <meta property="og:site_name" content="Carlos Camacho - A bunch of stacked answers - anstack"/>
+  <meta property="og:description" content="Stacked answers about software, book writeups and geeky projects by a software engineer"/>
+
+  
+  <link rel="canonical" href="http://anstack.github.io{{ page.url | replace:'index.html','' }}" />
+
+  <link href="//fonts.googleapis.com/css?family=Nunito:400,700,300|Varela+Round" rel="stylesheet" type="text/css">
+
+  <link rel="shortcut icon" href="/static/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Carlos Camacho's Blog" href="{{site.url}}/atom.xml" />
+
+  {% if site.github %}
+    <link rel="stylesheet" href="/css/site.css?sha={{ site.github.build_revision }}">
+  {% else %}
+    <link rel="stylesheet" href="/css/site.css">
+  {% endif %}
+
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+   <script>
+
+    $(document).ready(function(){
+       var posts = fillPlanet();
+       for (var i = 0; i < posts.length; i++) {
+           $("#archiveul").append("<li><a href='" + posts[i]['url'] + "'  >" + posts[i]['title'] + "</a>&nbsp;&nbsp;&nbsp;" + posts[i]['author'] + "</li>");
+       }
+    });
+
+    function fillPlanet() {
+        jQuery.ajaxSetup({async:false});
+        var posts = [];
+        var crossproxy = 'https://crossorigin.me/';
+        //Change this to a hash with author name...
+        var urls = [
+            crossproxy + 'http://blog.nemebean.com/taxonomy/term/5/feed',  //Ben
+            crossproxy + 'https://dprince.github.io/feeds/tripleo.atom.xml', //Dan
+            crossproxy + 'http://www.dougalmatthews.com/feeds/openstack.atom.xml', //Douglas
+            crossproxy + 'http://my1.fr/blog/category/virtualization/openstack/tripleo/feed/atom/', //Emilien
+            crossproxy + 'http://giuliofidente.com/feeds/tag/tripleo.atom.xml', //Giulio
+            crossproxy + 'http://blog-slagle.rhcloud.com/?tag=tripleo&feed=rss2', //James
+            crossproxy + 'http://jaormx.github.io//feed.xml', //Juan
+            crossproxy + 'http://mariosandreou.com/tripleo.xml', //Marios
+            crossproxy + 'http://hardysteven.blogspot.com/feeds/posts/default/-/tripleo?alt=rss' //Steven
+           ];
+
+        for (var i in urls) {
+            $.get(urls[i], function (data) {
+                $(data).find("entry, item").each(function () {
+                    var el = $(this);
+                    tit = el.find("title").text();
+                    auth = el.find("author").text();
+                    dat = el.find("pubDate, published, updated").text();
+                    if ((typeof el.find("link").attr("href") !== 'undefined') && (el.find("link").attr("href").indexOf('http') !== -1)) {
+                        link = el.find("link").attr("href");
+                    }else{
+                       if ((typeof el.find("link").text() !== 'undefined') && (el.find("link").text().indexOf('http') !== -1)) {
+                           link = el.find("link").text();
+                       }else{
+                           link = "http://www.google.com";
+                       }
+                    }
+                    posts.push({title:tit,author:auth,date:dat,url:link});
+               });
+            });
+        }
+
+        //TODO Sort posts before return
+        return posts;
+    }
+
+   </script>
+
+
+
+</head>
+<body>
+  <section>
+    {{ content }}
+  </section>
+{% include analytics.html %}
+
+<script>
+</script>
+</body>
+</html>
