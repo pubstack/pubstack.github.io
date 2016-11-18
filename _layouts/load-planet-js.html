@@ -45,23 +45,23 @@
         var crossproxy = 'https://crossorigin.me/';
         //Change this to a hash with author name...
         var urls = [
-            crossproxy + 'http://blog.nemebean.com/taxonomy/term/5/feed',  //Ben
-            crossproxy + 'https://dprince.github.io/feeds/tripleo.atom.xml', //Dan
-            crossproxy + 'http://www.dougalmatthews.com/feeds/openstack.atom.xml', //Douglas
-            crossproxy + 'http://my1.fr/blog/category/virtualization/openstack/tripleo/feed/atom/', //Emilien
-            crossproxy + 'http://giuliofidente.com/feeds/tag/tripleo.atom.xml', //Giulio
-            crossproxy + 'http://blog-slagle.rhcloud.com/?tag=tripleo&feed=rss2', //James
-            crossproxy + 'http://jaormx.github.io//feed.xml', //Juan
-            crossproxy + 'http://mariosandreou.com/tripleo.xml', //Marios
-            crossproxy + 'http://hardysteven.blogspot.com/feeds/posts/default/-/tripleo?alt=rss' //Steven
+            {uri: crossproxy + 'http://blog.nemebean.com/taxonomy/term/5/feed', author:'bnemec'}, //Ben
+            {uri: crossproxy + 'https://dprince.github.io/feeds/tripleo.atom.xml', author:'dprince'}, //Dan
+            {uri: crossproxy + 'http://www.dougalmatthews.com/feeds/openstack.atom.xml', author:'douglas'},  //Douglas
+            {uri: crossproxy + 'http://my1.fr/blog/category/virtualization/openstack/tripleo/feed/atom/', author:'EmilienM'},  //Emilien
+            {uri: crossproxy + 'http://giuliofidente.com/feeds/tag/tripleo.atom.xml', author:'gfidente'},  //Giulio
+            {uri: crossproxy + 'http://blog-slagle.rhcloud.com/?tag=tripleo&feed=rss2', author:'jslagle'},  //James
+            {uri: crossproxy + 'http://jaormx.github.io//feed.xml', author:'jaosorior'},  //Juan
+            {uri: crossproxy + 'http://mariosandreou.com/tripleo.xml', author:'marios'},  //Marios
+            {uri: crossproxy + 'http://hardysteven.blogspot.com/feeds/posts/default/-/tripleo?alt=rss', author:'shardy'} //Steven
            ];
 
         for (var i in urls) {
-            $.get(urls[i], function (data) {
+            $.get(urls[i]['uri'], function (data) {
                 $(data).find("entry, item").each(function () {
                     var el = $(this);
                     tit = el.find("title").text();
-                    auth = el.find("author").text();
+                    auth = urls[i]['author'];
                     dat = el.find("pubDate, published, updated").text();
                     if ((typeof el.find("link").attr("href") !== 'undefined') && (el.find("link").attr("href").indexOf('http') !== -1)) {
                         link = el.find("link").attr("href");
