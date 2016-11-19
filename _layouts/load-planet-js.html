@@ -33,17 +33,13 @@
    <script>
 
     $(document).ready(function(){
-       var posts = fillPlanet();
-       for (var i = 0; i < posts.length; i++) {
-           $("#archiveul").append("<li><a href='" + posts[i]['url'] + "'  >" + posts[i]['title'] + "</a>&nbsp;&nbsp;&nbsp;" + posts[i]['author'] + "</li>");
-       }
+       fillPlanet();
     });
 
     function fillPlanet() {
         jQuery.ajaxSetup({async:false});
         var posts = [];
         var crossproxy = 'https://crossorigin.me/';
-        //Change this to a hash with author name...
         var urls = [
             {uri: crossproxy + 'http://blog.nemebean.com/taxonomy/term/5/feed', author:'bnemec'}, //Ben
             {uri: crossproxy + 'https://dprince.github.io/feeds/tripleo.atom.xml', author:'dprince'}, //Dan
@@ -55,30 +51,39 @@
             {uri: crossproxy + 'http://mariosandreou.com/tripleo.xml', author:'marios'},  //Marios
             {uri: crossproxy + 'http://hardysteven.blogspot.com/feeds/posts/default/-/tripleo?alt=rss', author:'shardy'} //Steven
            ];
-
-        for (var i in urls) {
-            $.get(urls[i]['uri'], function (data) {
-                $(data).find("entry, item").each(function () {
-                    var el = $(this);
-                    tit = el.find("title").text();
-                    auth = urls[i]['author'];
-                    dat = el.find("pubDate, published, updated").text();
-                    if ((typeof el.find("link").attr("href") !== 'undefined') && (el.find("link").attr("href").indexOf('http') !== -1)) {
-                        link = el.find("link").attr("href");
-                    }else{
-                       if ((typeof el.find("link").text() !== 'undefined') && (el.find("link").text().indexOf('http') !== -1)) {
-                           link = el.find("link").text();
-                       }else{
-                           link = "http://www.google.com";
-                       }
-                    }
-                    posts.push({title:tit,author:auth,date:dat,url:link});
-               });
+        $.get(urls[i]['uri'], function (data) {
+            $(data).find("entry, item").each(function () {
+                var el = $(this);
+                tit = el.find("title").text();
+                auth = urls[i]['author'];
+                dat = el.find("pubDate, published, updated").first().text();
+                timestamp = Date.parse(dat);
+                var d = new Date(timestamp);
+                if ( isNaN( d.getTime() ) ){
+                    var myDate=dat;
+                    myDate=myDate.split("-");
+                    var newDate=myDate[0]+"/"+myDate[1]+"/"+myDate[2].substring(0, 2); 
+                    timestamp = new Date(newDate).getTime();
+                    d = new Date(newDate);
+                }
+                if ((typeof el.find("link").attr("href") !== 'undefined') && (el.find("link").attr("href").indexOf('http') !== -1)) {
+                    link = el.find("link").attr("href");
+                }else{
+                   if ((typeof el.find("link").text() !== 'undefined') && (el.find("link").text().indexOf('http') !== -1)) {
+                       link = el.find("link").text();
+                   }else{
+                       link = "http://www.google.com";
+                   }
+                }
+                $("#archiveul").append("<li id='"+timestamp+"'><a href='" + link + "'  >" + tit + "</a>&nbsp;&nbsp;&nbsp;" + auth + " @ " + d.getFullYear() + '/' + (d.getMonth()+1) + '/' + d.getDate() + "</li>");
             });
+        });
+        var elems = $('#archiveul').children('li').remove();
+        elems.sort(function(a,b){
+            return parseInt(a.id) < parseInt(b.id);
+        });
+        $('#archiveul').append(elems);
         }
-
-        //TODO Sort posts before return
-        return posts;
     }
 
    </script>
