@@ -34,12 +34,23 @@
 
     $(document).ready(function(){
        fillPlanet();
+       sortList();
     });
 
-    function fillPlanet() {
+
+   function sortList(){
+	    var elems = $('#archiveul').children('li').remove();
+	    elems.sort(function(a,b){
+	    return parseInt(b.id) - parseInt(a.id);
+	    });
+	    $('#archiveul').append(elems);
+   }
+
+   function fillPlanet() {
         jQuery.ajaxSetup({async:false});
         var posts = [];
         var crossproxy = 'https://crossorigin.me/';
+        //Change this to a hash with author name...
         var urls = [
             {uri: crossproxy + 'http://blog.nemebean.com/taxonomy/term/5/feed', author:'bnemec'}, //Ben
             {uri: crossproxy + 'https://dprince.github.io/feeds/tripleo.atom.xml', author:'dprince'}, //Dan
@@ -51,41 +62,38 @@
             {uri: crossproxy + 'http://mariosandreou.com/tripleo.xml', author:'marios'},  //Marios
             {uri: crossproxy + 'http://hardysteven.blogspot.com/feeds/posts/default/-/tripleo?alt=rss', author:'shardy'} //Steven
            ];
-        $.get(urls[i]['uri'], function (data) {
-            $(data).find("entry, item").each(function () {
-                var el = $(this);
-                tit = el.find("title").text();
-                auth = urls[i]['author'];
-                dat = el.find("pubDate, published, updated").first().text();
-                timestamp = Date.parse(dat);
-                var d = new Date(timestamp);
-                if ( isNaN( d.getTime() ) ){
-                    var myDate=dat;
-                    myDate=myDate.split("-");
-                    var newDate=myDate[0]+"/"+myDate[1]+"/"+myDate[2].substring(0, 2); 
-                    timestamp = new Date(newDate).getTime();
-                    d = new Date(newDate);
-                }
-                if ((typeof el.find("link").attr("href") !== 'undefined') && (el.find("link").attr("href").indexOf('http') !== -1)) {
-                    link = el.find("link").attr("href");
-                }else{
-                   if ((typeof el.find("link").text() !== 'undefined') && (el.find("link").text().indexOf('http') !== -1)) {
-                       link = el.find("link").text();
-                   }else{
-                       link = "http://www.google.com";
-                   }
-                }
-                $("#archiveul").append("<li id='"+timestamp+"'><a href='" + link + "'  >" + tit + "</a>&nbsp;&nbsp;&nbsp;" + auth + " @ " + d.getFullYear() + '/' + (d.getMonth()+1) + '/' + d.getDate() + "</li>");
+
+        for (var i in urls) {
+            $.get(urls[i]['uri'], function (data) {
+                $(data).find("entry, item").each(function () {
+                    var el = $(this);
+                    tit = el.find("title").text();
+                    auth = urls[i]['author'];
+                    dat = el.find("pubDate, published, updated").first().text();
+                    timestamp = Date.parse(dat)
+                    var d = new Date(timestamp);
+                    if ( isNaN( d.getTime() ) ){
+                        var myDate=dat;
+                        myDate=myDate.split("-");
+                        var newDate=myDate[0]+"/"+myDate[1]+"/"+myDate[2].substring(0, 2); 
+                        timestamp = new Date(newDate).getTime();
+                        d = new Date(newDate);
+                    }
+                    if ((typeof el.find("link").attr("href") !== 'undefined') && (el.find("link").attr("href").indexOf('http') !== -1)) {
+                        link = el.find("link").attr("href");
+                    }else{
+                       if ((typeof el.find("link").text() !== 'undefined') && (el.find("link").text().indexOf('http') !== -1)) {
+                           link = el.find("link").text();
+                       }else{
+                           link = "http://www.google.com";
+                       }
+                    }
+                    $("#archiveul").append("<li id='"+timestamp+"'><a href='" + link + "'  >" + tit + "</a>&nbsp;&nbsp;&nbsp;" + auth + " @ " + d.getFullYear() + '/' + (d.getMonth()+1) + '/' + d.getDate() + "</li>");
+                    sortList();
+               });
             });
-        });
-        var elems = $('#archiveul').children('li').remove();
-        elems.sort(function(a,b){
-            return parseInt(a.id) < parseInt(b.id);
-        });
-        $('#archiveul').append(elems);
         }
     }
-
    </script>
 
 
@@ -93,7 +101,26 @@
 </head>
 <body>
   <section>
-    {{ content }}
+	{% include header.html %}
+
+	<article>
+	  <h1 class="title">
+	    Planet
+	  </h1>
+
+        <p>Some useful references from TripleO developers.</p>
+
+	<div id="archive"><ul id="archiveul"></ul></div>
+
+	  {% unless page.skip_footer %}
+	    <hr class="fin"/>
+	  {% endunless %}
+	</article>
+
+
+	{% unless page.skip_footer %}
+	  {% include footer.html %}
+	{% endunless %}
   </section>
 {% include analytics.html %}
 
