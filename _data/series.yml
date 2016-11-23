@@ -8,7 +8,7 @@
 - name: Software Development
   desc: |
     Lessons and experiences in validating, building, and supporting software products.
-  tag_name: software_dev
+  tag_name: 'software development'
 
 - name: All engineering related stuff I like
   desc: |
