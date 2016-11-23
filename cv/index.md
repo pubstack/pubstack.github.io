@@ -4,8 +4,13 @@ skip_related: true
 skip_bio: true
 ---
 
-CCAMACHO Linux "User Manuals"
-=============================
+<br/>
+<div id="cv-header">
+   <div style="float: left"><h1>CCAMACHO(1)</h1></div>
+   <div style="float: right"><h1>CCAMACHO(1)</h1></div>
+   <div style="margin: 0 auto; width: 600px;text-align: center;vertical-align: middle;line-height: 90px;"><h1>User Manuals</h1></div>
+</div>
+<br/>
 
 NAME
 ----
@@ -98,6 +103,6 @@ Carlos Camacho <ccamacho@yandex.com>
 SEE ALSO
 --------
 
-**[RedHat](https://www.redhat.com)** **[Wired](https://www.wired.com)** **[MIT-news](http://news.mit.edu/)**
+**[Home](http://www.ccamacho.org)** **[RedHat](https://www.redhat.com)** **[Wired](https://www.wired.com)** **[MIT-news](http://news.mit.edu/)** **[Slashdot-news](https://developers.slashdot.org/)**
 
 **\*\* Current**
