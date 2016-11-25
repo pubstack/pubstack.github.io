@@ -100,7 +100,6 @@ openstack overcloud deploy \
 --libvirt-type qemu \
 --ntp-server pool.ntp.org \
 --templates /home/stack/tripleo-heat-templates \
--e /home/stack/tripleo-heat-templates/overcloud-resource-registry-puppet.yaml \
 -e /home/stack/tripleo-heat-templates/environments/puppet-pacemaker.yaml
 #Also can be added:
 #--control-scale 3 \
@@ -116,3 +115,9 @@ site.
 #Configure a DNS for the OC subnet, do this before deploying the Overcloud
 neutron subnet-update `neutron subnet-list -f value | awk '{print $1}'` --dns-nameserver 192.168.122.1
 ```
+
+<div style="font-size:10px">
+  <blockquote>
+    <p><strong>Updated 2016/11/25:</strong> We moved overcloud-resource-registry-puppet.yaml to be used with jinja2 (j2.yaml). There is no need to reference this file anymore.</p>
+  </blockquote>
+</div>
