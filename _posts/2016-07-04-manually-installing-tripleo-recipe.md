@@ -100,6 +100,7 @@ openstack overcloud deploy \
 --libvirt-type qemu \
 --ntp-server pool.ntp.org \
 --templates /home/stack/tripleo-heat-templates \
+-e /home/stack/tripleo-heat-templates/overcloud-resource-registry-puppet.yaml \
 -e /home/stack/tripleo-heat-templates/environments/puppet-pacemaker.yaml
 #Also can be added:
 #--control-scale 3 \
@@ -118,6 +119,6 @@ neutron subnet-update `neutron subnet-list -f value | awk '{print $1}'` --dns-na
 
 <div style="font-size:10px">
   <blockquote>
-    <p><strong>Updated 2016/11/25:</strong> We moved overcloud-resource-registry-puppet.yaml to be used with jinja2 (j2.yaml). There is no need to reference this file anymore.</p>
+    <p><strong>Updated 2016/11/25:</strong> instack-virt-setup env. vars. are defaulted to sane defaults, so they are optional now.</p>
   </blockquote>
 </div>
