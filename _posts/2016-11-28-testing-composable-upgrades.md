@@ -77,6 +77,12 @@ cat > upgrade_repos.yaml << EOF
 parameter_defaults:
   UpgradeInitCommand: |
     set -e
+
+    #Master repositories
+    sudo curl -o /etc/yum.repos.d/delorean.repo http://buildlogs.centos.org/centos/7/cloud/x86_64/rdo-trunk-master-tripleo/delorean.repo
+    sudo curl -o /etc/yum.repos.d/delorean-deps.repo http://trunk.rdoproject.org/centos7/delorean-deps.repo
+
+
     export HOME=/root
     cd /root/
     if [ ! -d tripleo-ci ]; then
@@ -99,7 +105,12 @@ parameter_defaults:
 
     ./tripleo-ci/scripts/tripleo.sh --repo-setup
     sed -i "s/includepkgs=/includepkgs=python-heat-agent*,/" /etc/yum.repos.d/delorean-current.repo
-    yum -y install python-heat-agent-ansible
+    #yum -y install python-heat-agent-ansible
+    yum install -y python-heat-agent-*
+
+    rm -f /usr/libexec/os-apply-config/templates/etc/puppet/hiera.yaml
+    rm -f /usr/libexec/os-refresh-config/configure.d/40-hiera-datafiles
+    rm -f /etc/puppet/hieradata/*.yaml
 EOF
 ```
 
@@ -108,9 +119,9 @@ EOF
 ```
   cd
   git clone https://github.com/openstack/tripleo-heat-templates tht-master
-  cd tht-master #Remove after landing this feature
-  git review -d 403441 #Remove after landing this feature
-  git rebase -i master #Remove after landing this feature
+  # cd tht-master #Remove after landing this feature
+  # git review -d 403441 #Remove after landing this feature
+  # git rebase -i master #Remove after landing this feature
 ```
 
 - Upgrade Overcloud to master
