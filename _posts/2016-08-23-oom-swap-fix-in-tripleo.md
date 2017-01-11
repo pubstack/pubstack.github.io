@@ -47,16 +47,10 @@ some RAM usage peaks, in which case, create a swap file in each
 Overcloud node by using an already existing "extraconfig swap"
 template.
 
-To achieve this second part, edit the file
-`tripleo-heat-templates/overcloud-resource-registry-puppet.yaml`,
-find the AllNodesExtraConfig resource registry entry `OS::TripleO::AllNodesExtraConfig`
-and replace `OS::Heat::None` with `extraconfig/all_nodes/swap.yaml`.
-
-The last two hints will provide a swap file of 4GB in
-both Undercloud and Overcloud nodes.
-Having these swap files might be the difference between
-decreasing the system performance because of the
-high memory usage or a OOM deployment crash.
+To achieve this second part, we just need to use the environmental
+file that loads the swap template in the resource
+[registry](https://review.openstack.org/#/c/418273/)
+when deploying the overcloud.
 
 Now, deploy your Overcloud as usual i.e.:
 
@@ -67,6 +61,7 @@ openstack overcloud deploy \
 --ntp-server pool.ntp.org \
 --templates /home/stack/tripleo-heat-templates \
 -e /home/stack/tripleo-heat-templates/overcloud-resource-registry-puppet.yaml \
+-e /home/stack/tripleo-heat-templates/environments/enable-swap.yaml \
 -e /home/stack/tripleo-heat-templates/environments/puppet-pacemaker.yaml
 ```
 
