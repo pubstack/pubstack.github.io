@@ -54,7 +54,7 @@ ssh -L 38080:localhost:38080 root@$undercloudIp
 ```bash
 su - stack
 source stackrc
-cat tripleo-overcloud-passwords |grep ADMIN_PASSWORD | awk -F  '=' '{print $2}'
+cat overcloudrc |grep OS_PASSWORD | awk -F  '=' '{print $2}'
 ```
 
 * Connect to the overcloud controller from the undercloud (create the third and last tunnel)
