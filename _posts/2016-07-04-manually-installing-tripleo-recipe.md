@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "TripleO manual deployment of 'master' branch"
+title: "TripleO manual deployment of 'release or master' branch"
 author: "Carlos Camacho"
 categories:
   - blog
@@ -32,9 +32,14 @@ From the hypervisor run:
   sudo yum -y install epel-release
   sudo yum -y install yum-plugin-priorities
 
+  #export TRIPLEO_RELEASE=rdo-trunk-master-tripleo
+  export TRIPLEO_RELEASE=rdo-trunk-newton-tested
+  #export TRIPLEO_RELEASE_DEPS=centos7
+  export TRIPLEO_RELEASE_DEPS=centos7-newton
+  
   #Master repositories
-  sudo curl -o /etc/yum.repos.d/delorean.repo http://buildlogs.centos.org/centos/7/cloud/x86_64/rdo-trunk-master-tripleo/delorean.repo
-  sudo curl -o /etc/yum.repos.d/delorean-deps.repo http://trunk.rdoproject.org/centos7/delorean-deps.repo
+  sudo curl -o /etc/yum.repos.d/delorean.repo http://buildlogs.centos.org/centos/7/cloud/x86_64/$TRIPLEO_RELEASE/delorean.repo
+  sudo curl -o /etc/yum.repos.d/delorean-deps.repo http://trunk.rdoproject.org/$TRIPLEO_RELEASE_DEPS/delorean-deps.repo
 
   #Configure the undercloud deployment
   export NODE_DIST=centos7
@@ -72,12 +77,18 @@ packages:
   #Login as the stack user
   su - stack
   sudo yum -y install yum-plugin-priorities
+
+  #export TRIPLEO_RELEASE=rdo-trunk-master-tripleo
+  export TRIPLEO_RELEASE=rdo-trunk-newton-tested
+  #export TRIPLEO_RELEASE_BRANCH=master
+  export TRIPLEO_RELEASE_BRANCH=stable/newton
+
   export USE_DELOREAN_TRUNK=1
-  export DELOREAN_TRUNK_REPO="http://buildlogs.centos.org/centos/7/cloud/x86_64/rdo-trunk-master-tripleo/"
+  export DELOREAN_TRUNK_REPO="http://buildlogs.centos.org/centos/7/cloud/x86_64/$TRIPLEO_RELEASE/"
   export DELOREAN_REPO_FILE="delorean.repo"
   export FS_TYPE=ext4
 
-  git clone https://github.com/openstack/tripleo-heat-templates
+  git clone -b $TRIPLEO_RELEASE_BRANCH https://github.com/openstack/tripleo-heat-templates
   git clone https://github.com/openstack-infra/tripleo-ci.git
   
   ./tripleo-ci/scripts/tripleo.sh --all
