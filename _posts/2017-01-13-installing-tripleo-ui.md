@@ -13,19 +13,18 @@ commentIssueId: 27
 This is a brief recipe to install TripleO UI
 in the Undercloud.
 
-Lets install the TripleO UI and
-all the prerequisites.
+The first step will be to install the TripleO UI and
+all the dependencies.
 
 ```bash
   cd
-  yum install -y tmux
+  sudo yum install -y nodejs npm tmux
   git clone https://github.com/openstack/tripleo-ui.git
-  sudo yum install -y nodejs npm
   cd tripleo-ui
   npm install
 ```
 
-Now, update all the TripleO UI config files
+Now, we need to update all the TripleO UI config files
 
 ```bash
   cd
@@ -53,13 +52,13 @@ At this stage you should have up and running your node server.
 Now lets create a tunnel to connect to the UI.
 
 ```bash
-  #Forward incoming 38080 traffic to local 38080 in the hypervisor
-  #labserver must be a reachable host
+  # Forward incoming 38080 traffic to local 38080 in the hypervisor
+  # labserver must be a reachable host
   ssh -L 38080:localhost:38080 root@labserver
-  #Log-in as the stack user and get the undercloud IP
+  # Log-in as the stack user and get the undercloud IP
   su - stack
   undercloudIp=`sudo virsh domifaddr instack | grep $(tripleo get-vm-mac instack) | awk '{print $4}' | sed 's/\/.*$//'`
-  #Forward incoming 38080 traffic to local 12121 in the undercloud (Where we have the TripleO UI running)
+  # Forward incoming 38080 traffic to local 12121 in the undercloud (Where we have the TripleO UI running)
   ssh -L 38080:localhost:12121 root@$undercloudIp
   su - stack
   source stackrc
