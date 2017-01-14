@@ -10,8 +10,31 @@ tags:
 commentIssueId: 27
 ---
 
-This is a brief recipe to install TripleO UI
+This is a brief recipe to use or install TripleO UI
 in the Undercloud.
+
+First, once installed the Undercloud, the TripleO UI
+is already available in the 3000 port.
+
+So, if you are using a virtual environment and
+you want start using it just need to forward a port
+from your local machine to the Undercloud 3000 port.
+
+```bash
+  ssh -L 33000:localhost:33000 root@labserver
+  su - stack
+  undercloudIp=`sudo virsh domifaddr instack | grep $(tripleo get-vm-mac instack) | awk '{print $4}' | sed 's/\/.*$//'`
+  ssh -L 33000:localhost:12121 root@$undercloudIp
+  su - stack
+  source stackrc
+  echo "Copy the password to use it later..."
+  echo $OS_PASSWORD
+```
+
+Now from your machine go to http://localhost:33000/ and enjoy
+using the TripleO UI.
+
+If you need a TripleO UI development environment follow:
 
 The first step will be to install the TripleO UI and
 all the dependencies.
@@ -32,8 +55,16 @@ Now, we need to update all the TripleO UI config files
   echo "Changing the default IP"
   export ENDPOINT_ADDR=$(cat stackrc | grep OS_AUTH_URL= | awk -F':' '{print $2}'| tr -d /)
   sed -i "s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/$ENDPOINT_ADDR/g" ~/tripleo-ui/dist/tripleo_ui_config.js
-  echo "Removing comments"
-  sed -i '/^  \/\/ \".*\"\:/s/^  \/\///' ~/tripleo-ui/dist/tripleo_ui_config.js
+
+  echo "Removing comments for the keystone URI"
+  sed -i '/^  \/\/ \"keystone\"\:/s/^  \/\///' ~/tripleo-ui/dist/tripleo_ui_config.js
+
+  echo "Removing comments for the zaqar_default_queue"
+  sed -i '/^  \/\/ \"zaqar_default_queue\"\:/s/^  \/\///' ~/tripleo-ui/dist/tripleo_ui_config.js
+
+  # Uncomment all the parameters
+  # sed -i '/^  \/\/ \".*\"\:/s/^  \/\///' ~/tripleo-ui/dist/tripleo_ui_config.js
+
   echo "Changing listening port for the dev server, 3000 already used"
   sed -i '/port: 3000/s/3000/12121/' ~/tripleo-ui/webpack.config.js
 ```
@@ -73,5 +104,7 @@ Happy TripleOing!
 <div style="font-size:10px">
   <blockquote>
     <p><strong>Updated 2017/01/13:</strong> First version.</p>
+    <p><strong>Updated 2017/01/14:</strong> Add default TripleO UI info. Still getting 'Connection to Keystone is not available'
+    the config params are correct, checking it...</p>
   </blockquote>
 </div>
