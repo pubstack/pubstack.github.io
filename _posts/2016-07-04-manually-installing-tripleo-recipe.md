@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "TripleO manual deployment of 'release or master' branch"
+title: "TripleO manual deployment"
 author: "Carlos Camacho"
 categories:
   - blog
@@ -32,12 +32,12 @@ From the hypervisor run:
   sudo yum -y install epel-release
   sudo yum -y install yum-plugin-priorities
 
-  #export TRIPLEO_RELEASE=rdo-trunk-master-tripleo
-  export TRIPLEO_RELEASE=rdo-trunk-newton-tested
-  #export TRIPLEO_RELEASE_DEPS=centos7
-  export TRIPLEO_RELEASE_DEPS=centos7-newton
+  export TRIPLEO_RELEASE=rdo-trunk-master-tripleo
+  #export TRIPLEO_RELEASE=rdo-trunk-newton-tested
+  export TRIPLEO_RELEASE_DEPS=centos7
+  #export TRIPLEO_RELEASE_DEPS=centos7-newton
   
-  #Master repositories
+  #Repository configured pointing to above release!
   sudo curl -o /etc/yum.repos.d/delorean.repo http://buildlogs.centos.org/centos/7/cloud/x86_64/$TRIPLEO_RELEASE/delorean.repo
   sudo curl -o /etc/yum.repos.d/delorean-deps.repo http://trunk.rdoproject.org/$TRIPLEO_RELEASE_DEPS/delorean-deps.repo
 
@@ -78,10 +78,10 @@ packages:
   su - stack
   sudo yum -y install yum-plugin-priorities
 
-  #export TRIPLEO_RELEASE=rdo-trunk-master-tripleo
-  export TRIPLEO_RELEASE=rdo-trunk-newton-tested
-  #export TRIPLEO_RELEASE_BRANCH=master
-  export TRIPLEO_RELEASE_BRANCH=stable/newton
+  export TRIPLEO_RELEASE=rdo-trunk-master-tripleo
+  #export TRIPLEO_RELEASE=rdo-trunk-newton-tested
+  export TRIPLEO_RELEASE_BRANCH=master
+  #export TRIPLEO_RELEASE_BRANCH=stable/newton
 
   export USE_DELOREAN_TRUNK=1
   export DELOREAN_TRUNK_REPO="http://buildlogs.centos.org/centos/7/cloud/x86_64/$TRIPLEO_RELEASE/"
@@ -92,13 +92,14 @@ packages:
   git clone https://github.com/openstack-infra/tripleo-ci.git
   
   ./tripleo-ci/scripts/tripleo.sh --all
-  #The last command will execute:
-  #repo_setup
-  #undercloud
-  #overcloud_images
-  #register_nodes
-  #introspect_nodes
-  #overcloud_deploy
+
+  # The last command will execute:
+  #  repo_setup        --repo-setup
+  #  undercloud        --undercloud
+  #  overcloud_images  --overcloud-images
+  #  register_nodes    --register-nodes
+  #  introspect_nodes  --introspect-nodes
+  #  overcloud_deploy  --overcloud-deploy
 ```
 
 Once the undercloud it is fully installed, deploy an overcloud
