@@ -43,4 +43,6 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #5 (Undercloud - Under the hood)](http://www.anstack.com/blog/2016/08/05/tripleo-deep-dive-session-5.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #6 (Overcloud - Physical network)](http://www.anstack.com/blog/2016/08/15/tripleo-deep-dive-session-6.html)
+>
+> &nbsp;&nbsp;&nbsp; * [TripleO deep dive #7 (Undercloud - TripleO UI)](http://www.anstack.com/blog/2017/01/16/tripleo-deep-dive-session-7.html)
 

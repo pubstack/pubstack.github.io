@@ -1,26 +1,37 @@
 ---
 layout: post
-title: "TripleO deep dive session #6 (Overcloud - Physical network)"
+title: "TripleO deep dive session #7 (Undercloud - TripleO UI)"
 author: "Carlos Camacho"
-date: 2016-08-15 12:00:00
+date: 2017-01-16 16:00:00
 categories:
   - blog
 tags:
   - tripleo
   - openstack
-commentIssueId: 12
+commentIssueId: 28
 ---
 
-This is the sixth video from a series of "Deep Dive" sessions
-related to [TripleO](http://www.tripleo.org/) deployments.
+This is the seven release of the [TripleO](http://www.tripleo.org/) "Deep Dive" sessions
 
-In this session Dan Prince will dig into the physical overcloud networks.
+In this session Liz Blanchard and Ana Krivokapic will give us some
+bits about how to contribute to the [TripleO UI](https://github.com/openstack/tripleo-ui) project.
+Once checking this session we will have a general overview about the project's
+history, properties, architecture and contributing steps.
 
-So please, check the full [session](https://www.youtube.com/watch?v=zYNq2uT9pfM)
+So please, check the full [session](https://www.youtube.com/watch?v=9TseONVfLR8)
 content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZGwUELpgaBoLvABsTA/).
 
-{% assign videoId = "zYNq2uT9pfM" %}
+{% assign videoId = "9TseONVfLR8" %}
 {% include youtubePlayer.html id=videoId %}
+
+
+Here you will be able to see a quick overview about how to install the UI as a development environment.
+
+{% assign videoId = "1puSvUqTKzw" %}
+{% include youtubePlayer.html id=videoId %}
+
+
+The summarized steps are also available in [this](http://www.anstack.com/blog/2017/01/13/installing-tripleo-ui.html) blog post.
 
 > Sessions index:
 >
