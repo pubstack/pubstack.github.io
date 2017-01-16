@@ -24,11 +24,14 @@ from your local machine to the Undercloud 3000 port.
   ssh -L 33000:localhost:33000 root@labserver
   su - stack
   undercloudIp=`sudo virsh domifaddr instack | grep $(tripleo get-vm-mac instack) | awk '{print $4}' | sed 's/\/.*$//'`
-  ssh -L 33000:localhost:12121 root@$undercloudIp
+  ssh -L 33000:localhost:33000 root@$undercloudIp
   su - stack
   source stackrc
+  ENDPOINT_ADDR=$(cat stackrc | grep OS_AUTH_URL= | awk -F':' '{print $2}'| tr -d /)
+  sudo yum install -y socat
   echo "Copy the password to use it later..."
   echo $OS_PASSWORD
+  socat TCP-LISTEN:33000,fork TCP:$ENDPOINT_ADDR:3000 &
 ```
 
 Now from your machine go to http://localhost:33000/ and enjoy
