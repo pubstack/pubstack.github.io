@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Installing TripleO UI"
+title: "Installing the TripleO UI"
 author: "Carlos Camacho"
 categories:
   - blog
