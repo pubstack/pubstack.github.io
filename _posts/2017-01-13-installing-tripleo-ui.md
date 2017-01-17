@@ -16,26 +16,51 @@ in the Undercloud.
 First, once installed the Undercloud, the TripleO UI
 is already available in the 3000 port.
 
-So, if you are using a virtual environment and
-you want start using it just need to forward a port
-from your local machine to the Undercloud 3000 port.
+Let's assume you have both root password for your
+development environment and the Undercloud node.
 
-```bash
-  ssh -L 33000:localhost:33000 root@labserver
-  su - stack
-  undercloudIp=`sudo virsh domifaddr instack | grep $(tripleo get-vm-mac instack) | awk '{print $4}' | sed 's/\/.*$//'`
-  ssh -L 33000:localhost:33000 root@$undercloudIp
-  su - stack
-  source stackrc
-  ENDPOINT_ADDR=$(cat stackrc | grep OS_AUTH_URL= | awk -F':' '{print $2}'| tr -d /)
-  sudo yum install -y socat
-  echo "Copy the password to use it later..."
-  echo $OS_PASSWORD
-  socat TCP-LISTEN:33000,fork TCP:$ENDPOINT_ADDR:3000 &
+TripleO-UI queries directly the endpoints (i.e. keystone)
+from your browser, so we need the traffic for the net
+192.168.24.0/24 forwarded from your workstation to the
+Undercloud node in order to reach all required ports
+(6385, 5000, 8004, 8080, 9000, 8989, 3000, 13385, 13000, 13004, 13808, 9000, 13989 and 443).
+
+Let's install sshuttle in your workstation.
+
+```
+sudo yum install -y sshuttle
 ```
 
-Now from your machine go to http://localhost:33000/ and enjoy
-using the TripleO UI.
+Now, let's get the Undercloud IP and configure SSH with a ProxyCommand.
+
+```
+instack_mac=`ssh root@labserver "tripleo get-vm-mac instack"`
+undercloudIp=`ssh root@labserver "sudo virsh domifaddr instack" | grep $instack_mac | awk '{print $4}' | sed 's/\/.*$//'`
+
+cat << EOF >> ~/.ssh/config
+Host lab
+  Hostname labserver
+  User root
+Host uc
+  Hostname $undercloudIp
+  User root
+  ProxyCommand ssh -vvvv -W %h:%p root@lab
+EOF
+```
+
+sshuttle will ask you for your hypervisor and Undercloud root
+password.
+
+To start forwarding the traffic execute:
+
+```
+sshuttle -e "ssh -vvv" -r root@uc -vvvv 192.168.24.0/24
+```
+
+Once you have done this, open from your browser http://192.168.24.1:3000/
+and the TripleO UI should be shown correctly.
+
+
 
 If you need a TripleO UI development environment follow:
 
@@ -69,7 +94,7 @@ Now, we need to update all the TripleO UI config files
   # sed -i '/^  \/\/ \".*\"\:/s/^  \/\///' ~/tripleo-ui/dist/tripleo_ui_config.js
 
   echo "Changing listening port for the dev server, 3000 already used"
-  sed -i '/port: 3000/s/3000/12121/' ~/tripleo-ui/webpack.config.js
+  sed -i '/port: 3000/s/3000/33000/' ~/tripleo-ui/webpack.config.js
 ```
 
 In the following step we will use tmux to persist the service running
@@ -82,25 +107,10 @@ for debugging purposes.
   npm start
 ```
 
-At this stage you should have up and running your node server.
-Now lets create a tunnel to connect to the UI.
+At this stage you should have up and running your node server (33000 port).
 
-```bash
-  # Forward incoming 38080 traffic to local 38080 in the hypervisor
-  # labserver must be a reachable host
-  ssh -L 38080:localhost:38080 root@labserver
-  # Log-in as the stack user and get the undercloud IP
-  su - stack
-  undercloudIp=`sudo virsh domifaddr instack | grep $(tripleo get-vm-mac instack) | awk '{print $4}' | sed 's/\/.*$//'`
-  # Forward incoming 38080 traffic to local 12121 in the undercloud (Where we have the TripleO UI running)
-  ssh -L 38080:localhost:12121 root@$undercloudIp
-  su - stack
-  source stackrc
-  echo "Copy the password to use it later..."
-  echo $OS_PASSWORD
-```
-
-Save the echoed password and use it together with the admin user to log in the TripleO UI:  http://localhost:38080/
+If you followed the first step to see the default TripleO UI installation
+go to log in the TripleO UI:  http://localhost:33000/
 
 Happy TripleOing!
 
@@ -109,5 +119,6 @@ Happy TripleOing!
     <p><strong>Updated 2017/01/13:</strong> First version.</p>
     <p><strong>Updated 2017/01/14:</strong> Add default TripleO UI info. Still getting 'Connection to Keystone is not available'
     the config params are correct, checking it...</p>
+    <p><strong>Updated 2017/01/17:</strong> Forwarded all the required ports using sshuttle.</p>
   </blockquote>
 </div>
