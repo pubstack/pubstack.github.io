@@ -38,8 +38,8 @@ From the hypervisor run:
   #export TRIPLEO_RELEASE_DEPS=centos7-newton
   
   #Repository configured pointing to above release!
-  sudo curl -o /etc/yum.repos.d/delorean.repo http://buildlogs.centos.org/centos/7/cloud/x86_64/$TRIPLEO_RELEASE/delorean.repo
-  sudo curl -o /etc/yum.repos.d/delorean-deps.repo http://trunk.rdoproject.org/$TRIPLEO_RELEASE_DEPS/delorean-deps.repo
+  sudo curl -o /etc/yum.repos.d/delorean.repo https://buildlogs.centos.org/centos/7/cloud/x86_64/$TRIPLEO_RELEASE/delorean.repo
+  sudo curl -o /etc/yum.repos.d/delorean-deps.repo https://trunk.rdoproject.org/$TRIPLEO_RELEASE_DEPS/delorean-deps.repo
 
   #Configure the undercloud deployment
   export NODE_DIST=centos7
@@ -84,7 +84,7 @@ packages:
   #export TRIPLEO_RELEASE_BRANCH=stable/newton
 
   export USE_DELOREAN_TRUNK=1
-  export DELOREAN_TRUNK_REPO="http://buildlogs.centos.org/centos/7/cloud/x86_64/$TRIPLEO_RELEASE/"
+  export DELOREAN_TRUNK_REPO="https://buildlogs.centos.org/centos/7/cloud/x86_64/$TRIPLEO_RELEASE/"
   export DELOREAN_REPO_FILE="delorean.repo"
   export FS_TYPE=ext4
 
