@@ -32,6 +32,7 @@ From the hypervisor run:
   sudo yum -y install epel-release
   sudo yum -y install yum-plugin-priorities
 
+  export TRIPLEO_ROOT=/home/stack
   export TRIPLEO_RELEASE=rdo-trunk-master-tripleo
   #export TRIPLEO_RELEASE=rdo-trunk-newton-tested
   export TRIPLEO_RELEASE_DEPS=centos7
@@ -76,6 +77,8 @@ packages:
 
   #Login as the stack user
   su - stack
+
+  export TRIPLEO_ROOT=/home/stack
   sudo yum -y install yum-plugin-priorities
 
   export TRIPLEO_RELEASE=rdo-trunk-master-tripleo
