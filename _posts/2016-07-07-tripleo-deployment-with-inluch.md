@@ -1,13 +1,12 @@
 ---
 layout: post
-title: "Openstack &amp; TripleO deployment using Inlunch"
+title: "Openstack &amp; TripleO deployment using Inlunch - DEPRECATED"
 author: "Carlos Camacho"
 categories:
   - blog
 tags:
   - tripleo
   - openstack
-favorite: true
 commentIssueId: 5
 ---
 

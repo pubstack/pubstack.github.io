@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "TripleO manual deployment"
+title: "TripleO manual deployment - DEPRECATED"
 author: "Carlos Camacho"
 categories:
   - blog
@@ -17,36 +17,42 @@ manually install TripleO in a remote
 From the hypervisor run:
 
 ```bash
-  # In this dev. env. /var is only 50GB, so I will create
-  # a sym link to another location with more capacity.
-  # It will take easily more tan 50GB deploying a 3+1 overcloud
+  #In this dev. env. /var is only 50GB, so I will create
+  #a sym link to another location with more capacity.
+  #It will take easily more tan 50GB deploying a 3+1 overcloud
   sudo mkdir -p /home/libvirt/
   sudo ln -sf /home/libvirt/ /var/lib/libvirt
-  # Add default toor user
-  sudo useradd toor
-  echo "toor:toor" | chpasswd
-  echo "toor ALL=(root) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/toor
-  sudo chmod 0440 /etc/sudoers.d/toor
-  su - toor
-  whoami
+  #Add default stack user
+  sudo useradd stack
+  echo "stack:stack" | chpasswd
+  echo "stack ALL=(root) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/stack
+  sudo chmod 0440 /etc/sudoers.d/stack
+  su - stack
 
-  sudo yum groupinstall "Virtualization Host" -y
-  sudo yum install git -y
+  sudo yum -y install epel-release
+  sudo yum -y install yum-plugin-priorities
 
-  cd
-  mkdir .ssh
-  ssh-keygen -t rsa -N "" -f .ssh/id_rsa
-  cat .ssh/id_rsa.pub >> .ssh/authorized_keys
-  sudo bash -c "cat .ssh/id_rsa.pub >> /root/.ssh/authorized_keys"
-  sudo bash -c "echo '127.0.0.1 127.0.0.2' >> /etc/hosts"
+  export TRIPLEO_ROOT=/home/stack
+  export TRIPLEO_RELEASE=rdo-trunk-master-tripleo
+  #export TRIPLEO_RELEASE=rdo-trunk-newton-tested
+  export TRIPLEO_RELEASE_DEPS=centos7
+  #export TRIPLEO_RELEASE_DEPS=centos7-newton
 
-  export VIRTHOST=127.0.0.2
-  ssh root@$VIRTHOST uname -a
-  git clone https://github.com/openstack/tripleo-quickstart
+  #Repository configured pointing to above release!
+  sudo curl -o /etc/yum.repos.d/delorean.repo https://buildlogs.centos.org/centos/7/cloud/x86_64/$TRIPLEO_RELEASE/delorean.repo
+  sudo curl -o /etc/yum.repos.d/delorean-deps.repo https://trunk.rdoproject.org/$TRIPLEO_RELEASE_DEPS/delorean-deps.repo
 
-  chmod u+x ./tripleo-quickstart/quickstart.sh
-  bash ./tripleo-quickstart/quickstart.sh --install-deps
-  bash ./tripleo-quickstart/quickstart.sh $VIRTHOST
+  #Configure the undercloud deployment
+  export NODE_DIST=centos7
+  export NODE_CPU=4
+  export NODE_MEM=9000
+  export NODE_COUNT=6
+  export UNDERCLOUD_NODE_CPU=4
+  export UNDERCLOUD_NODE_MEM=9000
+  export FS_TYPE=ext4
+
+  sudo yum install -y instack-undercloud
+  instack-virt-setup
 ```
 
 In the hypervisor run the following command to log-in in
