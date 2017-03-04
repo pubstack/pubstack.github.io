@@ -76,13 +76,13 @@ STUDY
 RESEARCH WORK
 -------------
 
-**[PhD dissertation](https://github.com/ccamacho/papers/blob/master/NaN.pdf)** **\*\***
+**[PhD dissertation](http://www.ccamacho.org/phd/resources/00_dissertation.pdf)** **\*\***
 
-**[Probabilistic product lines](https://github.com/ccamacho/papers/blob/master/NaN.pdf)** **\*\***
+**[Probabilistic product lines](http://www.ccamacho.org/phd/resources/03_probabilistic_software_product_lines.pdf)** **\*\***
 
-**[Cost-related interface for software product lines](https://github.com/ccamacho/papers/blob/master/1-s2.0-S2352220815000917-main.pdf)** ``http://dx.doi.org/10.1016/j.jlamp.2015.09.009``
+**[Cost-related interface for software product lines](http://www.ccamacho.org/phd/resources/02_cost-related_interface_for_software_product_lines.pdf)** ``http://dx.doi.org/10.1016/j.jlamp.2015.09.009``
 
-**[A formal framework for software product lines](https://github.com/ccamacho/papers/blob/master/1-s2.0-S0950584913001262-main.pdf)** ``http://dx.doi.org/10.1016/j.infsof.2013.05.005``
+**[A formal framework for software product lines](http://www.ccamacho.org/phd/resources/01_a_formal_framework_for_software_product_lines.pdf)** ``http://dx.doi.org/10.1016/j.infsof.2013.05.005``
 
 SOCIAL
 ------
