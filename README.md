@@ -4,6 +4,7 @@ The [Jekyll](http://jekyllrb.com/) source for [http://www.anstack.com](http://ww
 
 Spelling/grammar corrections are always welcome (and much appreciated :heart:) via Pull Requests.
 
+
 ### License
 The following directories and their contents are Copyright Carlos Camacho. You may not reuse anything therein without my permission:
 
