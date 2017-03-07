@@ -55,15 +55,19 @@ From the hypervisor run:
   chmod u+x ./tripleo-quickstart/quickstart.sh
   bash ./tripleo-quickstart/quickstart.sh --install-deps
 
+  # Use: --release [newton|ocata|master] as described in the next commands.
+
+  printf "\n\nSee:\n./tripleo-quickstart/quickstart.sh --help for a full list of options\n\n"
+
   # 3 controller nodes and 3 compute nodes
   # Controller mem 8192 Compute mem 8192 Undecloud mem 12288
   # Will take around 60GB
-  # bash ./tripleo-quickstart/quickstart.sh --tags all --config /home/toor/tripleo-quickstart/config/general_config/ha_big.yml $VIRTHOST
+  # bash ./tripleo-quickstart/quickstart.sh --release master --tags all --config /home/toor/tripleo-quickstart/config/general_config/ha_big.yml $VIRTHOST
 
   # 3 controller nodes and 1 compute node
   # Controller mem 6144 Compute mem 6144 Undecloud mem 8192
   # Will take around 32GB
-    bash ./tripleo-quickstart/quickstart.sh --tags all --config /home/toor/tripleo-quickstart/config/general_config/ha.yml $VIRTHOST
+    bash ./tripleo-quickstart/quickstart.sh --release master --tags all --config /home/toor/tripleo-quickstart/config/general_config/ha.yml $VIRTHOST
 
 
 ```
@@ -88,6 +92,9 @@ the UC and OC will be nuked, you will see tasks like 'PLAY [Tear down undercloud
 
 Note: If you delete the Overcloud i.e. using `heat stack-delete overcloud` you can re-deploy what you
 had by running the dynamically generated overcloud-deploy.sh script in the stack home folder from the UC.
+
+Note: There are several options for TripleO Quickstart besides the basic 
+virthost deployment, check them here: `https://docs.openstack.org/developer/tripleo-quickstart/working-with-extras.html`
 
 <div style="font-size:10px">
   <blockquote>
