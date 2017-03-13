@@ -51,11 +51,12 @@ From the hypervisor run:
 
   ssh root@$VIRTHOST uname -a
 
+  # Use: --release [newton|ocata|master] as described in the next commands.
+
   git clone https://github.com/openstack/tripleo-quickstart
   chmod u+x ./tripleo-quickstart/quickstart.sh
-  bash ./tripleo-quickstart/quickstart.sh --install-deps
+  bash ./tripleo-quickstart/quickstart.sh --install-deps --release master
 
-  # Use: --release [newton|ocata|master] as described in the next commands.
 
   printf "\n\nSee:\n./tripleo-quickstart/quickstart.sh --help for a full list of options\n\n"
 
