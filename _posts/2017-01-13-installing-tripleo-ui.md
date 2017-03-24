@@ -34,8 +34,7 @@ sudo yum install -y sshuttle
 Now, let's get the Undercloud IP and configure SSH with a ProxyCommand.
 
 ```
-instack_mac=`ssh root@labserver "tripleo get-vm-mac instack"`
-undercloudIp=`ssh root@labserver "sudo virsh domifaddr instack" | grep $instack_mac | awk '{print $4}' | sed 's/\/.*$//'`
+undercloudIp=`ssh root@labserver "arp -e" | grep brext | awk '{print $1}' | sed 's/\/.*$//'`
 
 cat << EOF >> ~/.ssh/config
 Host lab
@@ -60,8 +59,6 @@ sshuttle -e "ssh -vvv" -r root@uc -vvvv 192.168.24.0/24
 Once you have done this, open from your browser http://192.168.24.1:3000/
 and the TripleO UI should be shown correctly.
 
-
-
 If you need a TripleO UI development environment follow:
 
 The first step will be to install the TripleO UI and
@@ -79,19 +76,19 @@ Now, we need to update all the TripleO UI config files
 
 ```bash
   cd
-  cp ~/tripleo-ui/dist/tripleo_ui_config.js.sample ~/tripleo-ui/dist/tripleo_ui_config.js
+  cp ~/tripleo-ui/config/tripleo_ui_config.js.sample ~/tripleo-ui/config/tripleo_ui_config.js
   echo "Changing the default IP"
   export ENDPOINT_ADDR=$(cat stackrc | grep OS_AUTH_URL= | awk -F':' '{print $2}'| tr -d /)
-  sed -i "s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/$ENDPOINT_ADDR/g" ~/tripleo-ui/dist/tripleo_ui_config.js
+  sed -i "s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/$ENDPOINT_ADDR/g" ~/tripleo-ui/config/tripleo_ui_config.js
 
   echo "Removing comments for the keystone URI"
-  sed -i '/^  \/\/ \"keystone\"\:/s/^  \/\///' ~/tripleo-ui/dist/tripleo_ui_config.js
+  sed -i '/^  \/\/ '\''keystone'\''\:/s/^  \/\///' ~/tripleo-ui/config/tripleo_ui_config.js
 
   echo "Removing comments for the zaqar_default_queue"
-  sed -i '/^  \/\/ \"zaqar_default_queue\"\:/s/^  \/\///' ~/tripleo-ui/dist/tripleo_ui_config.js
+  sed -i '/^  \/\/ '\''zaqar_default_queue'\''\:/s/^  \/\///' ~/tripleo-ui/config/tripleo_ui_config.js
 
   # Uncomment all the parameters
-  # sed -i '/^  \/\/ \".*\"\:/s/^  \/\///' ~/tripleo-ui/dist/tripleo_ui_config.js
+  # sed -i '/^  \/\/ '\''.*'\''\:/s/^  \/\///' ~/tripleo-ui/config/tripleo_ui_config.js
 
   echo "Changing listening port for the dev server, 3000 already used"
   sed -i '/port: 3000/s/3000/33000/' ~/tripleo-ui/webpack.config.js
