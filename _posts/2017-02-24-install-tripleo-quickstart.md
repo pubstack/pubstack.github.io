@@ -55,10 +55,33 @@ ssh root@$VIRTHOST uname -a
 Now, we can start deploying TripleO Quickstart by following:
 
 ```bash
+# Source: http://rdo-ci-doc.usersys.redhat.com/docs/tripleo-environments/en/latest/oooq-downstream.html
+# Downstream bits for OSP8 ...
+# cd
+# sudo yum -y install /usr/bin/c_rehash ca-certificates
+# sudo update-ca-trust check
+# sudo update-ca-trust force-enable
+# sudo update-ca-trust enable
+# wget cert.pem
+# sudo cp cert.pem /etc/pki/tls/certs/
+# sudo cp cert.pem /etc/pki/ca-trust/source/anchors/
+# sudo c_rehash
+# sudo update-ca-trust extract
+# git clone https://github.com/openstack/tripleo-quickstart
+# cd tripleo-quickstart
+# wget http://rhos-release.virt.bos.redhat.com/ci-images/internal-requirements-new.txt
+# cd
+# chmod u+x ./tripleo-quickstart/quickstart.sh
+# bash ./tripleo-quickstart/quickstart.sh --install-deps
+# bash ./tripleo-quickstart/quickstart.sh -v --release rhos-8-baseos-undercloud --clean --no-clone --teardown all --requirements "/home/toor/tripleo-quickstart/internal-requirements-new.txt" $VIRTHOST
+
+```
+
+```bash
 git clone https://github.com/openstack/tripleo-quickstart
 chmod u+x ./tripleo-quickstart/quickstart.sh
 printf "\n\nSee:\n./tripleo-quickstart/quickstart.sh --help for a full list of options\n\n"
-bash ./tripleo-quickstart/quickstart.sh --install-deps --release master
+bash ./tripleo-quickstart/quickstart.sh --install-deps
 
 export VIRTHOST=127.0.0.2
 export CONFIG=~/deploy-config.yaml
