@@ -63,6 +63,8 @@ upload-puppet-modules --directory puppet-modules/
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #7 (Undercloud - TripleO UI)](http://www.anstack.com/blog/2017/01/16/tripleo-deep-dive-session-7.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #8 (TripleO - Deployed server)](http://www.anstack.com/blog/2017/05/04/tripleo-deep-dive-session-8.html)
+>
+> &nbsp;&nbsp;&nbsp; * [TripleO deep dive #9 (TripleO - Quickstart)](http://www.anstack.com/blog/2017/05/05/tripleo-deep-dive-session-9.html)
 
 ```text
 ---------------------------------------------------------------------------------------
