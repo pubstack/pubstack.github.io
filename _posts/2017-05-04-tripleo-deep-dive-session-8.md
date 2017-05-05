@@ -17,10 +17,10 @@ In this session we will have a full description
 about the deployed server feature in TripleO thanks
 to James Slagle.
 
-So please, check the full [session](https://www.youtube.com/watch?v=bN33D6FWLjs)
+So please, check the full [session](https://www.youtube.com/watch?v=s8Hm4n9IjYg)
 content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZGwUELpgaBoLvABsTA/).
 
-{% assign videoId = "bN33D6FWLjs" %}
+{% assign videoId = "s8Hm4n9IjYg" %}
 {% include youtubePlayer.html id=videoId %}
 
 
