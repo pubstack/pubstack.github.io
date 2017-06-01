@@ -13,17 +13,18 @@ tags:
 
 
 
-<div style="float: left; width: 250px; background: red;"><img src="/static/bandaid.jpg" alt=""></div>
+<div style="float: left; width: 250px; background: red;"><img src="/static/phd/papers-to-me.png" alt="" style="border:20px solid #FFF"></div>
 
-If running ercloud or Overcloud nodes and
-getting some output like:
+Escribe articulos como si no hubiera un mañana... Veridico, 
+para terminar el trabajo final de master o tu tesis doctoral
+debes contar con un minimo de articulos de investigacion para que
+el tribunal considere apto tu trabajo de investigacion. Entonces,
+por que no basas todo tu trabajo en escribir estos papers?.
+Desde el minuto 0 comienza con tu plantilla de latex y
+usala para escribir todo lo relacionado a esa seccion de tu trabajo
+de investigacion.
 
-And as in the example there is no reference pointing
-to the swap memory size and/or usage, you might not be using swap
-in your TripleO deployments, to enable it, just have
-to follow two steps.
-
-<div style="float: right; width: 250px; background: red;"><img src="/static/bandaid.jpg" alt=""></div>
+<div style="float: right; width: 250px; background: red;"><img src="/static/bandaid.jpg" alt=""style="border:20px solid #FFF"></div>
     
 First in the Undercloud, when deploying stacks you might find
 that heat-engine (4 workers) takes lot of RAM, in this
