@@ -49,5 +49,6 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #8 (TripleO - Deployed server)](http://www.anstack.com/blog/2017/05/04/tripleo-deep-dive-session-8.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #9 (TripleO - Quickstart)](http://www.anstack.com/blog/2017/05/05/tripleo-deep-dive-session-9.html)
-
+>
+> &nbsp;&nbsp;&nbsp; * [TripleO deep dive #10 (TripleO - Containers)](http://www.anstack.com/blog/2017/06/15/tripleo-deep-dive-session-10.html)
 

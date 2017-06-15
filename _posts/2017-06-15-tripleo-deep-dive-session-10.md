@@ -1,37 +1,29 @@
 ---
 layout: post
-title: "TripleO deep dive session #7 (Undercloud - TripleO UI)"
+title: "TripleO deep dive session #10 (Containers)"
 author: "Carlos Camacho"
-date: 2017-01-16 16:00:00
+date: 2017-06-15 00:00:00
 categories:
   - blog
 tags:
   - tripleo
   - openstack
-commentIssueId: 28
+commentIssueId: 34
 ---
 
-This is the seven release of the [TripleO](http://www.tripleo.org/) "Deep Dive" sessions
+This is the 10th release of the [TripleO](http://www.tripleo.org/) "Deep Dive" sessions
 
-In this session Liz Blanchard and Ana Krivokapic will give us some
-bits about how to contribute to the [TripleO UI](https://github.com/openstack/tripleo-ui) project.
-Once checking this session we will have a general overview about the project's
-history, properties, architecture and contributing steps.
+In this session we will have
+an update for the TripleO 
+containers effort, thanks
+to Jiri Stransky.
 
-So please, check the full [session](https://www.youtube.com/watch?v=9TseONVfLR8)
+So please, check the full [session](https://www.youtube.com/watch?v=xhTwHfi65p8)
 content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZGwUELpgaBoLvABsTA/).
 
-{% assign videoId = "9TseONVfLR8" %}
+{% assign videoId = "xhTwHfi65p8" %}
 {% include youtubePlayer.html id=videoId %}
 
-
-Here you will be able to see a quick overview about how to install the UI as a development environment.
-
-{% assign videoId = "1puSvUqTKzw" %}
-{% include youtubePlayer.html id=videoId %}
-
-
-The summarized steps are also available in [this](http://www.anstack.com/blog/2017/01/13/installing-tripleo-ui.html) blog post.
 
 > Sessions index:
 >
@@ -54,4 +46,3 @@ The summarized steps are also available in [this](http://www.anstack.com/blog/20
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #9 (TripleO - Quickstart)](http://www.anstack.com/blog/2017/05/05/tripleo-deep-dive-session-9.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #10 (TripleO - Containers)](http://www.anstack.com/blog/2017/06/15/tripleo-deep-dive-session-10.html)
-
