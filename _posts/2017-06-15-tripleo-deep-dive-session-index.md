@@ -8,7 +8,8 @@ categories:
 tags:
   - tripleo
   - openstack
-commentIssueId: 34
+favorite: true
+commentIssueId: 35
 ---
 
 This is a brief index with all TripleO deep dive sessions,
