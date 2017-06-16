@@ -99,6 +99,10 @@ undercloud_workers: 3
 
 default_vcpu: 1
 
+custom_nameserver: '10.16.36.29'
+undercloud_undercloud_nameservers: '10.16.36.29'              
+overcloud_dns_servers: '10.16.36.29'
+
 node_count: 4
 
 overcloud_nodes:
@@ -117,6 +121,7 @@ overcloud_nodes:
 
 topology: >-
   --control-scale 3
+  --compute-scale 1
 
 extra_args: >-
   --libvirt-type qemu
