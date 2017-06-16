@@ -91,7 +91,7 @@ Now, we need to update all the TripleO UI config files
   # sed -i '/^  \/\/ '\''.*'\''\:/s/^  \/\///' ~/tripleo-ui/config/tripleo_ui_config.js
 
   echo "Changing listening port for the dev server, 3000 already used"
-  sed -i '/port: 3000/s/3000/33000/' ~/tripleo-ui/webpack.config.js
+  sed -i '/port: 3000/s/3000/33000/' ~/tripleo-ui/webpack.dev.js
 ```
 
 In the following step we will use tmux to persist the service running
