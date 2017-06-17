@@ -199,7 +199,7 @@ Por eso, es importante preparar material para la ronda
 de preguntas, para cuando te pidan que vayas a una página
 específica y aclares algo que no se ha entendido bien.
 
-<div style="float: right; width: 230px; background: white;"><img src="/static/phd/notes.gif" alt="" style="border:15px solid #FFF"></div>
+<div style="float: right; width: 230px; background: white;"><img src="/static/phd/notas.jpg" alt="" style="border:15px solid #FFF"></div>
 
 En mi caso imprimí la memoria página por hoja y apunté
 en cada hoja por la cara en blanco, notas que creía relevantes.
@@ -207,7 +207,7 @@ Truco sencillo
 y fiable para no bloquearnos en esos momentos donde un
 'No recuerdo' no está permitido.
 
-<div style="float: left; width: 230px; background: white;"><img src="/static/phd/notas.jpg" alt="" style="border:15px solid #FFF"></div>
+<div style="float: left; width: 230px; background: white;"><img src="/static/phd/phinally_done.jpg" alt="" style="border:15px solid #FFF"></div>
 
 **Al fín.** Tal día como hoy 20 de Junio de 2017, si la
 fuerza me acompaña seré doctor... ¡Yeah motherfuckers!
