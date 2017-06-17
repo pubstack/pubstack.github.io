@@ -12,10 +12,8 @@ tags:
 
 
 Este artículo resume mi experiencia a lo largo de los últimos 5 años
-durante el desarrollo de mi tesis doctoral,
-en conjunto
-con mi trabajo habitual ([LinkedIn](https://www.linkedin.com/in/ccamacho-/)).
-Básicamente, son algunos consejos y tips de lo que disfruté y sufrí.
+durante el desarrollo de mi tesis doctoral.
+Principalmente, son algunos consejos y tips de lo que disfruté y sufrí.
 Estoy de acuerdo en que mis condiciones no son iguales a las de todos los
 estudiantes de doctorado, por lo que este artículo se basa exclusivamente en
 mi opinión y experiencia personal.
@@ -37,7 +35,7 @@ Verídico,
 para terminar tu tesis doctoral
 debes contar con un mínimo de artículos de investigación para que
 el tribunal considere 'apto' tu trabajo.
-Usualmente debes tener 1 en el primer cuartil como requisito para
+Usualmente, debes tener 1 en el primer cuartil como requisito para
 presentarla en modo monografía y 3 para presentarla por artículos.
 
 <div style="float: left; width: 230px; background: white;"><img src="/static/phd/allow.gif" alt="" style="border:15px solid #FFF"></div>
@@ -46,16 +44,19 @@ Entonces, ¿Por qué no basas todo tu trabajo en escribir estos papers?
 Desde el primer minuto comienza con tu plantilla de latex y
 utilízala para escribir todo lo relacionado a esa sección de tu trabajo
 de investigación.
-Es de suma importancia tener en cuenta
-las revistas donde envíes
+Es sumamente importante tener en cuenta
+las revistas donde envias
 tus artículos, sólo envía a revistas
 que estén en los cuartiles 1 y 2.
 
 <div style="float: right; width: 230px; background: white;"><img src="/static/phd/free-time.jpg" alt="" style="border:15px solid #FFF"></div>
 
 **No olvides tu tiempo libre.**
-Es de las peores cosas que podrían suceder mientras trabajas en tu Ph.D.,
-no tener tiempo libre te frustra y te quita las ganas de seguir avanzando. Intenta mantener
+Es de las cosas que debes tener en cuenta
+para que sea lo  mas agradable
+el transcurso de tu doctorado.
+No tener tiempo libre te frustra y te quita las
+ganas de seguir avanzando. Intenta mantener
 tu vida social sin importar que. En mi caso particular, siempre intenté dedicar 2 horas al día
 después del trabajo a actividades de investigación, y cada 2 fines de semana uno para hacer
 actividades duras como programar, escribir, etc...
@@ -89,7 +90,9 @@ No renuncies y seguramente conseguirás
 tu objetivo.
 Ten en cuenta que
 terminar el doctorado se basa en acumular
-trabajo con el paso del tiempo, nadie podrá refutar
+una cantidad considerable
+de trabajo de investigación a medida
+que pasa el tiempo, nadie podrá refutar
 los artículos que ya publicaste con lo que solo debes 'aguantar'
 y por supuesto disfrutar de lo que haces.
 
@@ -127,7 +130,7 @@ desarrollo de la humanidad y más aun, los
 motiva para que sigan en el camino que llevan. Quizá
 he exagerado un poco, la situación real
 sería mas cercana a que están...
-Mal pagados, luchando por becas, 
+mal pagados, luchando por becas, 
 sufriendo recortes,
 disfrutando de la
 muy común falta de presupuesto,
@@ -204,7 +207,7 @@ Truco sencillo
 y fiable para no bloquearnos en esos momentos donde un
 'No recuerdo' no está permitido.
 
-<div style="float: left; width: 230px; background: white;"><img src="/static/phd/phinally_done.jpg" alt="" style="border:15px solid #FFF"></div>
+<div style="float: left; width: 230px; background: white;"><img src="/static/phd/notas.jpg" alt="" style="border:15px solid #FFF"></div>
 
 **Al fín.** Tal día como hoy 20 de Junio de 2017, si la
 fuerza me acompaña seré doctor... ¡Yeah motherfuckers!
@@ -226,6 +229,7 @@ parejas, etc...
 Por si hay alguien interesado en dar un vistazo a mi trabajo de investigación,
 está disponible públicamente en
 [ccamacho.github.io/phd](http://ccamacho.github.io/phd).
+Y mi perfil profesional como de costumbre en [LinkedIn](https://www.linkedin.com/in/ccamacho-/?locale=en_US).
 
 Dr. Carlos Camacho ☚ (<‿<)☚
 
