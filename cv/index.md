@@ -67,7 +67,7 @@ WORK
 STUDY
 -----
 
-**PhD., Computer Engineering** `Universidad Complutense de Madrid` **\*\***
+**PhD., Computer Engineering** `Universidad Complutense de Madrid`
 
 **MSc., Informatics investigation** `Universidad Complutense de Madrid`
 
@@ -76,7 +76,7 @@ STUDY
 RESEARCH WORK
 -------------
 
-**[PhD dissertation](http://www.ccamacho.org/phd/resources/00_dissertation.pdf)** **\*\***
+**[PhD dissertation](http://www.ccamacho.org/phd/)**
 
 **[Probabilistic product lines](http://www.ccamacho.org/phd/resources/03_probabilistic_software_product_lines.pdf)** **\*\***
 
@@ -105,4 +105,4 @@ SEE ALSO
 
 **[Home](http://www.ccamacho.org)** **[RedHat](https://www.redhat.com)** **[Wired](https://www.wired.com)** **[MIT-news](http://news.mit.edu/)** **[Slashdot-news](https://developers.slashdot.org/)**
 
-**\*\* Current**
+**\*\* WIP**

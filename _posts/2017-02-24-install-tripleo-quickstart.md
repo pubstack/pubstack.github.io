@@ -73,7 +73,7 @@ Now, we can start deploying TripleO Quickstart by following:
 # cd
 # chmod u+x ./tripleo-quickstart/quickstart.sh
 # bash ./tripleo-quickstart/quickstart.sh --install-deps
-# bash ./tripleo-quickstart/quickstart.sh -v --release rhos-8-baseos-undercloud --clean --no-clone --teardown all --requirements "/home/toor/tripleo-quickstart/internal-requirements-new.txt" $VIRTHOST
+# bash ./tripleo-quickstart/quickstart.sh -v --release rhos-8-baseos-undercloud --clean --teardown all --requirements "/home/toor/tripleo-quickstart/internal-requirements-new.txt" $VIRTHOST
 
 ```
 
@@ -132,7 +132,6 @@ run_tempest: false
 EOF
 
 bash ./tripleo-quickstart/quickstart.sh \
-                --no-clone \
                 --clean \
                 --release master \
                 --teardown all \
