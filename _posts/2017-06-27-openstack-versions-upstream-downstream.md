@@ -7,7 +7,7 @@ categories:
 tags:
   - tripleo
   - openstack
-commentIssueId: 35
+commentIssueId: 36
 ---
 
 I'm adding this note as I'm prune
