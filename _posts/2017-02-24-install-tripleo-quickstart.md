@@ -90,43 +90,43 @@ cat > $CONFIG << EOF
 
 # undercloud_undercloud_hostname: undercloud.ratata-domain
 
-control_memory: 8192
-compute_memory: 6120
+# control_memory: 8192
+# compute_memory: 6120
  
-undercloud_memory: 10240
-undercloud_vcpu: 4
-undercloud_workers: 3
+# undercloud_memory: 10240
+# undercloud_vcpu: 4
+# undercloud_workers: 3
 
-default_vcpu: 1
+# default_vcpu: 1
 
 custom_nameserver: '10.16.36.29'
 undercloud_undercloud_nameservers: '10.16.36.29'              
 overcloud_dns_servers: '10.16.36.29'
 
-node_count: 4
+# node_count: 4
 
-overcloud_nodes:
-  - name: control_0
-    flavor: control
-    virtualbmc_port: 6230
-  - name: control_1
-    flavor: control
-    virtualbmc_port: 6231
-  - name: control_2
-    flavor: control
-    virtualbmc_port: 6232
-  - name: compute_0
-    flavor: compute
-    virtualbmc_port: 6233
+# overcloud_nodes:
+#   - name: control_0
+#     flavor: control
+#     virtualbmc_port: 6230
+#   - name: control_1
+#     flavor: control
+#     virtualbmc_port: 6231
+#   - name: control_2
+#     flavor: control
+#     virtualbmc_port: 6232
+#   - name: compute_0
+#     flavor: compute
+#     virtualbmc_port: 6233
 
-topology: >-
-  --control-scale 3
-  --compute-scale 1
+# topology: >-
+#   --control-scale 3
+#   --compute-scale 1
 
-extra_args: >-
-  --libvirt-type qemu
-  -e /usr/share/openstack-tripleo-heat-templates/environments/puppet-pacemaker.yaml
-  --ntp-server pool.ntp.org
+# extra_args: >-
+#   --libvirt-type qemu
+#   -e /usr/share/openstack-tripleo-heat-templates/environments/puppet-pacemaker.yaml
+#   --ntp-server pool.ntp.org
 
 run_tempest: false
 EOF
