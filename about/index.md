@@ -8,7 +8,7 @@ Hi. I'm Carlos Camacho.
 
 A software engineer based in Madrid (Spain) working @ [RedHat](http://www.redhat.com/).
 
-Currently finishing my PhD degree in computer engineering in the [Universidad Complutense de Madrid](http://www.ucm.es/)
+Holding a PhD degree in computer engineering in the [Universidad Complutense de Madrid](http://www.ucm.es/)
 ---
 
 I like reading, breaking, fixing and hacking all kind of stuff.
