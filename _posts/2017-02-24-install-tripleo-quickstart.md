@@ -131,6 +131,11 @@ overcloud_dns_servers: '10.16.36.29'
 run_tempest: false
 EOF
 
+# We disable SELINUX as it breaks the deployment
+# You will get some permission denied when running
+# the Ansible playbooks
+sudo setenforce 0
+
 bash ./tripleo-quickstart/quickstart.sh \
                 --clean \
                 --release master \
