@@ -59,6 +59,20 @@ sshuttle -e "ssh -vvv" -r root@uc -vvvv 192.168.24.0/24
 Once you have done this, open from your browser http://192.168.24.1:3000/
 and the TripleO UI should be shown correctly.
 
+---
+It's probable that you receive an error like: **Connection to Keystone is not available**.
+
+This is because you are trying to access the Keystone endpoint from your
+workstation and it fails as the certificate is self-signed.
+In order to fix this, open the developer view in your browser
+and check the endpoint you are using to access keystone.
+For example, https://192.168.24.2/keystone/v2.0/tokens
+now open this URL in your browser and acept the certificate. If you
+do this the Keystone error should go away.
+---
+
+
+
 If you need a TripleO UI development environment follow:
 
 The first step will be to install the TripleO UI and
@@ -107,7 +121,7 @@ for debugging purposes.
 At this stage you should have up and running your node server (33000 port).
 
 If you followed the first step to see the default TripleO UI installation
-go to log in the TripleO UI:  http://localhost:33000/
+go to log in the TripleO UI:  http://192.168.24.1:33000/
 
 Happy TripleOing!
 
