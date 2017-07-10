@@ -69,6 +69,7 @@ and check the endpoint you are using to access keystone.
 For example, https://192.168.24.2/keystone/v2.0/tokens
 now open this URL in your browser and acept the certificate. If you
 do this the Keystone error should go away.
+
 ---
 
 
