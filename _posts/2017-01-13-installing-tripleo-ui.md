@@ -34,7 +34,7 @@ sudo yum install -y sshuttle
 Now, let's get the Undercloud IP and configure SSH with a ProxyCommand.
 
 ```
-undercloudIp=`ssh root@labserver "arp -e" | grep brext | awk '{print $1}' | sed 's/\/.*$//'`
+undercloudIp=`ssh root@labserver "arp -e" | grep brext | grep -v incomplete | awk '{print $1}' | sed 's/\/.*$//'`
 
 cat << EOF >> ~/.ssh/config
 Host lab
