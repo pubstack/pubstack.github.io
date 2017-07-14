@@ -39,7 +39,9 @@ virsh won't see the VMs**
 
 ```
 # The VMs deployed are:
-vms=( "undercloud" "control_0" "compute_0" )
+# $vms will have something like ne next line...
+# vms=( "undercloud" "control_0" "compute_0" )
+vms=( $(virsh list --all | grep running | awk '{print $2}') )
 
 # List all VMs
 virsh list --all
