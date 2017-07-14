@@ -23,9 +23,13 @@ Deploying a fully working development environment takes
 around 3 hours with human supervision...
 And breaking it just after deployed is not cool at all...
 
+
+
 # Step 1 #
 
 Deploy your environment as usual.
+
+
 
 # Step 2 #
 
@@ -93,9 +97,13 @@ done
 # done
 ```
 
+
+
 # Step 3 #
 
 Break your environment xD
+
+
 
 # Step 4 #
 
