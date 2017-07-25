@@ -65,7 +65,8 @@ The following steps are followed to upgrade your Overcloud from Ocata to latest 
 ```
   openstack overcloud deploy \
   --libvirt-type qemu \
-  --templates /home/stack/tht-newton/ \
+  --ntp-server pool.ntp.org \
+  --templates /home/stack/tht-ocata/ \
   -e /home/stack/tht-ocata/overcloud-resource-registry-puppet.yaml \
   -e /home/stack/tht-ocata/environments/puppet-pacemaker.yaml
 ```
@@ -128,6 +129,8 @@ EOF
 ```
   cd
   openstack overcloud deploy \
+  --libvirt-type qemu \
+  --ntp-server pool.ntp.org \
   --templates /home/stack/tht-master/ \
   -e /home/stack/tht-master/overcloud-resource-registry-puppet.yaml \
   -e /home/stack/tht-master/environments/puppet-pacemaker.yaml \
