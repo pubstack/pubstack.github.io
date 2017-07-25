@@ -37,7 +37,7 @@ The following steps are followed to upgrade your Overcloud from Ocata to latest 
 
   export STABLE_RELEASE=ocata
   export USE_DELOREAN_TRUNK=1
-  export DELOREAN_TRUNK_REPO="https://trunk.rdoproject.org/centos7-newton/current/"
+  export DELOREAN_TRUNK_REPO="https://trunk.rdoproject.org/centos7-ocata/current/"
   export DELOREAN_REPO_FILE="delorean.repo"
   /home/stack/tripleo-ci/scripts/tripleo.sh --overcloud-images
 
@@ -135,7 +135,7 @@ EOF
   -e upgrade_repos.yaml
 ```
 
-If the last steps manage to finish successfully (WIP), you just have upgraded your Overcloud from Newton to Ocata (latest master).
+If the last steps manage to finish successfully, you just have upgraded your Overcloud from Ocata to Pike (latest master).
 
 For more resources related to TripleO deployments, check out the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZGwUELpgaBoLvABsTA).
 
