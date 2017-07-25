@@ -11,12 +11,12 @@ commentIssueId: 25
 ---
 
 This is a brief recipe about how I'm testing
-composable upgrades N->O.
+composable upgrades O->P.
 
 Based on the original shardy's notes
 from [this](http://paste.openstack.org/show/590436/) link.
 
-The following steps are followed to upgrade your Overcloud from Mitaka to latest master (Ocata).
+The following steps are followed to upgrade your Overcloud from Ocata to latest master (Pike).
 
 - Deploy latest master TripleO following [this](http://www.anstack.com/blog/2016/07/04/manually-installing-tripleo-recipe.html) post.
 
@@ -27,7 +27,7 @@ The following steps are followed to upgrade your Overcloud from Mitaka to latest
   heat stack-delete overcloud
 ```
 
-- Remove the Overcloud images and create new ones (for the Newton Overcloud).
+- Remove the Overcloud images and create new ones (for the  Overcloud).
 
 ```
   cd
@@ -35,23 +35,23 @@ The following steps are followed to upgrade your Overcloud from Mitaka to latest
   openstack image delete <image_ID> #Delete all the Overcloud images overcloud-full* 
   rm -rf /home/stack/overcloud-full.*
 
-  export STABLE_RELEASE=newton
+  export STABLE_RELEASE=ocata
   export USE_DELOREAN_TRUNK=1
   export DELOREAN_TRUNK_REPO="https://trunk.rdoproject.org/centos7-newton/current/"
   export DELOREAN_REPO_FILE="delorean.repo"
   /home/stack/tripleo-ci/scripts/tripleo.sh --overcloud-images
 
   # Or reuse images
-  # wget https://buildlogs.centos.org/centos/7/cloud/x86_64/tripleo_images/newton/delorean/overcloud-full.tar
+  # wget https://images.rdoproject.org/ocata/delorean/current-tripleo/stable/overcloud-full.tar
   # tar -xvf overcloud-full.tar
   # openstack overcloud image upload --update-existing
 ```
 
-- Download Newton tripleo-heat-templates.
+- Download Ocata tripleo-heat-templates.
 
 ```
   cd
-  git clone -b stable/newton https://github.com/openstack/tripleo-heat-templates tht-newton
+  git clone -b stable/ocata https://github.com/openstack/tripleo-heat-templates tht-ocata
 ```
 
 - Configure the DNS (needed when upgrading the Overcloud).
@@ -60,17 +60,17 @@ The following steps are followed to upgrade your Overcloud from Mitaka to latest
   neutron subnet-update `neutron subnet-list -f value | awk '{print $1}'` --dns-nameserver 192.168.122.1
 ```
 
-- Deploy a Newton Overcloud.
+- Deploy an Ocata Overcloud.
 
 ```
   openstack overcloud deploy \
   --libvirt-type qemu \
   --templates /home/stack/tht-newton/ \
-  -e /home/stack/tht-newton/overcloud-resource-registry-puppet.yaml \
-  -e /home/stack/tht-newton/environments/puppet-pacemaker.yaml
+  -e /home/stack/tht-ocata/overcloud-resource-registry-puppet.yaml \
+  -e /home/stack/tht-ocata/environments/puppet-pacemaker.yaml
 ```
 
-- Install prerequisites in nodes (if no DNS configured this will fail).
+- Install prerequisites in nodes (if no DNS configured this will fail), check that your nodes can connect to Internet.
 
 ```
 cat > upgrade_repos.yaml << EOF
@@ -79,7 +79,7 @@ parameter_defaults:
     set -e
 
     #Master repositories
-    sudo curl -o /etc/yum.repos.d/delorean.repo https://buildlogs.centos.org/centos/7/cloud/x86_64/rdo-trunk-master-tripleo/delorean.repo
+    sudo curl -o /etc/yum.repos.d/delorean.repo https://trunk.rdoproject.org/centos7-master/current-passed-ci/delorean.repo
     sudo curl -o /etc/yum.repos.d/delorean-deps.repo https://trunk.rdoproject.org/centos7/delorean-deps.repo
 
 
