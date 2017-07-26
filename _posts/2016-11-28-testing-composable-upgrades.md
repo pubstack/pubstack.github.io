@@ -71,7 +71,7 @@ The following steps are followed to upgrade your Overcloud from Ocata to latest 
   -e /home/stack/tht-ocata/environments/puppet-pacemaker.yaml
 ```
 
-- Install prerequisites in nodes (if no DNS configured this will fail), check that your nodes can connect to Internet.
+- Install prerequisites in nodes (if no DNS configured this will fail, so make sure they have Intenet access), check that your nodes can connect to Internet.
 
 ```
 cat > upgrade_repos.yaml << EOF
@@ -148,7 +148,7 @@ EOF
   --templates /home/stack/tht-master/ \
   -e /home/stack/tht-master/overcloud-resource-registry-puppet.yaml \
   -e /home/stack/tht-master/environments/puppet-pacemaker.yaml \
-  -e environments/major-upgrade-converge.yaml
+  -e /home/stack/tht-master/environments/major-upgrade-converge.yaml
 ```
 
 If the last steps manage to finish successfully, you just have upgraded your Overcloud from Ocata to Pike (latest master).
