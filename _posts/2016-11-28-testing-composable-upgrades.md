@@ -159,7 +159,8 @@ EOF
   -e /home/stack/tht-master/environments/puppet-pacemaker.yaml \
   -e /home/stack/tht-master/environments/docker-ha.yaml \
   -e /home/stack/tht-master/environments/major-upgrade-composable-steps-docker.yaml \
-  -e docker_registry.yaml
+  -e /home/stack/tht-master/environments/docker-centos-tripleoupstream.yaml \
+  -e docker_registry.yaml \
   -e upgrade_repos.yaml
 ```
 
