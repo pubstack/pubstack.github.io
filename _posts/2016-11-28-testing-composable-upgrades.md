@@ -138,6 +138,21 @@ EOF
   -e upgrade_repos.yaml
 ```
 
+Note: if upgrading to a conteinerized Overcloud (Pike and beyond) do:
+
+```
+  cd
+  openstack overcloud deploy \
+  --libvirt-type qemu \
+  --ntp-server pool.ntp.org \
+  --templates /home/stack/tht-master/ \
+  -e /home/stack/tht-master/overcloud-resource-registry-puppet.yaml \
+  -e /home/stack/tht-master/environments/puppet-pacemaker.yaml \
+  -e /home/stack/tht-master/environments/docker-ha.yaml \
+  -e /home/stack/tht-master/environments/major-upgrade-composable-steps-docker.yaml \
+  -e upgrade_repos.yaml
+```
+
 - Run the converge step
 
 ```
