@@ -141,6 +141,15 @@ EOF
 Note: if upgrading to a conteinerized Overcloud (Pike and beyond) do:
 
 ```
+cat > docker_registry.yaml << EOF
+parameter_defaults:
+  DockerNamespace: 192.168.24.1:8787/tripleoupstream
+  DockerNamespaceIsRegistry: true
+EOF
+
+  # This will take some time...
+  openstack overcloud container image upload --config-file /usr/share/openstack-tripleo-common/container-images/overcloud_containers.yaml
+
   cd
   openstack overcloud deploy \
   --libvirt-type qemu \
@@ -150,10 +159,11 @@ Note: if upgrading to a conteinerized Overcloud (Pike and beyond) do:
   -e /home/stack/tht-master/environments/puppet-pacemaker.yaml \
   -e /home/stack/tht-master/environments/docker-ha.yaml \
   -e /home/stack/tht-master/environments/major-upgrade-composable-steps-docker.yaml \
+  -e docker_registry.yaml
   -e upgrade_repos.yaml
 ```
 
-- Run the converge step
+- Run the converge step ** Not tested on the conteinerized upgrade **
 
 ```
   cd
