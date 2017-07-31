@@ -157,6 +157,7 @@ openstack overcloud deploy \
 --templates /home/stack/tht-master/ \
 -e /home/stack/tht-master/overcloud-resource-registry-puppet.yaml \
 -e /home/stack/tht-master/environments/puppet-pacemaker.yaml \
+-e /home/stack/tht-master/environments/docker.yaml \
 -e /home/stack/tht-master/environments/docker-ha.yaml \
 -e /home/stack/tht-master/environments/major-upgrade-composable-steps-docker.yaml \
 -e /home/stack/tht-master/environments/docker-centos-tripleoupstream.yaml \
