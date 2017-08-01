@@ -151,18 +151,21 @@ EOF
 openstack overcloud container image upload --config-file /usr/share/openstack-tripleo-common/container-images/overcloud_containers.yaml
 
 cd
-openstack overcloud deploy \
+source ~/stackrc
+export THT=/home/stack/tht-master
+
+openstack overcloud deploy --templates $THT \
 --libvirt-type qemu \
 --ntp-server pool.ntp.org \
---templates /home/stack/tht-master/ \
--e /home/stack/tht-master/overcloud-resource-registry-puppet.yaml \
--e /home/stack/tht-master/environments/puppet-pacemaker.yaml \
--e /home/stack/tht-master/environments/docker.yaml \
--e /home/stack/tht-master/environments/docker-ha.yaml \
--e /home/stack/tht-master/environments/major-upgrade-composable-steps-docker.yaml \
--e /home/stack/tht-master/environments/docker-centos-tripleoupstream.yaml \
--e docker_registry.yaml \
--e upgrade_repos.yaml
+-e $THT/overcloud-resource-registry-puppet.yaml \
+-e $THT/environments/puppet-pacemaker.yaml \
+-e $THT/environments/major-upgrade-composable-steps.yaml \
+-e upgrade_repos.yaml \
+-e $THT/environments/docker.yaml \
+-e $THT/environments/docker-ha.yaml \
+-e $THT/environments/major-upgrade-composable-steps-docker.yaml \
+-e $THT/environments/docker-centos-tripleoupstream.yaml \
+-e docker_registry.yaml
 ```
 
 - Run the converge step ** Not tested on the containerized upgrade **
