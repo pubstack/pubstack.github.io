@@ -150,6 +150,11 @@ EOF
 # This will take some time...
 openstack overcloud container image upload --config-file /usr/share/openstack-tripleo-common/container-images/overcloud_containers.yaml
 
+openstack overcloud container image prepare \
+--namespace tripleoupstream \
+--tag latest \
+--env-file docker-centos-tripleoupstream.yaml
+
 cd
 source ~/stackrc
 export THT=/home/stack/tht-master
@@ -164,7 +169,7 @@ openstack overcloud deploy --templates $THT \
 -e $THT/environments/docker.yaml \
 -e $THT/environments/docker-ha.yaml \
 -e $THT/environments/major-upgrade-composable-steps-docker.yaml \
--e $THT/environments/docker-centos-tripleoupstream.yaml \
+-e docker-centos-tripleoupstream.yaml \
 -e docker_registry.yaml
 ```
 
