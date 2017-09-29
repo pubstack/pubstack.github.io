@@ -41,6 +41,9 @@ whoami
 sudo yum groupinstall "Virtualization Host" -y
 sudo yum install git -y
 
+# Disable requiretty otherwise the deployment will fail...
+sudo sed -i -e 's/Defaults[ \t]*requiretty/#Defaults requiretty/g' /etc/sudoers
+
 cd
 mkdir .ssh
 ssh-keygen -t rsa -N "" -f .ssh/id_rsa
