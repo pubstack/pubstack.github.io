@@ -126,10 +126,10 @@ overcloud_dns_servers: '10.16.36.29'
 #   --control-scale 3
 #   --compute-scale 1
 
-# extra_args: >-
-#   --libvirt-type qemu
+ extra_args: >-
+   --libvirt-type qemu
+   --ntp-server pool.ntp.org
 #   -e /usr/share/openstack-tripleo-heat-templates/environments/puppet-pacemaker.yaml
-#   --ntp-server pool.ntp.org
 
 run_tempest: false
 EOF
