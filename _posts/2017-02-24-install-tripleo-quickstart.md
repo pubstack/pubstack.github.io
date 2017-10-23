@@ -122,13 +122,13 @@ overcloud_dns_servers: '10.16.36.29'
 #     flavor: compute
 #     virtualbmc_port: 6233
 
-# topology: >
+# topology: >-
 #   --control-scale 3
 #   --compute-scale 1
 
- extra_args: >
-   --libvirt-type qemu
-   --ntp-server pool.ntp.org
+extra_args: >-
+  --libvirt-type qemu
+  --ntp-server pool.ntp.org
 #   -e /usr/share/openstack-tripleo-heat-templates/environments/puppet-pacemaker.yaml
 
 run_tempest: false
