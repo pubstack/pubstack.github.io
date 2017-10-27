@@ -35,7 +35,7 @@ sudo useradd toor
 echo "toor:toor" | chpasswd
 echo "toor ALL=(root) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/toor
 sudo chmod 0440 /etc/sudoers.d/toor
-sudo yum install lvm2 lvm2-devel
+sudo yum install -y lvm2 lvm2-devel
 su - toor
 whoami
 
