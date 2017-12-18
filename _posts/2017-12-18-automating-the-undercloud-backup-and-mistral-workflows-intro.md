@@ -345,6 +345,10 @@ sudo mistral-db-manage populate
 # make sure the new actions got loaded
 mistral action-list | grep tripleo
 for workbook in workbooks/*.yaml; do
+    mistral workbook-create $workbook
+done
+
+for workbook in workbooks/*.yaml; do
     mistral workbook-update $workbook
 done
 ```
