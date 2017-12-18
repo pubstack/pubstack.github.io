@@ -327,7 +327,7 @@ For a change in **python-tripleoclient**, assuming you already have downloaded t
 ```
 cd python-tripleoclient
 sudo rm -Rf /usr/lib/python2.7/site-packages/tripleoclient*
-sudo rm -Rf /usr/lib/python2.7/site-packages/python-tripleoclient*
+sudo rm -Rf /usr/lib/python2.7/site-packages/python_tripleoclient*
 sudo python setup.py install
 ```
 
