@@ -10,8 +10,6 @@ tags:
 commentIssueId: 40
 ---
 
-# Upgrades:DFG - Developer docs - Automating UC backups and a Mistral workflows introduction.
-
 The goal of this developer documentation is to address the automated process
 of backing up a TripleO Undercloud and to give developers a complete description
 about how to integrate Mistral workbooks, workflows and actions to the Python TripleO
