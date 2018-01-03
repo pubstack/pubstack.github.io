@@ -10,8 +10,6 @@ tags:
 commentIssueId: 40
 ---
 
-# Upgrades:DFG - Developer docs - Automating UC backups and a Mistral workflows introduction.
-
 The goal of this developer documentation is to address the automated process
 of backing up a TripleO Undercloud and to give developers a complete description
 about how to integrate Mistral workbooks, workflows and actions to the Python TripleO
@@ -327,7 +325,7 @@ For a change in **python-tripleoclient**, assuming you already have downloaded t
 ```
 cd python-tripleoclient
 sudo rm -Rf /usr/lib/python2.7/site-packages/tripleoclient*
-sudo rm -Rf /usr/lib/python2.7/site-packages/python-tripleoclient*
+sudo rm -Rf /usr/lib/python2.7/site-packages/python_tripleoclient*
 sudo python setup.py install
 ```
 
@@ -344,6 +342,10 @@ sudo systemctl restart openstack-mistral-engine
 sudo mistral-db-manage populate
 # make sure the new actions got loaded
 mistral action-list | grep tripleo
+for workbook in workbooks/*.yaml; do
+    mistral workbook-create $workbook
+done
+
 for workbook in workbooks/*.yaml; do
     mistral workbook-update $workbook
 done
