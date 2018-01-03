@@ -50,7 +50,7 @@ OPTIONS
 WORK
 ----
 
-**RedHat** `Software Engineer` Upstream TripleO development / Bug fixes and code reviews. **\*\***
+**RedHat** `Senior Software Engineer` Upstream TripleO development / Bug fixes and code reviews. **\*\***
 
 **frontiersin.org** `DevOps Engineer` Automate, create, maintain and monitor the company cloud server infrastructure.
 
