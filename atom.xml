@@ -4,10 +4,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>Anstack Blog</title>
- <link href="http://anstack.github.io/atom.xml" rel="self"/>
- <link href="http://anstack.github.io/"/>
+ <link href="https://www.anstack.com/atom.xml" rel="self"/>
+ <link href="https://www.anstack.com/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://anstack.github.io/</id>
+ <id>https://www.anstack.com/</id>
  <author>
    <name>Carlos Camacho</name>
  </author>
@@ -17,12 +17,12 @@
 
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://anstack.github.io{{ post.url }}"/>
+   <link href="https://www.anstack.com{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <author>
      <name>{{ post.author }}</name>
    </author>
-   <id>http://anstack.github.io{{ post.id }}</id>
+   <id>https://www.anstack.com{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
    {% endunless %}
