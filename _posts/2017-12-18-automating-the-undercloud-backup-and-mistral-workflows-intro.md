@@ -376,17 +376,20 @@ sudo systemctl restart openstack-mistral-engine
 
 If we want to execute a Mistral action or a Mistral workflow you can execute:
 
-Testing Mistral actions independently:
+Examples about how to test Mistral actions independently:
 
 ```
-mistral run-action tripleo.undercloud.get_free_space
+mistral run-action tripleo.undercloud.get_free_space #Without parameters
+mistral run-action tripleo.undercloud.get_free_space '{"path": "/etc/"}' # With parameters
+mistral run-action tripleo.undercloud.create_file_system_backup '{"sources_path": "/tmp/asdf.txt,/tmp/asdf", "destination_path": "/tmp/"}'
 
 ```
 
-Testing a Mistral workflow independently:
+Examples about how to test a Mistral workflow independently:
 
 ```
-mistral execution-create tripleo.undercloud_backup.v1.prepare_environment
+mistral execution-create tripleo.undercloud_backup.v1.prepare_environment # No parameters
+mistral execution-create tripleo.undercloud_backup.v1.filesystem_backup '{"sources_path": "/tmp/asdf.txt,/tmp/asdf", "destination_path": "/tmp/"}' # With parameters
 ```
 
 ## 7. Give elevated privileges to specific Mistral actions that need to run with elevated privileges.
