@@ -36,7 +36,7 @@ And this is the code if you want to execute it directly:
 sudo useradd toor
 echo "toor:toor" | chpasswd
 echo "toor ALL=(root) NOPASSWD:ALL" \
-  | sudo tee -a /etc/sudoers.d/toor
+  | sudo tee /etc/sudoers.d/toor
 sudo chmod 0440 /etc/sudoers.d/toor
 su - toor
 
