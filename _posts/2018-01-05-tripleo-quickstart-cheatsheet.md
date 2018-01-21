@@ -12,15 +12,15 @@ commentIssueId: 42
 ---
 
 I have created some cheatsheets for people starting to work on TripleO,
-mostly to help them to bootstrap a development environment as soon as possible.
+mostly to help them to bootstrap a development environment as quickly as possible.
 
 [The previous version](https://github.com/ccamacho/tripleo-graphics/tree/master/cheatsheets/old_style)
 of this cheatsheet series was used in
 several community conferences (FOSDEM, DevConf.cz),
 now, they are deprecated as
-they way TripleO should be deployed changed considerably last months.
+the way TripleO should be deployed changed considerably last months.
 
-Here you have the last version:
+Here you have the latest version:
 
 ![](/static/01-tripleo-cheatsheet-deploying-tripleo_p1.jpg)
 
