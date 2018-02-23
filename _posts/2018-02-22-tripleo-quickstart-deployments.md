@@ -17,8 +17,6 @@ tags:
 This post is a summary of the deployments I ussualy test.
 The ussual steps are:
 
-Run the pre-deploy steps:
-
 __01 - Create the toor user.__
 
 ```
@@ -67,7 +65,7 @@ export CONFIG=~/deploy-config.yaml
 export VIRTHOST=127.0.0.2
 ```
 
-__05 - Click on the environment description to expand the recipe__
+__05 - Click on the environment description to expand the recipe.__
 
 
 <details>
