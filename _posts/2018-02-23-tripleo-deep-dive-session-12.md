@@ -19,7 +19,7 @@ will describe and speak about a feature called `config-download`.
 In this session we will have
 an update for the TripleO 
 ansible integration called
-`config-dpwnload`.
+`config-download`.
 It's about aplying all the software
 configuration with Ansible instead
 of doing it with the Heat agents.
