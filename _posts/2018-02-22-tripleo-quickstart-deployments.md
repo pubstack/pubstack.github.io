@@ -69,7 +69,7 @@ __05 - Click on the environment description to expand the recipe.__
 
 
 <details>
-<summary><strong>[Containerized & HA] - 1 Controller 1 Compute</strong></summary>
+<summary><strong>[Containerized & HA] - 1 Controller 1, Compute</strong></summary>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 cat > $CONFIG << EOF
 overcloud_nodes:
@@ -94,7 +94,7 @@ EOF
 </details>
 
 <details>
-<summary><strong>[Containerized & HA] - 3 Controller 1 Compute</strong></summary>
+<summary><strong>[Containerized & HA] - 3 Controllers, 1 Compute</strong></summary>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 cat > $CONFIG << EOF
 overcloud_nodes:
