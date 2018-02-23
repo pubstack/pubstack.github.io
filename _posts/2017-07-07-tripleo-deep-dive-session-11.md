@@ -2,7 +2,7 @@
 layout: post
 title: "TripleO deep dive session #11 (i18n)"
 author: "Carlos Camacho"
-date: 2017-06-15 00:00:00
+date: 2017-07-07 00:00:00
 categories:
   - blog
 tags:
