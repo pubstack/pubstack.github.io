@@ -25,7 +25,7 @@ echo "toor:toor" | chpasswd
 echo "toor ALL=(root) NOPASSWD:ALL" \
   | sudo tee -a /etc/sudoers.d/toor
 sudo chmod 0440 /etc/sudoers.d/toor
-su - toor
+sudo su - toor
 ```
 
 __02 - Prepare the hypervisor node.__
