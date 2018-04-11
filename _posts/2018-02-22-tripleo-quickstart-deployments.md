@@ -21,7 +21,7 @@ __01 - Create the toor user.__
 
 ```
 sudo useradd toor
-echo "toor:toor" | chpasswd
+echo "toor:toor" | sudo chpasswd
 echo "toor ALL=(root) NOPASSWD:ALL" \
   | sudo tee -a /etc/sudoers.d/toor
 sudo chmod 0440 /etc/sudoers.d/toor
