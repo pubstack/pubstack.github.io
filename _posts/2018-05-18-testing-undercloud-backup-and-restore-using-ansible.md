@@ -36,6 +36,7 @@ with the following content:
     shell: |
       source ~/stackrc
       openstack container delete undercloud-backups --recursive
+    ignore_errors: True
   - name: Create UC backup
     shell: |
       source ~/stackrc
