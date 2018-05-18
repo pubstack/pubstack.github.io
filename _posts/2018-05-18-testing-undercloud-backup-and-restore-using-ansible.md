@@ -143,6 +143,7 @@ with the following content:
       become: true
       service: name=mariadb state=restarted
     - name: Register root password
+      become: true
       shell: cat /var/tmp/test_bk_down/root/.my.cnf | grep -m1 password | cut -d'=' -f2 | tr -d "'"
       register: oldpass
     - name: Clean root password from MariaDB to reinstall the UC
