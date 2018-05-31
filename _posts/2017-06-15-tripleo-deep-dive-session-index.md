@@ -42,3 +42,5 @@ you can see all videos on the
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #11 (TripleO - i18n)](http://www.anstack.com/blog/2017/07/07/tripleo-deep-dive-session-11.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #12 (TripleO - config-download)](http://www.anstack.com/blog/2018/02/23/tripleo-deep-dive-session-12.html)
+>
+> &nbsp;&nbsp;&nbsp; * [TripleO deep dive #13 (TripleO - Containerized Undercloud)](http://www.anstack.com/blog/2018/05/31/tripleo-deep-dive-session-13.html)
