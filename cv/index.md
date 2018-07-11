@@ -36,6 +36,9 @@ OPTIONS
   Always needed.
 
 `--openstack`
+  The platform I'm working with.
+
+`--tripleo`
   The project I'm working with.
 
 `--python`
@@ -67,7 +70,7 @@ WORK
 STUDY
 -----
 
-**PhD., Computer Engineering** `Universidad Complutense de Madrid`
+**PhD. (cum laude), Computer Engineering** `Universidad Complutense de Madrid`
 
 **MSc., Informatics investigation** `Universidad Complutense de Madrid`
 
