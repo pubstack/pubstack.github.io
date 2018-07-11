@@ -98,6 +98,11 @@ SOCIAL
 
 **website** `https://www.ccamacho.org`
 
+HOBBIES
+------
+
+**[Drone races](http://www.formulad.org/)** - A hobbyist place for drone races, log prototypes, pictures, news... 
+
 AUTHOR
 ------
 
