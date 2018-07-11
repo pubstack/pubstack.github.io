@@ -20,7 +20,7 @@ ccamacho - A software engineer from Madrid (Spain) working @ Red Hat. #MakeIt #B
 SYNOPSIS
 --------
 
-`ccamacho` `--coffee` [`--openstack`] [`--python`] [`--bash`] [`--research`]
+`ccamacho` `--coffee` [`--openstack`] [`--tripleo`] [`--python`] [`--bash`] [`--research`]
 
 DESCRIPTION
 -----------
