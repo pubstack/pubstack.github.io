@@ -25,7 +25,7 @@ for the Red Hat Certified System Administrator exam and now you think you are
 ready to take the actual examination.
 
 Before you spend your money (currently $400) on the actual examination,
-why not download this custom [CentOS 7.2 VM](https://www.amazon.com/clouddrive/share/5FHkh56ZserUkTgsONCZb8UrQqUgH7JTi6RxCEsFHF1?ref_=cd_ph_share_link_copy)
+why not download this custom [CentOS 7.2 VM](http://fpmurphy.com/public/RHCSA_SampleTest_1.ova)
 and attempt a real world test of your RHCSA skills.
 
 This VM, which is in the form of an OVA (Open Virtualization Archive),
