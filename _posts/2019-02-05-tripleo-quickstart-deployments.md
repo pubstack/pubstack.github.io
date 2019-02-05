@@ -23,7 +23,7 @@ __01 - Create the toor user.__
 sudo useradd toor
 echo "toor:toor" | sudo chpasswd
 echo "toor ALL=(root) NOPASSWD:ALL" \
-  | sudo tee -a /etc/sudoers.d/toor
+  | sudo tee /etc/sudoers.d/toor
 sudo chmod 0440 /etc/sudoers.d/toor
 sudo su - toor
 ```
@@ -44,10 +44,9 @@ cd
 mkdir .ssh
 ssh-keygen -t rsa -N "" -f .ssh/id_rsa
 cat .ssh/id_rsa.pub >> .ssh/authorized_keys
-sudo bash -c "cat .ssh/id_rsa.pub \
-  >> /root/.ssh/authorized_keys"
-sudo bash -c "echo '127.0.0.1 127.0.0.2' \
-  >> /etc/hosts"
+cat .ssh/id_rsa.pub | sudo tee -a /root/.ssh/authorized_keys
+echo '127.0.0.1 127.0.0.2' | sudo tee -a /etc/hosts
+
 export VIRTHOST=127.0.0.2
 sudo yum groupinstall "Virtualization Host" -y
 sudo yum install git lvm2 lvm2-devel -y
