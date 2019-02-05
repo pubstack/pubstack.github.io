@@ -131,14 +131,8 @@ EOF
 </code></pre></div></div>
 </details>
 
-
-
-
-
-
-
 <details>
-<summary><strong>OpenShisft [Containerized] - 1 Controller, 1 Compute</strong></summary>
+<summary><strong>OpenShift [Containerized] - 1 Controller, 1 Compute</strong></summary>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 cat > $CONFIG << EOF
 # Original from https://github.com/openstack/tripleo-quickstart/blob/master/config/general_config/featureset033.yml
@@ -181,15 +175,14 @@ add_repos:
 extra_args: ''
 
 container_args: >-
-  {% if release in ['pike','queens'] -%}
-  -e {{ overcloud_templates_path }}/environments/docker.yaml
-  {%- endif -%}
-  {% if release in ['ocata', 'pike', 'queens', 'rocky'] %}
-  -e {{ working_dir }}/containers-default-parameters.yaml
-  {% else %}
-  -e {{ working_dir }}/containers-prepare-parameter.yaml
-  {% endif %}
-  -e {{ overcloud_templates_path }}/environments/openshift.yaml
+  # If Pike or Queens
+  #-e /usr/share/openstack-tripleo-heat-templates/environments/docker.yaml
+  # If Ocata, Pike, Queens or Rocky
+  #-e /home/stack/containers-default-parameters.yaml
+  # If >= Stein
+  -e /home/stack/containers-prepare-parameter.yaml
+
+  -e /usr/share/openstack-tripleo-heat-templates/openshift.yaml
 # NOTE(mandre) use container images mirrored on the dockerhub to take advantage
 # of the proxy setup by openstack infra
 docker_openshift_etcd_namespace: docker.io/{{ docker_registry_namespace }}
@@ -208,7 +201,7 @@ docker_openshift_kube_state_metrics_image: coreos-kube-state-metrics
 
 deploy_steps_ansible_workflow: true
 config_download_args: >-
-  -e {{ working_dir }}/config-download.yaml
+  -e /home/stack/config-download.yaml
   --disable-validations
   --verbose
 composable_roles: true
@@ -236,16 +229,6 @@ overcloud_roles:
       - StorageMgmt
       - Tenant
 
-# Tempest configuration, keep always at the end of the file
-# Run tempest in containers when at least undercloud is containerized
-tempest_format: >-
-  {% if containerized_undercloud|bool -%}
-  container
-  {%- else -%}
-  packages
-  {%- endif -%}
-# If `run_tempest` is `true`, run tempests tests, otherwise do not
-# run them.
 tempest_config: false
 test_ping: false
 run_tempest: false
@@ -253,7 +236,6 @@ EOF
 </code></pre></div></div>
 </details>
 <br/>
-
 
 
 __06 - Deploy TripleO.__
@@ -271,6 +253,6 @@ bash ./tripleo-quickstart/quickstart.sh \
 <div style="font-size:10px">
   <blockquote>
     <p><strong>Updated 2019/02/05:</strong> Initial version.</p>
-    <p><strong>Updated 2019/02/05:</strong> TODO: Test the OpenSHift deployment.</p>
+    <p><strong>Updated 2019/02/05:</strong> TODO: Test the OpenShift deployment.</p>
   </blockquote>
 </div>
