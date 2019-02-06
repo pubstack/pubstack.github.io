@@ -15,9 +15,19 @@ commentIssueId: 57
 ![](/static/dude-just-deploy-it-already.jpg)
 
 This post is a summary of the deployments I ussualy test.
+
+The following steps need to run in the Hypervisor node
+in order to deploy both the Undercloud and the Overcloud.
+
+You need to execute them one after the other, the idea of this recipe is to
+have something just for copying/pasting.
+
+Once the last step ends you can/should be able to  connect to the
+Undercloud VM to start operating your Overcloud deployment.
+
 The ussual steps are:
 
-__01 - Create the toor user.__
+__01 - Create the toor user (from the Hypervisor node, as root).__
 
 ```
 sudo useradd toor
@@ -27,6 +37,9 @@ echo "toor ALL=(root) NOPASSWD:ALL" \
 sudo chmod 0440 /etc/sudoers.d/toor
 sudo su - toor
 ```
+
+Now, follow as the `toor` user and prepare the Hypervisor node
+for the deployment.
 
 __02 - Prepare the hypervisor node.__
 
@@ -53,6 +66,9 @@ sudo yum install git lvm2 lvm2-devel -y
 ssh root@$VIRTHOST uname -a
 ```
 
+Now, let's install some dependencies.
+Same Hypervisor node, same `toor` user.
+
 __03 - Clone repos and install deps.__
 
 
@@ -65,12 +81,17 @@ bash ./tripleo-quickstart/quickstart.sh \
 sudo setenforce 0
 ```
 
+Export some variables used in the deployment command.
+
 __04 - Export common variables.__
 
 ```
 export CONFIG=~/deploy-config.yaml
 export VIRTHOST=127.0.0.2
 ```
+
+Now we will create the configuration file used for the deployment,
+depending on the file you choose you will deploy different environments.
 
 __05 - Click on the environment description to expand the recipe.__
 
@@ -237,6 +258,9 @@ EOF
 </details>
 <br/>
 
+From the Hypervisor, as the `toor` user
+run the deployment command to deploy
+both your Undercloud and Overcloud.
 
 __06 - Deploy TripleO.__
 
@@ -254,5 +278,6 @@ bash ./tripleo-quickstart/quickstart.sh \
   <blockquote>
     <p><strong>Updated 2019/02/05:</strong> Initial version.</p>
     <p><strong>Updated 2019/02/05:</strong> TODO: Test the OpenShift deployment.</p>
+    <p><strong>Updated 2019/02/06:</strong> Added some clarifications about where the commands should run.</p>
   </blockquote>
 </div>
