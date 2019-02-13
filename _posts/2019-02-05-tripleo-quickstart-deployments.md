@@ -29,7 +29,7 @@ The ussual steps are:
 
 __01 - Create the toor user (from the Hypervisor node, as root).__
 
-```
+```bash
 sudo useradd toor
 echo "toor:toor" | sudo chpasswd
 echo "toor ALL=(root) NOPASSWD:ALL" \
@@ -44,7 +44,7 @@ for the deployment.
 __02 - Prepare the hypervisor node.__
 
 
-```
+```bash
 # Disable IPv6 lookups
 sudo bash -c "cat >> /etc/sysctl.conf" << EOL
 net.ipv6.conf.all.disable_ipv6 = 1
@@ -72,7 +72,7 @@ Same Hypervisor node, same `toor` user.
 __03 - Clone repos and install deps.__
 
 
-```
+```bash
 git clone \
   https://github.com/openstack/tripleo-quickstart
 chmod u+x ./tripleo-quickstart/quickstart.sh
@@ -85,7 +85,7 @@ Export some variables used in the deployment command.
 
 __04 - Export common variables.__
 
-```
+```bash
 export CONFIG=~/deploy-config.yaml
 export VIRTHOST=127.0.0.2
 ```
@@ -98,7 +98,7 @@ __05 - Click on the environment description to expand the recipe.__
 
 <details>
 <summary><strong>OpenStack [Containerized & HA] - 1 Controller, 1 Compute</strong></summary>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<pre><code class="language-bash">
 cat > $CONFIG << EOF
 overcloud_nodes:
   - name: control_0
@@ -117,12 +117,12 @@ extra_args: >-
   --ntp-server pool.ntp.org
   -e /usr/share/openstack-tripleo-heat-templates/environments/docker-ha.yaml
 EOF
-</code></pre></div></div>
+</code></pre>
 </details>
 
 <details>
 <summary><strong>OpenStack [Containerized & HA] - 3 Controllers, 1 Compute</strong></summary>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<pre><code class="language-bash">
 cat > $CONFIG << EOF
 overcloud_nodes:
   - name: control_0
@@ -149,12 +149,12 @@ extra_args: >-
   --compute-scale 1
   -e /usr/share/openstack-tripleo-heat-templates/environments/docker-ha.yaml
 EOF
-</code></pre></div></div>
+</code></pre>
 </details>
 
 <details>
 <summary><strong>OpenShift [Containerized] - 1 Controller, 1 Compute</strong></summary>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<pre><code class="language-bash">
 cat > $CONFIG << EOF
 # Original from https://github.com/openstack/tripleo-quickstart/blob/master/config/general_config/featureset033.yml
 composable_scenario: scenario009-multinode.yaml
@@ -254,7 +254,7 @@ tempest_config: false
 test_ping: false
 run_tempest: false
 EOF
-</code></pre></div></div>
+</code></pre>
 </details>
 <br/>
 
@@ -264,7 +264,7 @@ both your Undercloud and Overcloud.
 
 __06 - Deploy TripleO.__
 
-```
+```bash
 bash ./tripleo-quickstart/quickstart.sh \
       --clean          \
       --release master \
