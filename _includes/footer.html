@@ -1,6 +1,6 @@
 <footer>
+<section>
   {% unless page.skip_bio %}
-
   <div id="bio">
     <div id="bio-image">
       <img src="/static/me.jpg" alt="Carlos Camacho">
@@ -14,7 +14,6 @@
     </div>
   </div>
   {% endunless %}
-
   {% unless page.skip_related %}
   <aside>
     <h3>Further reading</h3>
@@ -36,6 +35,8 @@
     </ul>
   </aside>
   {% endunless %}
+</section>
+<script src="{{ "/js/prism.js" | prepend: site.baseurl }}"></script>
 </footer>
 
 {% include fine-print.html %}
