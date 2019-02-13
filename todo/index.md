@@ -1,8 +1,10 @@
 ---
 layout: post
-title: Things that I currently need to do
+title: Need to do
 subtitle: "Even if don't want to do them..."
+skip_related: true
 ---
 
 
-* asdf fda
+* Refactor the blog, new theme
+* Add PrismJS - DONE
