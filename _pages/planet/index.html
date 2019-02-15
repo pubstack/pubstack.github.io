@@ -1,74 +1,45 @@
 ---
 layout: default
-title: "Planet and archive"
+title1: "Planet"
+title2: "Archive"
 permalink: /planet
 ---
 
 
     <section class="single">
       <div class="container">
-
         <div class="row">
-            <div class="col-12">
-              <div class="line top">
-                <div>{{ page.title }}</div>
-              </div>
-            </div>
-        </div>
-  <div class="row">
           <div class="col-md-6">
-              <h1 class="title">Planet</h1>
+            <div class="line top">
+              <div>{{ page.title1 }}</div>
+            </div>
               <p>Some useful references from other TripleO developers,
                  here you will find the latest updates from the community.</p>
-
-
-
-            <!--  <div id="archive"><ul id="archiveul"></ul></div>-->
-
-
               <div id="archiveul" class="body-col" data-item="article">
-
               </div>
-
               <p><strong>Note:</strong> Due to CORS restrictions, this page uses a
                  <a href="https://cors-anywhere.herokuapp.com/">proxy</a>
                  to add cross-origin headers when building the Planet list.
                  Check additional information about the CORS proxy on
                  <a href="https://www.npmjs.com/package/cors-anywhere">NPM</a>.
               </p>
-
-
-
           </div>
-
-
           <div class="col-md-6">
-
-
-              <h1 class="title">Archive</h1>
-
-
+            <div class="line top">
+              <div>{{ page.title2 }}</div>
+            </div>
               {% assign totalwords = 0 %}
               {% for post in site.posts %}
                 {% assign wordcount = post.content | number_of_words %}
                 {% assign totalwords = totalwords | plus: wordcount %}
               {% endfor %}
-
-              <p>Since {{ site.posts.last.date | date: "%B %d, %Y" }}, I've written {{ totalwords }} words in {{ site.posts | size }} posts, about software engineering, OpenStack,  professional growth and other miscellaneous topics. I hope you've enjoyed reading at least some of those words. My favorite posts are starred.</p>
-
-
-
-
-
-
-
-
+              <p>
+                Since {{ site.posts.last.date | date: "%B %d, %Y" }}, I've written {{ totalwords }}
+                words in {{ site.posts | size }} posts, about software engineering, OpenStack,
+                professional growth and other miscellaneous topics. I hope you've enjoyed reading
+                at least some of those words. My favorite posts are starred.
+              </p>
               <div class="body-col" data-item="article">
-
-
-
-
-
                 {% for post in site.posts %}
                     {% assign currentdate = post.date | date: "%Y" %}
                     {% if currentdate != date %}
@@ -76,8 +47,6 @@ permalink: /planet
                         {% assign date = currentdate %}
                     {% endif %}
                     {% unless post.tags contains "draft" or post.tags contains "pod" %}
-
-
                     <article class="article-mini">
                       <div class="inner">
                         <figure>
@@ -94,26 +63,10 @@ permalink: /planet
                     		 </div>
                     	</div>
                     </article>
-
                     {% endunless %}
                 {% endfor %}
-
-
-
-
-
               </div>
-
-
-
-
-
           </div>
-
-</div>
-
-
-
-
+        </div>
       </div>
     </section>

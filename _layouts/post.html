@@ -6,50 +6,48 @@ layout: default
   <div class="container">
 
 
-    <div class="row">
-      <div class="col-12">
-    {% if page.tags contains "cloud" %}
-    <div class="line top">
-      <div>Cloud computing</div>
-    </div>
-    {% elsif page.tags contains "tripleo" %}
-    <div class="line top">
-      <div>Cloud computing</div>
-    </div>
-    {% elsif page.tags contains "openstack" %}
-    <div class="line top">
-      <div>Cloud computing</div>
-    </div>
-    {% elsif page.tags contains "engineering" %}
-    <div class="line top">
-      <div>Engineering</div>
-    </div>
-    {% elsif page.tags contains "hobbies" %}
-    <div class="line top">
-      <div>Hobbies</div>
-    </div>
-    {% elsif page.tags contains "software_development" %}
-    <div class="line top">
-      <div>Software Development</div>
-    </div>
-    {% elsif page.tags contains "management" %}
-    <div class="line top">
-      <div>Management and reflections</div>
-    </div>
-    {% elsif page.tags contains "reflections" %}
-    <div class="line top">
-      <div>Management and reflections</div>
-    </div>
-    {% endif %}
-  </div>
-</div>
-
 
     <div class="row">
       <div class="col-md-4 sidebar" id="sidebar">
         {% include aside_recent_posts.html %}
       </div>
       <div class="col-md-8">
+
+
+        {% if page.tags contains "cloud" %}
+        <div class="line top">
+          <div>Cloud computing</div>
+        </div>
+        {% elsif page.tags contains "tripleo" %}
+        <div class="line top">
+          <div>Cloud computing</div>
+        </div>
+        {% elsif page.tags contains "openstack" %}
+        <div class="line top">
+          <div>Cloud computing</div>
+        </div>
+        {% elsif page.tags contains "engineering" %}
+        <div class="line top">
+          <div>Engineering</div>
+        </div>
+        {% elsif page.tags contains "hobbies" %}
+        <div class="line top">
+          <div>Hobbies</div>
+        </div>
+        {% elsif page.tags contains "software_development" %}
+        <div class="line top">
+          <div>Software Development</div>
+        </div>
+        {% elsif page.tags contains "management" %}
+        <div class="line top">
+          <div>Management and reflections</div>
+        </div>
+        {% elsif page.tags contains "reflections" %}
+        <div class="line top">
+          <div>Management and reflections</div>
+        </div>
+        {% endif %}
+
         <article class="article main-article">
           <header>
             <h1>{{ page.title }}</h1>

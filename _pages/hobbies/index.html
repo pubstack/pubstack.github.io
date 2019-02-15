@@ -7,18 +7,11 @@ permalink: /hobbies
 
 <section class="category">
   <div class="container">
-    <div class="row">
-        <div class="col-12">
-          <div class="line top">
-            <div>{{ page.title }}</div>
-          </div>
-        </div>
-    </div>
-    <div class="row">
       <div class="col-md-8 text-left">
+        <div class="line top">
+          <div>{{ page.title }}</div>
+        </div>
         <div class="row">
-
-
           {% assign posts = site.posts %}
           {% assign filtered_posts = "" | split: ',' %}
           {% for post in site.posts %}
@@ -80,5 +73,4 @@ permalink: /hobbies
         {% include aside_recent_posts.html %}
       </div>
     </div>
-  </div>
 </section>

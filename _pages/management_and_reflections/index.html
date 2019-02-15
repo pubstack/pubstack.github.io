@@ -7,15 +7,10 @@ permalink: /management_and_reflections
 
 <section class="category">
   <div class="container">
-    <div class="row">
-        <div class="col-12">
-          <div class="line top">
-            <div>{{ page.title }}</div>
-          </div>
-        </div>
-    </div>
-    <div class="row">
       <div class="col-md-8 text-left">
+        <div class="line top">
+          <div>{{ page.title }}</div>
+        </div>
         <div class="row">
           {% assign ref_posts = (site.posts | where:'tags', 'reflections') %}
           {% assign mgt_posts = (site.posts | where:'tags', 'management') %}
@@ -82,5 +77,4 @@ permalink: /management_and_reflections
         {% include aside_recent_posts.html %}
       </div>
     </div>
-  </div>
 </section>
