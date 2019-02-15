@@ -10,7 +10,7 @@ permalink: /drafts
       <div class="col-md-8 text-left">
         <div class="line top">
           <div>{{ page.title }}</div>
-        </div>        
+        </div>
         <div class="row">
           {% assign os_posts = (site.posts | where:'tags', 'draft' | sort: 'date') | reverse %}
           {% for post in os_posts %}
@@ -61,7 +61,8 @@ permalink: /drafts
           -->
         </div>
       </div>
-      <div class="col-md-4 sidebar">
+      <div class="col-xs-4 col-md-4 sidebar" id="sidebar">
+        <div class="sidebar-title for-tablet">Sidebar</div>
         {% include aside_recent_posts.html %}
       </div>
   </div>
