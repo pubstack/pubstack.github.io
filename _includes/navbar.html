@@ -75,7 +75,6 @@
 								</div>
 							</li>
 
-
               <li class="dropdown magz-dropdown-megamenu"><a href="/engineering">Engineering<i class="ion-ios-arrow-right"></i> </a>
 								<div class="dropdown-menu megamenu">
 									<div class="megamenu-inner">
@@ -87,8 +86,16 @@
 													</div>
 												</div>
 												<ul class="vertical-menu">
-                          {% assign eng_posts = (filtered_posts | where:'tags', 'engineering' | sort: 'date') | reverse %}
-                          {% for post in eng_posts | limit: 5 %}
+                          software_development
+
+
+                          {% assign sf_posts = (filtered_posts | where:'tags', 'software_development') %}
+                          {% assign eng_posts = (filtered_posts | where:'tags', 'engineering') %}
+
+                          {% assign sf_eng_posts = (sf_posts | concat: eng_posts | uniq | sort: 'date') reverse %}
+
+
+                          {% for post in sf_eng_posts | limit: 5 %}
                           <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
                           {% endfor %}
 
@@ -103,7 +110,7 @@
 													</div>
 												</div>
 												<div class="row">
-                          {% assign fav_eng_posts = (eng_posts | where:'favorite', true | sort: 'date') | reverse %}
+                          {% assign fav_eng_posts = (sf_eng_posts | where:'favorite', true | sort: 'date') | reverse %}
                           {% for post in fav_eng_posts | limit: 3 %}
                           <article class="article col-md-4 mini">
 														<div class="inner">
@@ -130,7 +137,6 @@
 									</div>
 								</div>
 							</li>
-
 
               <li class="dropdown magz-dropdown-megamenu"><a href="/hobbies">Hobbies<i class="ion-ios-arrow-right"></i> </a>
 								<div class="dropdown-menu megamenu">
@@ -187,64 +193,7 @@
 								</div>
 							</li>
 
-
-              <li class="dropdown magz-dropdown-megamenu"><a href="/software_development">Software Development<i class="ion-ios-arrow-right"></i> </a>
-								<div class="dropdown-menu megamenu">
-									<div class="megamenu-inner">
-										<div class="row">
-											<div class="col-md-3">
-												<div class="row">
-													<div class="col-md-12">
-														<h2 class="megamenu-title">Latest posts</h2>
-													</div>
-												</div>
-												<ul class="vertical-menu">
-                          {% assign sw_posts = (filtered_posts | where:'tags', 'software_development' | sort: 'date') | reverse %}
-                          {% for post in sw_posts | limit: 5 %}
-                          <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
-                          {% endfor %}
-
-
-
-												</ul>
-											</div>
-											<div class="col-md-9">
-												<div class="row">
-													<div class="col-md-12">
-														<h2 class="megamenu-title">Favorite posts</h2>
-													</div>
-												</div>
-												<div class="row">
-                          {% assign fav_sw_posts = (sw_posts | where:'favorite', true | sort: 'date') | reverse %}
-                          {% for post in fav_sw_posts | limit: 3 %}
-                          <article class="article col-md-4 mini">
-														<div class="inner">
-															<figure>
-																<a href="{{ post.url }}">
-																	<img src="{{ post.refimage }}" alt="{{ post.title }}">
-																</a>
-															</figure>
-															<div class="padding">
-																<div class="detail">
-																	<div class="time">{{ post.date | truncate: 10, "" }}</div>
-																	<div class="category">
-                                    {% for sn in post.tags %}{% if forloop.last %}<a href="#">{{ sn | replace: "_", " " }}</a>{% else %}<a href="#">{{ sn | replace: "_", " " }}</a>, {% endif %}{% endfor %}
-                                  </div>
-																</div>
-																<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-															</div>
-														</div>
-													</article>
-                          {% endfor %}
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-
-              <li class="dropdown magz-dropdown-megamenu"><a href="/management_and_reflections">Management & reflections<i class="ion-ios-arrow-right"></i> </a>
+              <li class="dropdown magz-dropdown-megamenu"><a href="/management_and_reflections">Management<i class="ion-ios-arrow-right"></i> </a>
 								<div class="dropdown-menu megamenu">
 									<div class="megamenu-inner">
 										<div class="row">
@@ -299,9 +248,6 @@
 									</div>
 								</div>
 							</li>
-
-              <li><a href="/planet">Planet & Archive</a></li>
-
 						</ul>
 					</div>
 				</div>
