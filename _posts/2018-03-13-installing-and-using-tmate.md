@@ -5,16 +5,17 @@ author: "Carlos Camacho"
 categories:
   - blog
 tags:
-  - 'software development'
+  - software_development
 favorite: false
 commentIssueId: 50
+refimage: '/static/tmate.jpg'
 ---
-
-![](/static/tmate.jpg)
 
 This is an easy solution for sharing terminal sessions over ssh.
 [Tmate.io](https://tmate.io) is great terminal sharing app,
 you can think of it as Teamviewer for ssh.
+
+![](/static/tmate.jpg)
 
 To avoid compiling issues and dependencies, we will get the
 static build directly from GitHub to `automagically` use it.
@@ -29,4 +30,3 @@ sudo chmod +x /usr/bin/tmate
 And that is it, enjoy.
 
 Open tmate and share the link...
-

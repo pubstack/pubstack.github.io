@@ -8,8 +8,10 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 favorite: true
 commentIssueId: 1
+refimage: '/static/multi-hop.png'
 ---
 
 This will be my first blog post about TripleO deployments.

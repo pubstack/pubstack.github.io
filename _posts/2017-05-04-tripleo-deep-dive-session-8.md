@@ -8,7 +8,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 31
+refimage: '/static/deepdive.png'
 ---
 
 This is the eight release of the [TripleO](http://www.tripleo.org/) "Deep Dive" sessions

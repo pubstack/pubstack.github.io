@@ -6,8 +6,10 @@ categories:
   - blog
 tags:
   - reflections
+  - management
 favorite: true
 commentIssueId: 56
+refimage: '/static/remote_01_naked.jpg'
 ---
 
 This will a quick summary of my last 3 years experience
@@ -152,4 +154,3 @@ so, keep a little bit of time for improving your product and yourself.
     <p><strong>Updated 2019/01/23:</strong> First version</p>
   </blockquote>
 </div>
-

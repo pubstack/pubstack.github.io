@@ -7,6 +7,7 @@ categories:
 tags:
   - reflections
 #commentIssueId:
+refimage: '/static/phd/cover.jpg'
 ---
 
 
@@ -30,7 +31,7 @@ de estos bloques.
 <div style="float: right; width: 230px; background: white;"><img src="/static/phd/papers-to-me.png" alt="" style="border:15px solid #FFF"></div>
 
 **Escribe artículos como si no existiera un mañana.**
-Verídico, 
+Verídico,
 para terminar tu tesis doctoral
 debes contar con un mínimo de artículos de investigación para que
 el tribunal considere 'apto' tu trabajo.
@@ -61,7 +62,7 @@ después del trabajo a actividades de investigación, y cada 2 fines de semana u
 actividades duras como programar, escribir, etc...
 
 <div style="float: left; width: 230px; background: white;"><img src="/static/phd/fuck-this-shit.jpg" alt="" style="border:15px solid #FFF"></div>
-    
+
 **Libre de frustraciones.**
 Seguro que les pasará por la mente esto de 'Abandonar'...
 ¡Nunca! ¿Creen que merece la pena
@@ -80,7 +81,7 @@ retrasamos.
 ¡Hay que trabajar que ya queda poco!
 
 <div style="float: right; width: 230px; background: white;"><img src="/static/phd/persistence.png" alt="" style="border:15px solid #FFF"></div>
-    
+
 **Persiste.**
 Terminar tu Ph.D. es trabajo de
 resistencia, eventualmente, si sigues investigando podrás
@@ -125,11 +126,11 @@ Como si me echaran agua fría...
 **El doctorando necesita comer.**
 España valora inmensamente a sus doctorandos, les
 paga un sueldo justo por su 'colaboración' al
-desarrollo de la humanidad y más aun, los 
+desarrollo de la humanidad y más aun, los
 motiva para que sigan en el camino que llevan. Quizá
 he exagerado un poco, la situación real
 sería mas cercana a que están...
-mal pagados, luchando por becas, 
+mal pagados, luchando por becas,
 sufriendo recortes,
 disfrutando de la
 muy común falta de presupuesto,
@@ -141,7 +142,7 @@ a parte de mi 'trabajo' como investigador,
 trabajo por el que nadie me paga y
 por el contrario, tengo que pagar yo.
 Lamentablemente, el mercado laboral de los 'Doctores'
-es bastante limitado en España pero el 
+es bastante limitado en España pero el
 esfuerzo siempre se verá recompensado, al menos
 podrás poner que eres doctor al comprar billetes
 de Ryanair...
@@ -182,8 +183,8 @@ libre. En mi caso particular, teniendo el Español como
 lengua nativa, he preferido escribir la memoria entera
 en Español por dos razones. La primera razón
 es que podré escribir
-mucho más rápido y la segunda porque 
-publicar un artículo suele tardar de media unos 6 meses, 
+mucho más rápido y la segunda porque
+publicar un artículo suele tardar de media unos 6 meses,
 en mi caso tengo el tercer artículo todavía en
 revisión por parte de la revista.
 Este plan 'B' me ha salvado de
@@ -192,7 +193,7 @@ poder leer la tesis en los plazos correspondientes.
 <div style="float: left; width: 230px; background: white;"><img src="/static/phd/notes.gif" alt="" style="border:15px solid #FFF"></div>
 
 **Toma notas para la defensa.**
-Parece sencillo, pero algo que probablemente suceda es que 
+Parece sencillo, pero algo que probablemente suceda es que
 no recuerdes por un segundo algo que te han preguntado.
 Por eso, es importante preparar material para la ronda
 de preguntas, para cuando te pidan que vayas a una página
@@ -223,7 +224,7 @@ Hacer el doctorado no sólo te permite crecer
 en el ámbito profesional, también, te permite conocer
 personas fantásticas que seguramente te acompañarán
 por el resto de tu vida y se convertirán en buenos amigos,
-parejas, etc... 
+parejas, etc...
 
 Por si hay alguien interesado en dar un vistazo a mi trabajo de investigación,
 está disponible públicamente en

@@ -7,8 +7,13 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 13
+refimage: '/static/bandaid.jpg'
 ---
+
+This post will explain how to fix OOM issues whe using TripleO.
+
 ![](/static/bandaid.jpg)
 
 If running `free -m` from your Undercloud or Overcloud nodes and

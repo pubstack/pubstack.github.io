@@ -7,14 +7,16 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 7
+refimage: '/static/deepdive.png'
 ---
 
 This is the second video from a series of "Deep Dive" sessions
 related to [TripleO](http://www.tripleo.org/) deployments.
 
 This session is related to a THT overview
-for all users who want to dig into the 
+for all users who want to dig into the
 project.
 
 This video session aims to cover the following topics:
@@ -34,4 +36,3 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 
 
 Please check the [sessions index](http://www.anstack.com/blog/2017/06/15/tripleo-deep-dive-session-index.html) to have access to all available content.
-

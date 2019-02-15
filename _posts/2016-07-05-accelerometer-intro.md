@@ -7,6 +7,7 @@ categories:
 tags:
   - engineering
 commentIssueId: 3
+refimage: '/static/accel/accelerometer-01-build.jpeg'
 ---
 
 Since a few months I'm kind of interested
@@ -117,5 +118,3 @@ Showing the G forces in each axis.
 
 This is it for the first part of the tutorial.
 Next posts will dig into the real-time data processing.
-
-

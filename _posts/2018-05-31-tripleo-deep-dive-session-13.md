@@ -8,7 +8,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 54
+refimage: '/static/deepdive.png'
 ---
 
 This is the 13th release of the [TripleO](http://www.tripleo.org/)
@@ -19,7 +21,7 @@ for this deep dive session about the next step of the TripleO's Undercloud evolu
 
 In this session, they will explain in detail the movement re-architecting the Undercloud
 to move towards containers in order to reuse the containerized Overcloud ecosystem.
- 
+
 You can access the [presentation](https://docs.google.com/presentation/d/17Sbo0i0o2AhQBSjYH7eUrXKVHJcItklGZUUleFiC0ZU/)
 or the
 [Etherpad](https://etherpad.openstack.org/p/tripleo-deep-dive-containerized-undercloud) notes.

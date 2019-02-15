@@ -6,12 +6,11 @@ categories:
   - blog
 tags:
   - management
-  - reporting
   - draft
 favorite: true
 commentIssueId: 22
+refimage: '/static/dude-just-deploy-it-already.jpg'
 ---
-
 
 Smart & Remote working is a trend among
 Senior or hi-performance roles are usually highly benefited from remote positions.
@@ -35,7 +34,7 @@ Bugzilla
 Historyboard
 
 Nice to have:
-Jira 
+Jira
 
 
 

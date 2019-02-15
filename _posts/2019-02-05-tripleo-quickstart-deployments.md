@@ -7,14 +7,18 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 favorite: true
 commentIssueId: 57
+refimage: '/static/dude-just-deploy-it-already.jpg'
 ---
+
+This post is a summary of the deployments I usually test for deploying TripleO
+using quickstart.
 
 
 ![](/static/dude-just-deploy-it-already.jpg)
 
-This post is a summary of the deployments I ussualy test.
 
 The following steps need to run in the Hypervisor node
 in order to deploy both the Undercloud and the Overcloud.
@@ -25,7 +29,7 @@ have something just for copying/pasting.
 Once the last step ends you can/should be able to  connect to the
 Undercloud VM to start operating your Overcloud deployment.
 
-The ussual steps are:
+The usual steps are:
 
 __01 - Create the toor user (from the Hypervisor node, as root).__
 

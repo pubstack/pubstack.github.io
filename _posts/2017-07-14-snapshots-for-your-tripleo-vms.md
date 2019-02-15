@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 38
+refimage: '/static/tripleo_banner.png'
 ---
 
 The idea of this post is to show how developers can save some time
@@ -34,7 +36,7 @@ Deploy your environment as usual.
 # Step 2 #
 
 Create your Undercloud/Overcloud snapshots.
-**Do this as the stack user, otherwise 
+**Do this as the stack user, otherwise
 virsh won't see the VMs**
 
 ```

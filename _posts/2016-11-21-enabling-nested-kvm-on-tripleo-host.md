@@ -8,7 +8,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 19
+refimage: '/static/tripleo_banner.png'
 ---
 
 The following bash snippet will enable
@@ -66,4 +68,3 @@ openstack overcloud deploy \
 ```
 
 Have a happy TripleO deployment!
-

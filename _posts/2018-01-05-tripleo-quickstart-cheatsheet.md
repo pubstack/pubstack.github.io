@@ -7,8 +7,10 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 favorite: true
 commentIssueId: 42
+refimage: '/static/tripleo_banner.png'
 ---
 
 I have created some cheatsheets for people starting to work on TripleO,

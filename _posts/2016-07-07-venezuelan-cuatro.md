@@ -7,9 +7,11 @@ categories:
 tags:
   - hobbies
 commentIssueId: 4
+refimage: '/static/cuatro/cuatro.jpg'
 ---
 
 Let me present you a Venezuelan Cuatro.
+
 ![](/static/cuatro/cuatro.jpg)
 
 This magical device is a string (nylon) musical instrument

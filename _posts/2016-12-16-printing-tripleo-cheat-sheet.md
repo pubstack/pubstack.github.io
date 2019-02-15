@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 26
+refimage: '/static/tripleo_banner.png'
 ---
 
 We are working preparing some cheatsheets for people jumping into TripleO.

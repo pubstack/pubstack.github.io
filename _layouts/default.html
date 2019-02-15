@@ -1,53 +1,66 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta name="google-site-verification" content="VikwqTxe7ybu1qSM7LFgIQpvHLN0_j-iVzaLqF88vEw" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Carlos Camacho - {{ page.title }}</title>
-  <meta name="author" content="Carlos Camacho" />
-  <meta name="description" content="Stacked answers about software, book writeups and geeky projects by a software engineer" />
-  <meta property="og:title" content="{{ page.title }}"/>
-  <meta property="og:image" content="https://www.anstack.com/static/me.jpg"/>
-  <meta property="og:site_name" content="Carlos Camacho - A bunch of stacked answers - anstack"/>
-  <meta property="og:description" content="Stacked answers about software, book writeups and geeky projects by a software engineer"/>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="description" content="Magz is a HTML5 & CSS3 magazine template is based on Bootstrap 3.">
+		<meta name="author" content="Kodinger">
+		<meta name="keyword" content="magz, html5, css3, template, magazine template">
+		<!-- Shareable -->
+		<meta property="og:title" content="HTML5 & CSS3 magazine template is based on Bootstrap 3" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://github.com/nauvalazhar/Magz" />
+		<meta property="og:image" content="https://raw.githubusercontent.com/nauvalazhar/Magz/master/images/preview.png" />
+		<title>Anstack</title>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="/assets/scripts/bootstrap/bootstrap.min.css">
+		<!-- IonIcons -->
+		<link rel="stylesheet" href="/assets/scripts/ionicons/css/ionicons.min.css">
+		<!-- Toast -->
+		<link rel="stylesheet" href="/assets/scripts/toast/jquery.toast.min.css">
+		<!-- OwlCarousel -->
+		<link rel="stylesheet" href="/assets/scripts/owlcarousel/dist/assets/owl.carousel.min.css">
+		<link rel="stylesheet" href="/assets/scripts/owlcarousel/dist/assets/owl.theme.default.min.css">
+		<!-- Magnific Popup -->
+		<link rel="stylesheet" href="/assets/scripts/magnific-popup/dist/magnific-popup.css">
+		<link rel="stylesheet" href="/assets/scripts/sweetalert/dist/sweetalert.css">
+		<!-- Custom style -->
+		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="stylesheet" href="/assets/css/skins/all.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ "/assets/css/prism.css" | prepend: site.baseurl }}">
+    {% include analytics.html %}
+	</head>
 
-  
-  <link rel="canonical" href="https://anstack.github.io{{ page.url | replace:'index.html','' }}" />
-
-  <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,300|Varela+Round" rel="stylesheet" type="text/css">
-
-  <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16">
-
-  <link rel="alternate" type="application/rss+xml" title="Carlos Camacho's Blog" href="{{site.url}}/atom.xml" />
-
-  {% if site.github %}
-    <link rel="stylesheet" href="/css/site.css?sha={{ site.github.build_revision }}">
-  {% else %}
-    <link rel="stylesheet" href="/css/site.css">
-  {% endif %}
-
-   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
-   <style>
-     p.tdesc {
-       font-size:14px;
-       font-weight: bold;
-     }
-   </style>
-<link rel="stylesheet" href="{{ "/css/prism.css" | prepend: site.baseurl }}">
-</head>
-<body>
-  <section>
-    {{ content }}
-  </section>
-{% include analytics.html %}
-{% unless page.skip_footer %}
+	<body class="skin-orange">
+		<header class="primary">
+        {% include header.html %}
+        {% include navbar.html %}
+		</header>
+	{{ content }}
   {% include footer.html %}
-{% endunless %}
-</body>
+		<!-- JS -->
+		<script src="/assets/js/jquery.js"></script>
+		<script src="/assets/js/jquery.migrate.js"></script>
+		<script src="/assets/scripts/bootstrap/bootstrap.min.js"></script>
+		<script>var $target_end=$(".best-of-the-week");</script>
+		<script src="/assets/scripts/jquery-number/jquery.number.min.js"></script>
+		<script src="/assets/scripts/owlcarousel/dist/owl.carousel.min.js"></script>
+		<script src="/assets/scripts/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+		<script src="/assets/scripts/easescroll/jquery.easeScroll.js"></script>
+		<script src="/assets/scripts/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="/assets/scripts/toast/jquery.toast.min.js"></script>
+		<script src="/assets/js/e-magz.js"></script>
+{% if page.title contains "Planet and archive" %}
+{% include planet_generator.html %}
+{% endif %}
+
+{% if page.title contains "Search" %}
+{% include search_generator.html %}
+{% endif %}
+
+
+
+	</body>
 </html>

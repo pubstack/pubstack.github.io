@@ -5,19 +5,18 @@ author: "Carlos Camacho"
 categories:
   - blog
 tags:
-  - git
-  - github
-  - 'software development'
+  - software_development
 favorite: true
 commentIssueId: 22
+refimage: '/static/crashed-those-commits.png'
 ---
 
-![](/static/crashed-those-commits.png)
-
-
-Writing [this](http://www.anstack.com/blog/2016/11/21/openstack-summit-2016-bcn.html)
-blog post, suddenly and without knowing I ended up by squashing/removing the commit
+Writing
+[this](http://www.anstack.com/blog/2016/11/21/openstack-summit-2016-bcn.html) blog post,
+suddenly and without knowing I ended up by squashing/removing the commit
 holding those changes.
+
+![](/static/crashed-those-commits.png)
 
 The first thing that came to my mind was to locally check the Reflog to
 restore the commit, but sadly I was removed the repo from my laptop and the
@@ -55,5 +54,5 @@ whatever you want with them.
 
 So yeah, I have to admit that I <s>squashed</s>crashed those commits in some how...
 
-I hope that last tips are useful if you are in a trouble like me 
+I hope that last tips are useful if you are in a trouble like me
 trying to recover some lost commits from GitHub.

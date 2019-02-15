@@ -7,6 +7,7 @@ categories:
 tags:
   - hobbies
 commentIssueId: 43
+refimage: '/static/strato-coffee-table/09-partially-sanded.jpeg'
 ---
 
 This post will show briefly a project I did a
@@ -53,6 +54,3 @@ SVG file that can be translated to .gcode without issues.
 ![](/static/strato-coffee-table/09-partially-sanded.jpeg)
 
 Hope you enjoyed reading this.
-
-
-

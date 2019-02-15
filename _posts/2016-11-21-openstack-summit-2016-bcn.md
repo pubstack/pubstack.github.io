@@ -7,13 +7,15 @@ categories:
 tags:
   - openstack
   - tripleo
+  - cloud
   - reflections
 commentIssueId: 20
+refimage: '/static/openstack-summit-2016-bcn.jpeg'
 ---
 
 A few weeks ago I had the opportunity to attend to the Barcelona
 OpenStack summit 'Ocata design session' and this post is related
-to collect some overall information about it. In order to achieve this, 
+to collect some overall information about it. In order to achieve this,
 I'm crawling into my paper notes to highlight the aspects IMHO are relevant.  
 
 ![](/static/openstack-summit-2016-bcn.jpeg)
@@ -74,7 +76,7 @@ to be aligned based on companies goals, mostly for cases when several companies 
 related to the same project. Also allow team members to know each others,
 maybe this can be a soft benefit, for me as important as being aligned for
 future features or architectural agreements.
-  
+
 > Is it really mandatory to send people to design sessions?
 
 I think this is not mandatory at all, but at the a relevant factor

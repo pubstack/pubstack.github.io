@@ -1,0 +1,21 @@
+---
+layout: null
+---
+{% assign posts = site.posts %}
+{% assign filtered_posts = "" | split: ',' %}
+{% for post in site.posts %}
+  {% unless post.tags contains "draft" %}
+  {% assign filtered_posts = filtered_posts | push: post %}
+  {% endunless %}
+{% endfor %}
+{% assign posts = (filtered_posts | sort: 'date') | reverse %}
+[
+  {% for post in posts %}
+    {
+      "title"    : "{{ post.title | strip_html | escape }}",
+      "url"      : "{{ post.url }}",
+      "date"     : "{{ post.date | truncate: 10, "" }}",
+      "image"     : "{{ post.refimage }}"
+    } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

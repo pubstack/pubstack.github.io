@@ -7,14 +7,16 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 39
+refimage: '/static/tripleo_banner.png'
 ---
 
 I don't usualy restart my hypervisor, today I had to install LVM2 and
 virsh stopped to work so a restart was required, once the VMs were
 up and running the overcloud pingtest failed as cinder was not able to start.
 
-From your Overcloud controller run: 
+From your Overcloud controller run:
 
 ```
 sudo losetup -f /var/lib/cinder/cinder-volumes

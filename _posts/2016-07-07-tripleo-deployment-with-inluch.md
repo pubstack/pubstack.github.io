@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 5
+refimage: '/static/tripleo_banner.png'
 ---
 
 Today I'm going to speak about the first

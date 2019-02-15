@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 6
+refimage: '/static/deepdive.png'
 ---
 
 This is the first video from a series of "Deep Dive" sessions
@@ -34,7 +36,7 @@ Using the upload-puppet-modules script we will be able to update the puppet
 modules when executing the overcloud deployment.
 
 ```bash
-# From the undercloud 
+# From the undercloud
 mkdir puppet-modules
 cd puppet-modules
 git clone https://git.openstack.org/openstack/puppet-tripleo tripleo
@@ -78,4 +80,3 @@ Please check the [sessions index](http://www.anstack.com/blog/2017/06/15/tripleo
 |                                                                                     |
 ---------------------------------------------------------------------------------------
 ```
-

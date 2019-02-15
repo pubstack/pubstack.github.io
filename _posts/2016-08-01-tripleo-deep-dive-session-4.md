@@ -8,7 +8,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 10
+refimage: '/static/deepdive.png'
 ---
 
 This is the fourth video from a series of "Deep Dive" sessions
@@ -22,7 +24,7 @@ This video session aims to cover the following sections:
 * Introduction about Puppet OpenStack modules.
 * Services deployment using Puppet profiles.
 * Deployment composability with Heat.
-* Bring your own service to TripleO. 
+* Bring your own service to TripleO.
 
 So please, check the full [session](https://www.youtube.com/watch?v=-b4cdfzvFDY)
 content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZGwUELpgaBoLvABsTA/).

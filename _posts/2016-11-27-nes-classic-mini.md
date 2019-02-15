@@ -8,14 +8,14 @@ tags:
   - hobbies
 favorite: true
 commentIssueId: 24
+refimage: '/static/nes-mini-classic-2016-nintendo.jpg'
 ---
-
-![](/static/nes-mini-classic-2016-nintendo.jpg)
-
 
 I had the chance to find a treasure last week, the NES classic mini in
 [game.es](https://www.game.es/nintendo-classic-mini-nes-electronica-129248)
 for it's official price (Shame on you speculators!!!!).
+
+![](/static/nes-mini-classic-2016-nintendo.jpg)
 
 So.. I just loved this tiny console since I just opened the package.
 Lot of people complain about the controller cord being to short

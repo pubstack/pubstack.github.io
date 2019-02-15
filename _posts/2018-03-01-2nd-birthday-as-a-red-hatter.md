@@ -11,14 +11,15 @@ tags:
 
 favorite: true
 commentIssueId: 49
+refimage: '/static/bday.gif'
 ---
-
-
-
-<div style="float: left; width: 230px; background: white;"><img width="230px" src="/static/bday.gif" alt="" style="border:15px solid #FFF"></div>
 
 This post will be about to speak about my experience working in TripleO as
 a Red Hatter for the last 2 years.
+
+<div style="float: left; width: 230px; background: white;"><img width="230px" src="/static/bday.gif" alt="" style="border:15px solid #FFF"></div>
+
+
 In my 2nd birthday as a Red Hatter, I have learned about many technologies,
 really a lot... But the most intriguing thing is that here you never stop
 learning. Not just because you just don't want to learn new things, instead,
@@ -123,12 +124,6 @@ There is a strong feeling of belonging in Red Hat, you are part of a team, a cul
 find a perfect balance between your work and life. Also, having all people from all over the globe makes
 a perfect place for sharing ideas and collaborate. Not all of it is good, i.e. Working mostly remotely
 in upstream communities can be really hard to manage if you are not 100%
-sure about the tasks that need to be done. 
+sure about the tasks that need to be done.
 
 Keep rocking and become part of the TripleO community!
-
-
-
-
-
-

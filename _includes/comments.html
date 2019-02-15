@@ -1,6 +1,13 @@
 {% if page.commentIssueId %}
 <script type="text/javascript">
   function loadComments(data) {
+
+ if (data.length == 1){
+    $("#responses-title").text(data.length + " Response");
+ }else{
+    $("#responses-title").text(data.length + " Responses");
+ }
+
     for (var i=0; i<data.length; i++) {
       var cuser = data[i].user.login;
       var cuserlink = "https://www.github.com/" + data[i].user.login;
@@ -8,7 +15,25 @@
       var cbody = data[i].body_html;
       var cavatarlink = data[i].user.avatar_url;
       var cdate = data[i].created_at;
-      $("#comments").append("<div class='comment'><div class='commentheader'><div class='commentgravatar'>" + '<img src="' + cavatarlink + '" alt="" width="20" height="20">' + "</div><a class='commentuser' href=\""+ cuserlink + "\">" + cuser + " </a><a class='commentdate' href=\"" + clink + "\">" + cdate + "</a></div><div class='commentbody'>" + cbody + "</div></div>");
+
+      var com = "<div class='item'> \
+        <div class='user'> \
+          <figure> \
+            <img src='" + cavatarlink + "'> \
+          </figure> \
+          <div class='details'> \
+            <h5 class='name'>" + cuser + "</h5> \
+            <div class='time'>" + cdate + "</div> \
+            <div class='description'> " + cbody + "</div> \
+            <footer> \
+              <a href='" + clink + "'>Reply</a> \
+            </footer> \
+          </div> \
+        </div> \
+      </div>";
+
+      $("#comment-list").append(com);
+
     }
   }
   $.ajax("https://api.github.com/repos/anstack/anstack.github.io/issues/{{page.commentIssueId}}/comments?per_page=100", {
@@ -21,4 +46,3 @@
 </script>
 
 {% endif %}
-

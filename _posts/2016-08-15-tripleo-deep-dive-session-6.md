@@ -8,7 +8,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 12
+refimage: '/static/deepdive.png'
 ---
 
 This is the sixth video from a series of "Deep Dive" sessions

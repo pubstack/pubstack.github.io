@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 40
+refimage: '/static/tripleo_banner.png'
 ---
 
 The goal of this developer documentation is to address the automated process
@@ -510,4 +512,3 @@ to see any unit tests errors.
 * http://www.dougalmatthews.com/2016/Sep/21/debugging-mistral-in-tripleo/
 * http://blog.johnlikesopenstack.com/2017/06/accessing-mistral-environment-in-cli.html
 * http://hardysteven.blogspot.com.es/2017/03/developing-mistral-workflows-for-tripleo.html
-

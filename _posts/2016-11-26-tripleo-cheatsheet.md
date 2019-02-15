@@ -7,8 +7,11 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 favorite: true
 commentIssueId: 22
+refimage: '/static/tripleo_banner.png'
+
 ---
 
 This is a cheatsheet some of my regularly used
@@ -109,7 +112,7 @@ TripleO deployments.
   </li>
 </ul>
 
-> If you think there are more 
+> If you think there are more
 > useful commands to add to the list
 > just add a [comment](https://github.com/anstack/anstack.github.io/issues/22)!
 

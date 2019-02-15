@@ -6,11 +6,8 @@ categories:
   - blog
 tags:
   - hobbies
-  - oneofakind
-  - rom
-  - flash
-  - un-brick
 commentIssueId: 17
+refimage: '/static/fist.gif'
 ---
 
 Ok, after playing converting partitions to f2fs I made a huge mistake
@@ -19,7 +16,7 @@ and corrupted the partitions table of my mobile.. Yeahp, I messed it up.
 ![](/static/fist.gif)
 
 The following notes are meant to be a reminder about how to follow this
-process as it's a cumbersome and time consuming task 
+process as it's a cumbersome and time consuming task
 to get the correct version of the firmware and tools needed.
 
 A hard brick is the state of android device that occurs when your device
@@ -54,7 +51,7 @@ In order to install the flashtool drivers you need to run some
 previous steps as Windows won't let you install them as they are
 not signed (Also inside the prerequisites package).
 
-Run the following steps from your PC 
+Run the following steps from your PC
 
 * Press the Windows key + R together and in the 'Run' box type
   `shutdown.exe /r /o /f /t 00`
@@ -116,7 +113,7 @@ Follow the instructions from the official
 
 ## Gain root access to the phone.
 
-First in your mobile phone. 
+First in your mobile phone.
 
 *  Activate USB Debugging, Setting -> Developer Options
 
@@ -143,7 +140,7 @@ At this point you should have the recovery installed.
 
 ## Re-partitioning
 
-Let's start TWRP. Turn on the phone and the the Sony 
+Let's start TWRP. Turn on the phone and the the Sony
 screen appears press the `Volume Up` button.
 
 Go to Mount on TWRP gui (uncheck system, data, cache)
@@ -183,7 +180,7 @@ Partition number (1-14): 14
 
 Command (m for help): n
 First cylinder (769-954240, default 769): 42945
-Last cylinder or +size or +sizeM or +sizeK (42945-954240, default 954240): (just press enter if the default value is the good one) 
+Last cylinder or +size or +sizeM or +sizeK (42945-954240, default 954240): (just press enter if the default value is the good one)
 Using default value 954240
 
 Command (m for help): t
@@ -216,7 +213,7 @@ Your phone should be in Fast Mode now and the device’s LED light should turn i
 fastboot flash boot twrp-3.0.2-0-nozomi.img
 ```
 
-Let's start TWRP. Turn on the phone and the the Sony 
+Let's start TWRP. Turn on the phone and the the Sony
 screen appears press the `Volume Up` button.
 
 Mount all the partitions.
@@ -245,12 +242,10 @@ the installation of Oneofakind.
 ## Final installation of Oneofakind....
 
 
-From TWRP menu click install and select the two images that 
+From TWRP menu click install and select the two images that
 we just have uploaded (oneofakind_nozomi-27-Jan-2016.zip and open_gapps-arm-6.0-pico-20161006.zip).
 
 Click flash and wait until the installation is complete, in the mean while
 open the beer (Last prerequisite) and drink it.
 
 Cheers!
-
-

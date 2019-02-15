@@ -1,0 +1,54 @@
+<aside>
+  <div class="aside-body">
+    <div class="featured-author">
+      <div class="featured-author-inner">
+        <div class="featured-author-cover" style="background-image: url('/assets/images/news/img15.jpg');">
+          <div class="badges">
+            <div class="badge-item"><i class="ion-star"></i> Featured</div>
+          </div>
+          <div class="featured-author-center">
+            <figure class="featured-author-picture">
+              <img src="/assets/images/img01.jpg" alt="Sample Article">
+            </figure>
+            <div class="featured-author-info">
+              <h2 class="name">Carlos Camacho</h2>
+              <!--<div class="desc">@JohnDoe</div>-->
+            </div>
+          </div>
+        </div>
+        <div class="featured-author-body">
+          <div class="featured-author-count">
+            <div class="item">
+              <a href="#">
+                <div class="name">Posts</div>
+                <div class="value">{{ site.posts | size }}</div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="name">Words</div>
+                {% assign totalwords = 0 %}
+                {% for post in site.posts %}
+                  {% assign wordcount = post.content | number_of_words %}
+                  {% assign totalwords = totalwords | plus: wordcount %}
+                {% endfor %}
+                <div class="value">{{ totalwords }}</div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="https://www.linkedin.com/in/carlosdcg/?locale=en_US">
+                <div class="icon">
+                  <div>LinkedIn</div>
+                  <i class="ion-chevron-right"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="featured-author-quote">
+            "Why it is my picture upside down? Sometimes is good to see everything with a different perspective."
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

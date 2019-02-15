@@ -8,13 +8,15 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 37
+refimage: '/static/deepdive.png'
 ---
 
 This is the 11th release of the [TripleO](http://www.tripleo.org/) "Deep Dive" sessions
 
 In this session we will have
-an update for the TripleO 
+an update for the TripleO
 internationalization project
 for the TripleO UI,
 gladly presented by Julie Pichon.

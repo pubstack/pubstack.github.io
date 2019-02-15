@@ -7,7 +7,10 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 36
+refimage: '/static/tripleo_banner.png'
+
 ---
 
 I'm adding this note as I'm prune

@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 25
+refimage: '/static/tripleo_banner.png'
 ---
 
 This is a brief recipe about how I'm testing
@@ -32,7 +34,7 @@ The following steps are followed to upgrade your Overcloud from Ocata to latest 
 ```
   cd
   openstack image list
-  openstack image delete <image_ID> #Delete all the Overcloud images overcloud-full* 
+  openstack image delete <image_ID> #Delete all the Overcloud images overcloud-full*
   rm -rf /home/stack/overcloud-full.*
 
   export STABLE_RELEASE=ocata

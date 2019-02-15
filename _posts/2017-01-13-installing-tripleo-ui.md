@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 27
+refimage: '/static/tripleo_banner.png'
 ---
 
 This is a brief recipe to use or install TripleO UI

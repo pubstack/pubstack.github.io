@@ -7,9 +7,14 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 53
+refimage: '/static/backup.jpeg'
 ---
 
+This post will introduce you about
+how to run backups and restores using Ansible
+in TripleO.
 
 Testing the Undercloud backup and restore
 =========================================
@@ -46,19 +51,11 @@ with the following content:
 Create a yaml file called uc-backup-download.yaml
 with the following content:
 
+
 ```
 ---
 - hosts: localhost
   tasks:
-  - name: Print destroy warning.
-    vars:
-      msg: |
-        We are about to destroy the UC, as we are not
-        moving outside the UC the backup tarball, we will
-        download it and unzip it in a temporary folder to
-        recover the UC using those files.
-    debug:
-      msg: "{{ msg.split('\n') }}"
   - name: Make sure the temp folder used for the restore does not exist
     become: true
     file:

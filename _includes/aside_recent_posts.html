@@ -1,0 +1,65 @@
+<aside>
+  <h1 class="aside-title">Recent Posts</h1>
+  <div class="aside-body">
+
+    {% assign posts = site.posts %}
+    {% assign filtered_posts = "" | split: ',' %}
+    {% for post in site.posts %}
+      {% unless post.tags contains "draft" %}
+      {% assign filtered_posts = filtered_posts | push: post %}
+      {% endunless %}
+    {% endfor %}
+    {% assign posts = (filtered_posts | sort: 'date') | reverse %}
+
+
+
+
+    {% for post in posts | limit: 4 %}
+    {% if forloop.first %}
+
+    <article class="article-fw">
+      <div class="inner">
+        <figure>
+          <a href="{{ post.url }}">
+            <img src="{{ post.refimage }}">
+          </a>
+        </figure>
+        <div class="details">
+          <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+          <p>{{ post.excerpt | truncate: 100 }}</p>
+          <div class="detail">
+            <div class="time">{{ post.date | truncate: 10, "" }}</div>
+            <div class="category">
+              {% for sn in post.tags %}{% if forloop.last %}<a href="#">{{ sn | replace: "_", " " }}</a>{% else %}<a href="#">{{ sn | replace: "_", " " }}</a>, {% endif %}{% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <div class="line"></div>
+
+    {% else %}
+
+    <article class="article-mini">
+      <div class="inner">
+        <figure>
+          <a href="{{ post.url }}">
+            <img src="{{ post.refimage }}">
+          </a>
+        </figure>
+        <div class="padding">
+          <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+          <div class="detail">
+            <div class="category">
+              {% for sn in post.tags %}{% if forloop.last %}<a href="#">{{ sn | replace: "_", " " }}</a>{% else %}<a href="#">{{ sn | replace: "_", " " }}</a>, {% endif %}{% endfor %}
+            </div>
+            <div class="time">{{ post.date | truncate: 10, "" }}</div>
+          </div>
+        </div>
+      </div>
+    </article>
+{% endif %}
+{% endfor %}
+
+  </div>
+</aside>

@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 14
+refimage: '/static/gerrit_failed_jobs.png'
 ---
 
 Landing upstream submissions might be hard if you are

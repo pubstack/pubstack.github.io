@@ -8,7 +8,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 16
+refimage: '/static/tripleo_banner.png'
 ---
 
 This post will describe different ways of debugging puppet-tripleo changes.

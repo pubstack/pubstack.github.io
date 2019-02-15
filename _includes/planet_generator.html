@@ -1,0 +1,76 @@
+<script>
+ $(document).ready(function(){
+    fillPlanet();
+ });
+function sortList(){
+  var elems = $('#archiveul').children('article').remove();
+  elems.sort(function(a,b){
+  return parseInt(b.id) - parseInt(a.id);
+  });
+  $('#archiveul').append(elems);
+}
+function insertRow(timestamp,link, tit, auth, d){
+
+
+  var artic = "<article id='"+timestamp+"'class='article-mini'><div class='inner'><div><h1><a href='" + link + "'>" + tit + "</a></h1><div class='detail'><div class='category'><a href='" + link + "'>" + auth + "</a></div><div class='time'>" + d.getFullYear() + '/' + (d.getMonth()+1) + '/' + d.getDate() + "</div></div></div></div></article>";
+    $("#archiveul").append(artic);
+    sortList();
+}
+function procResponse(data,author){
+                 $(data).find("entry, item").each(function () {
+                     var el = $(this);
+                     var tit = el.find("title").text();
+                     var auth = author;
+                     var dat = el.find("pubDate, published, updated").first().text();
+                     var timestamp = Date.parse(dat)
+                     var d = new Date(timestamp);
+                     if ( isNaN( d.getTime() ) ){
+                         var myDate=dat;
+                         myDate=myDate.split("-");
+                         var newDate=myDate[0]+"/"+myDate[1]+"/"+myDate[2].substring(0, 2);
+                         timestamp = new Date(newDate).getTime();
+                         d = new Date(newDate);
+                     }
+                     if ((typeof el.find("link").attr("href") !== 'undefined') && (el.find("link").attr("href").indexOf('http') !== -1)) {
+                         link = el.find("link").attr("href");
+                     }else{
+                        if ((typeof el.find("link").text() !== 'undefined') && (el.find("link").text().indexOf('http') !== -1)) {
+                            link = el.find("link").text();
+                        }else{
+                            link = "http://www.google.com";
+                        }
+                     }
+                     insertRow(timestamp, link, tit, auth, d);
+                 });
+}
+function retrieveData(i){
+    $.ajax({
+        url: i['uri'],
+        type: 'GET',
+        success: function (data) {
+                     procResponse(data,i['author']);
+                 },
+       error: function(data) {
+                  console.log(data);
+              }
+    });
+}
+function fillPlanet() {
+     var posts = [];
+     var corssproxy = 'https://cors-anywhere.herokuapp.com/';
+     var urls = [
+         {uri: corssproxy + 'http://blog.nemebean.com/taxonomy/term/5/feed', author:'bnemec'}, //Ben
+         {uri: corssproxy + 'https://dprince.github.io/feeds/tripleo.atom.xml', author:'dprince'}, //Dan
+         {uri: corssproxy + 'http://www.dougalmatthews.com/feeds/openstack.atom.xml', author:'douglas'},  //Douglas
+         {uri: corssproxy + 'http://my1.fr/blog/category/virtualization/openstack/tripleo/feed/atom/', author:'EmilienM'},  //Emilien
+         {uri: corssproxy + 'http://giuliofidente.com/feeds/tag/tripleo.atom.xml', author:'gfidente'},  //Giulio
+         {uri: corssproxy + 'http://blog-slagle.rhcloud.com/?tag=tripleo&feed=rss2', author:'jslagle'},  //James
+         {uri: corssproxy + 'http://jaormx.github.io//feed.xml', author:'jaosorior'},  //Juan
+         {uri: corssproxy + 'http://mariosandreou.com/tripleo.xml', author:'marios'},  //Marios
+         {uri: corssproxy + 'http://hardysteven.blogspot.com/feeds/posts/default/-/tripleo?alt=rss', author:'shardy'} //Steven
+        ];
+     for (var i in urls) {
+         retrieveData(urls[i]);
+     }
+ }
+</script>

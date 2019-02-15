@@ -1,0 +1,309 @@
+<!-- Start nav -->
+{% assign posts = site.posts %}
+{% assign filtered_posts = "" | split: ',' %}
+{% for post in site.posts %}
+  {% unless post.tags contains "draft" %}
+  {% assign filtered_posts = filtered_posts | push: post %}
+  {% endunless %}
+{% endfor %}
+
+			<nav class="menu">
+				<div class="container">
+					<div class="brand">
+						<a href="/">
+							<img src="/assets/images/logo.png" alt="Anstack">
+						</a>
+					</div>
+					<div class="mobile-toggle">
+						<a href="#" data-toggle="menu" data-target="#menu-list"><i class="ion-navicon-round"></i></a>
+					</div>
+					<div class="mobile-toggle">
+						<a href="#" data-toggle="sidebar" data-target="#sidebar"><i class="ion-ios-arrow-left"></i></a>
+					</div>
+					<div id="menu-list">
+						<ul class="nav-list">
+							<li class="for-tablet nav-title"><a>Menu</a></li>
+              <li class="dropdown magz-dropdown-megamenu"><a href="/cloud">Cloud computing<i class="ion-ios-arrow-right"></i> </a>
+								<div class="dropdown-menu megamenu">
+									<div class="megamenu-inner">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Latest posts</h2>
+													</div>
+												</div>
+												<ul class="vertical-menu">
+                          {% assign os_posts = (filtered_posts | where:'tags', 'openstack' | sort: 'date') | reverse %}
+                          {% for post in os_posts | limit: 5 %}
+                          <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
+                          {% endfor %}
+												</ul>
+											</div>
+											<div class="col-md-9">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Favorite posts</h2>
+													</div>
+												</div>
+												<div class="row">
+                          {% assign fav_os_posts = (os_posts | where:'favorite', true | sort: 'date') | reverse %}
+                          {% for post in fav_os_posts | limit: 3 %}
+                          <article class="article col-md-4 mini">
+														<div class="inner">
+															<figure>
+																<a href="{{ post.url }}">
+																	<img src="{{ post.refimage }}" alt="{{ post.title }}">
+																</a>
+															</figure>
+															<div class="padding">
+																<div class="detail">
+																	<div class="time">{{ post.date | truncate: 10, "" }}</div>
+																	<div class="category">
+                                    {% for sn in post.tags %}{% if forloop.last %}<a href="#">{{ sn | replace: "_", " " }}</a>{% else %}<a href="#">{{ sn | replace: "_", " " }}</a>, {% endif %}{% endfor %}
+                                  </div>
+																</div>
+																<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+															</div>
+														</div>
+													</article>
+                          {% endfor %}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+
+              <li class="dropdown magz-dropdown-megamenu"><a href="/engineering">Engineering<i class="ion-ios-arrow-right"></i> </a>
+								<div class="dropdown-menu megamenu">
+									<div class="megamenu-inner">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Latest posts</h2>
+													</div>
+												</div>
+												<ul class="vertical-menu">
+                          {% assign eng_posts = (filtered_posts | where:'tags', 'engineering' | sort: 'date') | reverse %}
+                          {% for post in eng_posts | limit: 5 %}
+                          <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
+                          {% endfor %}
+
+
+
+												</ul>
+											</div>
+											<div class="col-md-9">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Favorite posts</h2>
+													</div>
+												</div>
+												<div class="row">
+                          {% assign fav_eng_posts = (eng_posts | where:'favorite', true | sort: 'date') | reverse %}
+                          {% for post in fav_eng_posts | limit: 3 %}
+                          <article class="article col-md-4 mini">
+														<div class="inner">
+															<figure>
+																<a href="{{ post.url }}">
+																	<img src="{{ post.refimage }}" alt="{{ post.title }}">
+																</a>
+															</figure>
+															<div class="padding">
+																<div class="detail">
+																	<div class="time">{{ post.date | truncate: 10, "" }}</div>
+																	<div class="category">
+                                    {% for sn in post.tags %}{% if forloop.last %}<a href="#">{{ sn | replace: "_", " " }}</a>{% else %}<a href="#">{{ sn | replace: "_", " " }}</a>, {% endif %}{% endfor %}
+                                  </div>
+																</div>
+																<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+															</div>
+														</div>
+													</article>
+                          {% endfor %}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+
+              <li class="dropdown magz-dropdown-megamenu"><a href="/hobbies">Hobbies<i class="ion-ios-arrow-right"></i> </a>
+								<div class="dropdown-menu megamenu">
+									<div class="megamenu-inner">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Latest posts</h2>
+													</div>
+												</div>
+												<ul class="vertical-menu">
+                          {% assign h_posts = (filtered_posts | where:'tags', 'hobbies' | sort: 'date') | reverse %}
+                          {% for post in h_posts | limit: 5 %}
+                          <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
+                          {% endfor %}
+
+
+
+												</ul>
+											</div>
+											<div class="col-md-9">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Favorite posts</h2>
+													</div>
+												</div>
+												<div class="row">
+                          {% assign fav_h_posts = (h_posts | where:'favorite', true | sort: 'date') | reverse %}
+                          {% for post in fav_h_posts | limit: 3 %}
+                          <article class="article col-md-4 mini">
+														<div class="inner">
+															<figure>
+																<a href="{{ post.url }}">
+																	<img src="{{ post.refimage }}" alt="{{ post.title }}">
+																</a>
+															</figure>
+															<div class="padding">
+																<div class="detail">
+																	<div class="time">{{ post.date | truncate: 10, "" }}</div>
+																	<div class="category">
+                                    {% for sn in post.tags %}{% if forloop.last %}<a href="#">{{ sn | replace: "_", " " }}</a>{% else %}<a href="#">{{ sn | replace: "_", " " }}</a>, {% endif %}{% endfor %}
+                                  </div>
+																</div>
+																<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+															</div>
+														</div>
+													</article>
+                          {% endfor %}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+
+              <li class="dropdown magz-dropdown-megamenu"><a href="/software_development">Software Development<i class="ion-ios-arrow-right"></i> </a>
+								<div class="dropdown-menu megamenu">
+									<div class="megamenu-inner">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Latest posts</h2>
+													</div>
+												</div>
+												<ul class="vertical-menu">
+                          {% assign sw_posts = (filtered_posts | where:'tags', 'software_development' | sort: 'date') | reverse %}
+                          {% for post in sw_posts | limit: 5 %}
+                          <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
+                          {% endfor %}
+
+
+
+												</ul>
+											</div>
+											<div class="col-md-9">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Favorite posts</h2>
+													</div>
+												</div>
+												<div class="row">
+                          {% assign fav_sw_posts = (sw_posts | where:'favorite', true | sort: 'date') | reverse %}
+                          {% for post in fav_sw_posts | limit: 3 %}
+                          <article class="article col-md-4 mini">
+														<div class="inner">
+															<figure>
+																<a href="{{ post.url }}">
+																	<img src="{{ post.refimage }}" alt="{{ post.title }}">
+																</a>
+															</figure>
+															<div class="padding">
+																<div class="detail">
+																	<div class="time">{{ post.date | truncate: 10, "" }}</div>
+																	<div class="category">
+                                    {% for sn in post.tags %}{% if forloop.last %}<a href="#">{{ sn | replace: "_", " " }}</a>{% else %}<a href="#">{{ sn | replace: "_", " " }}</a>, {% endif %}{% endfor %}
+                                  </div>
+																</div>
+																<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+															</div>
+														</div>
+													</article>
+                          {% endfor %}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+
+              <li class="dropdown magz-dropdown-megamenu"><a href="/management_and_reflections">Management & reflections<i class="ion-ios-arrow-right"></i> </a>
+								<div class="dropdown-menu megamenu">
+									<div class="megamenu-inner">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Latest posts</h2>
+													</div>
+												</div>
+												<ul class="vertical-menu">
+                          {% assign ref_posts = (filtered_posts | where:'tags', 'reflections') %}
+                          {% assign mgt_posts = (filtered_posts | where:'tags', 'management') %}
+
+                          {% assign ref_mgt_posts = (ref_posts | concat: mgt_posts | uniq | sort: 'date') reverse %}
+
+                          {% for post in ref_mgt_posts | limit: 5 %}
+                          <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
+                          {% endfor %}
+												</ul>
+											</div>
+											<div class="col-md-9">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Favorite posts</h2>
+													</div>
+												</div>
+												<div class="row">
+                          {% assign fav_ref_mgt_posts = (ref_mgt_posts | where:'favorite', true | sort: 'date') | reverse %}
+                          {% for post in fav_ref_mgt_posts | limit: 3 %}
+                          <article class="article col-md-4 mini">
+														<div class="inner">
+															<figure>
+																<a href="{{ post.url }}">
+																	<img src="{{ post.refimage }}" alt="{{ post.title }}">
+																</a>
+															</figure>
+															<div class="padding">
+																<div class="detail">
+																	<div class="time">{{ post.date | truncate: 10, "" }}</div>
+																	<div class="category">
+                                    {% for sn in post.tags %}{% if forloop.last %}<a href="#">{{ sn | replace: "_", " " }}</a>{% else %}<a href="#">{{ sn | replace: "_", " " }}</a>, {% endif %}{% endfor %}
+                                  </div>
+																</div>
+																<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+															</div>
+														</div>
+													</article>
+                          {% endfor %}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+              <li><a href="/planet">Planet & Archive</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- End nav -->

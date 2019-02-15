@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 18
+refimage: '/static/tripleo_banner.png'
 ---
 
 Currently (most users) I don't have any way to check the haproxy status in a TripleO virtual deployment (via web-browser) if not previously created some tunnels enabled for that purpose.

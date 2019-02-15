@@ -8,8 +8,10 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 favorite: true
 commentIssueId: 35
+refimage: '/static/deepdive.png'
 ---
 
 This is a brief index with all TripleO deep dive sessions,

@@ -7,8 +7,10 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 favorite: true
 commentIssueId: 29
+refimage: '/static/tripleo_banner.png'
 ---
 
 This is a brief recipe about how to
@@ -96,7 +98,7 @@ cat > $CONFIG << EOF
 
 # control_memory: 8192
 # compute_memory: 6120
- 
+
 # undercloud_memory: 10240
 # undercloud_vcpu: 4
 # undercloud_workers: 3
@@ -155,7 +157,7 @@ the Undercloud:
 ```bash
 ssh -F /home/toor/.quickstart/ssh.config.ansible undercloud
 
-# Add the TRIPLEO_ROOT var to stackrc 
+# Add the TRIPLEO_ROOT var to stackrc
 # to use with tripleo-ci
 echo "export TRIPLEO_ROOT=~" >> stackrc
 
@@ -188,7 +190,7 @@ the UC and OC will be nuked (`--teardown all`), you will see tasks like 'PLAY [T
 Note: If you delete the Overcloud i.e. using `heat stack-delete overcloud` you can re-deploy what you
 had by running the dynamically generated overcloud-deploy.sh script in the stack home folder from the UC.
 
-Note: There are several options for TripleO Quickstart besides the basic 
+Note: There are several options for TripleO Quickstart besides the basic
 virthost deployment, check them here: `https://docs.openstack.org/developer/tripleo-quickstart/working-with-extras.html`
 
 <div style="font-size:10px">

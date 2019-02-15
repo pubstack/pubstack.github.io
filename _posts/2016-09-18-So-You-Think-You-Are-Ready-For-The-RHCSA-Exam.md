@@ -5,11 +5,12 @@ author: "Finnbarr P. Murphy"
 categories:
   - blog
 tags:
-  - Engineering
-  - RedHat
-  - RHCSA
+  - engineering
+  - redhat
+  - rhcsa
 favorite: true
 commentIssueId: 15
+refimage: '/static/rhcsa1.jpg'
 ---
 
 I just want to share this amazing blog post from Finnbarr P. Murphy,

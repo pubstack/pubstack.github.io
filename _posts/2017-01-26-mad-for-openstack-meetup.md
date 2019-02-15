@@ -7,14 +7,16 @@ categories:
 tags:
   - openstack
   - tripleo
+  - cloud
 commentIssueId: 28
+refimage: '/static/meetup_openstack.png'
 ---
 
-![](/static/meetup_openstack.png)
-
-Yesterday I had the opportunity of presenting together with Daniel Mellado 
+Yesterday I had the opportunity of presenting together with Daniel Mellado
 a brief talk about OpenStack and it's integration with services to support
 Big Data tools (OpenStack Sahara).
+
+![](/static/meetup_openstack.png)
 
 It was a combined talk for two Meetups
 [MAD-for-OpenStack](https://www.meetup.com/es-ES/MAD-for-OpenStack/events/237131857/)
@@ -27,4 +29,4 @@ The presentation is stored in
 Regrets:
 
 * We prepared a 1 hour presentation that had to be presented in 20min.
-* Wasn't able to have access to our demo server. 
+* Wasn't able to have access to our demo server.

@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 8
+refimage: '/static/deepdive.png'
 ---
 
 This is the third video from a series of "Deep Dive" sessions
@@ -29,4 +31,3 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 {% include youtubePlayer.html id=videoId %}
 
 Please check the [sessions index](http://www.anstack.com/blog/2017/06/15/tripleo-deep-dive-session-index.html) to have access to all available content.
-

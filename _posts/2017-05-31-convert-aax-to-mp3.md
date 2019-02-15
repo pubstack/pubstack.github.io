@@ -6,8 +6,8 @@ categories:
   - blog
 tags:
   - hobbies
-  - aax-to-mp3
 commentIssueId: 33
+refimage: '/static/aax.jpeg'
 ---
 
 This is a quick guide to convert AAX files (DRMed audiobooks) to it's MP3 equivalent.

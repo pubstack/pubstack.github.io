@@ -1,42 +1,121 @@
-<footer>
-<section>
-  {% unless page.skip_bio %}
-  <div id="bio">
-    <div id="bio-image">
-      <img src="/static/me.jpg" alt="Carlos Camacho">
-    </div>
-    
-    <div id="bio-text">
-      <p>Why it is my picture upside down? Sometimes is good to see everything with a different perspective.</p>
-      <div id="bio-social">
-        {% include social.html %}
-      </div>
-    </div>
-  </div>
-  {% endunless %}
-  {% unless page.skip_related %}
-  <aside>
-    <h3>Further reading</h3>
-    <ul class="posts">
-      {% if page.tags %}
-        {% assign sn = page.tags.first %}
-        {% for post in site.tags[sn] limit:3 %}
-          {% unless page.title == post.title or post.tags contains "draft"%}
-            <li><a href="{{ post.url }}">{{ post.title | slice: 0, 24 }}..</a></li>
-          {% endunless %}
-        {% endfor %}
-      {% else %}
-        {% for post in site.related_posts limit:3 %}
-          {% unless page.title == post.title or post.tags contains "draft"%}
-            <li><a href="{{ post.url }}">{{ post.title | slice: 0, 24 }}..</a></li>
-          {% endunless %}
-        {% endfor %}
-      {% endif %}
-    </ul>
-  </aside>
-  {% endunless %}
-</section>
-{% include fine-print.html %}
-<script src="{{ "/js/prism.js" | prepend: site.baseurl }}"></script>
-</footer>
+<!-- Start footer -->
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="block">
+							<h1 class="block-title">About</h1>
+                <div class="block-body">
+  								<p>My name is Carlos Camacho, a Software engineer from Madrid, Spain working @Red Hat.</p>
+                  </div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="block">
+							<h1 class="block-title">Popular Tags</h1>
+							<div class="block-body">
+								<ul class="tags">
+									<li><a href="#">Cloud computing</a></li>
+									<li><a href="#">Engineering</a></li>
+									<li><a href="#">Kubernetes</a></li>
+									<li><a href="#">Research</a></li>
+									<li><a href="#">Software development</a></li>
+									<li><a href="#">TripleO</a></li>
+									<li><a href="#">OpenStack</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="block">
+							<h1 class="block-title">Latest articles</h1>
+							<div class="block-body">
 
+
+
+                {% assign posts = site.posts %}
+                {% assign filtered_posts = "" | split: ',' %}
+                {% for post in site.posts %}
+                  {% unless post.tags contains "draft" %}
+                  {% assign filtered_posts = filtered_posts | push: post %}
+                  {% endunless %}
+                {% endfor %}
+                {% assign posts = (filtered_posts | sort: 'date') | reverse %}
+
+                {% for post in posts | limit: 2 %}
+                <article class="article-mini">
+                  <div class="inner">
+                    <figure>
+                      <a href="{{ post.url }}">
+                        <img src="{{ post.refimage }}">
+                      </a>
+                    </figure>
+                    <div class="padding">
+                      <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+                    </div>
+                  </div>
+                </article>
+                {% endfor %}
+
+								<a href="/planet" class="btn btn-magz white btn-block">See All <i class="ion-ios-arrow-thin-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-xs-12 col-sm-6">
+						<div class="block">
+							<h1 class="block-title">Follow me</h1>
+							<div class="block-body">
+								<p>Follow me and stay in touch to get the latest news</p>
+								<ul class="social trp">
+
+									<li>
+										<a href="#" class="twitter">
+											<svg><rect width="0" height="0"/></svg>
+											<i class="ion-social-twitter-outline"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="youtube">
+											<svg><rect width="0" height="0"/></svg>
+											<i class="ion-social-youtube-outline"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="linkedin">
+											<svg><rect width="0" height="0"/></svg>
+											<i class="ion-social-linkedin"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="rss">
+											<svg><rect width="0" height="0"/></svg>
+											<i class="ion-social-rss"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="line"></div>
+						<div class="block">
+							<div class="block-body no-margin">
+								<ul class="footer-nav-horizontal">
+									<li><a href="/pod">POD</a></li>
+									<li><a href="/cv">CV</a></li>
+									<li><a href="/disclaimer">Disclaimer</a></li>
+                  <li><a href="/about">About</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="copyright">
+							&copy; www.anstack.com - 2019
+						</div>
+					</div>
+				</div>
+			</div>
+      <script src="{{ "/assets/js/prism.js" | prepend: site.baseurl }}"></script>
+		</footer>
+		<!-- End Footer -->

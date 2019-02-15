@@ -8,7 +8,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 48
+refimage: '/static/deepdive.png'
 ---
 
 This is the 12th release of the [TripleO](http://www.tripleo.org/) "Deep Dive" sessions
@@ -17,7 +19,7 @@ Thanks to [James Slagle](http://blog-slagle.rhcloud.com/) for this new session, 
 will describe and speak about a feature called `config-download`.
 
 In this session we will have
-an update for the TripleO 
+an update for the TripleO
 ansible integration called
 `config-download`.
 It's about aplying all the software

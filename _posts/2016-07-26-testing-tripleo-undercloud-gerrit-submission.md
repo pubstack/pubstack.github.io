@@ -7,8 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
-  - instack-undercloud
+  - cloud
 commentIssueId: 9
+refimage: '/static/tripleo_banner.png'
 ---
 
 This post is to describe how to run/test gerrit submissions related to instack-undercloud locally.

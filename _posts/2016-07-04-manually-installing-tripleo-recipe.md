@@ -7,7 +7,9 @@ categories:
 tags:
   - tripleo
   - openstack
+  - cloud
 commentIssueId: 2
+refimage: '/static/tripleo_banner.png'
 ---
 
 This is a brief recipe about how to
@@ -93,7 +95,7 @@ packages:
 
   git clone -b $TRIPLEO_RELEASE_BRANCH https://github.com/openstack/tripleo-heat-templates
   git clone https://github.com/openstack-infra/tripleo-ci.git
-  
+
   ./tripleo-ci/scripts/tripleo.sh --all
 
   # The last command will execute:
