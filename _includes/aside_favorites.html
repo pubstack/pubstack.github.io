@@ -7,7 +7,7 @@
     {% assign posts = site.posts %}
     {% assign filtered_posts = "" | split: ',' %}
     {% for post in site.posts %}
-      {% unless post.tags contains "draft" %}
+      {% unless post.tags contains "draft" or post.url == page.url %}
       {% assign filtered_posts = filtered_posts | push: post %}
       {% endunless %}
     {% endfor %}
