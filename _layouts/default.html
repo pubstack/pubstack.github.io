@@ -11,7 +11,7 @@
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content="{{ site.url}}{{ page.url }}" />
     {% if page.categories contains "blog" %}
-    <meta property="og:description" content="{{ page.excerpt | truncate: 100 }}" />
+    <meta property="og:description" content="{{ page.excerpt | strip_html | escape | truncate: 100 }}" />
 		<meta property="og:image" content="{{ site.url}}{{ page.refimage }}" />
     <meta name="keyword" content="{% for sn in page.tags %}{% if forloop.last %}{{ sn | replace: "_", " " }}{% else %}{{ sn | replace: "_", " " }}, {% endif %}{% endfor %}">
     {% else %}
