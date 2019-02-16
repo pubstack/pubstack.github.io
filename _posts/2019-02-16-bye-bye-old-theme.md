@@ -32,4 +32,7 @@ old one for holding for the last years.
 
 ![](/static/anstack-v1.png)
 
+There are a few things to polish in the new site, like adding my
+CV and about page. Otherwise, shiiiiip it!!! 
+
 Thank you!!!!
