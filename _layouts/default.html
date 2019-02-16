@@ -4,15 +4,20 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<meta name="description" content="Anstack.com - Write ups about engineering, cloud computing and my hobbies.">
-		<meta name="author" content="Carlos Camacho">
-		<meta name="keyword" content="cloud computing, OpenStack, Kubernetes, engineering, software development">
+		<meta name="description" content="{{ site.description}}">
+		<meta name="author" content="{{ site.author}}">
 		<!-- Shareable -->
-		<meta property="og:title" content="Anstack.com - Write ups about engineering, cloud computing and my hobbies." />
+		<meta property="og:title" content="{{ site.title }} - {{ page.title }}" />
 		<meta property="og:type" content="article" />
-		<meta property="og:url" content="https://www.anstack.com" />
-		<meta property="og:image" content="https://www.anstack.com/assets/images/logo.png" />
-		<title>Anstack</title>
+		<meta property="og:url" content="{{ site.url}}{{ page.url }}" />
+    {% if page.categories contains "blog" %}
+		<meta property="og:image" content="{{ site.url}}{{ page.refimage }}" />
+    <meta name="keyword" content="{% for sn in page.tags %}{% if forloop.last %}{{ sn | replace: "_", " " }}{% else %}{{ sn | replace: "_", " " }}, {% endif %}{% endfor %}">
+    {% else %}
+    <meta property="og:image" content="{{ site.url}}/assets/images/img01.jpg" />
+    <meta name="keyword" content="{{ site.keywords }}">
+    {% endif %}
+		<title>{{ site.title }} - {{ page.title }}</title>
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="/assets/scripts/bootstrap/bootstrap.min.css">
 		<!-- IonIcons -->
