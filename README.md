@@ -1,4 +1,4 @@
-> ### I really don't have time to manage this template. If you like this template, please contribute to make this template better. Thank you.
+
 ### [My Blog](http://www.anstack.com)
 
 This new version [http://www.anstack.com](http://www.anstack.com) is a Jekyllized version of
