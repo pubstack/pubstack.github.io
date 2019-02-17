@@ -36,6 +36,8 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
 
+exclude:
+  - asdf.txt
 markdown: kramdown
 kramdown:
    syntax_highlighter_opts:
