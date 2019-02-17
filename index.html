@@ -45,8 +45,8 @@ pagination:
 													<div class="time">{{ post.date | truncate: 10, "" }}</div>
 													<div class="category">{% for sn in post.tags %}{% if forloop.last %}<a href="#">{{ sn | replace: "_", " " }}</a>{% else %}<a href="#">{{ sn | replace: "_", " " }}</a>, {% endif %}{% endfor %}</div>
 												</div>
-												<h2><a href="{{ post.url }}">{{ post.title | truncate: 25 }}</a></h2>
-												<p>{{ post.excerpt | truncate: 100 }}</p>
+												<h2><a href="{{ post.url }}">{{ post.title | strip_html | escape | truncate: 25 }}</a></h2>
+												<p>{{ post.excerpt | strip_html | escape | truncate: 40 }}</p>
 												<footer>
 													<a class="btn btn-primary more" href="{{ post.url }}">
 														<div>More</div>
