@@ -7,6 +7,7 @@ categories:
 tags:
   - management
   - draft
+hidden: true
 favorite: true
 commentIssueId: 22
 refimage: '/static/dude-just-deploy-it-already.jpg'

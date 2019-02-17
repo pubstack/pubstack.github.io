@@ -26,10 +26,15 @@ include: ["_pages"]
 
 keywords: "cloud computing, OpenStack, Kubernetes, engineering, software development"
 
+# pagination options
+
+paginate: 4
+
 markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 markdown: kramdown
 kramdown:

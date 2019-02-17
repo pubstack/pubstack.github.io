@@ -221,7 +221,7 @@
 													</div>
 												</div>
 												<div class="row">
-                          {% assign fav_ref_mgt_posts = (ref_mgt_posts | where:'favorite', true | sort: 'date') | reverse %}
+                          {% assign fav_ref_mgt_posts = ref_mgt_posts | where:'favorite', true | sort: 'date' | reverse %}
                           {% for post in fav_ref_mgt_posts | limit: 3 %}
                           <article class="article col-md-4 mini">
 														<div class="inner">

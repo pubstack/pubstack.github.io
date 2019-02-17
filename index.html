@@ -1,7 +1,12 @@
 ---
 layout: default
 title: index
-permalink: /
+pagination:
+  enabled: true
+  # tag: blog
+  collection:   posts
+  limit:        false
+  sort_reverse: true
 ---
 
 
@@ -26,7 +31,8 @@ permalink: /
                   {% assign latestmain_posts = filtered_posts | sort: 'date' | reverse %}
 
 
-                  {% for post in latestmain_posts limit: 4 %}
+                {% for post in paginator.posts %}
+                    {% unless post.tags contains 'draft' %}
                   <article class="article col-md-6">
 										<div class="inner">
 											<figure>
@@ -50,10 +56,20 @@ permalink: /
 											</div>
 										</div>
 									</article>
+                  {% endunless %}
                   {% endfor %}
+
+
 								</div>
 							</div>
 						</div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                {% include pagination.html %}
+              </div>
+						</div>
+
 					</div>
           <div class="col-md-4 col-sm-12 col-xs-12 sidebar" id="sidebar">
             <div class="sidebar-title for-tablet">Sidebar</div>
