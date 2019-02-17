@@ -20,7 +20,7 @@ permalink: /engineering
             {% endunless %}
           {% endfor %}
 
-          {% assign os_posts = (filtered_posts | where:'tags', 'engineering' | sort: 'date') | reverse %}
+          {% assign os_posts = filtered_posts | where:'tags', 'engineering' | sort: 'date' | reverse %}
           {% for post in os_posts %}
           <article class="col-md-12 article-list">
             <div class="inner">
@@ -51,22 +51,6 @@ permalink: /engineering
 
           {% endfor %}
 
-
-
-
-<!--
-          <div class="col-md-12 text-center">
-            <ul class="pagination">
-              <li class="prev"><a href="#"><i class="ion-ios-arrow-left"></i></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">...</a></li>
-              <li><a href="#">97</a></li>
-              <li class="next"><a href="#"><i class="ion-ios-arrow-right"></i></a></li>
-            </ul>
-          </div>
-          -->
         </div>
       </div>
       <div class="col-md-4 col-sm-12 col-xs-12 sidebar" id="sidebar">

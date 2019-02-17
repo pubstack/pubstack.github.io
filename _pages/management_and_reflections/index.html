@@ -12,10 +12,10 @@ permalink: /management_and_reflections
           <div>{{ page.title }}</div>
         </div>
         <div class="row">
-          {% assign ref_posts = (site.posts | where:'tags', 'reflections') %}
-          {% assign mgt_posts = (site.posts | where:'tags', 'management') %}
+          {% assign ref_posts = site.posts | where:'tags', 'reflections' %}
+          {% assign mgt_posts = site.posts | where:'tags', 'management' %}
 
-          {% assign ref_mgt_posts = (ref_posts | concat: mgt_posts | uniq | sort: 'date') | reverse %}
+          {% assign ref_mgt_posts = ref_posts | concat: mgt_posts | uniq | sort: 'date' | reverse %}
 
           {% assign posts = ref_mgt_posts %}
           {% assign filtered_posts = "" | split: ',' %}
@@ -55,22 +55,6 @@ permalink: /management_and_reflections
 
           {% endfor %}
 
-
-
-
-<!--
-          <div class="col-md-12 text-center">
-            <ul class="pagination">
-              <li class="prev"><a href="#"><i class="ion-ios-arrow-left"></i></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">...</a></li>
-              <li><a href="#">97</a></li>
-              <li class="next"><a href="#"><i class="ion-ios-arrow-right"></i></a></li>
-            </ul>
-          </div>
-          -->
         </div>
       </div>
       <div class="col-md-4 col-sm-12 col-xs-12 sidebar" id="sidebar">

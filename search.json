@@ -8,7 +8,7 @@ layout: null
   {% assign filtered_posts = filtered_posts | push: post %}
   {% endunless %}
 {% endfor %}
-{% assign posts = (filtered_posts | sort: 'date') | reverse %}
+{% assign posts = filtered_posts | sort: 'date' | reverse %}
 [
   {% for post in posts %}
     {

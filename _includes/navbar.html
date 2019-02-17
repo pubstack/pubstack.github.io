@@ -34,7 +34,7 @@
 													</div>
 												</div>
 												<ul class="vertical-menu">
-                          {% assign os_posts = (filtered_posts | where:'tags', 'openstack' | sort: 'date') | reverse %}
+                          {% assign os_posts = filtered_posts | where:'tags', 'openstack' | sort: 'date' | reverse %}
                           {% for post in os_posts | limit: 5 %}
                           <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
                           {% endfor %}
@@ -47,7 +47,7 @@
 													</div>
 												</div>
 												<div class="row">
-                          {% assign fav_os_posts = (os_posts | where:'favorite', true | sort: 'date') | reverse %}
+                          {% assign fav_os_posts = os_posts | where:'favorite', true | sort: 'date' | reverse %}
                           {% for post in fav_os_posts | limit: 3 %}
                           <article class="article col-md-4 mini">
 														<div class="inner">
@@ -89,10 +89,10 @@
                           software_development
 
 
-                          {% assign sf_posts = (filtered_posts | where:'tags', 'software_development') %}
-                          {% assign eng_posts = (filtered_posts | where:'tags', 'engineering') %}
+                          {% assign sf_posts = filtered_posts | where:'tags', 'software_development' %}
+                          {% assign eng_posts = filtered_posts | where:'tags', 'engineering' %}
 
-                          {% assign sf_eng_posts = (sf_posts | concat: eng_posts | uniq | sort: 'date') reverse %}
+                          {% assign sf_eng_posts = sf_posts | concat: eng_posts | uniq | sort: 'date' reverse %}
 
 
                           {% for post in sf_eng_posts | limit: 5 %}
@@ -110,7 +110,7 @@
 													</div>
 												</div>
 												<div class="row">
-                          {% assign fav_eng_posts = (sf_eng_posts | where:'favorite', true | sort: 'date') | reverse %}
+                          {% assign fav_eng_posts = sf_eng_posts | where:'favorite', true | sort: 'date' | reverse %}
                           {% for post in fav_eng_posts | limit: 3 %}
                           <article class="article col-md-4 mini">
 														<div class="inner">
@@ -149,7 +149,7 @@
 													</div>
 												</div>
 												<ul class="vertical-menu">
-                          {% assign h_posts = (filtered_posts | where:'tags', 'hobbies' | sort: 'date') | reverse %}
+                          {% assign h_posts = filtered_posts | where:'tags', 'hobbies' | sort: 'date' | reverse %}
                           {% for post in h_posts | limit: 5 %}
                           <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
                           {% endfor %}
@@ -165,7 +165,7 @@
 													</div>
 												</div>
 												<div class="row">
-                          {% assign fav_h_posts = (h_posts | where:'favorite', true | sort: 'date') | reverse %}
+                          {% assign fav_h_posts = h_posts | where:'favorite', true | sort: 'date' | reverse %}
                           {% for post in fav_h_posts | limit: 3 %}
                           <article class="article col-md-4 mini">
 														<div class="inner">
@@ -204,10 +204,10 @@
 													</div>
 												</div>
 												<ul class="vertical-menu">
-                          {% assign ref_posts = (filtered_posts | where:'tags', 'reflections') %}
-                          {% assign mgt_posts = (filtered_posts | where:'tags', 'management') %}
+                          {% assign ref_posts = filtered_posts | where:'tags', 'reflections' %}
+                          {% assign mgt_posts = filtered_posts | where:'tags', 'management' %}
 
-                          {% assign ref_mgt_posts = (ref_posts | concat: mgt_posts | uniq | sort: 'date') reverse %}
+                          {% assign ref_mgt_posts = ref_posts | concat: mgt_posts | uniq | sort: 'date' reverse %}
 
                           {% for post in ref_mgt_posts | limit: 5 %}
                           <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
