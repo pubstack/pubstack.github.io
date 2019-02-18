@@ -12,16 +12,20 @@ permalink: /engineering
           <div>{{ page.title }}</div>
         </div>
         <div class="row">
-          {% assign posts = site.posts %}
+
+          {% assign sw_posts = site.posts | where:'tags', 'software_development' %}
+          {% assign en_posts = site.posts | where:'tags', 'engineering' %}
+          {% assign sw_en_posts = sw_posts | concat: en_posts | uniq | sort: 'date' | reverse %}
+
+
           {% assign filtered_posts = "" | split: ',' %}
-          {% for post in site.posts %}
+          {% for post in sw_en_posts %}
             {% unless post.tags contains "draft" %}
             {% assign filtered_posts = filtered_posts | push: post %}
             {% endunless %}
           {% endfor %}
 
-          {% assign os_posts = filtered_posts | where:'tags', 'engineering' | sort: 'date' | reverse %}
-          {% for post in os_posts %}
+          {% for post in filtered_posts %}
           <article class="col-md-12 article-list">
             <div class="inner">
               <figure>
