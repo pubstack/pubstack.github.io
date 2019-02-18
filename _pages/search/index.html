@@ -34,12 +34,9 @@ window.simpleJekyllSearch = new SimpleJekyllSearch({
   resultsContainer: document.getElementById('results-container'),
   json: '/search.json',
   searchResultTemplate: '<article class="article-mini">    <div class="inner">      <figure>        <a href="{url}">          <img src="{image}">        </a>       </figure>       <div class="padding">           <h1><a href="{url}">{title}</a>{% if post.favorite == true %}<i class="ion-star"></i>{% endif %}</h1>            <div class="detail"><div class="time">{date}</div></div></div></div></article>',
-
-
-
   noResultsText: 'No results found',
-  /**limit: 10,**/
-  fuzzy: false
+  limit: 100000,
+  fuzzy: true
 })
 
 setTimeout(() => {
