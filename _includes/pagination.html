@@ -1,14 +1,21 @@
+{% assign paginator_min = paginator.page | minus: 4 %}
+{% assign paginator_max = paginator.page | plus: 4 %}
+{% assign paginator_max_pre = paginator.page | plus: 3 %}
+
+{% if paginator_min < 0 %}
+    {% assign paginator_min_abs = paginator_min | abs %}
+    {% assign paginator_max = paginator_max | plus: paginator_min_abs %}
+{% elsif paginator_max_pre > paginator.total_pages %}
+    {% assign paginator_max_shift = paginator_max_pre | minus: paginator.total_pages %}
+    {% assign paginator_min = paginator_min | minus: paginator_max_shift %}
+{% endif %}
+
 <ul class="pagination">
     <li class="prev">
       <a href="{% if paginator.previous_page_path == blank %}#{% else %}{{ paginator.previous_page_path }}{% endif %}">
         <i class="ion-ios-arrow-left"></i>
       </a>
     </li>
-
-
-    {% assign paginator_min = paginator.page | minus: 4 %}
-    {% assign paginator_max = paginator.page | plus: 4 %}
-
     {% for page in (1..paginator.total_pages) %}
       {% if page > paginator_min and page < paginator_max %}
         {% if paginator.page == page %}
@@ -27,5 +34,5 @@
     </li>
 </ul>
 <div class="pagination-help-text">
-  Showing {{ site.paginate }} results of {{ site.posts.size }} &mdash; Page {{ paginator.page }}
+  Showing {{ paginator.posts.size }} results of {{ site.posts.size }} &mdash; Page {{ paginator.page }}
 </div>
