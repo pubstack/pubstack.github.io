@@ -17,6 +17,8 @@ title: "Anstack.com"
 email: ccamacho@yandex.com
 description: "Anstack.com - Write ups about engineering, cloud computing and my hobbies."
 
+disclaimer_url: https://www.anstack.com/disclaimer
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.anstack.com"
 twitter_username: none
