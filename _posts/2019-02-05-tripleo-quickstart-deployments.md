@@ -31,7 +31,10 @@ Undercloud VM to start operating your Overcloud deployment.
 
 The usual steps are:
 
-__01 - Create the toor user (from the Hypervisor node, as root).__
+__01 - Prepare the hypervisor node.__
+
+Now, let's install some dependencies.
+Same Hypervisor node, same `root` user.
 
 ```bash
 # In this dev. env. /var is only 50GB, so I will create
@@ -40,21 +43,6 @@ __01 - Create the toor user (from the Hypervisor node, as root).__
 sudo mkdir -p /home/libvirt/
 sudo ln -sf /home/libvirt/ /var/lib/libvirt
 
-sudo useradd toor
-echo "toor:toor" | sudo chpasswd
-echo "toor ALL=(root) NOPASSWD:ALL" \
-  | sudo tee /etc/sudoers.d/toor
-sudo chmod 0440 /etc/sudoers.d/toor
-sudo su - toor
-```
-
-Now, follow as the `toor` user and prepare the Hypervisor node
-for the deployment.
-
-__02 - Prepare the hypervisor node.__
-
-
-```bash
 # Disable IPv6 lookups
 sudo bash -c "cat >> /etc/sysctl.conf" << EOL
 net.ipv6.conf.all.disable_ipv6 = 1
@@ -62,6 +50,22 @@ net.ipv6.conf.default.disable_ipv6 = 1
 EOL
 
 sudo sysctl -p
+
+sudo yum groupinstall "Virtualization Host" -y
+sudo yum install git lvm2 lvm2-devel -y
+sudo yum install libvirt-python python-lxml libvirt -y
+```
+
+
+__02 - Create the toor user (from the Hypervisor node, as root).__
+
+```bash
+sudo useradd toor
+echo "toor:toor" | sudo chpasswd
+echo "toor ALL=(root) NOPASSWD:ALL" \
+  | sudo tee /etc/sudoers.d/toor
+sudo chmod 0440 /etc/sudoers.d/toor
+sudo su - toor
 
 cd
 mkdir .ssh
@@ -71,13 +75,11 @@ cat .ssh/id_rsa.pub | sudo tee -a /root/.ssh/authorized_keys
 echo '127.0.0.1 127.0.0.2' | sudo tee -a /etc/hosts
 
 export VIRTHOST=127.0.0.2
-sudo yum groupinstall "Virtualization Host" -y
-sudo yum install git lvm2 lvm2-devel -y
 ssh root@$VIRTHOST uname -a
 ```
 
-Now, let's install some dependencies.
-Same Hypervisor node, same `toor` user.
+Now, follow as the `toor` user and prepare the Hypervisor node
+for the deployment.
 
 __03 - Clone repos and install deps.__
 
