@@ -50,6 +50,11 @@ sudo ln -sf /home/libvirt/ /var/lib/libvirt
 # EOL
 # sudo sysctl -p
 
+# Enable IPv6 in kernel cmdline
+# sed -i s/ipv6.disable=1/ipv6.disable=0/ /etc/default/grub
+# grub2-mkconfig -o /boot/grub2/grub.cfg
+# reboot
+
 sudo yum groupinstall "Virtualization Host" -y
 sudo yum install git lvm2 lvm2-devel -y
 sudo yum install libvirt-python python-lxml libvirt -y
