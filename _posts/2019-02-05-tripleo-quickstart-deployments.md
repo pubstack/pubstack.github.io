@@ -44,12 +44,11 @@ sudo mkdir -p /home/libvirt/
 sudo ln -sf /home/libvirt/ /var/lib/libvirt
 
 # Disable IPv6 lookups
-sudo bash -c "cat >> /etc/sysctl.conf" << EOL
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-EOL
-
-sudo sysctl -p
+# sudo bash -c "cat >> /etc/sysctl.conf" << EOL
+# net.ipv6.conf.all.disable_ipv6 = 1
+# net.ipv6.conf.default.disable_ipv6 = 1
+# EOL
+# sudo sysctl -p
 
 sudo yum groupinstall "Virtualization Host" -y
 sudo yum install git lvm2 lvm2-devel -y
