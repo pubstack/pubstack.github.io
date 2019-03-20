@@ -50,7 +50,9 @@
 		<script src="/assets/js/OBJLoader.js"></script>
 		<script src="/assets/js/MTLLoader.js"></script>
 
+		{% if page.tags contains "3D" %}
 		{% include render3D_head.html %}
+		{% endif %}
 
 	</head>
 
