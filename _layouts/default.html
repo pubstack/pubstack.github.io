@@ -43,6 +43,12 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ "/assets/css/prism.css" | prepend: site.baseurl }}">
     {% include analytics.html %}
+
+		<script src="/assets/js/three.js"></script>
+		<script src="/assets/js/Detector.js"></script>
+		<script src="/assets/js/OrbitControls.js"></script>
+		<script src="/assets/js/OBJLoader.js"></script>
+		<script src="/assets/js/MTLLoader.js"></script>
 	</head>
 
 	<body class="skin-orange">
@@ -64,6 +70,7 @@
 		<script src="/assets/scripts/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="/assets/scripts/toast/jquery.toast.min.js"></script>
 		<script src="/assets/js/e-magz.js"></script>
+
 {% if page.title contains "Planet and archive" %}
 {% include planet_generator.html %}
 {% endif %}
