@@ -44,11 +44,17 @@
     <link rel="stylesheet" href="{{ "/assets/css/prism.css" | prepend: site.baseurl }}">
     {% include analytics.html %}
 
-		<script src="/assets/js/three.js"></script>
-		<script src="/assets/js/Detector.js"></script>
-		<script src="/assets/js/OrbitControls.js"></script>
-		<script src="/assets/js/OBJLoader.js"></script>
-		<script src="/assets/js/MTLLoader.js"></script>
+		<script src="/assets/js/three/three.js"></script>
+		<script src="/assets/js/three/OrbitControls.js"></script>
+		<script src="/assets/js/three/GLTFLoader.js"></script>
+		<script src="/assets/js/three/EquirectangularToCubeGenerator.js"></script>
+		<script src="/assets/js/three/RGBELoader.js"></script>
+		<script src="/assets/js/three/PMREMGenerator.js"></script>
+		<script src="/assets/js/three/PMREMCubeUVPacker.js"></script>
+		<script src="/assets/js/three/WebGL.js"></script>
+		<script src="/assets/js/three/stats.min.js"></script>
+
+
 
 		{% if page.tags contains "3D" %}
 		{% include render3D_head.html %}

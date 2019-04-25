@@ -1,108 +1,79 @@
 <script>
 
-    if (!Detector.webgl) {
-        Detector.addGetWebGLMessage();
-    }
+if ( WEBGL.isWebGLAvailable() === false ) {
+document.body.appendChild( WEBGL.getWebGLErrorMessage() );
+}
 
-    var container;
-    var camera, controls, scene, renderer;
-    var lighting, ambient, keyLight, fillLight, backLight;
+var container, stats;
+var camera, controls, scene, renderer;
 
-    function init(path, model) {
+function init(path, model) {
 
         container = document.getElementById(model);
 
         /* Camera */
         camera = new THREE.PerspectiveCamera( 75, container.offsetWidth / container.offsetHeight, 2, 1000 );
-        camera.position.z = 3;
 
-        /* Scene */
-        scene = new THREE.Scene();
-        lighting = false;
-        ambient = new THREE.AmbientLight(0xffffff, 1.0);
-        scene.add(ambient);
-        keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
-        keyLight.position.set(-100, 0, 100);
-        fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.75);
-        fillLight.position.set(100, 0, 100);
-        backLight = new THREE.DirectionalLight(0xffffff, 1.0);
-        backLight.position.set(100, 0, -100).normalize();
+        				camera.position.set( - 1.8, 0.9, 2.7 );
+        				controls = new THREE.OrbitControls( camera );
+        				controls.target.set( 0, - 0.2, - 0.2 );
+        				controls.update();
+        				scene = new THREE.Scene();
+        				var loader = new THREE.RGBELoader().setPath( '/'+path );
+        				loader.load( model+'.hdr', function ( texture ) {
+        					texture.encoding = THREE.RGBEEncoding;
+        					texture.minFilter = THREE.NearestFilter;
+        					texture.magFilter = THREE.NearestFilter;
+        					texture.flipY = true;
+        					var cubeGenerator = new THREE.EquirectangularToCubeGenerator( texture, { resolution: 1024 } );
+        					cubeGenerator.update( renderer );
+        					var pmremGenerator = new THREE.PMREMGenerator( cubeGenerator.renderTarget.texture );
+        					pmremGenerator.update( renderer );
+        					var pmremCubeUVPacker = new THREE.PMREMCubeUVPacker( pmremGenerator.cubeLods );
+        					pmremCubeUVPacker.update( renderer );
+        					var envMap = pmremCubeUVPacker.CubeUVRenderTarget.texture;
+        					// model
+        					var loader = new THREE.GLTFLoader().setPath( '/'+path );
+        					loader.load( model+'.gltf', function ( gltf ) {
+        						gltf.scene.traverse( function ( child ) {
+        							if ( child.isMesh ) {
+        								child.material.envMap = envMap;
+        							}
+        						} );
+        						scene.add( gltf.scene );
+        					} );
+        					pmremGenerator.dispose();
+        					pmremCubeUVPacker.dispose();
+        					scene.background = cubeGenerator.renderTarget;
+        				} );
+        				renderer = new THREE.WebGLRenderer( { antialias: true } );
+        				renderer.setPixelRatio( window.devicePixelRatio );
+        				//renderer.setSize( window.innerWidth, window.innerHeight );
+                renderer.setSize(container.offsetWidth, container.offsetHeight );
 
-        /* Model */
-        var mtlLoader = new THREE.MTLLoader();
-        mtlLoader.setBaseUrl('/'+path);
-        mtlLoader.setPath('/'+path);
-        mtlLoader.load(model+'.mtl', function (materials) {
-            materials.preload();
-            materials.materials.default.map.magFilter = THREE.NearestFilter;
-            materials.materials.default.map.minFilter = THREE.LinearFilter;
-            var objLoader = new THREE.OBJLoader();
-            objLoader.setMaterials(materials);
-            objLoader.setPath('/'+path);
-            objLoader.load(model+'.obj', function (object) {
-                scene.add(object);
-            });
-        });
+        				renderer.gammaOutput = true;
+        				container.appendChild( renderer.domElement );
+        				window.addEventListener( 'resize', onWindowResize, false );
 
-        /* Renderer */
-        renderer = new THREE.WebGLRenderer();
-        renderer.setPixelRatio(window.devicePixelRatio);
-        //renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setSize(container.offsetWidth, container.offsetHeight);
-        renderer.setClearColor(new THREE.Color("hsl(0, 0%, 10%)"));
 
-        container.appendChild(renderer.domElement);
+                controls.noPan = true;
+//controls.maxDistance = controls.minDistance = yourfixeddistnace;
+controls.noKeys = true;
+//controls.noRotate = true;
+controls.noZoom = true;
 
-        /* Controls */
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.25;
-        controls.enableZoom = false;
 
-        /* Events */
-        window.addEventListener('resize', onWindowResize, false);
-        window.addEventListener('keydown', onKeyboardEvent, false);
-        window.addEventListener('mousewheel', onDocumentMouseWheel, false);
 
         animate();
-    }
-
-    function onWindowResize() {
-    //    camera.aspect = container.offsetWidth / container.offsetHeight;
-    //    camera.updateProjectionMatrix();
-      renderer.setSize("100%", container.offsetHeight);
-    }
-
-    function onKeyboardEvent(e) {
-        if (e.code === 'KeyL') {
-            lighting = !lighting;
-            if (lighting) {
-                ambient.intensity = 0.25;
-                scene.add(keyLight);
-                scene.add(fillLight);
-                scene.add(backLight);
-            } else {
-                ambient.intensity = 1.0;
-                scene.remove(keyLight);
-                scene.remove(fillLight);
-                scene.remove(backLight);
-            }
-        }
-    }
-
-    function onDocumentMouseWheel(e) {
-        //e.preventDefault();
-        //e.stopPropagation();
-        var fovMAX = 160;
-        var fovMIN = 1;
-        camera.fov -= event.wheelDeltaY * 0.05;
-        camera.fov = Math.max( Math.min( camera.fov, fovMAX ), fovMIN );
-        camera.projectionMatrix = new THREE.Matrix4().makePerspective(camera.fov, window.innerWidth / window.innerHeight, camera.near, camera.far);
-    }
-
-    function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
-    }
+			}
+      function onWindowResize() {
+        camera.aspect = container.offsetWidth / container.offsetHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+      }
+			function animate() {
+				requestAnimationFrame( animate );
+				renderer.render( scene, camera );
+		//		stats.update();
+			}
 </script>
