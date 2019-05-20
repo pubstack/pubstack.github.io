@@ -7,17 +7,18 @@ categories:
 tags:
   - cloud
   - tripleo
-  - cloud
+  - openstack
 favorite: true
 commentIssueId: 59
 refimage: '/static/ReAR_and_OpenStack.png'
 ---
 
-![](/static/ReAR_and_OpenStack.png)
-
 ReAR is a pretty impressive disaster recovery
 solution for Linux. Relax-and-Recover, creates both a
 bootable rescue image and a backup of the associated files you choose.
+
+![](/static/ReAR_and_OpenStack.png)
+
 When doing disaster recovery of a system, this Rescue Image plays
 the files back from the backup and so in the twinkling of
 an eye the latest state.
