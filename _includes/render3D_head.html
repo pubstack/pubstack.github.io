@@ -24,6 +24,7 @@ function init(path, model) {
 		scene = new THREE.Scene();
   	var loader = new THREE.RGBELoader().setPath( '/'+path );
   	loader.load( model+'.hdr', function ( texture ) {
+
       	texture.encoding = THREE.RGBEEncoding;
         texture.minFilter = THREE.NearestFilter;
       	texture.magFilter = THREE.NearestFilter;
@@ -63,12 +64,6 @@ function init(path, model) {
 	  container.appendChild( renderer.domElement );
 	  window.addEventListener( 'resize', onWindowResize, false );
 
-    window.addEventListener("mousedown", onMouseDown);
-    window.addEventListener("touchstart", onMouseDown);
-    window.addEventListener("mouseup", onMouseUp);
-    window.addEventListener("touchend", onMouseUp);
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("touchmove", onMouseMove);
 
 
   //  controls.noPan = false;
@@ -84,43 +79,6 @@ function init(path, model) {
         renderer.setSize(container.offsetWidth, container.offsetHeight);
       }
 
-
-
-      // マウスを押したとき
-      function onMouseDown(event) {
-          isMouseDown = true;
-      }
-
-      // マウスを動かした時
-      function onMouseMove(event) {
-          if (isMouseDown) {
-              // 3DモデルをX軸とY軸方向に回転させます
-              if ( mesh ) {
-                  mesh.rotation.y = getMouseX(event)/50;
-                  mesh.rotation.x = getMouseY(event)/50;
-
-              }
-          }
-      }
-
-      // マウスを離したとき
-      function onMouseUp(event) {
-          isMouseDown = false;
-      }
-
-      function getMouseX(event) {
-          if (event.type.indexOf("touch") == -1)
-              return event.clientX;
-          else
-              return event.touches[0].clientX;
-      }
-
-      function getMouseY(event) {
-          if (event.type.indexOf("touch") == -1)
-              return event.clientY;
-          else
-              return event.touches[0].clientY;
-      }
 
 
 			function animate() {
