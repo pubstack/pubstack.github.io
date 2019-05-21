@@ -16,7 +16,8 @@ function init(path, model) {
 		camera.position.set( 0, 2.5, 2.5 );
 
 
-		controls = new THREE.OrbitControls( camera );
+		controls = new THREE.OrbitControls( camera, container );
+
 		controls.target.set( 0, - 0.2, - 0.2 );
 		controls.update();
 
@@ -64,12 +65,10 @@ function init(path, model) {
 	  container.appendChild( renderer.domElement );
 	  window.addEventListener( 'resize', onWindowResize, false );
 
-
-
   //  controls.noPan = false;
-    controls.enableKeys = true;
-    controls.enableRotate = true;
-    controls.enableZoom = true;
+  //  controls.enableKeys = true;
+//    controls.enableRotate = true;
+  //  controls.enableZoom = true;
         animate();
 			}
 
@@ -78,7 +77,6 @@ function init(path, model) {
         camera.updateProjectionMatrix();
         renderer.setSize(container.offsetWidth, container.offsetHeight);
       }
-
 
 
 			function animate() {
