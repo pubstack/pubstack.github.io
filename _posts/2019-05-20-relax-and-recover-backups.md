@@ -52,7 +52,8 @@ controllers or the compute nodes.
 
 ```bash
 groupadd backup
-useradd -g backup -d /data/backup -s /sbin/nologin backup
+mkdir /data
+useradd -m -g backup -d /data/backup backup
 echo "backup:backup" | chpasswd
 chown -R backup:backup /data
 chmod -R 755 /data
@@ -66,7 +67,7 @@ __02 - Run the backup from the Overcloud nodes.__
 sudo yum install rear genisoimage syslinux lftp -y
 
 #Configure ReAR
-cat << EOF >> /etc/rear/local.conf
+sudo tee -a "/etc/rear/local.conf" > /dev/null <<'EOF'
 OUTPUT=ISO
 OUTPUT_URL=sftp://backup:backup@undercloud-0/data/backup/
 BACKUP_URL=sftp://backup:backup@undercloud-0/data/backup/
