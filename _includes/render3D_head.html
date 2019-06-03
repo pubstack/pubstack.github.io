@@ -47,7 +47,7 @@ function init(path, model) {
     scene.add( grid );
 
     var loader = new THREE.GLTFLoader().setPath( '/'+path );
-    loader.load( model+'.gltf', function ( gltf ) {
+    loader.load( model, function ( gltf ) {
       scene.add( gltf.scene );
     } );
 

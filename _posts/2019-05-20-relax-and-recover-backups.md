@@ -61,21 +61,43 @@ chmod -R 755 /data
 
 __02 - Run the backup from the Overcloud nodes.__
 
+Let's install some required packages and run some previous
+configuration steps.
 
 ```bash
 #Install packages
 sudo yum install rear genisoimage syslinux lftp -y
 
+#Make sure you are able to use sshfs to store the ReAR backup
+sudo yum install fuse -y
+sudo yum groupinstall "Development tools" -y
+wget http://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/f/fuse-sshfs-2.10-1.el7.x86_64.rpm
+sudo rpm -i fuse-sshfs-2.10-1.el7.x86_64.rpm
+
+sudo mkdir -p /data/backup
+sudo sshfs -o allow_other backup@undercloud-0:/data/backup /data/backup
+#Use backup password, which is... backup
+```
+
+Now, let's configure ReAR config file.
+
+```bash
 #Configure ReAR
 sudo tee -a "/etc/rear/local.conf" > /dev/null <<'EOF'
 OUTPUT=ISO
 OUTPUT_URL=sftp://backup:backup@undercloud-0/data/backup/
-BACKUP_URL=sftp://backup:backup@undercloud-0/data/backup/
+BACKUP=NETFS
+BACKUP_URL=sshfs://backup@undercloud-0/data/backup/
+BACKUP_PROG_COMPRESS_OPTIONS="--gzip"
+BACKUP_PROG_COMPRESS_SUFFIX=".gz"
+BACKUP_PROG_EXCLUDE=( '/tmp/*' '/data/*' )
 EOF
 ```
 
 Now run the backup, this should create an ISO image in
 the Undercloud node (/data/backup/).
+
+**You will be asked for the backup user password**
 
 ```bash
 sudo rear -d -v mkbackup
@@ -84,7 +106,7 @@ sudo rear -d -v mkbackup
 Now, simulate a failure xD
 
 ```
-# sudo rm -rf /
+# sudo rm -rf /lib
 ```
 
 After the ISO image is created, we can proceed to
@@ -108,6 +130,7 @@ __04 - Stop the damaged controller node.__
 
 ```bash
 virsh shutdown controller-0
+# virsh destroy controller-0
 
 # Wait until is down
 watch virsh list --all
@@ -152,7 +175,7 @@ virsh define controller-0.xml
 Restart and connect to the guest
 
 ```bash
-virsh reset controller-0
+virsh start controller-0
 virsh console controller-0
 ```
 
@@ -167,13 +190,22 @@ Welcome to Relax-and-Recover. Run "rear recover" to restore your system !
 RESCUE controller-0:~ # rear recover
 ```
 
+Now, before proceeding to run the controller restore, it's possible that
+the host undercloud-0 can't be resolved, just:
+
+```bash
+echo "192.168.24.1 undercloud-0" >> /etc/hosts
+```
+
+Having resolved the Undercloud host, just follow the wizard, Relax And Recover :)
+
 ![](/static/ReAR2.PNG)
 
 The image restore should progress quickly.
 
 ![](/static/ReAR3.PNG)
 
-COntinue to see the restore evolution.
+Continue to see the restore evolution.
 
 ![](/static/ReAR4.PNG)
 
