@@ -66,7 +66,7 @@ configuration steps.
 
 ```bash
 #Install packages
-sudo yum install rear genisoimage syslinux lftp -y
+sudo yum install rear genisoimage syslinux lftp wget -y
 
 #Make sure you are able to use sshfs to store the ReaR backup
 sudo yum install fuse -y
@@ -84,7 +84,6 @@ Now, let's configure ReaR config file.
 ```bash
 #Configure ReaR
 sudo tee -a "/etc/rear/local.conf" > /dev/null <<'EOF'
-USE_RESOLV_CONF=( "undercloud-0 192.168.24.1" )
 OUTPUT=ISO
 OUTPUT_URL=sftp://backup:backup@undercloud-0/data/backup/
 BACKUP=NETFS
@@ -183,6 +182,16 @@ virsh console controller-0
 You should be able to see the boot menu to start the recover process, select Recover controller-0 and follow the instructions.
 
 ![](/static/ReAR1.PNG)
+
+Now, before proceeding to run the controller restore, it's possible that
+the host undercloud-0 can't be resolved, just:
+
+```bash
+echo "192.168.24.1 undercloud-0" >> /etc/hosts
+```
+
+Having resolved the Undercloud host, just follow the wizard, Relax And Recover :)
+
 You yould see a message like:
 
 ```
