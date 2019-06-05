@@ -13,7 +13,7 @@ commentIssueId: 59
 refimage: '/static/ReAR_and_OpenStack.png'
 ---
 
-ReAR is a pretty impressive disaster recovery
+ReaR is a pretty impressive disaster recovery
 solution for Linux. Relax-and-Recover, creates both a
 bootable rescue image and a backup of the associated files you choose.
 
@@ -39,7 +39,7 @@ In this specific case, due to the nature of the OpenStack deployment we will
 choose those protocols that are allowed by default in the Iptables rules (SSH, SFTP in particular).
 
 But enough with the theory, here's a practical example of one of many possible configurations.
-We will apply this specific use of ReAR to recover
+We will apply this specific use of ReaR to recover
 a failed control plane after a critical maintenance task (like an upgrade).
 
 __01 - Prepare the Undercloud backup bucket.__
@@ -68,7 +68,7 @@ configuration steps.
 #Install packages
 sudo yum install rear genisoimage syslinux lftp -y
 
-#Make sure you are able to use sshfs to store the ReAR backup
+#Make sure you are able to use sshfs to store the ReaR backup
 sudo yum install fuse -y
 sudo yum groupinstall "Development tools" -y
 wget http://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/f/fuse-sshfs-2.10-1.el7.x86_64.rpm
@@ -79,16 +79,17 @@ sudo sshfs -o allow_other backup@undercloud-0:/data/backup /data/backup
 #Use backup password, which is... backup
 ```
 
-Now, let's configure ReAR config file.
+Now, let's configure ReaR config file.
 
 ```bash
-#Configure ReAR
+#Configure ReaR
 sudo tee -a "/etc/rear/local.conf" > /dev/null <<'EOF'
+USE_RESOLV_CONF=( "undercloud-0 192.168.24.1" )
 OUTPUT=ISO
 OUTPUT_URL=sftp://backup:backup@undercloud-0/data/backup/
 BACKUP=NETFS
 BACKUP_URL=sshfs://backup@undercloud-0/data/backup/
-BACKUP_PROG_COMPRESS_OPTIONS="--gzip"
+BACKUP_PROG_COMPRESS_OPTIONS=( --gzip )
 BACKUP_PROG_COMPRESS_SUFFIX=".gz"
 BACKUP_PROG_EXCLUDE=( '/tmp/*' '/data/*' )
 EOF
@@ -189,15 +190,6 @@ Welcome to Relax-and-Recover. Run "rear recover" to restore your system !
 
 RESCUE controller-0:~ # rear recover
 ```
-
-Now, before proceeding to run the controller restore, it's possible that
-the host undercloud-0 can't be resolved, just:
-
-```bash
-echo "192.168.24.1 undercloud-0" >> /etc/hosts
-```
-
-Having resolved the Undercloud host, just follow the wizard, Relax And Recover :)
 
 ![](/static/ReAR2.PNG)
 
