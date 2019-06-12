@@ -116,6 +116,9 @@ __03 - Prepare the hypervisor.__
 
 
 ```bash
+# Enable the use of fusefs for the VMs on the hypervisor
+setsebool -P virt_use_fusefs 1
+
 # Install some required packages
 sudo yum install -y fuse-sshfs
 
