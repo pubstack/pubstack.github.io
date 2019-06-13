@@ -90,7 +90,7 @@
                           {% assign sf_posts = filtered_posts | where:'tags', 'software_development' %}
                           {% assign eng_posts = filtered_posts | where:'tags', 'engineering' %}
 
-                          {% assign sf_eng_posts = sf_posts | concat: eng_posts | uniq | sort: 'date' reverse %}
+                          {% assign sf_eng_posts = sf_posts | concat: eng_posts | uniq | sort: 'date' | reverse %}
 
 
                           {% for post in sf_eng_posts | limit: 5 %}
@@ -205,7 +205,7 @@
                           {% assign ref_posts = filtered_posts | where:'tags', 'reflections' %}
                           {% assign mgt_posts = filtered_posts | where:'tags', 'management' %}
 
-                          {% assign ref_mgt_posts = ref_posts | concat: mgt_posts | uniq | sort: 'date' reverse %}
+                          {% assign ref_mgt_posts = ref_posts | concat: mgt_posts | uniq | sort: 'date' | reverse %}
 
                           {% for post in ref_mgt_posts | limit: 5 %}
                           <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
