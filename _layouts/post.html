@@ -59,14 +59,15 @@ layout: default
           <div class="main">
             {{ content }}
           </div>
-          <footer>
-            <div class="col">
-              <ul class="tags">
-                {% for sn in page.tags %}<li><a href="#">{{ sn | replace: "_", " " }}</a></li>{% endfor %}
-              </ul>
-            </div>
-          </footer>
         </article>
+        <br/>
+        <footer>
+          <div class="col">
+            <ul class="tags">
+              {% for sn in page.tags %}<li><a href="#">{{ sn | replace: "_", " " }}</a></li>{% endfor %}
+            </ul>
+          </div>
+        </footer>
         <!--
         <div class="sharing">
         <div class="title"><i class="ion-android-share-alt"></i> Sharing is caring</div>

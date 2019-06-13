@@ -1,0 +1,18 @@
+<div class="col">
+  <h2 class="block-title">Gallery</h2>
+	<div class="block-body">
+		<ul class="item-list-round" data-magnific="gallery">
+      {% for image in include.images %}
+      <li><a href="{{ image }}" style="background-image: url('{{ image }}');"></a></li>
+      {% endfor %}
+<!--
+			<li><a href="/static/xx.jpg" style="background-image: url('/static/xx.jpg');"></a></li>
+      <li><a href="/static/xx.jpg" style="background-image: url('/static/xx.jpg');"></a></li>
+			<li><a href="/static/xx.jpg" style="background-image: url('/static/xx.jpg');"><div class="more">+2</div></a></li>
+
+      <li><a href="/static/xx.jpg" style="background-image: url('/static/x.jpg');"></a></li>
+      <li><a href="/static/xx.jpg" style="background-image: url('/static/xx.jpg');"></a></li>
+-->
+		</ul>
+	</div>
+</div>

@@ -13,7 +13,6 @@
     {% endfor %}
     {% assign favs_posts = (filtered_posts | where:'favorite', true | sort: 'date') | reverse %}
 
-
     {% for post in favs_posts | limit: 6 %}
     <article class="article-mini">
       <div class="inner">
