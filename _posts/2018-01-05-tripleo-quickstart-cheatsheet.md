@@ -96,3 +96,15 @@ bash ./tripleo-quickstart/quickstart.sh \
 ```
 
 Happy TripleOing!!!
+
+## Update log:
+
+<div style="font-size:10px">
+  <blockquote>
+    <p><strong>2018/01/05:</strong> Initial version.</p>
+    <p><strong>2019/01/16:</strong> Appeared in <a href="https://superuser.openstack.org/articles/new-tripleo-quick-start-cheatsheet/">OpenStack Superuser blog.</a></p>
+  </blockquote>
+</div>
+
+
+

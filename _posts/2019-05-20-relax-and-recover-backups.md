@@ -248,3 +248,13 @@ Enjoy.
 * Shutdown/Starting sequence for HA control plane.
 * Do we need to backup the data plane?
 * User workloads should be handled by a third party backup software.
+
+
+## Update log:
+
+<div style="font-size:10px">
+  <blockquote>
+    <p><strong>2019/05/20:</strong> Initial version.</p>
+    <p><strong>2019/06/18:</strong> Appeared in <a href="https://superuser.openstack.org/articles/tutorial-rear-openstack-deployment/">OpenStack Superuser blog.</a></p>
+  </blockquote>
+</div>
