@@ -29,14 +29,14 @@ sudo chmod +x /usr/bin/tmate
 rm -rf tmate-2.2.1-static-linux-amd64*
 
 #Configure Tmate using ln2 as the default server
-sudo tee -a "~/.tmate.conf" > /dev/null <<'EOF'
+sudo tee -a ~/.tmate.conf > /dev/null <<'EOF'
 set -g tmate-server-host "ln2.tmate.io"
 EOF
 ```
 
 And that is it, enjoy.
 
-Open tmate and share the link...
+Use tmate and share the link...
 
 ### Running tmate as a daemon
 
