@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Oil painting and Minikube - Install your development environment with Minikube"
+title: "Oil painting and Minikube - Installing Minikube in Centos 7"
 author: "Carlos Camacho"
 categories:
   - blog
