@@ -39,21 +39,24 @@ Same Hypervisor node, same `root` user.
 ```bash
 # In this dev. env. /var is only 50GB, so I will create
 # a sym link to another location with more capacity.
-# It will take easily more tan 50GB deploying a 3+1 overcloud
 sudo mkdir -p /home/libvirt/
 sudo ln -sf /home/libvirt/ /var/lib/libvirt
 
-# Install some packages ***Including EPEL***
-sudo yum install epel-release -y
-sudo yum groupinstall "Virtualization Host" -y
-sudo yum install libvirt qemu-kvm virt-install virt-top libguestfs-tools bridge-utils -y
-sudo yum install git lvm2 lvm2-devel -y
-sudo yum install libvirt-python python-lxml libvirt curl-y
-sudo yum install binutils qt gcc make patch libgomp -y
-sudo yum install glibc-headers glibc-devel kernel-headers -y
-sudo yum install kernel-devel dkms bash-completion -y
-sudo yum install nano wget -y
-sudo yum install python3-pip -y 
+sudo mkdir -p /home/docker/
+sudo ln -sf /home/docker/ /var/lib/docker
+
+# Install some packages
+sudo yum install dnf -y
+sudo dnf update -y
+sudo dnf groupinstall "Virtualization Host" -y
+sudo dnf install libvirt qemu-kvm virt-install virt-top libguestfs-tools bridge-utils -y
+sudo dnf install git lvm2 lvm2-devel -y
+sudo dnf install libvirt-python python-lxml libvirt curl-y
+sudo dnf install binutils qt gcc make patch libgomp -y
+sudo dnf install glibc-headers glibc-devel kernel-headers -y
+sudo dnf install kernel-devel dkms bash-completion -y
+sudo dnf install nano wget -y
+sudo dnf install python3-pip -y 
 ```
 
 __02 - Check that the kernel modules are OK.__
@@ -96,7 +99,7 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 EOF
 
 # Install kubectl
-sudo yum install kubectl -y
+sudo dnf install kubectl -y
 source <(kubectl completion bash)
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 ```
@@ -119,7 +122,27 @@ ssh-keygen -t rsa -N "" -f .ssh/id_rsa
 Now, follow as the `toor` user and prepare the Hypervisor node
 for Minikube.
 
-__06 - Finish the Minikube configuration.__
+__06 - Install Docker.__
+
+We will like to also use docker in the Hypervisor node
+for creating images and debugging purposes.
+
+```bash
+# Install docker
+sudo dnf install docker -y
+sudo usermod --append --groups dockerroot toor
+sudo tee /etc/docker/daemon.json >/dev/null <<-EOF
+{
+    "live-restore": true,
+    "group": "dockerroot"
+}
+EOF
+sudo systemctl start docker
+sudo systemctl enable docker
+
+```
+
+__07 - Finish the Minikube configuration.__
 
 ```bash
 # Add to bashrc in toor user
@@ -130,7 +153,7 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 sudo usermod --append --groups libvirt toor
 ```
 
-__07 - Start Minikube.__
+__08 - Start Minikube.__
 
 ```bash
 minikube start --memory=65536 --cpus=4 --vm-driver kvm2
@@ -153,7 +176,7 @@ minikube stop
 minikube delete
 ```
 
-__08 - Minikube cheat sheet.__
+__09 - Minikube cheat sheet.__
 
 ```bash
 # set & get current context of cluster
@@ -187,5 +210,6 @@ __08 - Minikube cheat sheet.__
 <div style="font-size:10px">
   <blockquote>
     <p><strong>Updated 2019/10/13:</strong> Initial version.</p>
+    <p><strong>Updated 2019/10/15:</strong> Install also docker in the hypervisor.</p>
   </blockquote>
 </div>
