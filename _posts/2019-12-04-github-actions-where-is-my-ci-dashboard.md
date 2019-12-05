@@ -19,6 +19,17 @@ as possible. These information radiators improve
 the team's communication by amplifying pieces of
 data to get a better notion of self-awareness.
 
+## TL;DR;
+
+If you just want to go straight to the solution
+of how to convert SVG badges to a widget-based
+CI dashboard, just go to the
+[Badgeboard](https://github.com/pystol/badgeboard)
+repository or open the
+[demo](https://badgeboard.pystol.org).
+
+Otherwise, continue reading.
+
 ![](/static/badgeboard/01_build_monitor.png)
 
 If you are beginning to apply agile methodologies
