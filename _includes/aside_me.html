@@ -1,3 +1,24 @@
+<script type="text/javascript" language="javascript">
+  // change header image after 2 seconds
+  var images = ['01',
+                '02',
+                '03',
+                '04',
+               ],
+      index = 0, // starting index
+      maxImages = images.length - 1;
+
+  var timer = setInterval(function() {
+      var currentImage = images[index];
+      index = (index == maxImages) ? 0 : ++index;
+      $('.featured-author-cover').fadeOut(200, function() {
+          $('.featured-author-cover').css('background-image', "url('/assets/images/news/img"+currentImage+".jpg')");
+          $('.featured-author-cover').fadeIn(200);
+      });
+   }, 60000);
+</script>
+
+
 <div class="line">
   <div>Me</div>
 </div>
@@ -5,7 +26,7 @@
   <div class="aside-body">
     <div class="featured-author">
       <div class="featured-author-inner">
-        <div class="featured-author-cover" style="background-image: url('/assets/images/news/img15.jpg');">
+        <div class="featured-author-cover" style="background-image: url('/assets/images/news/img04.jpg');">
           <div class="badges">
             <div class="badge-item"><i class="ion-star"></i> Featured</div>
           </div>
@@ -15,7 +36,7 @@
             </figure>
             <div class="featured-author-info">
               <h2 class="name">Carlos Camacho</h2>
-              <!--<div class="desc">@JohnDoe</div>-->
+              <div class="desc">ccamacho @ freenode</div>
             </div>
           </div>
         </div>
