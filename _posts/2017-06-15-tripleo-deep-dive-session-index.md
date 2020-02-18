@@ -46,3 +46,5 @@ you can see all videos on the
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #12 (TripleO - config-download)](http://www.anstack.com/blog/2018/02/23/tripleo-deep-dive-session-12.html)
 >
 > &nbsp;&nbsp;&nbsp; * [TripleO deep dive #13 (TripleO - Containerized Undercloud)](http://www.anstack.com/blog/2018/05/31/tripleo-deep-dive-session-13.html)
+>
+> &nbsp;&nbsp;&nbsp; * [TripleO deep dive #14 (TripleO - Containerized deployments without Paunch)](http://www.anstack.com/blog/2020/02/18/tripleo-deep-dive-session-14.html)
