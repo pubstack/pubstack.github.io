@@ -33,7 +33,7 @@ window.simpleJekyllSearch = new SimpleJekyllSearch({
   searchInput: document.getElementById('search-input'),
   resultsContainer: document.getElementById('results-container'),
   json: '/search.json',
-  searchResultTemplate: '<article class="article-mini">    <div class="inner">      <figure>        <a href="{url}">          <img src="{image}">        </a>       </figure>       <div class="padding">           <h1><a href="{url}">{title}</a>{% if post.favorite == true %}<i class="ion-star"></i>{% endif %}</h1>            <div class="detail"><div class="time">{date}</div></div></div></div></article>',
+  searchResultTemplate: '<article class="article-mini">    <div class="inner">      <figure>        <a href="{url}">          <img src="{image}">        </a>       </figure>       <div class="padding">           <h1><a href="{url}">{title}</a>{% if post.favorite == true %}&nbsp;&nbsp;&nbsp;<i class="ion-star"></i>{% endif %}</h1>            <div class="detail"><div class="time">{date}</div></div></div></div></article>',
   noResultsText: 'No results found',
   limit: 100000,
   fuzzy: true

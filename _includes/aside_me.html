@@ -1,21 +1,21 @@
 <script type="text/javascript" language="javascript">
   // change header image after 2 seconds
   var images = ['01',
-                '02',
-                '03',
-                '04',
-               ],
-      index = 0, // starting index
-      maxImages = images.length - 1;
+  '02',
+  '03',
+  '04',
+  ],
+  index = 0, // starting index
+  maxImages = images.length - 1;
 
   var timer = setInterval(function() {
-      var currentImage = images[index];
-      index = (index == maxImages) ? 0 : ++index;
-      $('.featured-author-cover').fadeOut(200, function() {
-          $('.featured-author-cover').css('background-image', "url('/assets/images/news/img"+currentImage+".jpg')");
-          $('.featured-author-cover').fadeIn(200);
-      });
-   }, 60000);
+    var currentImage = images[index];
+    index = (index == maxImages) ? 0 : ++index;
+    $('.featured-author-cover').fadeOut(200, function() {
+      $('.featured-author-cover').css('background-image', "url('/assets/images/news/img"+currentImage+".jpg')");
+      $('.featured-author-cover').fadeIn(200);
+    });
+  }, 60000);
 </script>
 
 
@@ -28,7 +28,7 @@
       <div class="featured-author-inner">
         <div class="featured-author-cover" style="background-image: url('/assets/images/news/img04.jpg');">
           <div class="badges">
-            <div class="badge-item"><i class="ion-star"></i> Featured</div>
+            <div class="badge-item"><i class="ion-star"></i> Favorite</div>
           </div>
           <div class="featured-author-center">
             <figure class="featured-author-picture">
@@ -53,8 +53,8 @@
                 <div class="name">Words</div>
                 {% assign totalwords = 0 %}
                 {% for post in site.posts %}
-                  {% assign wordcount = post.content | number_of_words %}
-                  {% assign totalwords = totalwords | plus: wordcount %}
+                {% assign wordcount = post.content | number_of_words %}
+                {% assign totalwords = totalwords | plus: wordcount %}
                 {% endfor %}
                 <div class="value">{{ totalwords }}</div>
               </a>

@@ -1423,11 +1423,11 @@ article .detail {
   font-size: 12px;
 }
 article .time, article .category {
-  margin: 0 10px;
+  margin: 0 0px;
   color: #191E21;
 }
 article .category {
-  margin: 0 10px;
+  margin: 0 0px;
 }
 article .category a {
   color: #F73F52;
@@ -2204,7 +2204,7 @@ section .container {
   width: 300px;
   height: 195px;
   overflow: hidden;
-  background-color: #000;
+  background-color: #fff;
   float: left;
   display: inline-block;
   margin-bottom: 0;
@@ -2217,7 +2217,7 @@ section .container {
   margin-left: 315px;
 }
 .article-list .details .detail .category, .article-list .details .detail .time {
-  margin: 0 10px;
+  margin: 0 0px;
 }
 .article-list .details .detail .category {
   margin: 0;

@@ -1228,7 +1228,8 @@ section {
   }
   .time, .category {
     font-size: 10px;
-    letter-spacing: .5px;
+    /*letter-spacing: .5px;*/
+    letter-spacing: 0px;
     font-weight: 500;
     text-transform: uppercase;
   }
@@ -1292,11 +1293,11 @@ article {
     font-size: 12px;
   }
   .time, .category {
-    margin: 0 10px;
+    margin: 0 0px;
     color: color($colors, dark);
   }
   .category {
-    margin: 0 10px;
+    margin: 0 0px;
     a {
       color: color($colors, primary);
     }

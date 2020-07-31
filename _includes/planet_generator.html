@@ -12,7 +12,7 @@ function sortList(){
 function insertRow(timestamp,link, tit, auth, d){
 
 
-  var artic = "<article id='"+timestamp+"'class='article-mini'><div class='inner'><div><h1><a href='" + link + "'>" + tit + "</a></h1><div class='detail'><div class='category'><a href='" + link + "'>" + auth + "</a></div><div class='time'>" + d.getFullYear() + '/' + (d.getMonth()+1) + '/' + d.getDate() + "</div></div></div></div></article>";
+  var artic = "<article id='"+timestamp+"'class='article-mini'><div class='inner'><div><h1><a href='" + link + "'>" + tit + "</a></h1><div class='detail'><div class='category'><a href='" + link + "'>" + auth + "</a></div><div class='time'>&nbsp;- " + d.getFullYear() + '/' + (d.getMonth()+1) + '/' + d.getDate() + "</div></div></div></div></article>";
     $("#archiveul").append(artic);
     sortList();
 }
