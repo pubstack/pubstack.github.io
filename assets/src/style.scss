@@ -39,7 +39,7 @@
       width: 15px;
       height: 2px;
       background-color: color($colors, primary);
-    }    
+    }
   }
 }
 
@@ -1027,7 +1027,7 @@ section {
       border-bottom-width: 2px;
       box-shadow: none;
     }
-    &.stacked {    
+    &.stacked {
       label {
         font-size: 12px;
         position: absolute;
@@ -1060,13 +1060,13 @@ section {
         }
       }
 
-      &.focused {        
+      &.focused {
         label {
           top: -13px;
           left: 0;
           font-size: 12px;
         }
-        .form-control {        
+        .form-control {
           &::-webkit-input-placeholder {
             opacity: 1;
           }
@@ -2107,7 +2107,7 @@ section .container {
     width: 300px;
     height: 195px;
     overflow: hidden;
-    background-color: #000;
+    background-color: #fff;
     float: left;
     display: inline-block;
     margin-bottom: 0;
@@ -2615,7 +2615,7 @@ aside {
     }
   }
   .faq-body {
-    margin-top: 10px; 
+    margin-top: 10px;
   }
 }
 
@@ -2767,7 +2767,7 @@ aside {
                   -webkit-transform: scale(105);
                   -moz-transform: scale(105);
                   -o-transform: scale(105);
-                }                
+                }
               }
             }
             ul {
@@ -2901,15 +2901,15 @@ aside {
       > li {
         .dropdown-menu {
           width: $mobile_nav_width - 30px;
-          right: -$mobile_nav_width - 30px;      
-        }        
+          right: -$mobile_nav_width - 30px;
+        }
       }
     }
   }
 
   .sidebar {
     width: $mobile_nav_width - 30px;
-    right: -$mobile_nav_width - 30px;      
+    right: -$mobile_nav_width - 30px;
   }
 
   article figure {
@@ -3061,7 +3061,7 @@ footer.footer {
   }
 
   .article-mini {
-    .detail {    
+    .detail {
       .time, .category a {
         color: color($colors, footerText);
       }
@@ -3152,7 +3152,7 @@ section.single {
 
   article.main-article {
     header {
-      margin: 0;    
+      margin: 0;
       h1 {
         margin: 0;
         line-height: 1.1em;
@@ -3586,7 +3586,7 @@ blockquote {
     p {
       margin-bottom: 20px;
     }
-  } 
+  }
   .question {
     font-weight: 700;
     text-align: center;
@@ -3680,7 +3680,7 @@ blockquote {
       }
       &.active {
         span {
-          background-color: color($colors, primary);        
+          background-color: color($colors, primary);
           transform: scale(1.3);
           -webkit-transform: scale(1.3);
           -moz-transform: scale(1.3);
@@ -3938,13 +3938,13 @@ blockquote {
         padding: 5px 0;
         border-right: 1px solid #f2f2f2;
         transition: $general-transition;
-        a {          
+        a {
           &:hover {
             text-decoration: none;
             .name {
               color: color($colors, secondary);
             }
-          }      
+          }
         }
         &:last-child {
           border-right: 0;
