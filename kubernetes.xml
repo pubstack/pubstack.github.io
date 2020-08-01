@@ -10,11 +10,10 @@
   <author>
     <name>Carlos Camacho</name>
   </author>
-  {% for post in site.posts %}
+  {% for post in site.tags.kubernetes %}
   {% unless post.tags contains "draft" %}
   <entry>
     <title>{{ post.title }}</title>
-    <summary>{{ post.content | strip_html | truncatewords: 40 }}</summary>
     <link href="https://www.anstack.com{{ post.url }}"/>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <author>
