@@ -6,7 +6,7 @@ categories:
   - blog
 tags:
 - kubernetes
-- minikube
+- kubeinit
 - cloud
 - okd
 favorite: true
@@ -14,7 +14,7 @@ commentIssueId: 69
 refimage: '/static/kubeinit/okd-libvirt.png'
 ---
 
-Long story short... **A single command to deploy an OKD 4.5 cluster in ~30 minutes (3 controllers, 1 to 10 workers, 1 service, and 1 bootstrap node), forget about following endless and outdated documentation.**
+Long story short... **We will deploy an OKD 4.5 cluster in ~30 minutes (3 controllers, 1 to 10 workers, 1 service, and 1 bootstrap node) using one single command in around 30 minutes using a tool called [KubeInit](https://github.com/ccamacho/kubeinit).**
 
 ![](/static/kubeinit/okd-libvirt.png)
 
@@ -32,13 +32,27 @@ The services node has installed HAproxy, Bind, Apache httpd, and NFS to host som
 
 ---
 
-### Requirements
+## Introduction
 
- * A huge amount of RAM (the smallest amount I was able to deploy is with 64GB with a smaller configuration), configure this in the [inventory file](https://github.com/ccamacho/kubeinit/blob/master/hosts/okd/inventory#L8).
- * Be able to log in as `root` in the hypervisor node.
- * Reach the hypervisor node using the hostname `nyctea` [you can change this in the inventory](https://github.com/ccamacho/kubeinit/blob/master/hosts/okd/inventory#L56) or add an entry in your `/etc/hosts` file.
+What is OpenShift?
 
-That's it, super simple...
+> Red Hat OpenShift is an open source container application platform based on the Kubernetes container orchestrator for enterprise application development and deployment.
+>
+> -- <cite>https://www.openshift.com/</cite>
+
+There are multiple ways of deploying the Community Distribution of Kubernetes that powers Red Hat OpenShift ([OKD](https://www.okd.io/)) depending on the underlying infrastructure where it will be installed. In this particular blog post, we will deploy it on top of a KVM host using Libvirt. The initial upstream support is described in the [official upstream OpenShift documentation](https://github.com/openshift/installer/tree/fcos/docs/dev/libvirt), but as you can see, it involves a high number of manual steps prone to manual errors, and most important, outdated references when the deployment workflow changes.
+
+In this case, we will use a project based in Ansible playbooks and roles for deploying and configuring multiple Kubernetes distributions, the project is called [KubeInit](https://github.com/ccamacho/kubeinit).
+
+## Requirements
+
+ * RAM, depending on how many compute nodes this can go up to 384GB (the smallest amount required is around 64GB), configure the node's resources in the [inventory file](https://github.com/ccamacho/kubeinit/blob/master/hosts/okd/inventory#L8).
+ * Be able to log in as `root` in the hypervisor node without using passwords (using SSH certificate authentication).
+ * Reach the hypervisor node using the hostname `nyctea`, [you can change this in the inventory](https://github.com/ccamacho/kubeinit/blob/master/hosts/okd/inventory#L56) or add an entry in your `/etc/hosts` file.
+
+## Deploy
+
+That's it, now, let's execute the deployment command:
 
 ```bash
 git clone https://github.com/ccamacho/kubeinit.git
@@ -83,31 +97,31 @@ user 2m30.920s
 sys  0m19.678s
 ```
 
-A ready to use OKD 4.5 cluster in ~30 minutes, yeah!
+A ready to use OKD 4.5 cluster in ~30 minutes!
 
-What you can do now is log in into your hypervisor and check the cluster status from the
-service machine.
+What you just executed should give you an operational OKD 4.5 cluster with 3 master nodes, 1 compute node (configurable from 1 to 10 nodes), 1 services node, and 1 dummy bootstrap node. The services node has installed HAproxy, Bind, Apache httpd, and NFS to host some of the external required cluster services.
+
+Now, ssh into your hypervisor node and check the cluster status from the services machine.
 
 ```bash
 ssh root@nyctea
 ssh root@10.0.0.100
 # This is now the service node (check the Ansible inventory for IPs and other details)
 export KUBECONFIG=~/install_dir/auth/kubeconfig
-oc get pvc -n openshift-image-registry
 oc get pv
-oc get clusteroperator image-registry
 oc get nodes
 ```
 
-The root password of the services machine is [defined as a variable in the playbook](https://github.com/ccamacho/kubeinit/blob/master/playbooks/okd.yml#L54),
-but the public key of the hypervisor root user is deployed across all the cluster nodes, so, you should be
-able to connect to any node from the hypervisor machine using certs-based authentication.
-Connect as the `root` user for the services machine (because is CentOS based) or as the `core` user to any other node (CoreOS based),
-using the IP addresses defined in the inventory file.
+The root password of the services machine is [defined as a variable in the playbook](https://github.com/ccamacho/kubeinit/blob/master/playbooks/okd.yml#L54), but the public key of the hypervisor root user is deployed across all the cluster nodes, so, you should be able to connect to any node from the hypervisor machine using SSH certificate authentication.
+Connect as the `root` user for the services machine (because is CentOS based) or as the `core` user to any other node (CoreOS based), using the IP addresses defined in the inventory file.
 
-There is some reasoning for this password based access to the services node. Sometimes we need to connect to the services machine when we deploy for debugging purposes,
-in this case, if we don't set a password for the user we won't be able to login using the console. Instead, for all the CoreOS nodes, once they are bootstrapped
-correctly/automatically there is no need to login using the console, just wait until they are deployed to connect to them using SSH.
+There are reasons for having this password-based access to the services node. Sometimes we need to connect to the services machine when we deploy for debugging purposes, in this case, if we don't set a password for the user we won't be able to log in using the console. Instead, for all the CoreOS nodes, once they are bootstrapped correctly/automatically there is no need to log in using the console, just wait until they are deployed to connect to them using SSH.
+
+## Final thoughts
+
+[KubeInit](https://github.com/ccamacho/kubeinit) is a simple and intuitive way to show to potential users and customers how easy an OpenShift (OKD) cluster can be deployed, managed, and used for any purpose they might require (production or development environments). Once they have the environment deployed then it's always easier to learn how it works, hack it, and even start contributing to the upstream community, if you are interested in this last part, please read the [contribution page](https://www.okd.io/#contribute) from the official OKD website.
+
+All the Ansible automation is hosted in [https://github.com/ccamacho/kubeinit/](https://github.com/ccamacho/kubeinit/).
 
 ![](/static/kubeinit/happy.jpg)
 
