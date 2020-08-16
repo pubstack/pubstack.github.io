@@ -46,6 +46,7 @@ In this case, we will use a project based in Ansible playbooks and roles for dep
 
 ## Requirements
 
+ * A CentOS 8 fresh deployed host for hosting all the guests.
  * RAM, depending on how many compute nodes this can go up to 384GB (the smallest amount required is around 64GB), configure the node's resources in the [inventory file](https://github.com/ccamacho/kubeinit/blob/master/hosts/okd/inventory#L8).
  * Be able to log in as `root` in the hypervisor node without using passwords (using SSH certificate authentication).
  * Reach the hypervisor node using the hostname `nyctea`, [you can change this in the inventory](https://github.com/ccamacho/kubeinit/blob/master/hosts/okd/inventory#L56) or add an entry in your `/etc/hosts` file.

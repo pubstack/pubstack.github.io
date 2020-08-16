@@ -7,6 +7,7 @@ categories:
 tags:
 - kubernetes
 - kubeinit
+- cloud
 - okd
 favorite: false
 commentIssueId: 70
@@ -55,7 +56,7 @@ fail, and let investigate why.
 
 The following yaml file will be applied, which it's content is correct and it should work out of the box:
 
-```
+```bash
 cat << EOF > ~/99_kubeinit_extra_config_worker.yaml
 apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
@@ -95,7 +96,7 @@ install a package and disable SElinux in the worker nodes.
 
 Now, let's check the state of the worker machine config pool.
 
-```
+```bash
 oc get machineconfigpool/worker
 ```
 
@@ -109,7 +110,7 @@ worker  rendered-worker-a9.. False    True      True      1             0       
 Now it is possible to depict that the operator state is degraded and there is not much more information about it.
 Let's get the status of the machine-config pods.
 
-```
+```bash
 kubectl get pod -o wide --all-namespaces | grep machine-config
 ```
 
@@ -133,8 +134,8 @@ openshift-machine-config-operator                  machine-config-server-n9q2r  
 Let's check the logs of the machine-config-daemon pod in the worker node.
 This pod has two containers, machine-config-daemon, and oauth-proxy.
 
-```
-kubectl logs -f machine-config-daemon-vwh4d -n machine-config-operator
+```bash
+kubectl logs -f machine-config-daemon-vwh4d -n openshift-machine-config-operator -c machine-config-daemon
 ```
 
 Now, it is possible to see the actual error in the container execution:
@@ -160,7 +161,7 @@ rescheduled in another node. Not being able to schedule again this pod
 
 Let's check the router-default pod status:
 
-```
+```bash
 kubectl get pod -o wide --all-namespaces | grep "router-default"
 ```
 
@@ -173,7 +174,7 @@ openshift-ingress  router-default-796df5847b-h8bm4  0/1  Pending  0  12h  <none>
 
 Let's check it's status:
 
-```
+```bash
 oc describe pod router-default-796df5847b-h8bm4 -n openshift-ingress
 ```
 
@@ -193,7 +194,7 @@ Events:
 
 We check the nodes status
 
-```
+```bash
 oc get nodes
 ```
 
