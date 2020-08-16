@@ -1,28 +1,26 @@
----
----
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Anstack Blog - Cloud computing and engineering articles</title>
-  <link href="https://www.anstack.com/atom.xml" rel="self"/>
+<rss xmlns:scripting="http://flickrfan.org/scriptingNamespace.html" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+ <channel>
+  <title>Anstack</title>
+  <description>Cloud computing and engineering articles</description>
   <link href="https://www.anstack.com/"/>
-  <updated>{{ site.time | date_to_xmlschema }}</updated>
-  <id>https://www.anstack.com/</id>
-  <author>
-    <name>Carlos Camacho</name>
-  </author>
+  <lastBuildDate>{{ site.time | date_to_xmlschema }}</lastBuildDate>
+  <managingEditor>carloscamachoucv@gmail.com (Carlos Camacho)</managingEditor>
   {% for post in site.posts %}
   {% unless post.tags contains "draft" %}
-  <entry>
-    <title>{{ post.title }}</title>
-    <summary>{{ post.content | strip_html | truncatewords: 40 }}</summary>
-    <link href="https://www.anstack.com{{ post.url }}"/>
-    <updated>{{ post.date | date_to_xmlschema }}</updated>
-    <author>
-      <name>{{ post.author }}</name>
-    </author>
-    <id>https://www.anstack.com{{ post.id }}</id>
-    <content type="html">{{ post.content | xml_escape }}</content>
-  </entry>
+  <item>
+   <title>{{ post.title }}</title>
+   <enclosure url="https://www.anstack.com{{ post.refimage }}" length="0" type="image/jpeg" />
+   <summary>{{ post.content | strip_html | truncatewords: 40 }}</summary>
+   <link href="https://www.anstack.com{{ post.url }}"/>
+   <updated>{{ post.date | date_to_xmlschema }}</updated>
+   <id>https://www.anstack.com{{ post.id }}</id>
+   <author>
+    <name>{{ post.author }}</name>
+   </author>
+   <content type="html">{{ post.content | xml_escape }}</content>
+  </item>
   {% endunless %}
   {% endfor %}
-</feed>
+ </channel>
+</rss>

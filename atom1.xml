@@ -10,7 +10,7 @@
   <author>
     <name>Carlos Camacho</name>
   </author>
-  {% for post in site.tags.kubernetes %}
+  {% for post in site.posts %}
   {% unless post.tags contains "draft" %}
   <entry>
     <title>{{ post.title }}</title>
