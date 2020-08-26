@@ -30,7 +30,7 @@ keywords: "cloud computing, OpenStack, Kubernetes, engineering, software develop
 
 # pagination options
 
-paginate: 4
+paginate: 6
 
 markdown: kramdown
 theme: minima
