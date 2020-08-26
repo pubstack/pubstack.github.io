@@ -5,7 +5,6 @@ author: "Carlos Camacho"
 categories:
   - blog
 tags:
-- draft
 - kubernetes
 - kubeinit
 - cloud
@@ -15,14 +14,33 @@ commentIssueId: 71
 refimage: '/static/kubeinit/net/thumb.png'
 ---
 
-In this post we will describe the basic network architecture used when OKD is
-deployed using KubeInit in a KVM host.
-Then we will describe how to extend the basic network configuration to provide
-external access to the cluster services.
+In this post it will be described the basic network architecture when OKD is
+deployed using [KubeInit](https://github.com/ccamacho/kubeinit) in a KVM host.
+
+## TL;DR;
+
+We will describe how to extend the basic network configuration to provide
+external access to the cluster services by adding an external IP to the
+service machine.
+
+### What is KubeInit?
+
+KubeInit provides Ansible playbooks and roles for the deployment and
+configuration of multiple Kubernetes distributions.
+
+The main goal of KubeInit is to have a fully automated way to
+deploy in a single command a curated list of prescribed architectures.
+
+[KubeInit](https://github.com/ccamacho/kubeinit) is opensource, and licensed under
+the Apache 2.0 license. The project's source code is hosted
+in [GitHub](https://github.com/ccamacho/kubeinit).
 
 ![](/static/kubeinit/net/thumb.png)
 
-Here is the server current status:
+### Initial hypervisor status
+
+We check both the routing table and the network connections
+in the hypervisor host.
 
 ```bash
 [root@nyctea ~]# route
@@ -43,10 +61,12 @@ enp6s0f0     7348301f-8cae-4ab1-9061-97d7a344699c  ethernet  --
 enp6s0f1     8a96c226-959a-4218-b9f7-c3ab6ee3d02b  ethernet  --    
 ```
 
-As we can see we have two physical network interfaces (eno1, and eno2) for which
+As it is possible to see there are two physical network interfaces (eno1, and eno2) for which
 only one is actually connected.
 
-And this is the actual standard network architecture for a usual deployment.
+#### Initial network architecture
+
+The following picture represents the default network layout for a usual deployment.
 
 ![](/static/kubeinit/net/arch01.png)
 
@@ -97,33 +117,50 @@ the required OS for OKD > 4.
 > This means that i.e. https://console-openshift-console.apps.watata.kubeinit.local
 > can not be accessed from anywhere instead the hypervisor itself.
 
-This post will show different network configurations to make the endpoints
-accessible from an external interface.
+### Extending the basic network layout
 
-## Requirements
+Now it will be described a simple way to provide external access to the cluster public endpoints
+published in the service machine.
+
+#### Requirements
 
 * An additional IP address to be mapped to the services machine from an external location.
-* Creating a network bridge to slave the interface we will use.
+* Creating a network bridge to slave the interface used for the external access.
 
 If a user has one extra IP (public or private) it will be enough to configure remote
 access to the cluster endpoints.
 
-As long as we have available an extra IP it does not matter how many physical interfaces we
+As long as we have an extra IP it does not matter how many physical interfaces we
 have, as we can have multiple IP addresses configured using a single physical NIC.
+
+#### New network layout
 
 This is the resulting network architecture to access remotely our freshly installed OKD cluster.
 
 ![](/static/kubeinit/net/arch02.png)
+
+As is visible in the above figure there is an extra connection to the service machine,
+connected directly to the virtual bridge slaving a physical interface.
 
 > Our development environment has only one network card connected,
 > in this case after we create the main switch and slave the
 > network device, it will lose the assigned IP automatically.
 > Do not try this using a shell as you will get dropped.
 
+#### How to enable the external interface
+
 To deploy this architecture please follow the next steps:
 
-We create an initial bridge using the cockpit
-losing the IP it will be recovered automatically
+1. Create a virtual bridge slaving the selected physical interface.
+2. Adjust the deployment command.
+3. Run [KubeInit](https://github.com/ccamacho/kubeinit).
+4. Adjust your local Domain Name System (DNS) resolver.
+
+##### Step 1 (creating the virtual bridge)
+
+###### Using CentOS8 cockpit
+We create an initial bridge using the CentOS cockpit,
+after losing the IP it will be recovered/reconfigured automatically
 (don't try this from the CLI as you will lose access).
 
 In this case,
@@ -131,15 +168,22 @@ In this case,
 Create a bridge called kiextbr0 connected to eno1:
 
 ![](/static/kubeinit/net/cockpit_00.PNG)
+
 Click on: Networking -> Add Bridge
 
+Then adjust the bridge configuration options (bridge name and the interface to slave).
+
 ![](/static/kubeinit/net/cockpit_01.PNG)
-Write: kiiextbr0 as the bridge name, and select
-your network inferface.
+
+Write: `kiextbr0` as the bridge name, and select your network interface `eno1`.
+
+Go to the dashboard and verify that everything is OK.
 
 ![](/static/kubeinit/net/cockpit_02.PNG)
-Check that the bridge is created correctly and has
-the IP configured correctly.
+
+Check that the bridge is created correctly and has the IP configured correctly.
+
+###### Manual bridge creation
 
 As an example you can run these steps by the CLI
 adjusting your interface and bridge names accordingly.
@@ -152,9 +196,11 @@ nmcli connection delete enp0s25
 nmcli connection up br0
 ```
 
->  _NOTE:_ If you have only one interface
+>  __*NOTE:*__ If you have only one interface
 > the connection will be dropped and you will.
 > lose connectivity.
+
+###### Checking the system status
 
 We check again the system status:
 
@@ -178,12 +224,47 @@ enp6s0f0     7348301f-8cae-4ab1-9061-97d7a344699c  ethernet  --
 enp6s0f1     8a96c226-959a-4218-b9f7-c3ab6ee3d02b  ethernet  --    
 ```
 
-These variables are defined in the playbook (the location of these variables will change)
+We can see we have the new bridge created successfully and it has the IP address
+also configured correctly.
+
+##### Step 2 (adjusting the deployment command)
+
+There are a few variables that need to be adjusted in order to
+successfully configure the external interface.
+
+These variables are defined in the okd playbook (the location of these variables will change)
 but not their name.
 
 ![](/static/kubeinit/net/config_vars.PNG)
 
-Now we deploy as usual KubeInit:
+The meaning of the variables are:
+
+* kubeinit_bind_external_service_interface_enabled: true - This will enable
+the Ansible configuration of the external interface,
+the BIND update, and the additional interface in the
+service node.
+
+* kubeinit_bind_external_service_interface.attached: kiextbr0 - This is the
+virtual bridge where we will plug the `eth1` interface of the services machine.
+The bridge `MUST` be created first and slaving the physical interface we will use.
+
+* kubeinit_bind_external_service_interface.dev: eth1 - This is the name of the
+external interface we will add to the services machine.
+
+* kubeinit_bind_external_service_interface.ip: 10.19.41.157 - The external IP address
+of the services machine.
+
+* kubeinit_bind_external_service_interface.gateway: 10.19.41.254 - The gateway IP address
+of the services machine.
+
+* kubeinit_bind_external_service_interface.netmask: 255.255.255.0 - The network mask of the external
+interface of the services machine.
+
+After we configure correctly the previous variables we can proceed to run the deployment command.
+
+##### Step 3 (run the deployment command)
+
+Now we deploy as usual [KubeInit](https://github.com/ccamacho/kubeinit):
 
 > Remember that you can execute this deployment command before
 > creating the bridge with the CentOS cockpit, the bridge creation
@@ -209,30 +290,30 @@ ansible-playbook \
     ./playbooks/okd.yml
 ```
 
-The meaning of the variables are:
+##### Step 4 (adjust your resolv.conf)
 
-* kubeinit_bind_external_service_interface_enabled: true - This will enable
-the Ansible configuration of the external interface,
-the BIND update, and the additional interface in the
-service node.
+You must reach the cluster external endpoints by DNS, this means,
+the dashboard and any other application deployed
+(you can add entries for any registry pointing to the service machine but this can be cumbersome).
 
-* kubeinit_bind_external_service_interface.attached: kiextbr0 - This is the
-virtual bridge where we will plug the `eth1` interface of the services machine.
-The bridge `MUST` be created first and slaving the physical interface we will use.
+For example, configure your local DNS resolver to point to `10.19.41.157`
 
-* kubeinit_bind_external_service_interface.dev: eth1 - This is the name of the
-external interface we will add to the services machine.
+ ```bash
+ [ccamacho@localhost]$ cat /etc/resolv.conf
+ nameserver 10.19.41.157
+ nameserver 8.8.8.8
+ ```
 
-* kubeinit_bind_external_service_interface.ip: 10.19.41.157 - The external IP address
-of the services machine.
+After that you should be able to access the cluster without any issue and use it for any purpose you have.
 
-* kubeinit_bind_external_service_interface.gateway: 10.19.41.254 - The gateway IP address
-of the services machine.
+Voilà!
 
-* kubeinit_bind_external_service_interface.netmask: 255.255.255.0 - The network mask of the external
-interface of the services machine.
+![](/static/kubeinit/net/dashboard.PNG)
 
-Some of the very interesting changes here is BIND configuration,
+
+#### Final considerations
+
+Some of the very interesting changes in BIND is how we manage both external and internal views.
 
 ![](/static/kubeinit/net/bind_views.png)
 
@@ -244,19 +325,17 @@ created based on the external view, in this case we only reply with the external
 related to the services node, thus, we will only reply with `10.19.41.157` as it is the only that needs
 to be presented externally.
 
-The next step is to configure your local DNS server to point to `10.19.41.157`
 
-```bash
-[ccamacho@localhost]$ cat /etc/resolv.conf
-nameserver 10.19.41.157
-nameserver 8.8.8.8
-```
-
-After that you should be able to access the cluster without any issue and use it for any purpose you have.
-
-![](/static/kubeinit/net/dashboard.PNG)
+#### The end
 
 If you like this post, please try the code, raise issues, and ask for more details, features or
-anything that you feel interested in. Also it would be awesome if you become a stargazer.
+anything that you feel interested in. Also it would be awesome if you become a stargazer to catch up
+updates and new features.
 
 This is the main project [repository](https://github.com/ccamacho/kubeinit).
+
+Happy KubeIniting!
+
+>  __*Updated 2020/08/25:*__ First version (draft).
+>
+>  __*Updated 2020/08/26:*__ Published.
