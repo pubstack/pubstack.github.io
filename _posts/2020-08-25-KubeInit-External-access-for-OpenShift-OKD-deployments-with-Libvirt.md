@@ -15,7 +15,7 @@ refimage: '/static/kubeinit/net/thumb.png'
 ---
 
 In this post it will be described the basic network architecture when OKD is
-deployed using [KubeInit](https://github.com/ccamacho/kubeinit) in a KVM host.
+deployed using [KubeInit](https://github.com/kubeinit/kubeinit) in a KVM host.
 
 ## TL;DR;
 
@@ -31,9 +31,9 @@ configuration of multiple Kubernetes distributions.
 The main goal of KubeInit is to have a fully automated way to
 deploy in a single command a curated list of prescribed architectures.
 
-[KubeInit](https://github.com/ccamacho/kubeinit) is opensource, and licensed under
+[KubeInit](https://github.com/kubeinit/kubeinit) is opensource, and licensed under
 the Apache 2.0 license. The project's source code is hosted
-in [GitHub](https://github.com/ccamacho/kubeinit).
+in [GitHub](https://github.com/kubeinit/kubeinit).
 
 ![](/static/kubeinit/net/thumb.png)
 
@@ -153,7 +153,7 @@ To deploy this architecture please follow the next steps:
 
 1. Create a virtual bridge slaving the selected physical interface.
 2. Adjust the deployment command.
-3. Run [KubeInit](https://github.com/ccamacho/kubeinit).
+3. Run [KubeInit](https://github.com/kubeinit/kubeinit).
 4. Adjust your local Domain Name System (DNS) resolver.
 
 ##### Step 1 (creating the virtual bridge)
@@ -264,7 +264,7 @@ After we configure correctly the previous variables we can proceed to run the de
 
 ##### Step 3 (run the deployment command)
 
-Now we deploy as usual [KubeInit](https://github.com/ccamacho/kubeinit):
+Now we deploy as usual [KubeInit](https://github.com/kubeinit/kubeinit):
 
 > Remember that you can execute this deployment command before
 > creating the bridge with the CentOS cockpit, the bridge creation
@@ -332,7 +332,7 @@ If you like this post, please try the code, raise issues, and ask for more detai
 anything that you feel interested in. Also it would be awesome if you become a stargazer to catch up
 updates and new features.
 
-This is the main project [repository](https://github.com/ccamacho/kubeinit).
+This is the main project [repository](https://github.com/kubeinit/kubeinit).
 
 Happy KubeIniting!
 

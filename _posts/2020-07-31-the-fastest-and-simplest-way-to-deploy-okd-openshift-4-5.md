@@ -14,7 +14,7 @@ commentIssueId: 69
 refimage: '/static/kubeinit/okd-libvirt.png'
 ---
 
-Long story short... **We will deploy an OKD 4.5 cluster in ~30 minutes (3 controllers, 1 to 10 workers, 1 service, and 1 bootstrap node) using one single command in around 30 minutes using a tool called [KubeInit](https://github.com/ccamacho/kubeinit).**
+Long story short... **We will deploy an OKD 4.5 cluster in ~30 minutes (3 controllers, 1 to 10 workers, 1 service, and 1 bootstrap node) using one single command in around 30 minutes using a tool called [KubeInit](https://github.com/kubeinit/kubeinit).**
 
 ![](/static/kubeinit/okd-libvirt.png)
 
@@ -42,21 +42,21 @@ What is OpenShift?
 
 There are multiple ways of deploying the Community Distribution of Kubernetes that powers Red Hat OpenShift ([OKD](https://www.okd.io/)) depending on the underlying infrastructure where it will be installed. In this particular blog post, we will deploy it on top of a KVM host using Libvirt. The initial upstream support is described in the [official upstream OpenShift documentation](https://github.com/openshift/installer/tree/fcos/docs/dev/libvirt), but as you can see, it involves a high number of manual steps prone to manual errors, and most important, outdated references when the deployment workflow changes.
 
-In this case, we will use a project based in Ansible playbooks and roles for deploying and configuring multiple Kubernetes distributions, the project is called [KubeInit](https://github.com/ccamacho/kubeinit).
+In this case, we will use a project based in Ansible playbooks and roles for deploying and configuring multiple Kubernetes distributions, the project is called [KubeInit](https://github.com/kubeinit/kubeinit).
 
 ## Requirements
 
  * A CentOS 8 fresh deployed host for hosting all the guests.
- * RAM, depending on how many compute nodes this can go up to 384GB (the smallest amount required is around 64GB), configure the node's resources in the [inventory file](https://github.com/ccamacho/kubeinit/blob/master/hosts/okd/inventory#L8).
+ * RAM, depending on how many compute nodes this can go up to 384GB (the smallest amount required is around 64GB), configure the node's resources in the [inventory file](https://github.com/kubeinit/kubeinit/blob/master/hosts/okd/inventory#L8).
  * Be able to log in as `root` in the hypervisor node without using passwords (using SSH certificate authentication).
- * Reach the hypervisor node using the hostname `nyctea`, [you can change this in the inventory](https://github.com/ccamacho/kubeinit/blob/master/hosts/okd/inventory#L56) or add an entry in your `/etc/hosts` file.
+ * Reach the hypervisor node using the hostname `nyctea`, [you can change this in the inventory](https://github.com/kubeinit/kubeinit/blob/master/hosts/okd/inventory#L56) or add an entry in your `/etc/hosts` file.
 
 ## Deploy
 
 That's it, now, let's execute the deployment command:
 
 ```bash
-git clone https://github.com/ccamacho/kubeinit.git
+git clone https://github.com/kubeinit/kubeinit.git
 cd kubeinit
 ansible-playbook \
     --user root \
@@ -113,16 +113,16 @@ oc get pv
 oc get nodes
 ```
 
-The root password of the services machine is [defined as a variable in the playbook](https://github.com/ccamacho/kubeinit/blob/master/playbooks/okd.yml#L54), but the public key of the hypervisor root user is deployed across all the cluster nodes, so, you should be able to connect to any node from the hypervisor machine using SSH certificate authentication.
+The root password of the services machine is [defined as a variable in the playbook](https://github.com/kubeinit/kubeinit/blob/master/playbooks/okd.yml#L54), but the public key of the hypervisor root user is deployed across all the cluster nodes, so, you should be able to connect to any node from the hypervisor machine using SSH certificate authentication.
 Connect as the `root` user for the services machine (because is CentOS based) or as the `core` user to any other node (CoreOS based), using the IP addresses defined in the inventory file.
 
 There are reasons for having this password-based access to the services node. Sometimes we need to connect to the services machine when we deploy for debugging purposes, in this case, if we don't set a password for the user we won't be able to log in using the console. Instead, for all the CoreOS nodes, once they are bootstrapped correctly/automatically there is no need to log in using the console, just wait until they are deployed to connect to them using SSH.
 
 ## Final thoughts
 
-[KubeInit](https://github.com/ccamacho/kubeinit) is a simple and intuitive way to show to potential users and customers how easy an OpenShift (OKD) cluster can be deployed, managed, and used for any purpose they might require (production or development environments). Once they have the environment deployed then it's always easier to learn how it works, hack it, and even start contributing to the upstream community, if you are interested in this last part, please read the [contribution page](https://www.okd.io/#contribute) from the official OKD website.
+[KubeInit](https://github.com/kubeinit/kubeinit) is a simple and intuitive way to show to potential users and customers how easy an OpenShift (OKD) cluster can be deployed, managed, and used for any purpose they might require (production or development environments). Once they have the environment deployed then it's always easier to learn how it works, hack it, and even start contributing to the upstream community, if you are interested in this last part, please read the [contribution page](https://www.okd.io/#contribute) from the official OKD website.
 
-All the Ansible automation is hosted in [https://github.com/ccamacho/kubeinit/](https://github.com/ccamacho/kubeinit/).
+All the Ansible automation is hosted in [https://github.com/kubeinit/kubeinit/](https://github.com/kubeinit/kubeinit/).
 
 ![](/static/kubeinit/happy.jpg)
 
@@ -133,6 +133,6 @@ easy to improve and add other roles and scenarios.
 
 Next steps, I'll clean all the lint nits around...
 
-This is the GitHub repository [https://github.com/ccamacho/kubeinit/](https://github.com/ccamacho/kubeinit/).
+This is the GitHub repository [https://github.com/kubeinit/kubeinit/](https://github.com/kubeinit/kubeinit/).
 
 Please if you like it, add some comments, test it, use it, hack it, break it, or become a stargazer ;)
