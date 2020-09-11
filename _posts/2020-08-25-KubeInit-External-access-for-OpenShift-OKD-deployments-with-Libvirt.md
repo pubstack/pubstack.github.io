@@ -10,7 +10,7 @@ tags:
 - cloud
 - okd
 favorite: true
-commentIssueId: 71
+commentIssueId: 72
 refimage: '/static/kubeinit/net/thumb.png'
 ---
 
