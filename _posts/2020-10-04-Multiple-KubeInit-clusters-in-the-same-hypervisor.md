@@ -48,7 +48,7 @@ cp inventory inventory$new_id
 The default internal network used is 10.0.0.0/24
 so we need to change it to a new range.
 
-We will change from the range 10.0.0 to 10.0.<new_id>
+We will change from the range 10.0.0 to 10.0.2 (referring to step 1 *new_id=2*)
 
 ```
 sed -i "s/10\.0\.0/10\.0\.$new_id/g" inventory$new_id
@@ -59,7 +59,7 @@ sed -i "s/10\.0\.0/10\.0\.$new_id/g" inventory$new_id
 We will create new bridges and networks for the new
 deployment.
 
-We will change from i.e. kimgtnet0 to kimgtnet<new_id>
+We will change from i.e. kimgtnet0 to kimgtnet2 (referring to step 1 *new_id=2*)
 
 ```
 sed -i "s/kimgtnet0/kimgtnet$new_id/g" inventory$new_id
@@ -93,7 +93,7 @@ sed -i "s/,,,/:/g" inventory$new_id
 VMs are cleaned every time the host is provisioned, if their names are
 not updated they will be removed every time.
 
-We will change from okd- to okd<new_id>-
+We will change from okd- to okd2- (referring to step 1 *new_id=2*)
 
 ```
 sed -i "s/okd-/okd$new_id-/g" inventory$new_id
