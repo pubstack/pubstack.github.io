@@ -208,20 +208,22 @@ We check again the system status:
 [root@nyctea ~]# route
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-default         _gateway        0.0.0.0         UG    425    0        0 kilocbr0
-10.19.41.0      0.0.0.0         255.255.255.0   U     425    0        0 kilocbr0
-192.168.122.0   0.0.0.0         255.255.255.0   U     0      0        0 virbr0
+default         _gateway        0.0.0.0         UG    425    0        0 kiextbr0
+10.0.0.0        0.0.0.0         255.255.255.0   U     0      0        0 kimgtbr0
+10.19.41.0      0.0.0.0         255.255.255.0   U     425    0        0 kiextbr0
 
-[root@nyctea ~]# nmcli con show
-NAME         UUID                                  TYPE      DEVICE  
-kilocbr0      1c4d60a3-06a7-429f-a689-ffba5a49efbb  bridge    kilocbr0
-System eno1  162499bc-a6fa-45db-ba76-1b45f0be46e8  ethernet  eno1    
-virbr0       4ba12c69-3a8b-42e8-a9dd-bc020fdc1a90  bridge    virbr0  
-eno2         e19725f2-84f5-4f71-b300-469ffc99fd99  ethernet  --      
-eno3         65be9380-980b-4237-b27c-2479e8f8535d  ethernet  --      
-eno4         9f5afe2d-6166-4197-a23f-e64c3b1b5ab2  ethernet  --      
-enp6s0f0     7348301f-8cae-4ab1-9061-97d7a344699c  ethernet  --      
-enp6s0f1     8a96c226-959a-4218-b9f7-c3ab6ee3d02b  ethernet  --    
+NAME         UUID                                  TYPE      DEVICE   
+kiextbr0     55d0a549-8123-488a-815b-5771b62644d2  bridge    kiextbr0 
+kimgtbr0     3e73e0d9-28bd-4db7-8ccf-be11297e3300  bridge    kimgtbr0 
+System eno1  3251ed0c-706a-463e-aeac-2a57782ce7c1  ethernet  eno1     
+vnet0        4515a0b8-1a20-4414-86b2-2ff5545fcffa  tun       vnet0    
+vnet1        5f1b253f-9c38-4637-8a02-222aa5c51be3  tun       vnet1    
+vnet2        e7d466d5-bc2b-47b0-a6ca-5a3825170501  tun       vnet2    
+eno2         190c35fb-1ff0-41ff-b32e-c190f513b2a0  ethernet  --       
+eno3         1b644415-0a91-44a9-bfd0-2279ddca0020  ethernet  --       
+eno4         c99ba8a7-b62c-4b1f-b191-8798f0eff2ff  ethernet  --       
+enp6s0f0     11c63800-8cd9-4411-8854-43ced2a464f3  ethernet  --       
+enp6s0f1     be01957b-2933-47df-9793-156fe3b1d767  ethernet  --
 ```
 
 We can see we have the new bridge created successfully and it has the IP address
@@ -339,3 +341,5 @@ Happy KubeIniting!
 >  __*Updated 2020/08/25:*__ First version (draft).
 >
 >  __*Updated 2020/08/26:*__ Published.
+>
+>  __*Updated 2020/10/06:*__ Update in network details.
