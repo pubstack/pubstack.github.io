@@ -234,7 +234,7 @@ also configured correctly.
 There are a few variables that need to be adjusted in order to
 successfully configure the external interface.
 
-These variables are defined in the okd playbook (the location of these variables will change)
+These variables are defined in the libvirt role (the location of these variables will change)
 but not their name.
 
 ![](/static/kubeinit/net/config_vars.PNG)
