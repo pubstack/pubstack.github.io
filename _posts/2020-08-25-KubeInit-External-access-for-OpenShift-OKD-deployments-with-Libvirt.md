@@ -213,8 +213,8 @@ default         _gateway        0.0.0.0         UG    425    0        0 kiextbr0
 10.19.41.0      0.0.0.0         255.255.255.0   U     425    0        0 kiextbr0
 
 NAME         UUID                                  TYPE      DEVICE   
-kiextbr0     55d0a549-8123-488a-815b-5771b62644d2  bridge    kiextbr0 
-kimgtbr0     3e73e0d9-28bd-4db7-8ccf-be11297e3300  bridge    kimgtbr0 
+kiextbr0     55d0a549-8123-488a-815b-5771b62644d2  bridge    kiextbr0
+kimgtbr0     3e73e0d9-28bd-4db7-8ccf-be11297e3300  bridge    kimgtbr0
 System eno1  3251ed0c-706a-463e-aeac-2a57782ce7c1  ethernet  eno1     
 vnet0        4515a0b8-1a20-4414-86b2-2ff5545fcffa  tun       vnet0    
 vnet1        5f1b253f-9c38-4637-8a02-222aa5c51be3  tun       vnet1    
@@ -241,25 +241,25 @@ but not their name.
 
 The meaning of the variables are:
 
-* kubeinit_bind_external_service_interface_enabled: true - This will enable
+* kubeinit_libvirt_external_service_interface_enabled: true - This will enable
 the Ansible configuration of the external interface,
 the BIND update, and the additional interface in the
 service node.
 
-* kubeinit_bind_external_service_interface.attached: kiextbr0 - This is the
+* kubeinit_libvirt_external_service_interface.attached: kiextbr0 - This is the
 virtual bridge where we will plug the `eth1` interface of the services machine.
 The bridge `MUST` be created first and slaving the physical interface we will use.
 
-* kubeinit_bind_external_service_interface.dev: eth1 - This is the name of the
+* kubeinit_libvirt_external_service_interface.dev: eth1 - This is the name of the
 external interface we will add to the services machine.
 
-* kubeinit_bind_external_service_interface.ip: 10.19.41.157 - The external IP address
+* kubeinit_libvirt_external_service_interface.ip: 10.19.41.157 - The external IP address
 of the services machine.
 
-* kubeinit_bind_external_service_interface.gateway: 10.19.41.254 - The gateway IP address
+* kubeinit_libvirt_external_service_interface.gateway: 10.19.41.254 - The gateway IP address
 of the services machine.
 
-* kubeinit_bind_external_service_interface.netmask: 255.255.255.0 - The network mask of the external
+* kubeinit_libvirt_external_service_interface.netmask: 255.255.255.0 - The network mask of the external
 interface of the services machine.
 
 After we configure correctly the previous variables we can proceed to run the deployment command.
@@ -280,8 +280,8 @@ ansible-playbook \
     --become \
     --become-user root \
     -e "{ \
-      'kubeinit_bind_external_service_interface_enabled': 'true', \
-      'kubeinit_bind_external_service_interface': { \
+      'kubeinit_libvirt_external_service_interface_enabled': 'true', \
+      'kubeinit_libvirt_external_service_interface': { \
         'attached': 'kiextbr0', \
         'dev': 'eth1', \
         'ip': '10.19.41.157', \
