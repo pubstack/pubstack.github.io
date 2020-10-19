@@ -101,13 +101,9 @@ done
 # done
 ```
 
-
-
 # Step 3 #
 
 Break your environment xD
-
-
 
 # Step 4 #
 
@@ -124,3 +120,13 @@ virsh list --all
 virsh snapshot-revert --domain $i --snapshotname $i-fresh-install --running
 virsh list --all
 ```
+
+# Or restore them all at once
+vms=( $(virsh list --all | grep running | awk '{print $2}') )
+
+for i in "${vms[@]}"; \
+do \
+virsh shutdown $i; \
+virsh snapshot-revert --domain $i --snapshotname $i-fresh-install --running; \
+virsh list --all; \
+done
