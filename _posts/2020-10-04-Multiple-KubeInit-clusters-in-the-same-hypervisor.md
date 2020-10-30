@@ -97,6 +97,7 @@ We will change from okd- to okd2- (referring to step 1 *new_id=2*)
 
 ```
 sed -i "s/okd-/okd$new_id-/g" inventory$new_id
+sed -i "s/clustername0/clustername$new_id/g" inventory$new_id
 ```
 
 #### 6. Run the deployment command using the new inventory file.

@@ -28,6 +28,8 @@ sudo mv ./tmate-2.2.1-static-linux-amd64/tmate /usr/bin/
 sudo chmod +x /usr/bin/tmate
 rm -rf tmate-2.2.1-static-linux-amd64*
 
+# echo "export TERM=xterm" >> .bashrc
+
 #Configure Tmate using ln2 as the default server
 sudo tee -a ~/.tmate.conf > /dev/null <<'EOF'
 set -g tmate-server-host "ln2.tmate.io"
