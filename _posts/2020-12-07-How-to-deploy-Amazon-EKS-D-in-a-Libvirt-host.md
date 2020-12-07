@@ -57,6 +57,10 @@ deployed with KubeInit.
 **Note:** Make sure you can connect to your hypervisor (called nyctea)
 with passwordless access.
 
+Please follow the [usage documentation](http://docs.kubeinit.com/usage.html)
+to understand the system's requirements and the required host supported
+Linux distributions.
+
 ```bash
 # Choose the distro
 distro=eks
