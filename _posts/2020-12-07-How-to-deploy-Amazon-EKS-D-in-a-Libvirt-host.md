@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to deploy Amazon EKS-D on top of a Libvirt with Kubeinit in 15 minutes"
+title: "How to deploy Amazon EKS-D on top of a Libvirt with KubeInit in 15 minutes"
 author: "Carlos Camacho"
 categories:
   - blog
@@ -79,7 +79,7 @@ This will deploy by default a 3 controllers 1 compute cluster.
 
 The deployment time was fairly quick (around 15 minutes):
 
-```
+```bash
 .
 .
 .
@@ -107,7 +107,7 @@ sys	0m24.366s
 
 Let's run some commands in the cluster.
 
-```
+```bash
 [root@eks-service-01 ~]# curl --user registryusername:registrypassword https://eks-service-01.clustername0.kubeinit.local:5000/v2/_catalog
 {
    "repositories":[
@@ -155,7 +155,7 @@ Let's run some commands in the cluster.
 
 And check some of the deployed resources.
 
-```
+```bash
 [root@eks-service-01 ~]# kubectl describe pods etcd-eks-master-01.kubeinit.local -n kube-system
 Name:                 etcd-eks-master-01.kubeinit.local
 Namespace:            kube-system
