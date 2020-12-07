@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to deploy Amazon EKS-D on top of a Libvirt with KubeInit in 15 minutes"
+title: "How to deploy Amazon EKS-D on top of a Libvirt host with KubeInit in 15 minutes"
 author: "Carlos Camacho"
 categories:
   - blog
