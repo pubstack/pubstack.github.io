@@ -285,6 +285,7 @@ ansible-playbook \
         'attached': 'kiextbr0', \
         'dev': 'eth1', \
         'ip': '10.19.41.157', \
+        'mac': '52:54:00:6a:39:ad', \
         'gateway': '10.19.41.254', \
         'netmask': '255.255.255.0' \
       } \
@@ -306,7 +307,9 @@ For example, configure your local DNS resolver to point to `10.19.41.157`
  nameserver 8.8.8.8
  ```
 
-After that you should be able to access the cluster without any issue and use it for any purpose you have.
+After that you should be able to access the cluster without any issue and use it for any purpose you have
+with the following URL
+[https://console-openshift-console.apps.clustername0.kubeinit.local/](https://console-openshift-console.apps.clustername0.kubeinit.local/).
 
 Voilà!
 
