@@ -73,7 +73,7 @@ ansible-playbook \
     --become-user root \
     -e "{ \
       'kubeinit_okd_openshift_deploy': 'true', \
-      'kubeinit_okd_registry_pullsecret': '  {\"auths\":{\"cloud.openshift.com\":{\"auth\": \"eyJh...2gX3TgXk\"}}}', \
+      'kubeinit_okd_registry_pullsecret': '  {\"auths\":{\"cloud.openshift.com\":{\"auth\": \"eyJh2gX3TgXk\", \"email\": \"my_email@domain.com\"}}}', \
     }" \
     ./playbooks/$distro.yml
 
