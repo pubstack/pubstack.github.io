@@ -57,7 +57,7 @@ Please follow the [usage documentation](http://docs.kubeinit.com/usage.html)
 to understand the system's requirements and the required host supported
 Linux distributions.
 
-At the moment we will deploy OpenShift 4.7.1 (the latest release available),
+At the moment we will deploy OpenShift 4.7.0 (the latest release available),
 if you need to deploy other releases adjust the value of the
 `kubeinit_okd_registry_release_tag` variable.
 
@@ -71,19 +71,18 @@ ansible-playbook \
     -i ./hosts/$distro/inventory \
     --become \
     --become-user root \
-    -e "{ \
-      'kubeinit_okd_openshift_deploy': 'true', \
-      'kubeinit_okd_registry_pullsecret': '  {\"auths\":{\"cloud.openshift.com\":{\"auth\": \"eyJh2gX3TgXk\", \"email\": \"my_email@domain.com\"}}}', \
-    }" \
+    -e kubeinit_okd_openshift_deploy=True \
+    -e kubeinit_okd_openshift_registry_token='AN_EXAMPLE_TOKEN' \
+    -e kubeinit_okd_openshift_registry_email='this_is_an_email@example.com' \
     ./playbooks/$distro.yml
 
 ```
 
-Note: The only two variables we updated were to override that
-we will like to deploy OpenShift and our registry token.
-
-Note: The auth key must be enclosed in double quotes escaped with
-backslashes.
+Note: The only variables updated to override an
+OpenShift deployment are
+`kubeinit_okd_openshift_deploy`,
+`kubeinit_okd_openshift_registry_token`, and
+`kubeinit_okd_openshift_registry_email`.
 
 ### Conclusions
 
