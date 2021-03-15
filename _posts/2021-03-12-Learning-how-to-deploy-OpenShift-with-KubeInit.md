@@ -32,20 +32,25 @@ at [https://docs.kubeinit.com/](https://docs.kubeinit.com/).
 
 ### OpenShift registry token
 
-Then the next step is to fetch a valid registry token from
-[https://cloud.redhat.com/](https://cloud.redhat.com/)
-in particular from
-[https://cloud.redhat.com/openshift/token](https://cloud.redhat.com/openshift/token).
+Then the next step is to fetch a valid registry tokens list (pullsecrets) from
+[https://cloud.redhat.com/openshift/install/pull-secret](https://cloud.redhat.com/openshift/install/pull-secret).
 
-You should get a very long string like "eyJhbGci.........CIgOiAiSldUIiwia2lkIiA6I",
-having the string we need to adjust our deployment pull secret to be able to "fetch"
-the images like `'  {"auths":{"cloud.openshift.com":{"auth":<the token goes here>}}}'`
-be aware of the two leading spaces.
+You should get a very long json object as a dictionary with the credential details
+we need to adjust our deployment pull secrets to be able to "fetch"
+the images accordingly.
 
-The spaces after the first single quote are required,
-do not remove them as Ansible appears to be recognizing this as valid Python list,
-so it's getting transformed into a Python list and then serialized
-using Python's str(), which is why we end up with the single-quoted values.
+The pullsecret syntax should look like:
+
+```bash
+{
+  "auths":{
+    "cloud.openshift.com":{"auth":"TOKEN1_GOES_HERE","email":"email@example"},
+    "quay.io":{"auth":"TOKEN2_GOES_HERE","email":"email@example.com"},
+    "registry.connect.redhat.com":{"auth":"TOKEN3_GOES_HERE","email":"email@example.com"},
+    "registry.redhat.io":{"auth":"TOKEN4_GOES_HERE","email":"email@example.com"}
+  }
+}
+```
 
 ### Deploying
 
@@ -72,17 +77,24 @@ ansible-playbook \
     --become \
     --become-user root \
     -e kubeinit_okd_openshift_deploy=True \
-    -e kubeinit_okd_openshift_registry_token='AN_EXAMPLE_TOKEN' \
-    -e kubeinit_okd_openshift_registry_email='this_is_an_email@example.com' \
+    -e kubeinit_okd_openshift_registry_token_cloud_openshift_com="TOKEN1_GOES_HERE" \
+    -e kubeinit_okd_openshift_registry_token_quay_io="TOKEN2_GOES_HERE" \
+    -e kubeinit_okd_openshift_registry_token_registry_connect_redhat_com="TOKEN3_GOES_HERE" \
+    -e kubeinit_okd_openshift_registry_token_registry_redhat_io="TOKEN4_GOES_HERE" \
+    -e kubeinit_okd_openshift_registry_token_email="email@example.com" \
     ./playbooks/$distro.yml
 
 ```
 
-Note: The only variables updated to override an
+Note: The variables required to override an
 OpenShift deployment are
 `kubeinit_okd_openshift_deploy`,
-`kubeinit_okd_openshift_registry_token`, and
-`kubeinit_okd_openshift_registry_email`.
+`kubeinit_okd_openshift_registry_token_cloud_openshift_com`,
+`kubeinit_okd_openshift_registry_token_quay_io`,
+`kubeinit_okd_openshift_registry_token_registry_connect_redhat_com`,
+`kubeinit_okd_openshift_registry_token_registry_redhat_io`, and
+`kubeinit_okd_openshift_registry_token_email`.
+
 
 ### Conclusions
 
