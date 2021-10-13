@@ -19,6 +19,11 @@ multiple Kubernetes distributions, once you finish the deployment you should
 be able to use the specific distro tooling to mange the lifecycle of your deployment
 (or multiple deployments).
 
+>  __*Note 2021/10/13:*__ DEPRECATED - This tutorial only works with
+[kubeinit 1.0.2](https://github.com/Kubeinit/kubeinit/releases/tag/1.0.2) make
+sure you use this version of the code if you are following this tutorial, or
+[refer to the documentation](https://docs.kubeinit.org/) to use the latest code.
+
 Using KubeInit you should be able to reuse a common set of third party services,
 and infrastructure deployment assets with any already integrated distro.
 

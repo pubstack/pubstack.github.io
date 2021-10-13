@@ -20,6 +20,11 @@ ansible-playbook command to deploy KubeInit, due to unrelated
 issues. The following steps will help users to deploy KubeInit by
 launching the ansible-playbook command from a container.
 
+>  __*Note 2021/10/13:*__ DEPRECATED - This tutorial only works with
+[kubeinit 1.0.2](https://github.com/Kubeinit/kubeinit/releases/tag/1.0.2) make
+sure you use this version of the code if you are following this tutorial, or
+[refer to the documentation](https://docs.kubeinit.org/) to use the latest code.
+
 ![](/static/kubeinit/kubeinit_in_docker.png)
 
 # TL;DR;

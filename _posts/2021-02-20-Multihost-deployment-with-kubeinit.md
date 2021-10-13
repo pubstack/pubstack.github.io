@@ -19,6 +19,11 @@ all the guest VMs in the same hypervisor.
 Now, we can decouple the deployment architecture in multiple
 hosts.
 
+>  __*Note 2021/10/13:*__ DEPRECATED - This tutorial only works with
+[kubeinit 1.0.2](https://github.com/Kubeinit/kubeinit/releases/tag/1.0.2) make
+sure you use this version of the code if you are following this tutorial, or
+[refer to the documentation](https://docs.kubeinit.org/) to use the latest code.
+
 # TL;DR;
 
 This post will show how to adjust the inventory files to

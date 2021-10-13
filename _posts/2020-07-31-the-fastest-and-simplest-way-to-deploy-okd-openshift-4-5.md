@@ -16,6 +16,11 @@ refimage: '/static/kubeinit/okd-libvirt.png'
 
 Long story short... **We will deploy an OKD 4.5 cluster in ~30 minutes (3 controllers, 1 to 10 workers, 1 service, and 1 bootstrap node) using one single command in around 30 minutes using a tool called [KubeInit](https://github.com/kubeinit/kubeinit).**
 
+>  __*Note 2021/10/13:*__ DEPRECATED - This tutorial only works with
+[kubeinit 1.0.2](https://github.com/Kubeinit/kubeinit/releases/tag/1.0.2) make
+sure you use this version of the code if you are following this tutorial, or
+[refer to the documentation](https://docs.kubeinit.org/) to use the latest code.
+
 ![](/static/kubeinit/okd-libvirt.png)
 
 I wrote so much automation in the meantime I worked/learned/practiced in OpenStack/RHOSP/Kubernetes/Openshift/OKD

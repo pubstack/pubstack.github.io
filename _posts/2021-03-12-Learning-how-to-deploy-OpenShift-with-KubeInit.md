@@ -18,6 +18,11 @@ the deployment of multiple Kubernetes distributions.
 This post will show you how to use it to deploy
 OpenShift in your infrastructure.
 
+>  __*Note 2021/10/13:*__ DEPRECATED - This tutorial only works with
+[kubeinit 1.0.2](https://github.com/Kubeinit/kubeinit/releases/tag/1.0.2) make
+sure you use this version of the code if you are following this tutorial, or
+[refer to the documentation](https://docs.kubeinit.org/) to use the latest code.
+
 # TL;DR;
 
 This post will show you the command and the parameters

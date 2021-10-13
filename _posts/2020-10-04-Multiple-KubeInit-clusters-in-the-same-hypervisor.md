@@ -19,6 +19,11 @@ modules, and tasks in a playbook operate.
 In this post it will be explained the way to update the inventory files to allow
 deploying multiple KubeInit clusters in the same hypervisor.
 
+>  __*Note 2021/10/13:*__ DEPRECATED - This tutorial only works with
+[kubeinit 1.0.2](https://github.com/Kubeinit/kubeinit/releases/tag/1.0.2) make
+sure you use this version of the code if you are following this tutorial, or
+[refer to the documentation](https://docs.kubeinit.org/) to use the latest code.
+
 # TL;DR;
 
 We will show the required changes to the inventory file to

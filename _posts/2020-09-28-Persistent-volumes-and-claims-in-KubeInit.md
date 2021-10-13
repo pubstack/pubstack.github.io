@@ -19,6 +19,11 @@ is not persistent, this means that every time you restart or
 create pods from the same application any internal data will be
 lost.
 
+>  __*Note 2021/10/13:*__ DEPRECATED - This tutorial only works with
+[kubeinit 1.0.2](https://github.com/Kubeinit/kubeinit/releases/tag/1.0.2) make
+sure you use this version of the code if you are following this tutorial, or
+[refer to the documentation](https://docs.kubeinit.org/) to use the latest code.
+
 The solution for this is to use persistent volumes so pods can persist
 their data every time they are restarted, a volume is YAKR (Yet Another Kubernetes Resource).
 
