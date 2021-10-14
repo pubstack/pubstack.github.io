@@ -1,0 +1,47 @@
+---
+name: release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  release:
+    if: github.repository_owner == 'anstack'
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.8]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          sudo apt update -y
+          sudo apt install jq -y
+          sudo apt-get remove ansible -y
+          sudo python3 -m pip uninstall ansible
+          sudo python3 -m pip install ansible==3.4.0
+          sudo locale-gen en_US.UTF-8
+          sudo dpkg-reconfigure locales
+          sudo apt install build-essential findutils -y
+          sudo apt-get --purge autoremove python3-pip
+          sudo apt install python3-pip
+          sudo python3 -m pip install --upgrade pip
+          sudo python3 -m pip install --upgrade virtualenv
+          sudo python3 -m pip install --upgrade setuptools
+          sudo python3 -m pip install -r ./test-requirements.txt
+          sudo python3 -m pip install tox shyaml
+          sudo python3 -m pip install twine
+      - name: Mirror
+        run: |
+          git clone https://github.com/anstack/anstack.github.io.git anstack_mirror
+          cd anstack_mirror
+          git branch -r | grep -v -- ' -> ' | while read remote; do git branch --track "${remote#origin/}" "$remote" 2>&1 | grep -v ' already exists'; done || true
+          git fetch --all
+          git pull --all
+          sed -i 's#https://github\.com/anstack/anstack\.github\.io\.git#https://github-access:${{ secrets.GITHUB_TOKEN }}@github\.com/pubstack/pubstack\.github\.io\.git#g' .git/config
+          git push --force --all origin
