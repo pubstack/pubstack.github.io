@@ -141,7 +141,7 @@ manager name and your name. Use the name you have in Trello. (see the example)
 ```
 var TRELLO_LIST_ID = ["5d20bd50eb63e24f7a0c8744", "5d20bd50eb63e24f7a0c8745","5d20bd50eb63e24f7a0c8746"]; //To Do, Doing, Done
 var TRELLO_TITLES = ["To Do", "Doing","Done",]; //To Do, Doing, Done
-var TRELLO_USER_FILTER = ["Carlos Camacho", "Anstack"]; //Only display these people cards
+var TRELLO_USER_FILTER = ["Carlos Camacho", "Pubstack"]; //Only display these people cards
 ```
 
 You will need to generate a **Developer key** and a **Token**.

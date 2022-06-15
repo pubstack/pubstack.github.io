@@ -14,7 +14,7 @@ refimage: '/static/pubstack-v1.png'
 
 Let's say bye bye and thanks to the old theme I used for the last 3 years.
 
-I created this blog, [Anstack](https://www.pubstack.com),
+I created this blog, [Pubstack](https://www.pubstack.com),
 just after joining Red Hat. This with the purpose of
 logging part of my upstream work within the [TripleO](https://www.tripleo.org)
 community.

@@ -2,7 +2,7 @@
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
- <title>Anstack Blog - TripleO related articles</title>
+ <title>Pubstack Blog - TripleO related articles</title>
  <link href="https://www.pubstack.com/atom.xml" rel="self"/>
  <link href="https://www.pubstack.com/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>

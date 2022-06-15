@@ -107,7 +107,7 @@ www.pubstack.com was born on July 5th of 2016 (first GitHub commit), yeah is my 
 my gratitude to the community doing some CtrlC + CtrlV recipes to avoid the frustration of working
 with TripleO and not having something deployed and easy to be used ASAP.
 
-Anstack does not have much traffic but it reached superuser.openstack.org, the TripleO cheatsheets
+Pubstack does not have much traffic but it reached superuser.openstack.org, the TripleO cheatsheets
 were on devconf.cz and FOSDEM, so in general, is really nice. When people reference your writings
 anywhere. Maybe in the future can evolve to be more related to ANsible and openSTACK ;) as TripleO
 is adding more and more support for Ansible.
