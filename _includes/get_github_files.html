@@ -1,6 +1,6 @@
 <ul id="files_list"></ul>
 <script>
-$.getJSON('https://api.github.com/repos/anstack/anstack.github.io/contents/{{ include.path }}', function(data) {
+$.getJSON('https://api.github.com/repos/pubstack/pubstack.github.io/contents/{{ include.path }}', function(data) {
     for (var i = 0; i < data.length; i++) {
         var ul = document.getElementById("files_list");
         var li = document.createElement("li");

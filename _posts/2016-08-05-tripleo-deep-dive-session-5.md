@@ -34,4 +34,4 @@ content on the [TripleO YouTube channel](https://www.youtube.com/channel/UCNGDxZ
 {% assign videoId = "h32z6Nq8Byg" %}
 {% include youtubePlayer.html id=videoId %}
 
-Please check the [sessions index](http://www.anstack.com/blog/2017/06/15/tripleo-deep-dive-session-index.html) to have access to all available content.
+Please check the [sessions index](http://www.pubstack.com/blog/2017/06/15/tripleo-deep-dive-session-index.html) to have access to all available content.

@@ -20,7 +20,7 @@ from [this](http://paste.openstack.org/show/590436/) link.
 
 The following steps are followed to upgrade your Overcloud from Ocata to latest master (Pike).
 
-- Deploy latest master TripleO following [this](http://www.anstack.com/blog/2016/07/04/manually-installing-tripleo-recipe.html) post.
+- Deploy latest master TripleO following [this](http://www.pubstack.com/blog/2016/07/04/manually-installing-tripleo-recipe.html) post.
 
 - Remove the current Overcloud deployment.
 

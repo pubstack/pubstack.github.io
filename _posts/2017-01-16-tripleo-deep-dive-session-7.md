@@ -33,6 +33,6 @@ Here you will be able to see a quick overview about how to install the UI as a d
 {% include youtubePlayer.html id=videoId %}
 
 
-The summarized steps are also available in [this](http://www.anstack.com/blog/2017/01/13/installing-tripleo-ui.html) blog post.
+The summarized steps are also available in [this](http://www.pubstack.com/blog/2017/01/13/installing-tripleo-ui.html) blog post.
 
-Please check the [sessions index](http://www.anstack.com/blog/2017/06/15/tripleo-deep-dive-session-index.html) to have access to all available content.
+Please check the [sessions index](http://www.pubstack.com/blog/2017/06/15/tripleo-deep-dive-session-index.html) to have access to all available content.

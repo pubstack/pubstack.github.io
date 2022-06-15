@@ -12,7 +12,7 @@ refimage: '/static/crashed-those-commits.png'
 ---
 
 Writing
-[this](http://www.anstack.com/blog/2016/11/21/openstack-summit-2016-bcn.html) blog post,
+[this](http://www.pubstack.com/blog/2016/11/21/openstack-summit-2016-bcn.html) blog post,
 suddenly and without knowing I ended up by squashing/removing the commit
 holding those changes.
 

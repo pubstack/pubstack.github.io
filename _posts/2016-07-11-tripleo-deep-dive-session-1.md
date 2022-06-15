@@ -48,7 +48,7 @@ upload-puppet-modules --directory puppet-modules/
 
 ```
 
-Please check the [sessions index](http://www.anstack.com/blog/2017/06/15/tripleo-deep-dive-session-index.html) to have access to all available content.
+Please check the [sessions index](http://www.pubstack.com/blog/2017/06/15/tripleo-deep-dive-session-index.html) to have access to all available content.
 
 
 ```text

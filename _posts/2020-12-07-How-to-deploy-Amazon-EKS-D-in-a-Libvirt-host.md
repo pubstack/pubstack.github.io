@@ -81,7 +81,7 @@ ansible-playbook \
     ./playbooks/$distro.yml
 ```
 
-You can also [run it from a container](https://www.anstack.com/blog/2020/09/11/Deploying-KubeInit-from-a-container.html)
+You can also [run it from a container](https://www.pubstack.com/blog/2020/09/11/Deploying-KubeInit-from-a-container.html)
 to avoid compatibility issues between your set up and the required libraries.
 
 This will deploy by default a 3 controllers 1 compute cluster.

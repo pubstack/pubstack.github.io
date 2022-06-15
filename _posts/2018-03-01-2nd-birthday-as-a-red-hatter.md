@@ -103,7 +103,7 @@ and help us to reach as many languages as possible!!!
 
 <div style="float: left; width: 230px; background: white;"><img width="230px" src="/static/logo.png" alt="" style="border:15px solid #FFF"></div>
 
-www.anstack.com was born on July 5th of 2016 (first GitHub commit), yeah is my way of expressing
+www.pubstack.com was born on July 5th of 2016 (first GitHub commit), yeah is my way of expressing
 my gratitude to the community doing some CtrlC + CtrlV recipes to avoid the frustration of working
 with TripleO and not having something deployed and easy to be used ASAP.
 

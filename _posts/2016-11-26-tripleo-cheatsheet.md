@@ -114,7 +114,7 @@ TripleO deployments.
 
 > If you think there are more
 > useful commands to add to the list
-> just add a [comment](https://github.com/anstack/anstack.github.io/issues/22)!
+> just add a [comment](https://github.com/pubstack/pubstack.github.io/issues/22)!
 
 **Happy TripleOing!**
 
