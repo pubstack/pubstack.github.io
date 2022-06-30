@@ -40,3 +40,15 @@
         line-height: 20px;
   }
 }
+
+.article h2 {
+    font-size: 35px;
+}
+
+.article h3 {
+    font-size: 30px;
+}
+
+.article h4 {
+    font-size: 25px;
+}
