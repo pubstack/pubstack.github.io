@@ -1,16 +1,19 @@
 ---
 layout: post
-title: "Porsche 993"
+title: "Homelab roadmap"
 author: "Carlos Camacho"
 categories:
   - blog
 tags:
+  - draft
+  - cloud
+  - kubernetes
   - engineering
   - hobbies
-  - restomod
-favorite: false
-commentIssueId: 61
-refimage: '/static/964_side.jpg'
+hidden: true
+favorite: true
+commentIssueId: 90
+refimage: '/static/homelab/homelab.jpg'
 ---
 
 The Porsche 993 is the internal designation for the
@@ -18,7 +21,7 @@ Porsche 911 model manufactured and sold between January
 1994 and early 1998 (model years 1995–1998 in the United States),
 replacing the 964. Its discontinuation marked the end of air-cooled Porsches.
 
-![](/static/993_side.jpg)
+![](/static/homelab_intro.jpg)
 
 The 993 was much improved over, and quite different from its predecessor.
 According to Porsche, every part of the car was designed from the ground up,
@@ -46,11 +49,12 @@ New files added to the folder [/static/993/](https://github.com/pubstack/pubstac
 will be added automatically to this post after
 the commits are merged.
 
-{% assign directory = "static/993/" %}
-{% include get_github_files.html path=directory %}
+{% assign galleryImages = "/static/964_front.jpg|/static/964_rear.jpg|/static/964_rear2.jpg|/static/993_inside.jpg" | split: "|" %}
+{% assign galleryTitle = "asdf" %}
+{% include block_gallery.html galleryTitle=galleryTitle galleryImages=galleryImages %}
 
-Now some more pictures, and of course if you find this article useful feel free to share it!.
+Test
 
-{% assign galleryImages = "/static/964_front.jpg|/static/964_rear.jpg|/static/964_rear2.jpg|/static/993_inside.jpg|/static/993_inside2.jpg|/static/964_inside2.jpg|/static/964_inside.jpg" | split: "|" %}
-{% assign galleryTitle = "Gallery" %}
+{% assign galleryImages = "/static/993_inside2.jpg|/static/964_inside2.jpg|/static/964_inside.jpg" | split: "|" %}
+{% assign galleryTitle = "fdsa" %}
 {% include block_gallery.html galleryTitle=galleryTitle galleryImages=galleryImages %}

@@ -5,13 +5,13 @@ author: "Carlos Camacho"
 categories:
   - blog
 tags:
-  - draft
+  # - draft
   - cloud
   - openstack
   - openshift
   - kubernetes
   - 3D
-hidden: true
+#hidden: true
 favorite: true
 commentIssueId: 99
 refimage: '/static/kubebox/kubebox_tray_00.png'
@@ -30,85 +30,47 @@ Up to 8 trays in the same enclosure.
 
 Frontal view of the generic tray.
 
-
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 <div style="float: right; width: 400px; background: white;"><img width="400px" src="/static/kubebox/kubebox_tray_00.png" alt="" style="border:15px solid #FFF"></div>
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 <div style="float: left; width: 100px; background: white;"><img width="100px" src="/static/kubebox/kubebox_tray_01.png" alt="" style="border:15px solid #FFF"></div>
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 <div style="float: right; width: 400px; background: white;"><img width="400px" src="/static/kubebox/kubebox_tray_02.png" alt="" style="border:15px solid #FFF"></div>
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 <div style="float: left; width: 100px; background: white;"><img width="100px" src="/static/kubebox/kubebox_tray_03.png" alt="" style="border:15px solid #FFF"></div>
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 <div style="float: right; width: 400px; background: white;"><img width="400px" src="/static/kubebox/kubebox_tray_04.png" alt="" style="border:15px solid #FFF"></div>
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 <div style="float: left; width: 100px; background: white;"><img width="100px" src="/static/kubebox/kubebox_tray_05.png" alt="" style="border:15px solid #FFF"></div>
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 <div style="float: right; width: 400px; background: white;"><img width="400px" src="/static/kubebox/kubebox_tray_06.png" alt="" style="border:15px solid #FFF"></div>
 
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
-
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-2-m9854 0394h9wherg0whf  0 80 8 h8 9h h h 07h 0897 hm0 789h 097h 0mn78 0
-tgxqw897ef6ctgbq9 w86f9q7sdgc 7s6dg c7a6sgdf97 6ag sd9cg67a s9dc78ga9s8dc7 ga908sd7f
-
-
-There are a few things to polish in the new site, like adding my
-CV and about page. Otherwise, shiiiiip it!!!
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ***Comments are welcomed as usual, thank you!!!!***
 
