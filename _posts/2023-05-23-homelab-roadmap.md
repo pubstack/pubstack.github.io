@@ -16,10 +16,38 @@ commentIssueId: 90
 refimage: '/static/homelab/homelab.jpg'
 ---
 
-The Porsche 993 is the internal designation for the
-Porsche 911 model manufactured and sold between January
-1994 and early 1998 (model years 1995–1998 in the United States),
-replacing the 964. Its discontinuation marked the end of air-cooled Porsches.
+
+## BOM
+
+| Item             | Quantity | Price| Total |Image|
+|------------------|----------|------|-------|-----|
+| Countertop       | 1        |d| asdf| ![](/static/homelab/01_materials/01_tablero.jpg =50x50) |
+| T-slot 2020 profiles  | 12       |d| asdf| ![](/static/homelab/01_materials/02_t-slot.jpg =50x50) |
+| 3 way connectors      | 8 |d| asdf| ![](/static/homelab/01_materials/03_3_way_connector.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/04_m3_4mmlong_screw.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/06_90_degree_connector.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/07_90_degree_connector.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/08_t-slot_nut.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/09_spax_2mm_screw.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/12_L_bracket_30X80X55X2.5MM_SIMPSON.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/13_corner.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/16_feet.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/17_shock.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/18_wheels_1inch_nylon.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/19_m10_hexagon_connector.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/21_washers.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/22_hinge.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/23_glass_doors_5mm.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/81_Adam_Hall_19inch_61535.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/91_shelve.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/92_shelve_150mm.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/93_power.jpg =50x50) |
+| Text  |s|d| asdf| ![](/static/homelab/01_materials/95_RDA2U.jpg =50x50) |
+
+{% assign galleryImages = "/static/homelab/01_materials/01_tablero.jpg|/static/homelab/01_materials/02_t-slot.jpg|/static/homelab/01_materials/03_3_way_connector.jpg|/static/homelab/01_materials/04_m3_4mmlong_screw.jpg|/static/homelab/01_materials/06_90_degree_connector.jpg|/static/homelab/01_materials/07_90_degree_connector.jpg|/static/homelab/01_materials/08_t-slot_nut.jpg|/static/homelab/01_materials/09_spax_2mm_screw.jpg|/static/homelab/01_materials/12_L_bracket_30X80X55X2.5MM_SIMPSON.jpg|/static/homelab/01_materials/13_corner.jpg|/static/homelab/01_materials/16_feet.jpg|/static/homelab/01_materials/17_shock.jpg|/static/homelab/01_materials/18_wheels_1inch_nylon.jpg|/static/homelab/01_materials/19_m10_hexagon_connector.jpg|/static/homelab/01_materials/21_washers.jpg|/static/homelab/01_materials/22_hinge.jpg|/static/homelab/01_materials/23_glass_doors_5mm.jpg|/static/homelab/01_materials/81_Adam_Hall_19inch_61535.jpg|/static/homelab/01_materials/91_shelve.jpg|/static/homelab/01_materials/92_shelve_150mm.jpg|/static/homelab/01_materials/93_power.jpg|/static/homelab/01_materials/95_RDA2U.jpg" | split: "|" %}
+{% assign galleryTitle = "Materials gallery" %}
+{% include block_gallery.html galleryTitle=galleryTitle galleryImages=galleryImages %}
+
 
 ![](/static/homelab_intro.jpg)
 
