@@ -11,7 +11,7 @@ commentIssueId: 92
 refimage: '/static/build_network/network.jpg'
 ---
 
-I'm writing this blog post as a partial output from the work done with James in the mentoring program. We reviewed a framework called the “7 careers skills’’ in which we focused on one specifically called ‘building your network’.
+I'm writing this blog post as a partial output from the work done with James Mernim in the RHT's mentoring program. We reviewed a framework called the “7 careers skills’’ in which we focused on one specifically called ‘building your network’.
 
 ## Careers skills: Build your network
 
@@ -36,7 +36,7 @@ When we think about our career, people are a key differentiator, the right perso
 
 Did you watch the movie “Oppenheimer”? (if not, I will love to spoil the first 5 minutes for you)...
 
-Robert Oppenheimer was a theoretical physicist that while studying in Cambridge's Cavendish Laboratory under a professor named Blackett he didn't seem happy working there "in the lab", this, until the point of adding cyanide to his professor's apple. Then, someone in his network called Nils Bohr, said to him "you don't seem happy here"... "Get out of Cambridge and go somewhere they let you think"... “Where to go”... “Go with Born”... Then, the movie actually starts building its arguments and you will see Oppenheimer's evolution across the time.
+Robert Oppenheimer was a theoretical physicist that while studying in Cambridge's Cavendish Laboratory under a professor named Blackett he didn't seem happy working there "in the lab", this, until the point of adding cyanide to his professor's apple. Then, someone in his network called Nils Bohr, said to him "you don't seem happy here"... "Get out of Cambridge and go somewhere they let you think"... “Where to go”... “Go with Bohr”... Then, the movie actually starts building its arguments and you will see Oppenheimer's evolution across the time.
 
 ---
 – The main goal of this exercise is to help you to “find your Nils Bohr” –
