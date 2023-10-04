@@ -36,14 +36,21 @@ When we think about our career, people are a key differentiator, the right perso
 
 Did you watch the movie “Oppenheimer”? (if not, I will love to spoil the first 5 minutes for you)...
 
-Robert Oppenheimer was a theoretical physicist that while studying in Cambridge's Cavendish Laboratory under a professor named Blackett he didn't seem happy working there "in the lab", this, until the point of adding cyanide to his professor's apple. Then, someone in his network called Nils Bohr, said to him "you don't seem happy here"... "Get out of Cambridge and go somewhere they let you think"... “Where to go”... “Go with Bohr”... Then, the movie actually starts building its arguments and you will see Oppenheimer's evolution across the time.
+Robert Oppenheimer was a theoretical physicist studying in the Cambridge's Cavendish Laboratory
+under a professor named Blackett. He didn't seem happy working there "in the lab", this, until the point
+of adding cyanide to his professor's apple. Then, someone in his network called Niels Bohr, said to him
+"you don't seem happy here"... "Get out of Cambridge and go somewhere they let you think"... "Where to go"...
+"Go with Born (University of Göttingen)"... Then, the movie actually starts building its arguments and you
+will see Oppenheimer's evolution across the time.
 
 ---
-– The main goal of this exercise is to help you to “find your Nils Bohr” –
+- The main goal of this exercise is to help you to “find your Niels Bohr” -
 
 ---
 
 There is also some interesting research and academic theory around how these networks function. Sociologist Mark Granovetter developed the idea of ‘strong’ and ‘weak’ ties within networks. Weak ties are relationships outside of your immediate circle, and they are more important for spotting opportunities and accessing new information. Granovetter also found that a person’s number of connections was less important than their diversity. This activity is designed to help you think about and understand your network. It draws on theory about the kinds of relationships we need to build to have the right kind of career support in place. 
+
+## Relationships
 
 There are three categories of relationships which can be helpful: 
 
@@ -74,12 +81,26 @@ There are three categories of relationships which can be helpful:
 
 ### Example of the exercise “Build your network”
 
-Here is an example network map, the three types of relationship are represented as a Venn diagram, you’ll notice that there might be some overlaps depending on how many people you are able to allocate in the diagram.
+Here is an example network map, the three types of
+relationship are represented as a Venn diagram,
+you’ll notice that there might be some overlaps
+depending on how many people you are able to allocate
+in the diagram.
 
 ![](/static/build_network/network_map.png)
 
-Once you finish allocating people in the diagram it should help make an abstract idea of your support network more concrete and understandable.
+Once you finish allocating all the people in the diagram
+(write their names by hand where it says "Insert text")
+it should help make an abstract idea of your support
+network more concrete and understandable.
 
-Suggestions for Expanding One's Network can be many, these suggestions will try to provide some insights and ideas about some practical steps they can take to improve their network. Among them, contributing to other organizations, attending conferences, and engaging in stronger communication roles within the same organization, internally, we also have the technical gigs program. All this with the idea of provisioning some practical steps you can take to improve your network. 
+Suggestions for Expanding One's Network can be many, these
+suggestions will try to provide some insights and ideas about
+some practical steps they can take to improve their network.
+Among them, contributing to other organizations, attending
+conferences, and engaging in stronger communication roles within
+the same organization, internally, we also have the technical gigs program.
+All this with the idea of provisioning some practical steps you can take
+to improve your network. 
 
 In summary, this post aims to educate and guide readers on the importance of building and maintaining a supportive network in their careers. It should introduce the –7 career skills- framework with emphasis in building your network, with a glimpse of some theoretical and practical advice to help individuals strengthen their professional connections and ultimately advance in their careers.
