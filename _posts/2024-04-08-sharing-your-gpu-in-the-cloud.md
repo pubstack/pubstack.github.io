@@ -19,6 +19,8 @@ refimage: '/static/gpu_post/cloud.jpg'
 In this post we will introduce different methods for sharing GPU resources
 across workloads in K8s clusters.
 
+![](/static/gpu_post/cloud_lego.jpg)
+
 GPU sharing refers to the practice of allowing multiple users or processes
 to access and utilize the resources of a single Graphics Processing Unit (GPU) concurrently.
 This approach can be beneficial in scenarios where there are multiple workloads
@@ -27,30 +29,35 @@ computing environments, data centers, or research institutions.
 
 * Time-slices: Time-slices refers to a method of GPU sharing where the GPU resources
 are allocated to different users or processes in time slices or intervals.
-<div style="float: right; width: 230px; background: white;"><img src="/static/gpu_post/slice.png" alt="" style="border:15px solid #FFF"></div>
 Each user or process is given access to the GPU for a certain period before it is switched to another
 user or process. Time-sharing can help in maximizing GPU utilization and accommodating
 multiple users with varying resource requirements.
+<div style="float: right; width: 230px; background: white;"><img src="/static/gpu_post/slice.png" alt="" style="border:15px solid #FFF"></div>
 
 * Multi-Instance GPU (MIG): MIG is a feature introduced by NVIDIA that allows a single
 physical GPU to be partitioned into multiple instances, each with its own dedicated
 compute resources, memory, and performance profiles. This enables multiple users or
 workloads to run concurrently on the same physical GPU with isolation and performance guarantees.
+<div style="float: left; width: 230px; background: white;"><img src="/static/gpu_post/instance.jpg" alt="" style="border:15px solid #FFF"></div>
 
 * Multi-Process Service (MPS): MPS is a feature provided by NVIDIA GPUs that enables
 multiple CUDA applications to share a single GPU concurrently. It allows the GPU to
 switch between different CUDA contexts rapidly, enabling better utilization of GPU
 resources across multiple processes.
+<div style="float: right; width: 230px; background: white;"><img src="/static/gpu_post/semaphore.png" alt="" style="border:15px solid #FFF"></div>
+
+![](/static/gpu_post/gpu_lego.png)
 
 Overall, these techniques aim to improve the efficiency of GPU utilization and
 accommodate the diverse needs of users or processes sharing the GPU resources.
 
-![](/static/gpu_post/gpu_lego.png)
 
-# Enabling Time-slicing
+## Enabling Time-slicing
 
 The following CR example defines how we will be sharing the GPU
 in a config map (this wont have any effect in the cluster at the moment).
+<div style="float: right; width: 230px; background: white;"><img src="/static/gpu_post/icon.png" alt="" style="border:15px solid #FFF"></div>
+
 
 ```bash
 cat << EOF | kubectl apply -f -
@@ -73,7 +80,7 @@ EOF
 ```
 
 With the resource created we need to patch the initial ClusterPolicy
-from the GPU operator 'gpu-cluster-policy'.
+from the GPU operator `gpu-cluster-policy`.
 
 ```bash
 oc patch clusterpolicy \
@@ -87,13 +94,13 @@ The previous example will update the `devicePlugin` configuration in the `gpu-cl
 When inspecting the cluster policy it should look like
 
 ```bash
-#  devicePlugin:
-#    config:
-#      default: ''
-#      name: time-slicing-config
-#    enabled: true
-#    mps:
-#      root: /run/nvidia/mps
+devicePlugin:
+  config:
+    default: ''
+    name: time-slicing-config
+  enabled: true
+  mps:
+    root: /run/nvidia/mps
 ```
 
 So we fetch the configuration from the previously created config map `time-slicing-config`.
@@ -101,25 +108,29 @@ So we fetch the configuration from the previously created config map `time-slici
 To make sure the NFD operator runs we label the node stating that the `device-plugin.config` should point to `NVIDIA-A100-PCIE-40GB`. And we label the node we want to apply the configuration
 
 ```bash
-oc label --overwrite node perf-intel-6.perf.eng.bos2.dc.redhat.com nvidia.com/device-plugin.config=NVIDIA-A100-PCIE-40GB
+oc label \
+  --overwrite node perf-intel-6.perf.eng.bos2.dc.redhat.com \
+  nvidia.com/device-plugin.config=NVIDIA-A100-PCIE-40GB
 ```
 
 After a few minutes we can change that the NFD operator reconfigured the node to use time-slicing
 
 ```bash
-oc get node --selector=nvidia.com/gpu.product=NVIDIA-A100-PCIE-40GB-SHARED -o json | jq '.items[0].status.capacity'
+oc get node \
+  --selector=nvidia.com/gpu.product=NVIDIA-A100-PCIE-40GB-SHARED \
+  -o json | jq '.items[0].status.capacity'
 ```
 
 ```bash
-# {
-#   "cpu": "128",
-#   "ephemeral-storage": "3123565732Ki",
-#   "hugepages-1Gi": "0",
-#   "hugepages-2Mi": "0",
-#   "memory": "527845520Ki",
-#   "nvidia.com/gpu": "8",
-#   "pods": "250"
-# }
+{
+  "cpu": "128",
+  "ephemeral-storage": "3123565732Ki",
+  "hugepages-1Gi": "0",
+  "hugepages-2Mi": "0",
+  "memory": "527845520Ki",
+  "nvidia.com/gpu": "8",
+  "pods": "250"
+}
 ```
 
 Now we test we can schedule the shared GPU to a pod (or many slices).
@@ -177,7 +188,7 @@ In the previous case a pod will be scheduled and its execution will end, now let
 how can we schedule the 8 slices that were created before.
 
 We can create a deployment with 11 pods that will run
-(dcgmproftester12)[https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html#cuda-test-generator-dcgmproftester].
+[dcgmproftester12](https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html#cuda-test-generator-dcgmproftester).
 In this case dcgmproftester12 will generate load as a half-precision
 matrix-multiply-accumulate for the Tensor Cores (-t 1004) for 5 minutes (-d 300).
 
@@ -247,32 +258,9 @@ After `dcgmproftester12` finishes, the pods logs show:
 ```bash
 Skipping CreateDcgmGroups() since DCGM validation is disabled
 Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.78e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.96e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.97e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.89e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.92e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.94e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.94e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.90e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.92e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.93e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.93e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.90e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.92e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.92e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.91e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.90e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.90e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.91e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.91e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.90e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.90e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.90e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.89e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.89e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.90e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.90e+05 gflops).
-Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.89e+05 gflops).
+.
+.
+.
 Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.89e+05 gflops).
 Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.89e+05 gflops).
 Worker 0:0 [1004]: TensorEngineActive: generated ???, dcgm 0 (1.89e+05 gflops).
@@ -292,22 +280,18 @@ Max Memory bandwidth: 1555200000000 bytes (1555.2 GiB)
 CU_DEVICE_ATTRIBUTE_ECC_SUPPORT: true
 ```
 
-# Enabling Multi-Instance GPU (MIG)
+## Enabling Multi-Instance GPU (MIG)
 
 Similarly as time-slicing the configuration needs to be adjusted using both configmaps
 and updating the cluster policy to the changes are applied correctly. The labeling
 step done in time-slicing needs to be executed only once.
+<div style="float: left; width: 230px; background: white;"><img src="/static/gpu_post/motherboard_gpu.png" alt="" style="border:15px solid #FFF"></div>
 
+## Enabling MPS
 
+We go through a similar process as enabling timesharing. We create a config map with the MPS configuration
 
-#
-# Enabling MPS
-#
-
-# We go through a similar process as enabling timesharing
-
-# We create a config map with the MPS configuration
-
+```bash
 cat << EOF | kubectl apply -f -
 ---
 apiVersion: v1
@@ -326,32 +310,40 @@ data:
           # replicas: 49 # This will make it break
           replicas: 10
 EOF
+```
 
-# And we path the cluster policy to apply the configuration from the new config map
+And we path the cluster policy to apply the configuration from the new config map. Now we patch the CR
 
-# Now we patch the CR
+```bash
 oc patch clusterpolicy \
     gpu-cluster-policy \
     -n nvidia-gpu-operator \
     --type merge \
     -p '{"spec": {"devicePlugin": {"config": {"name": "mps-enable-config"}}}}'
+```
 
-# With the cluster policy patched we dont have to relabel the node because it was done in a previous step
-# To trigger the NFD gpu-feature-discovery-XXX POD YOU NEED TO MAKE SURE THE CLUSTER POLICY IS PATCHED.
+With the cluster policy patched we dont have to relabel the node because it was done in a previous step
+To trigger the NFD gpu-feature-discovery-XXX POD YOU NEED TO MAKE SURE THE CLUSTER POLICY IS PATCHED.
+Now the product name should change from -SHARED to the original name
 
-# Now the product name should change from -SHARED to the original name
+```bash
+oc get node \
+  --selector=nvidia.com/gpu.product=NVIDIA-A100-PCIE-40GB \
+  -o json | jq '.items[0].status.capacity'
+```
 
-oc get node --selector=nvidia.com/gpu.product=NVIDIA-A100-PCIE-40GB -o json | jq '.items[0].status.capacity'
+And we query the gpu labels
 
-# And we query the gpu labels
-
+```bash
 kubectl describe node perf-intel-6.perf.eng.bos2.dc.redhat.com | awk '/^Labels:/,/^Taints:/' | grep nvidia.com
+```
 
-# And these should be available
-
-# nvidia.com/gpu.sharing-strategy=mps
-# nvidia.com/mps.capable=true
-
+And these should be available
+```bash
+nvidia.com/gpu.sharing-strategy=mps
+nvidia.com/mps.capable=true
+```
+```bash
 nvidia-device-plugin-mps-control-daemon-9ff2n
 I0405 12:49:04.996976 46 main.go:78] Starting NVIDIA MPS Control Daemon d838ad11
 commit: d838ad11d323a71f19c136fabbf65c9e23b2ae81
@@ -426,15 +418,18 @@ I0405 12:49:05.113709 46 daemon.go:131] "Starting log tailer" resource="nvidia.c
 [2024-04-05 12:49:05.113 Control 61] Cmd:set_default_active_thread_percentage 10
 [2024-04-05 12:49:05.113 Control 61] 10.0
 [2024-04-05 12:49:05.113 Control 61] UI closed
+```
 
 
+Now we moved from:
 
-Now we moved from
+* `nvidia.com/gpu=1`
 
-                    nvidia.com/gpu=1
-to
-                    nvidia.com/gpu.count=1
+to:
 
+* `nvidia.com/gpu.count=1`
+
+```bash
 cat << EOF | kubectl create -f -
 ---
 apiVersion: v1
@@ -455,9 +450,9 @@ spec:
   # nodeSelector:
   #   nvidia.com/gpu.product: NVIDIA-A100-PCIE-40GB
 EOF
+```
 
-
-
+```bash
 cat << EOF | kubectl apply -f -
 ---
 apiVersion: apps/v1
@@ -495,43 +490,12 @@ spec:
            capabilities:
              add: ["SYS_ADMIN"]
 EOF
-
-
-
-docker pull nvcr.io/nvidia/samples:dcgmproftester-2.0.10-cuda11.0-ubuntu18.04
-
-docker pull nvidia/samples:dcgmproftester-2.0.10-cuda11.0-ubuntu18.04
-docker tag nvidia/samples:dcgmproftester-2.0.10-cuda11.0-ubuntu18.04 quay.io/ccamacho/nvidia/samples/dcgmproftester:2.0.10-cuda11.0-ubuntu18.04
-
-
-
-cat << EOF | kubectl apply -f -
----
-apiVersion: v1
-kind: Pod
-metadata:
-  generateName: cuda-vectoradd-
-spec:
-  restartPolicy: OnFailure
-  containers:
-  - name: vectoradd
-    image: nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda11.7.1-ubi8
-    resources:
-      limits:
-        nvidia.com/gpu.shared: "1"
-  nodeSelector:
-    nvidia.com/gpu.product: NVIDIA-A100-PCIE-40GB
-EOF
-
-
-
-
-
+```
 
 ## Update log:
 
 <div style="font-size:10px">
   <blockquote>
-    <p><strong>2023/05/26:</strong> Initial version.</p>
+    <p><strong>2024/04/04:</strong> Initial draft.</p>
   </blockquote>
 </div>

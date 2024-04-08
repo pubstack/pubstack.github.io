@@ -229,6 +229,14 @@ BTW all this stuff was 100% sponsored by ME.
 {% assign videoId = "/static/homelab/02_building/after/94.mp4" %}
 {% include rawVideo.html id=videoId %}
 
+## Status
+
+At the moment some pictures of the build...
+
+{% assign galleryImages = "/static/homelab/04_state/00_homelab_status_2023_08.jpg" | split: "|" %}
+{% assign galleryTitle = "Showcase gallery" %}
+{% include block_gallery.html galleryTitle=galleryTitle galleryImages=galleryImages %}
+
 ## Deploying
 
 To deploy things here I'm using Ansible, and tools like Kubeinit, these are designed to simplify the
@@ -258,5 +266,6 @@ approach to deploying and managing Kubernetes clusters within a homelab environm
 <div style="font-size:10px">
   <blockquote>
     <p><strong>2023/05/26:</strong> Initial version.</p>
+    <p><strong>2023/10/04:</strong> Status gallery.</p>
   </blockquote>
 </div>
