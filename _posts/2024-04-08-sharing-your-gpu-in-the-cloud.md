@@ -5,12 +5,12 @@ author: "Carlos Camacho"
 categories:
   - blog
 tags:
-  - draft
+  # - draft
   - cloud
   - kubernetes
   - engineering
   - openshift
-hidden: true
+# hidden: true
 favorite: true
 commentIssueId: 93
 refimage: '/static/gpu_post/cloud.jpg'
@@ -27,37 +27,70 @@ This approach can be beneficial in scenarios where there are multiple workloads
 that can utilize GPU resources intermittently or simultaneously, such as in cloud
 computing environments, data centers, or research institutions.
 
-* Time-slices: Time-slices refers to a method of GPU sharing where the GPU resources
-are allocated to different users or processes in time slices or intervals.
-Each user or process is given access to the GPU for a certain period before it is switched to another
-user or process. Time-sharing can help in maximizing GPU utilization and accommodating
-multiple users with varying resource requirements.
+### Prerequisites:
+
+- OpenShift 4.15 deployed.
+- NFD operator.
+- Nvidia GPU operator from master.
+
 <div style="float: right; width: 230px; background: white;"><img src="/static/gpu_post/slice.png" alt="" style="border:15px solid #FFF"></div>
 
-* Multi-Instance GPU (MIG): MIG is a feature introduced by NVIDIA that allows a single
-physical GPU to be partitioned into multiple instances, each with its own dedicated
-compute resources, memory, and performance profiles. This enables multiple users or
-workloads to run concurrently on the same physical GPU with isolation and performance guarantees.
+* Time-slicing, is a technique used in GPU resource management where the available
+GPU resources are divided into time intervals, or "slices," and allocated to different
+users or processes sequentially. Each user or process is granted access to the GPU
+for a specified duration, known as a time slice, before the GPU is relinquished and
+made available to the next user or process in the queue.
+This method of GPU sharing is particularly useful in environments where there are
+multiple users or processes vying for access to limited GPU resources. By allocating
+GPU time slices to different users or processes, time-slicing ensures fair and efficient
+utilization of the GPU among multiple competing workloads.
+
 <div style="float: left; width: 230px; background: white;"><img src="/static/gpu_post/instance.jpg" alt="" style="border:15px solid #FFF"></div>
 
-* Multi-Process Service (MPS): MPS is a feature provided by NVIDIA GPUs that enables
-multiple CUDA applications to share a single GPU concurrently. It allows the GPU to
-switch between different CUDA contexts rapidly, enabling better utilization of GPU
-resources across multiple processes.
+* Multi-Instance GPU (MIG), revolutionizes GPU utilization in data center environments
+by allowing a single physical GPU to be partitioned into multiple isolated instances,
+each with its own dedicated compute resources, memory, and performance profiles. MIG
+enables efficient sharing of GPU resources among multiple users or workloads by
+providing predictable performance guarantees and workload isolation. With MIG,
+administrators can dynamically adjust the number and size of MIG instances to adapt
+to changing workload demands, ensuring optimal resource utilization and scalability.
+This innovative technology enhances flexibility, efficiency, and performance in
+GPU-accelerated computing environments, enabling organizations to meet the diverse
+needs of applications and users while maximizing GPU utilization.
+
 <div style="float: right; width: 230px; background: white;"><img src="/static/gpu_post/semaphore.png" alt="" style="border:15px solid #FFF"></div>
 
-![](/static/gpu_post/gpu_lego.png)
+* Multi-Process Service (MPS), facilitates the concurrent sharing of a single
+GPU among multiple CUDA applications. By allowing the GPU to swiftly transition
+between various CUDA contexts, MPS optimizes GPU resource utilization across
+multiple processes. This capability enables efficient allocation of GPU resources
+to different applications running simultaneously, ensuring that the GPU is
+effectively utilized even when serving multiple workloads concurrently. MPS
+enhances GPU efficiency by dynamically managing CUDA contexts, enabling seamless
+context switching and minimizing overhead, thus maximizing GPU throughput and
+responsiveness in multi-application environments.
+
+<div style="display: flex; justify-content: center;">
+  <div style="width: 230px; background: white;"><img src="/static/gpu_post/gpu_lego.png" alt="" style="border:15px solid #FFF"></div>
+</div>
 
 Overall, these techniques aim to improve the efficiency of GPU utilization and
 accommodate the diverse needs of users or processes sharing the GPU resources.
 
+A shortcut to the different strategies reviewed as follows:
 
-## Enabling Time-slicing
+### Strategies
+1. [Enabling Time-slicing](#time-slicing)
+2. [Enabling Multi-Instance GPU (MIG)](#mig)
+3. [Enabling MPS](#mps)
+4. [Reset](#reset)
+
+## Enabling Time-slicing <a name="time-slicing"></a>
+
+<div style="float: right; width: 150px; background: white;"><img src="/static/gpu_post/icon.png" alt="" style="border:15px solid #FFF"></div>
 
 The following CR example defines how we will be sharing the GPU
 in a config map (this wont have any effect in the cluster at the moment).
-<div style="float: right; width: 230px; background: white;"><img src="/static/gpu_post/icon.png" alt="" style="border:15px solid #FFF"></div>
-
 
 ```bash
 cat << EOF | kubectl apply -f -
@@ -280,16 +313,147 @@ Max Memory bandwidth: 1555200000000 bytes (1555.2 GiB)
 CU_DEVICE_ATTRIBUTE_ECC_SUPPORT: true
 ```
 
-## Enabling Multi-Instance GPU (MIG)
+```bash
+oc rsh \
+  -n nvidia-gpu-operator \
+  $(kubectl get pods -n nvidia-gpu-operator | grep -E 'nvidia-dcgm-exporter.*' | awk '{print $1}') nvidia-smi
+```
+
+## Enabling Multi-Instance GPU (MIG) <a name="mig"></a>
+
+<div style="float: right; width: 150px; background: white;"><img src="/static/gpu_post/motherboard_gpu.png" alt="" style="border:15px solid #FFF"></div>
 
 Similarly as time-slicing the configuration needs to be adjusted using both configmaps
 and updating the cluster policy to the changes are applied correctly. The labeling
 step done in time-slicing needs to be executed only once.
-<div style="float: left; width: 230px; background: white;"><img src="/static/gpu_post/motherboard_gpu.png" alt="" style="border:15px solid #FFF"></div>
 
-## Enabling MPS
+Depending on the GPU different [MIG partitions can be created](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/index.html):
 
-We go through a similar process as enabling timesharing. We create a config map with the MPS configuration
+| Product        | Architecture   | Microarchitecture | Compute Capability | Memory Size | Max Number of Instances |
+|----------------|----------------|-------------------|---------------------|-------------|-------------------------|
+| H100-SXM5      | Hopper         | GH100             | 9.0                 | 80GB        | 7                       |
+| H100-PCIE      | Hopper         | GH100             | 9.0                 | 80GB        | 7                       |
+| H100-SXM5      | Hopper         | GH100             | 9.0                 | 94GB        | 7                       |
+| H100-PCIE      | Hopper         | GH100             | 9.0                 | 94GB        | 7                       |
+| H100 on GH200  | Hopper         | GH100             | 9.0                 | 96GB        | 7                       |
+| A100-SXM4      | NVIDIA Ampere  | GA100             | 8.0                 | 40GB        | 7                       |
+| A100-SXM4      | NVIDIA Ampere  | GA100             | 8.0                 | 80GB        | 7                       |
+| A100-PCIE      | NVIDIA Ampere  | GA100             | 8.0                 | 40GB        | 7                       |
+| A100-PCIE      | NVIDIA Ampere  | GA100             | 8.0                 | 80GB        | 7                       |
+| A30            | NVIDIA Ampere  | GA100             | 8.0                 | 24GB        | 4                       |
+
+Where in the case of the A100 we can have the following profiles:
+
+| Profile   | Memory | Compute Units | Maximum number of homogeneous instances |
+|-----------|--------|---------------|----------------------------------------|
+| 1g.5gb    | 5 GB   | 1             | 7                                      |
+| 2g.10gb   | 10 GB  | 2             | 3                                      |
+| 3g.20gb   | 20 GB  | 3             | 2                                      |
+| 4g.20gb   | 20 GB  | 4             | 1                                      |
+| 7g.40gb   | 40 GB  | 7             | 1                                      |
+
+Where the profiles are described with the notation `<COMPUTE>.<MEMORY>`, an administrator
+will create a set of profiles that can be consumed by the workloads.
+
+[The strategies could be](https://docs.nvidia.com/datacenter/cloud-native/openshift/latest/mig-ocp.html#configuring-mig-devices-in-openshift) (it is important that `A GEOMETRY MUST BE DEFINED PER CLUSTER`)
+single, all GPUs within the same node with the same geometry i.e. 1g.5gb.
+mixed, heterogeneous advertisement like single node with multiple GPUs, each GPU can be configured in a different MIG geometry.
+
+Let see our MIG related labels
+
+```bash
+kubectl get node -o json | \
+   jq '.items[0].metadata.labels | with_entries(select(.key | startswith("nvidia.com")))'
+``` 
+
+Where the MIG related labels are:
+
+```bash
+.
+.
+.
+  "nvidia.com/mig.capable": "true",
+  "nvidia.com/mig.config": "all-disabled",
+  "nvidia.com/mig.config.state": "success",
+  "nvidia.com/mig.strategy": "single",
+  "nvidia.com/mps.capable": "false"
+```
+
+```bash
+cat << EOF | kubectl apply -f -
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  # name: device-plugin-config # NVIDIA
+  name: mig-profiles-config #OpenShift
+  namespace: nvidia-gpu-operator
+data:
+  NVIDIA-A100-PCIE-40GB: |-
+    version: v1
+    sharing:
+      timeSlicing:
+        resources:
+          - name: nvidia.com/gpu
+            replicas: 8
+          - name: nvidia.com/mig-1g.5gb
+            replicas: 1
+          - name: nvidia.com/mig-2g.10gb
+            replicas: 2
+          - name: nvidia.com/mig-3g.20gb
+            replicas: 3
+          - name: nvidia.com/mig-7g.40gb
+            replicas: 7
+
+EOF
+```
+
+```bash
+oc patch clusterpolicy gpu-cluster-policy \
+    -n nvidia-gpu-operator --type merge \
+    -p '{"spec": {"devicePlugin": {"config": {"name": "mig-profiles-config"}}}}'
+```
+
+The device config plugin already points to this GPU name `NVIDIA-A100-PCIE-40GB`.
+
+We patch the cluster policy to enable a `mixed` strategy.
+
+```bash
+STRATEGY=mixed
+oc patch clusterpolicy/gpu-cluster-policy \
+  --type='json' \
+  -p='[{"op": "replace", "path": "/spec/mig/strategy", "value": '$STRATEGY'}]'
+```
+
+We apply the MIG Partitioning profiles:
+
+```bash
+MIG_CONFIGURATION=all-2g.10gb && \
+  oc label node/perf-intel-6.perf.eng.bos2.dc.redhat.com nvidia.com/mig.config=$MIG_CONFIGURATION --overwrite
+```
+
+Wait for the mig-manager to perform the reconfiguration:
+
+```bash
+oc -n nvidia-gpu-operator logs ds/nvidia-mig-manager --all-containers -f --prefix
+```
+
+Get all the MIG-enabled devices.
+
+```bash
+oc rsh \
+  -n nvidia-gpu-operator \
+  $(kubectl get pods -n nvidia-gpu-operator | grep -E 'nvidia-driver-daemonset.*' | awk '{print $1}') nvidia-smi mig -lgi
+```
+
+
+## Enabling MPS <a name="mps"></a>
+
+<div style="float: right; width: 150px; background: white;"><img src="/static/gpu_post/multi.png" alt="" style="border:15px solid #FFF"></div>
+
+We go through a similar process as enabling time-slicing.
+We create a config map with the MPS configuration.
+The labeling step done in time-slicing needs to be executed only once.
 
 ```bash
 cat << EOF | kubectl apply -f -
@@ -322,9 +486,9 @@ oc patch clusterpolicy \
     -p '{"spec": {"devicePlugin": {"config": {"name": "mps-enable-config"}}}}'
 ```
 
-With the cluster policy patched we dont have to relabel the node because it was done in a previous step
-To trigger the NFD gpu-feature-discovery-XXX POD YOU NEED TO MAKE SURE THE CLUSTER POLICY IS PATCHED.
-Now the product name should change from -SHARED to the original name
+With the cluster policy patched, we dont have to relabel the node because it was done in a previous step
+To trigger the NFD `gpu-feature-discovery-XXX` POD `YOU NEED TO MAKE SURE THE CLUSTER POLICY IS PATCHED`.
+Now the product name should change from -SHARED (from time slicing) to the original name.
 
 ```bash
 oc get node \
@@ -332,17 +496,20 @@ oc get node \
   -o json | jq '.items[0].status.capacity'
 ```
 
-And we query the gpu labels
+And we query the gpu labels.
 
 ```bash
 kubectl describe node perf-intel-6.perf.eng.bos2.dc.redhat.com | awk '/^Labels:/,/^Taints:/' | grep nvidia.com
 ```
 
-And these should be available
+And these should be available:
+
 ```bash
 nvidia.com/gpu.sharing-strategy=mps
 nvidia.com/mps.capable=true
 ```
+The MPS Control Daemon should be up and running:
+
 ```bash
 nvidia-device-plugin-mps-control-daemon-9ff2n
 I0405 12:49:04.996976 46 main.go:78] Starting NVIDIA MPS Control Daemon d838ad11
@@ -421,13 +588,15 @@ I0405 12:49:05.113709 46 daemon.go:131] "Starting log tailer" resource="nvidia.c
 ```
 
 
-Now we moved from:
+Important changes are that now we moved from:
 
 * `nvidia.com/gpu=1`
 
 to:
 
 * `nvidia.com/gpu.count=1`
+
+Lets see how to schedule a pod using mps:
 
 ```bash
 cat << EOF | kubectl create -f -
@@ -451,6 +620,8 @@ spec:
   #   nvidia.com/gpu.product: NVIDIA-A100-PCIE-40GB
 EOF
 ```
+
+And a deployment to schedule multiple pods:
 
 ```bash
 cat << EOF | kubectl apply -f -
@@ -481,21 +652,29 @@ spec:
          # What is the difference between nvcr.io/nvidia/cloud-native and nvcr.io/nvidia/k8s?
          command: ["/bin/sh", "-c"]
          args:
-            - while true; do /usr/bin/dcgmproftester12 --no-dcgm-validation -t 1004 -d 300; sleep 30; done
+            - while true; do /usr/bin/dcgmproftester12 --no-dcgm-validation -t 1004 -d 30; sleep 30; done
          resources:
            limits:
-             # To check gpu vs gpu.shared
+             # To check gpu vs gpu.shared (MPS)
              nvidia.com/gpu.shared: "1"
          securityContext:
-           capabilities:
-             add: ["SYS_ADMIN"]
+           privileged: true
+         # The following SYS_ADMIN capability is not enough  
+         # securityContext:
+         #   capabilities:
+         #     add: ["SYS_ADMIN"]
 EOF
 ```
+
+## Reset <a name="reset"></a>
+
+To reset the cluster to un-share the GPUs proceed run:
 
 ## Update log:
 
 <div style="font-size:10px">
   <blockquote>
     <p><strong>2024/04/04:</strong> Initial draft.</p>
+    <p><strong>2024/04/08:</strong> Initial post.</p>
   </blockquote>
 </div>
