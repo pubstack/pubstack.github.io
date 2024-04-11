@@ -35,7 +35,7 @@ computing environments, data centers, or research institutions.
 
 <div style="float: right; width: 230px; background: white;"><img src="/static/gpu_post/slice.png" alt="" style="border:15px solid #FFF"></div>
 
-* Time-slicing, is a technique used in GPU resource management where the available
+Time-slicing, is a technique used in GPU resource management where the available
 GPU resources are divided into time intervals, or "slices," and allocated to different
 users or processes sequentially. Each user or process is granted access to the GPU
 for a specified duration, known as a time slice, before the GPU is relinquished and
@@ -47,7 +47,7 @@ utilization of the GPU among multiple competing workloads.
 
 <div style="float: left; width: 230px; background: white;"><img src="/static/gpu_post/instance.jpg" alt="" style="border:15px solid #FFF"></div>
 
-* Multi-Instance GPU (MIG), revolutionizes GPU utilization in data center environments
+Multi-Instance GPU (MIG), revolutionizes GPU utilization in data center environments
 by allowing a single physical GPU to be partitioned into multiple isolated instances,
 each with its own dedicated compute resources, memory, and performance profiles. MIG
 enables efficient sharing of GPU resources among multiple users or workloads by
@@ -60,7 +60,7 @@ needs of applications and users while maximizing GPU utilization.
 
 <div style="float: right; width: 230px; background: white;"><img src="/static/gpu_post/semaphore.png" alt="" style="border:15px solid #FFF"></div>
 
-* Multi-Process Service (MPS), facilitates the concurrent sharing of a single
+Multi-Process Service (MPS), facilitates the concurrent sharing of a single
 GPU among multiple CUDA applications. By allowing the GPU to swiftly transition
 between various CUDA contexts, MPS optimizes GPU resource utilization across
 multiple processes. This capability enables efficient allocation of GPU resources
@@ -80,10 +80,22 @@ accommodate the diverse needs of users or processes sharing the GPU resources.
 A shortcut to the different strategies reviewed as follows:
 
 ### Strategies
-1. [Enabling Time-slicing](#time-slicing)
-2. [Enabling Multi-Instance GPU (MIG)](#mig)
-3. [Enabling MPS](#mps)
-4. [Reset](#reset)
+
+1. [Quick check](#quick-check)
+2. [Enabling Time-slicing](#time-slicing)
+3. [Enabling Multi-Instance GPU (MIG)](#mig)
+4. [Enabling MPS](#mps)
+5. [Reset](#reset)
+
+## Quick check <a name="quick-check"></a>
+
+Let's check before anything that the GPU is detected and configured before continuing.
+
+```bash
+NODE=perf-intel-6.perf.eng.bos2.dc.redhat.com
+kubectl label --list nodes $NODE | \
+  grep nvidia.com 
+```
 
 ## Enabling Time-slicing <a name="time-slicing"></a>
 
@@ -352,8 +364,26 @@ Where in the case of the A100 we can have the following profiles:
 | 4g.20gb   | 20 GB  | 4             | 1                                      |
 | 7g.40gb   | 40 GB  | 7             | 1                                      |
 
+We can check that by running:
+
+```bash
+oc rsh \
+  -n nvidia-gpu-operator \
+  $(kubectl get pods -n nvidia-gpu-operator | grep -E 'nvidia-dcgm-exporter.*' | awk '{print $1}') nvidia-smi mig -lgip
+```
+
 Where the profiles are described with the notation `<COMPUTE>.<MEMORY>`, an administrator
 will create a set of profiles that can be consumed by the workloads.
+
+And let's check how many MIG-enabled are available.
+
+```bash
+oc rsh \
+  -n nvidia-gpu-operator \
+  $(kubectl get pods -n nvidia-gpu-operator | grep -E 'nvidia-driver-daemonset.*' | awk '{print $1}') nvidia-smi mig -lgi
+```
+
+This should output `No MIG-enabled devices found.` because we didn't create any device yet.
 
 [The strategies could be](https://docs.nvidia.com/datacenter/cloud-native/openshift/latest/mig-ocp.html#configuring-mig-devices-in-openshift) (it is important that `A GEOMETRY MUST BE DEFINED PER CLUSTER`)
 single, all GPUs within the same node with the same geometry i.e. 1g.5gb.
@@ -379,8 +409,9 @@ Where the MIG related labels are:
   "nvidia.com/mps.capable": "false"
 ```
 
+<!---
 ```bash
-cat << EOF | kubectl apply -f -
+cat << EOF | kubectl failapply -f -
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -397,16 +428,16 @@ data:
           - name: nvidia.com/gpu
             replicas: 8
           - name: nvidia.com/mig-1g.5gb
-            replicas: 1
+            replicas: 2
           - name: nvidia.com/mig-2g.10gb
             replicas: 2
           - name: nvidia.com/mig-3g.20gb
             replicas: 3
           - name: nvidia.com/mig-7g.40gb
             replicas: 7
-
 EOF
 ```
+
 
 ```bash
 oc patch clusterpolicy gpu-cluster-policy \
@@ -415,6 +446,8 @@ oc patch clusterpolicy gpu-cluster-policy \
 ```
 
 The device config plugin already points to this GPU name `NVIDIA-A100-PCIE-40GB`.
+
+-->
 
 We patch the cluster policy to enable a `mixed` strategy.
 
@@ -428,8 +461,10 @@ oc patch clusterpolicy/gpu-cluster-policy \
 We apply the MIG Partitioning profiles:
 
 ```bash
-MIG_CONFIGURATION=all-2g.10gb && \
-  oc label node/perf-intel-6.perf.eng.bos2.dc.redhat.com nvidia.com/mig.config=$MIG_CONFIGURATION --overwrite
+NODE_NAME=perf-intel-6.perf.eng.bos2.dc.redhat.com
+MIG_CONFIGURATION=all-2g.10gb
+MIG_CONFIGURATION=all-3g.20gb
+oc label node/$NODE_NAME nvidia.com/mig.config=$MIG_CONFIGURATION --overwrite=true
 ```
 
 Wait for the mig-manager to perform the reconfiguration:
@@ -446,6 +481,7 @@ oc rsh \
   $(kubectl get pods -n nvidia-gpu-operator | grep -E 'nvidia-driver-daemonset.*' | awk '{print $1}') nvidia-smi mig -lgi
 ```
 
+If this return `No MIG-enabled devices found.` there is something wrong that needs to be debugged. 
 
 ## Enabling MPS <a name="mps"></a>
 
@@ -668,7 +704,50 @@ EOF
 
 ## Reset <a name="reset"></a>
 
-To reset the cluster to un-share the GPUs proceed run:
+To reset the cluster to un-share the GPUs proceed TO:
+- Remove the nodefeaturediscovery.
+- Remove the clusterpolicy.
+- Remove the node labels.
+- Create a new nodefeaturediscovery and a new clusterpolicy.
+
+Make sure pods are not using the GPU. The following snippet will
+fetch all pods from any namespace requesting a GPU,from the pod spec
+`resources.limits.nvidia\.com/gpu: "1"`.
+
+```bash
+kubectl get pods --all-namespaces -o=jsonpath='{range .items[*]}{.metadata.namespace}{"\t"}{.metadata.name}{"\n"}{end}' \
+| while read -r namespace pod; do \
+    kubectl get pod "$pod" -n "$namespace" -o=jsonpath='{range .spec.containers[*]}{.name}{"\t"}{.resources.limits.nvidia\.com/gpu}{"\n"}{end}' \
+    | grep '1' >/dev/null && \
+    echo "$namespace\t$pod"; \
+  done
+```
+
+The previous command shouldn't return any pod name,
+otherwise you have pods requesting GPU access.
+
+Recreate the resources.
+
+```bash
+oc get clusterpolicies gpu-cluster-policy -o yaml
+oc delete clusterpolicy gpu-cluster-policy
+
+oc get nodefeaturediscoveries nfd-instance -o yaml -n openshift-nfd
+oc delete nodefeaturediscovery nfd-instance -n openshift-nfd
+
+NODE=perf-intel-6.perf.eng.bos2.dc.redhat.com
+kubectl label --list nodes $NODE | \
+  grep nvidia.com | \
+  awk -F= '{print $1}' | xargs -I{} kubectl label node $NODE {}-
+
+```
+
+- Create both the NFD nodefeaturediscovery and the Nvidia clusterpolicy
+- Make sure labels are consistent with an initialized GPU
+
+```bash
+kubectl label --list nodes $NODE | grep nvidia.com
+```
 
 ## Update log:
 
