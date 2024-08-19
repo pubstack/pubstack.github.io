@@ -23,7 +23,7 @@ machine translation, text generation, question answering, and more.
 These models are powered by neural networks with billions of parameters,
 making them incredibly powerful but also resource-intensive.
 
-# Understanding Large Language Models: Parameters, Calculations, and VRAM Requirements
+## Understanding Large Language Models: Parameters, Calculations, and VRAM Requirements
 
 In this blog post, we'll explore what parameters in large language models
 are, how they are calculated, and the implications of these calculations

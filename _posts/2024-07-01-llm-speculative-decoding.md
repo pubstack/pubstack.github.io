@@ -23,7 +23,7 @@ resources required to generate text, especially in real-time applications,
 become a significant challenge. One of the techniques developed to address
 this challenge is **speculative decoding**.
 
-# Speculative Decoding: Enhancing Efficiency in Large Language Models
+## Speculative Decoding: Enhancing Efficiency in Large Language Models
 
 In this article, we'll explore what speculative decoding is, how it works, and its impact on the efficiency of large language models.
 
