@@ -92,7 +92,7 @@ A shortcut to the different strategies reviewed as follows:
 Let's check before anything that the GPU is detected and configured before continuing.
 
 ```bash
-NODE=perf-intel-6.perf.eng.bos2.dc.redhat.com
+NODE=my-host-example-com
 kubectl label --list nodes $NODE | \
   grep nvidia.com 
 ```
@@ -154,7 +154,7 @@ To make sure the NFD operator runs we label the node stating that the `device-pl
 
 ```bash
 oc label \
-  --overwrite node perf-intel-6.perf.eng.bos2.dc.redhat.com \
+  --overwrite node my-host-example-com \
   nvidia.com/device-plugin.config=NVIDIA-A100-PCIE-40GB
 ```
 
@@ -453,7 +453,7 @@ The device config plugin already points to this GPU name `NVIDIA-A100-PCIE-40GB`
 when we configured timeslicing.
 ```bash
 oc label \
-  --overwrite node perf-intel-6.perf.eng.bos2.dc.redhat.com \
+  --overwrite node my-host-example-com \
   nvidia.com/device-plugin.config=NVIDIA-A100-PCIE-40GB
 ```
 
@@ -470,12 +470,15 @@ We apply the MIG Partitioning profiles, you can relabel as you need to change be
 different MIG profiles:
 
 ```bash
-NODE_NAME=perf-intel-6.perf.eng.bos2.dc.redhat.com
+
+NODE_NAME=my-host-example-com
+MIG_CONFIGURATION=all-disabled
 # MIG_CONFIGURATION=all-1g.5gb
-#MIG_CONFIGURATION=all-2g.10gb
-#MIG_CONFIGURATION=all-4g.20gb
-MIG_CONFIGURATION=all-3g.20gb
-#MIG_CONFIGURATION=all-7g.40gb
+# MIG_CONFIGURATION=all-1g.10gb
+# MIG_CONFIGURATION=all-2g.10gb
+# MIG_CONFIGURATION=all-3g.20gb
+# MIG_CONFIGURATION=all-7g.40gb
+
 oc label node/$NODE_NAME nvidia.com/mig.config=$MIG_CONFIGURATION --overwrite=true
 
 # or
@@ -515,7 +518,7 @@ Otherwise:
 Make sure the capabilities match
 
 ```bash
-kubectl describe nodes perf-intel-6.perf.eng.bos2.dc.redhat.com | grep "nvidia.com/"
+kubectl describe nodes my-host-example-com | grep "nvidia.com/"
 ```
 
 See that we stop using `nvidia.com/gpu` for `mig-3g.20gb` instead.
@@ -609,7 +612,7 @@ oc patch clusterpolicy \
 With the cluster policy patched, we dont have to relabel the node because it was done in a previous step:
 ```bash
 oc label \
-  --overwrite node perf-intel-6.perf.eng.bos2.dc.redhat.com \
+  --overwrite node my-host-example-com \
   nvidia.com/device-plugin.config=NVIDIA-A100-PCIE-40GB
 ```
 
@@ -626,7 +629,7 @@ oc get node \
 And we query the gpu labels.
 
 ```bash
-kubectl describe node perf-intel-6.perf.eng.bos2.dc.redhat.com | awk '/^Labels:/,/^Taints:/' | grep nvidia.com
+kubectl describe node my-host-example-com | awk '/^Labels:/,/^Taints:/' | grep nvidia.com
 ```
 
 And these should be available:
@@ -722,7 +725,7 @@ I0405 12:49:05.113709 46 daemon.go:131] "Starting log tailer" resource="nvidia.c
 Make sure the capabilities match
 
 ```bash
-kubectl describe nodes perf-intel-6.perf.eng.bos2.dc.redhat.com | grep "nvidia.com/"
+kubectl describe nodes my-host-example-com | grep "nvidia.com/"
 ```
 
 ```bash
@@ -916,7 +919,7 @@ oc delete clusterpolicy gpu-cluster-policy
 #oc get nodefeaturediscoveries nfd-instance -o yaml -n openshift-nfd
 #oc delete nodefeaturediscovery nfd-instance -n openshift-nfd
 
-#NODE=perf-intel-6.perf.eng.bos2.dc.redhat.com
+#NODE=my-host-example-com
 #kubectl label --list nodes $NODE | \
 #  grep nvidia.com | \
 #  awk -F= '{print $1}' | xargs -I{} kubectl label node $NODE {}-
