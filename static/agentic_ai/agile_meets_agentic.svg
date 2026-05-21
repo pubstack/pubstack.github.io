@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1a14"/>
+      <stop offset="50%" style="stop-color:#0d2a1e"/>
+      <stop offset="100%" style="stop-color:#0a3040"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00e676"/>
+      <stop offset="100%" style="stop-color:#00b0ff"/>
+    </linearGradient>
+    <linearGradient id="card1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00e676"/>
+      <stop offset="100%" style="stop-color:#69f0ae"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#40c4ff"/>
+      <stop offset="100%" style="stop-color:#00b0ff"/>
+    </linearGradient>
+    <linearGradient id="card3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#b2ff59"/>
+      <stop offset="100%" style="stop-color:#76ff03"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00e676" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg)"/>
+
+  <!-- Subtle diagonal lines -->
+  <g opacity="0.03" stroke="#00e676" stroke-width="1">
+    <line x1="0" y1="0" x2="400" y2="400"/><line x1="100" y1="0" x2="500" y2="400"/>
+    <line x1="200" y1="0" x2="600" y2="400"/><line x1="300" y1="0" x2="700" y2="400"/>
+    <line x1="400" y1="0" x2="800" y2="400"/><line x1="500" y1="0" x2="800" y2="300"/>
+    <line x1="600" y1="0" x2="800" y2="200"/>
+  </g>
+
+  <!-- Background glows -->
+  <circle cx="400" cy="140" r="140" fill="#00e676" opacity="0.03"/>
+  <circle cx="300" cy="160" r="80" fill="#00b0ff" opacity="0.04"/>
+
+  <!-- Kanban Board -->
+  <g transform="translate(275, 65)" filter="url(#shadow)">
+    <!-- Board background -->
+    <rect x="0" y="0" width="250" height="160" rx="10" fill="#ffffff" opacity="0.07"/>
+    <rect x="0" y="0" width="250" height="160" rx="10" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.15"/>
+
+    <!-- Column headers -->
+    <rect x="8" y="8" width="72" height="20" rx="4" fill="#00e676" opacity="0.25"/>
+    <text x="44" y="22" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#69f0ae" font-weight="600">TO DO</text>
+
+    <rect x="88" y="8" width="72" height="20" rx="4" fill="#40c4ff" opacity="0.25"/>
+    <text x="124" y="22" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#40c4ff" font-weight="600">IN PROG</text>
+
+    <rect x="168" y="8" width="72" height="20" rx="4" fill="#b2ff59" opacity="0.25"/>
+    <text x="204" y="22" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#b2ff59" font-weight="600">DONE</text>
+
+    <!-- Column dividers -->
+    <line x1="84" y1="8" x2="84" y2="152" stroke="#ffffff" stroke-width="0.3" opacity="0.1"/>
+    <line x1="164" y1="8" x2="164" y2="152" stroke="#ffffff" stroke-width="0.3" opacity="0.1"/>
+
+    <!-- TO DO cards -->
+    <rect x="12" y="35" width="64" height="28" rx="4" fill="url(#card1)" opacity="0.8"/>
+    <rect x="15" y="40" width="30" height="3" rx="1.5" fill="#0a1a14" opacity="0.3"/>
+    <rect x="15" y="47" width="45" height="3" rx="1.5" fill="#0a1a14" opacity="0.2"/>
+    <!-- AI badge -->
+    <circle cx="68" cy="55" r="5" fill="#0a1a14" opacity="0.3"/>
+    <text x="68" y="58" text-anchor="middle" font-family="monospace" font-size="5" fill="#69f0ae">AI</text>
+
+    <rect x="12" y="68" width="64" height="28" rx="4" fill="url(#card1)" opacity="0.6"/>
+    <rect x="15" y="73" width="40" height="3" rx="1.5" fill="#0a1a14" opacity="0.3"/>
+    <rect x="15" y="80" width="35" height="3" rx="1.5" fill="#0a1a14" opacity="0.2"/>
+
+    <!-- IN PROGRESS cards -->
+    <rect x="92" y="35" width="64" height="28" rx="4" fill="url(#card2)" opacity="0.8"/>
+    <rect x="95" y="40" width="35" height="3" rx="1.5" fill="#0a1a14" opacity="0.3"/>
+    <rect x="95" y="47" width="50" height="3" rx="1.5" fill="#0a1a14" opacity="0.2"/>
+    <!-- AI badge -->
+    <circle cx="148" cy="55" r="5" fill="#0a1a14" opacity="0.3"/>
+    <text x="148" y="58" text-anchor="middle" font-family="monospace" font-size="5" fill="#40c4ff">AI</text>
+
+    <rect x="92" y="68" width="64" height="28" rx="4" fill="url(#card2)" opacity="0.6"/>
+    <rect x="95" y="73" width="42" height="3" rx="1.5" fill="#0a1a14" opacity="0.3"/>
+    <rect x="95" y="80" width="30" height="3" rx="1.5" fill="#0a1a14" opacity="0.2"/>
+
+    <!-- DONE cards -->
+    <rect x="172" y="35" width="64" height="28" rx="4" fill="url(#card3)" opacity="0.7"/>
+    <rect x="175" y="40" width="38" height="3" rx="1.5" fill="#0a1a14" opacity="0.3"/>
+    <rect x="175" y="47" width="48" height="3" rx="1.5" fill="#0a1a14" opacity="0.2"/>
+    <!-- Checkmark -->
+    <path d="M228,55 L231,58 L237,51" fill="none" stroke="#0a1a14" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+
+    <rect x="172" y="68" width="64" height="28" rx="4" fill="url(#card3)" opacity="0.5"/>
+    <rect x="175" y="73" width="30" height="3" rx="1.5" fill="#0a1a14" opacity="0.3"/>
+    <rect x="175" y="80" width="45" height="3" rx="1.5" fill="#0a1a14" opacity="0.2"/>
+    <path d="M228,88 L231,91 L237,84" fill="none" stroke="#0a1a14" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+
+    <!-- Sprint indicator -->
+    <rect x="80" y="105" width="90" height="20" rx="10" fill="#ffffff" opacity="0.08"/>
+    <text x="125" y="118" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#69f0ae" opacity="0.7">Sprint 42</text>
+
+    <!-- Progress bar -->
+    <rect x="30" y="135" width="190" height="6" rx="3" fill="#ffffff" opacity="0.08"/>
+    <rect x="30" y="135" width="130" height="6" rx="3" fill="url(#accent)" opacity="0.5"/>
+  </g>
+
+  <!-- Circular sprint arrow -->
+  <g transform="translate(400, 145)" opacity="0.15">
+    <path d="M-140,0 A140,60 0 0,1 140,0" fill="none" stroke="#00e676" stroke-width="1.5"/>
+    <polygon points="140,-5 148,0 140,5" fill="#00e676"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="280" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="36" font-weight="700" fill="#ffffff" letter-spacing="1">Agile Meets Agentic</text>
+
+  <!-- Subtitle line -->
+  <line x1="280" y1="300" x2="520" y2="300" stroke="url(#accent)" stroke-width="2" opacity="0.6"/>
+
+  <!-- Bottom accent bar -->
+  <rect y="390" width="800" height="10" fill="url(#accent)" opacity="0.8"/>
+</svg>

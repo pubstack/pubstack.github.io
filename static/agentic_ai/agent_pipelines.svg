@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a192f"/>
+      <stop offset="50%" style="stop-color:#112240"/>
+      <stop offset="100%" style="stop-color:#0d2847"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="100%" style="stop-color:#0077b6"/>
+    </linearGradient>
+    <linearGradient id="node-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="100%" style="stop-color:#0096c7"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#00d4ff" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg)"/>
+
+  <!-- Background circuit pattern -->
+  <g opacity="0.04" stroke="#00d4ff" stroke-width="1">
+    <path d="M0,200 L150,200 L150,100 L300,100" fill="none"/>
+    <path d="M500,300 L650,300 L650,200 L800,200" fill="none"/>
+    <path d="M0,100 L80,100 L80,300 L200,300" fill="none"/>
+    <path d="M600,50 L600,150 L750,150 L750,50" fill="none"/>
+  </g>
+
+  <!-- Decorative blurs -->
+  <circle cx="150" cy="100" r="100" fill="#00d4ff" opacity="0.03"/>
+  <circle cx="650" cy="300" r="120" fill="#0077b6" opacity="0.05"/>
+
+  <!-- Pipeline: connected nodes -->
+  <g transform="translate(0, 0)">
+    <!-- Connection lines (drawn first, behind nodes) -->
+    <line x1="255" y1="150" x2="335" y2="150" stroke="#00d4ff" stroke-width="2.5" opacity="0.5"/>
+    <line x1="395" y1="150" x2="465" y2="120" stroke="#00d4ff" stroke-width="2.5" opacity="0.5"/>
+    <line x1="395" y1="150" x2="465" y2="180" stroke="#00d4ff" stroke-width="2.5" opacity="0.5"/>
+    <line x1="525" y1="120" x2="595" y2="150" stroke="#00d4ff" stroke-width="2.5" opacity="0.5"/>
+    <line x1="525" y1="180" x2="595" y2="150" stroke="#00d4ff" stroke-width="2.5" opacity="0.5"/>
+
+    <!-- Animated flow dots on lines -->
+    <circle r="3" fill="#00ffff" opacity="0.8">
+      <animateMotion dur="2s" repeatCount="indefinite" path="M255,150 L335,150"/>
+    </circle>
+    <circle r="3" fill="#00ffff" opacity="0.8">
+      <animateMotion dur="2s" repeatCount="indefinite" path="M395,150 L465,120"/>
+    </circle>
+    <circle r="3" fill="#00ffff" opacity="0.8">
+      <animateMotion dur="2s" repeatCount="indefinite" path="M525,120 L595,150"/>
+    </circle>
+
+    <!-- Node 1: Input -->
+    <g filter="url(#shadow)">
+      <circle cx="225" cy="150" r="30" fill="url(#node-fill)" opacity="0.9"/>
+      <circle cx="225" cy="150" r="30" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.5"/>
+      <text x="225" y="145" text-anchor="middle" font-family="monospace" font-size="11" fill="#0a192f" font-weight="700">IN</text>
+      <text x="225" y="158" text-anchor="middle" font-family="monospace" font-size="8" fill="#0a192f">Agent</text>
+    </g>
+
+    <!-- Node 2: Process -->
+    <g filter="url(#shadow)">
+      <rect x="335" y="120" width="60" height="60" rx="12" fill="url(#node-fill)" opacity="0.9"/>
+      <rect x="335" y="120" width="60" height="60" rx="12" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.5"/>
+      <!-- Gear icon inside -->
+      <circle cx="365" cy="150" r="14" fill="none" stroke="#0a192f" stroke-width="2.5"/>
+      <circle cx="365" cy="150" r="5" fill="#0a192f"/>
+      <g stroke="#0a192f" stroke-width="2.5" stroke-linecap="round">
+        <line x1="365" y1="133" x2="365" y2="138"/>
+        <line x1="365" y1="162" x2="365" y2="167"/>
+        <line x1="348" y1="150" x2="353" y2="150"/>
+        <line x1="377" y1="150" x2="382" y2="150"/>
+      </g>
+    </g>
+
+    <!-- Node 3a: Branch top -->
+    <g filter="url(#shadow)">
+      <circle cx="495" cy="120" r="25" fill="url(#node-fill)" opacity="0.85"/>
+      <circle cx="495" cy="120" r="25" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.5"/>
+      <text x="495" y="116" text-anchor="middle" font-family="monospace" font-size="8" fill="#0a192f" font-weight="700">LLM</text>
+      <text x="495" y="127" text-anchor="middle" font-family="monospace" font-size="7" fill="#0a192f">Call</text>
+    </g>
+
+    <!-- Node 3b: Branch bottom -->
+    <g filter="url(#shadow)">
+      <circle cx="495" cy="180" r="25" fill="url(#node-fill)" opacity="0.85"/>
+      <circle cx="495" cy="180" r="25" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.5"/>
+      <text x="495" y="176" text-anchor="middle" font-family="monospace" font-size="8" fill="#0a192f" font-weight="700">Tool</text>
+      <text x="495" y="187" text-anchor="middle" font-family="monospace" font-size="7" fill="#0a192f">Exec</text>
+    </g>
+
+    <!-- Node 4: Output -->
+    <g filter="url(#shadow)">
+      <polygon points="625,120 655,150 625,180 595,150" fill="url(#node-fill)" opacity="0.9"/>
+      <polygon points="625,120 655,150 625,180 595,150" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.5"/>
+      <text x="625" y="147" text-anchor="middle" font-family="monospace" font-size="9" fill="#0a192f" font-weight="700">OUT</text>
+      <text x="625" y="158" text-anchor="middle" font-family="monospace" font-size="7" fill="#0a192f">put</text>
+    </g>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="275" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="36" font-weight="700" fill="#ffffff" letter-spacing="1">AI Agent Pipelines</text>
+
+  <!-- Subtitle line -->
+  <line x1="290" y1="295" x2="510" y2="295" stroke="url(#accent)" stroke-width="2" opacity="0.6"/>
+
+  <!-- Bottom accent bar -->
+  <rect y="390" width="800" height="10" fill="url(#accent)" opacity="0.8"/>
+</svg>

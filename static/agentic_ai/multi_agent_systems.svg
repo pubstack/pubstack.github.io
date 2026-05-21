@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27"/>
+      <stop offset="50%" style="stop-color:#141852"/>
+      <stop offset="100%" style="stop-color:#1a237e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#536dfe"/>
+      <stop offset="100%" style="stop-color:#304ffe"/>
+    </linearGradient>
+    <linearGradient id="node1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c4dff"/>
+      <stop offset="100%" style="stop-color:#536dfe"/>
+    </linearGradient>
+    <linearGradient id="node2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#448aff"/>
+      <stop offset="100%" style="stop-color:#2979ff"/>
+    </linearGradient>
+    <linearGradient id="node3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#40c4ff"/>
+      <stop offset="100%" style="stop-color:#00b0ff"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#536dfe" flood-opacity="0.35"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="line-glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg)"/>
+
+  <!-- Background nebula effect -->
+  <circle cx="400" cy="150" r="180" fill="#536dfe" opacity="0.03"/>
+  <circle cx="300" cy="120" r="100" fill="#7c4dff" opacity="0.04"/>
+  <circle cx="500" cy="180" r="90" fill="#448aff" opacity="0.03"/>
+
+  <!-- Connection lines between agents -->
+  <g filter="url(#line-glow)" opacity="0.45">
+    <!-- Center to all others -->
+    <line x1="400" y1="140" x2="290" y2="95" stroke="#536dfe" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <line x1="400" y1="140" x2="510" y2="95" stroke="#536dfe" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <line x1="400" y1="140" x2="310" y2="195" stroke="#448aff" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <line x1="400" y1="140" x2="490" y2="195" stroke="#448aff" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <!-- Peer connections -->
+    <line x1="290" y1="95" x2="510" y2="95" stroke="#7c4dff" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="310" y1="195" x2="490" y2="195" stroke="#40c4ff" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="290" y1="95" x2="310" y2="195" stroke="#536dfe" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="510" y1="95" x2="490" y2="195" stroke="#536dfe" stroke-width="1" stroke-dasharray="4,4"/>
+  </g>
+
+  <!-- Data flow particles -->
+  <g>
+    <circle r="2.5" fill="#82b1ff" opacity="0.7">
+      <animateMotion dur="3s" repeatCount="indefinite" path="M400,140 L290,95"/>
+    </circle>
+    <circle r="2.5" fill="#82b1ff" opacity="0.7">
+      <animateMotion dur="3s" repeatCount="indefinite" path="M400,140 L510,95"/>
+    </circle>
+    <circle r="2.5" fill="#b388ff" opacity="0.7">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M290,95 L510,95"/>
+    </circle>
+    <circle r="2.5" fill="#80d8ff" opacity="0.7">
+      <animateMotion dur="3.5s" repeatCount="indefinite" path="M310,195 L490,195"/>
+    </circle>
+  </g>
+
+  <!-- Center Agent (Orchestrator) -->
+  <g transform="translate(400, 140)" filter="url(#shadow)">
+    <circle r="32" fill="url(#node1)" opacity="0.95"/>
+    <circle r="32" fill="none" stroke="#b388ff" stroke-width="1" opacity="0.5"/>
+    <circle r="38" fill="none" stroke="#7c4dff" stroke-width="0.5" opacity="0.3" stroke-dasharray="4,3"/>
+    <!-- Robot face -->
+    <rect x="-12" y="-10" width="24" height="18" rx="5" fill="#0a0e27" opacity="0.5"/>
+    <circle cx="-5" cy="-3" r="3" fill="#82b1ff"/>
+    <circle cx="5" cy="-3" r="3" fill="#82b1ff"/>
+    <rect x="-7" y="4" width="14" height="2" rx="1" fill="#82b1ff" opacity="0.6"/>
+  </g>
+
+  <!-- Agent 1 (top-left) -->
+  <g transform="translate(290, 95)" filter="url(#shadow)">
+    <circle r="24" fill="url(#node2)" opacity="0.9"/>
+    <circle r="24" fill="none" stroke="#82b1ff" stroke-width="0.8" opacity="0.4"/>
+    <text x="0" y="2" text-anchor="middle" font-family="monospace" font-size="9" fill="#fff" font-weight="700">A1</text>
+  </g>
+
+  <!-- Agent 2 (top-right) -->
+  <g transform="translate(510, 95)" filter="url(#shadow)">
+    <circle r="24" fill="url(#node2)" opacity="0.9"/>
+    <circle r="24" fill="none" stroke="#82b1ff" stroke-width="0.8" opacity="0.4"/>
+    <text x="0" y="2" text-anchor="middle" font-family="monospace" font-size="9" fill="#fff" font-weight="700">A2</text>
+  </g>
+
+  <!-- Agent 3 (bottom-left) -->
+  <g transform="translate(310, 195)" filter="url(#shadow)">
+    <circle r="22" fill="url(#node3)" opacity="0.85"/>
+    <circle r="22" fill="none" stroke="#80d8ff" stroke-width="0.8" opacity="0.4"/>
+    <text x="0" y="2" text-anchor="middle" font-family="monospace" font-size="9" fill="#0a0e27" font-weight="700">A3</text>
+  </g>
+
+  <!-- Agent 4 (bottom-right) -->
+  <g transform="translate(490, 195)" filter="url(#shadow)">
+    <circle r="22" fill="url(#node3)" opacity="0.85"/>
+    <circle r="22" fill="none" stroke="#80d8ff" stroke-width="0.8" opacity="0.4"/>
+    <text x="0" y="2" text-anchor="middle" font-family="monospace" font-size="9" fill="#0a0e27" font-weight="700">A4</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="280" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="36" font-weight="700" fill="#ffffff" letter-spacing="1">Multi-Agent Systems</text>
+
+  <!-- Subtitle line -->
+  <line x1="280" y1="300" x2="520" y2="300" stroke="url(#accent)" stroke-width="2" opacity="0.6"/>
+
+  <!-- Bottom accent bar -->
+  <rect y="390" width="800" height="10" fill="url(#accent)" opacity="0.8"/>
+</svg>

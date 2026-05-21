@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a0a"/>
+      <stop offset="50%" style="stop-color:#2d1810"/>
+      <stop offset="100%" style="stop-color:#3d1c0c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6d00"/>
+      <stop offset="100%" style="stop-color:#d32f2f"/>
+    </linearGradient>
+    <linearGradient id="tool-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff8a65"/>
+      <stop offset="100%" style="stop-color:#ff6d00"/>
+    </linearGradient>
+    <linearGradient id="gear-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffab91"/>
+      <stop offset="100%" style="stop-color:#ff7043"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#ff6d00" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg)"/>
+
+  <!-- Background glow circles -->
+  <circle cx="400" cy="155" r="130" fill="#ff6d00" opacity="0.04"/>
+  <circle cx="350" cy="120" r="80" fill="#ff8a65" opacity="0.03"/>
+  <circle cx="650" cy="300" r="100" fill="#d32f2f" opacity="0.03"/>
+  <circle cx="150" cy="350" r="90" fill="#ff6d00" opacity="0.03"/>
+
+  <!-- Subtle radial lines -->
+  <g opacity="0.04" stroke="#ff8a65" stroke-width="0.5">
+    <line x1="400" y1="155" x2="200" y2="50"/>
+    <line x1="400" y1="155" x2="600" y2="50"/>
+    <line x1="400" y1="155" x2="700" y2="200"/>
+    <line x1="400" y1="155" x2="100" y2="200"/>
+    <line x1="400" y1="155" x2="250" y2="300"/>
+    <line x1="400" y1="155" x2="550" y2="300"/>
+  </g>
+
+  <!-- Gear Icon (large) -->
+  <g transform="translate(370, 145)" filter="url(#shadow)">
+    <!-- Outer gear teeth -->
+    <path d="M-8,-42 L8,-42 L10,-32 Q18,-30 24,-25 L33,-30 L42,-18 L35,-10 Q37,-2 36,6 L46,10 L42,24 L32,22 Q26,28 20,30 L20,40 L6,42 L4,32 Q-4,32 -12,28 L-20,36 L-32,28 L-26,20 Q-30,14 -32,6 L-42,4 L-42,-10 L-32,-12 Q-30,-20 -26,-26 L-32,-34 L-22,-42 L-14,-34 Q-6,-38 -8,-42 Z" fill="url(#gear-fill)" opacity="0.9"/>
+    <!-- Gear center hole -->
+    <circle cx="2" cy="0" r="14" fill="#1a0a0a"/>
+    <circle cx="2" cy="0" r="10" fill="url(#gear-fill)" opacity="0.3"/>
+    <circle cx="2" cy="0" r="5" fill="#1a0a0a"/>
+  </g>
+
+  <!-- Wrench Icon overlapping -->
+  <g transform="translate(430, 135) rotate(30)" filter="url(#shadow)">
+    <!-- Wrench handle -->
+    <rect x="-6" y="-10" width="12" height="55" rx="5" fill="url(#tool-fill)" opacity="0.9"/>
+    <!-- Wrench head -->
+    <path d="M-14,-18 Q-14,-35 0,-40 Q14,-35 14,-18 L8,-10 L-8,-10 Z" fill="url(#tool-fill)" opacity="0.9"/>
+    <!-- Wrench jaw opening -->
+    <rect x="-3" y="-40" width="6" height="18" rx="2" fill="#1a0a0a"/>
+  </g>
+
+  <!-- Small floating tool icons -->
+  <g opacity="0.35">
+    <!-- Terminal bracket -->
+    <g transform="translate(280, 100)">
+      <rect x="-18" y="-12" width="36" height="24" rx="4" fill="none" stroke="#ff8a65" stroke-width="1.5"/>
+      <text x="-8" y="4" font-family="monospace" font-size="12" fill="#ff8a65">&gt;_</text>
+    </g>
+    <!-- API icon -->
+    <g transform="translate(520, 100)">
+      <rect x="-18" y="-12" width="36" height="24" rx="4" fill="none" stroke="#ff8a65" stroke-width="1.5"/>
+      <text x="-12" y="4" font-family="monospace" font-size="9" fill="#ff8a65">API</text>
+    </g>
+    <!-- Database icon -->
+    <g transform="translate(280, 200)">
+      <ellipse cx="0" cy="-6" rx="14" ry="6" fill="none" stroke="#ff8a65" stroke-width="1.5"/>
+      <path d="M-14,-6 L-14,6 Q-14,12 0,12 Q14,12 14,6 L14,-6" fill="none" stroke="#ff8a65" stroke-width="1.5"/>
+    </g>
+    <!-- File icon -->
+    <g transform="translate(520, 200)">
+      <path d="M-10,-12 L6,-12 L14,-4 L14,12 L-10,12 Z" fill="none" stroke="#ff8a65" stroke-width="1.5"/>
+      <path d="M6,-12 L6,-4 L14,-4" fill="none" stroke="#ff8a65" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="280" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="36" font-weight="700" fill="#ffffff" letter-spacing="1">Tool Use in AI Agents</text>
+
+  <!-- Subtitle line -->
+  <line x1="275" y1="300" x2="525" y2="300" stroke="url(#accent)" stroke-width="2" opacity="0.6"/>
+
+  <!-- Bottom accent bar -->
+  <rect y="390" width="800" height="10" fill="url(#accent)" opacity="0.8"/>
+</svg>

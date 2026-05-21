@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="40%" style="stop-color:#1a1040"/>
+      <stop offset="100%" style="stop-color:#0d1b4a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c4dff"/>
+      <stop offset="100%" style="stop-color:#304ffe"/>
+    </linearGradient>
+    <linearGradient id="rocket-body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8eaf6"/>
+      <stop offset="100%" style="stop-color:#c5cae9"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6d00"/>
+      <stop offset="40%" style="stop-color:#ff9100"/>
+      <stop offset="100%" style="stop-color:#ffab00;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="8" flood-color="#7c4dff" flood-opacity="0.35"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="star-glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg)"/>
+
+  <!-- Stars -->
+  <g filter="url(#star-glow)">
+    <circle cx="80" cy="40" r="1.5" fill="#ffffff" opacity="0.8"/>
+    <circle cx="150" cy="80" r="1" fill="#ffffff" opacity="0.6"/>
+    <circle cx="220" cy="30" r="1.2" fill="#ffffff" opacity="0.7"/>
+    <circle cx="320" cy="60" r="1.5" fill="#b388ff" opacity="0.6"/>
+    <circle cx="500" cy="35" r="1" fill="#ffffff" opacity="0.8"/>
+    <circle cx="580" cy="70" r="1.5" fill="#ffffff" opacity="0.7"/>
+    <circle cx="650" cy="40" r="1.2" fill="#b388ff" opacity="0.5"/>
+    <circle cx="720" cy="80" r="1" fill="#ffffff" opacity="0.6"/>
+    <circle cx="100" cy="130" r="1" fill="#ffffff" opacity="0.5"/>
+    <circle cx="700" cy="140" r="1.5" fill="#ffffff" opacity="0.6"/>
+    <circle cx="180" cy="200" r="1" fill="#ffffff" opacity="0.4"/>
+    <circle cx="620" cy="210" r="1.2" fill="#b388ff" opacity="0.4"/>
+    <circle cx="750" cy="250" r="1" fill="#ffffff" opacity="0.5"/>
+    <circle cx="50" cy="280" r="1.5" fill="#ffffff" opacity="0.4"/>
+    <circle cx="130" cy="310" r="1" fill="#ffffff" opacity="0.3"/>
+    <circle cx="670" cy="310" r="1" fill="#ffffff" opacity="0.3"/>
+    <circle cx="440" cy="45" r="1" fill="#ffffff" opacity="0.7"/>
+    <circle cx="280" cy="120" r="0.8" fill="#ffffff" opacity="0.5"/>
+    <circle cx="520" cy="120" r="0.8" fill="#ffffff" opacity="0.5"/>
+  </g>
+
+  <!-- Twinkling star (larger) -->
+  <g transform="translate(350, 50)" opacity="0.6">
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
+    <line x1="-6" y1="0" x2="6" y2="0" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
+    <line x1="-4" y1="-4" x2="4" y2="4" stroke="#ffffff" stroke-width="0.5" stroke-linecap="round"/>
+    <line x1="4" y1="-4" x2="-4" y2="4" stroke="#ffffff" stroke-width="0.5" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(600, 130)" opacity="0.4">
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#b388ff" stroke-width="0.8" stroke-linecap="round"/>
+    <line x1="-5" y1="0" x2="5" y2="0" stroke="#b388ff" stroke-width="0.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Nebula glow -->
+  <circle cx="400" cy="140" r="100" fill="#7c4dff" opacity="0.04"/>
+  <circle cx="380" cy="130" r="60" fill="#304ffe" opacity="0.05"/>
+
+  <!-- Rocket -->
+  <g transform="translate(400, 135) rotate(-25)" filter="url(#shadow)">
+    <!-- Flame -->
+    <path d="M-8,45 Q0,75 8,45 Q4,55 0,70 Q-4,55 -8,45 Z" fill="url(#flame)" opacity="0.8"/>
+    <path d="M-5,48 Q0,65 5,48 Q2,55 0,62 Q-2,55 -5,48 Z" fill="#ffeb3b" opacity="0.5"/>
+
+    <!-- Rocket body -->
+    <path d="M0,-55 Q-18,-30 -18,20 L-14,40 L14,40 L18,20 Q18,-30 0,-55 Z" fill="url(#rocket-body)" opacity="0.95"/>
+
+    <!-- Nose cone highlight -->
+    <path d="M0,-55 Q-8,-35 -10,0 Q-2,-20 0,-55 Z" fill="#ffffff" opacity="0.15"/>
+
+    <!-- Window -->
+    <circle cx="0" cy="-15" r="8" fill="#0a0a1a"/>
+    <circle cx="0" cy="-15" r="6.5" fill="#304ffe" opacity="0.5"/>
+    <circle cx="-2" cy="-17" r="2" fill="#ffffff" opacity="0.2"/>
+
+    <!-- Body stripe -->
+    <rect x="-12" y="5" width="24" height="4" rx="1" fill="#7c4dff" opacity="0.5"/>
+
+    <!-- Fins -->
+    <path d="M-18,20 L-28,42 L-14,40 Z" fill="#7c4dff" opacity="0.85"/>
+    <path d="M18,20 L28,42 L14,40 Z" fill="#7c4dff" opacity="0.85"/>
+    <path d="M-4,25 L0,45 L4,25 Z" fill="#b388ff" opacity="0.5"/>
+
+    <!-- Exhaust nozzle -->
+    <rect x="-10" y="40" width="20" height="6" rx="2" fill="#9fa8da" opacity="0.8"/>
+  </g>
+
+  <!-- Speed lines / trail -->
+  <g opacity="0.15" stroke="#b388ff" stroke-width="1" stroke-linecap="round">
+    <line x1="440" y1="190" x2="480" y2="230"/>
+    <line x1="450" y1="200" x2="500" y2="250"/>
+    <line x1="430" y1="195" x2="460" y2="235"/>
+    <line x1="445" y1="210" x2="490" y2="260" opacity="0.5"/>
+  </g>
+
+  <!-- Orbiting particles around rocket -->
+  <g opacity="0.4">
+    <circle r="2" fill="#b388ff">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M400,135 Q350,100 380,80 Q410,60 440,100 Q460,130 430,160 Q400,180 370,150 Q340,120 400,135"/>
+    </circle>
+    <circle r="1.5" fill="#7c4dff">
+      <animateMotion dur="5s" repeatCount="indefinite" path="M400,135 Q450,110 440,80 Q420,55 380,90 Q360,120 370,155 Q390,180 420,160 Q450,140 400,135"/>
+    </circle>
+  </g>
+
+  <!-- Code/binary hint floating -->
+  <g opacity="0.06" font-family="monospace" font-size="10" fill="#b388ff">
+    <text x="100" y="160">01001</text>
+    <text x="650" y="180">10110</text>
+    <text x="80" y="240">func()</text>
+    <text x="660" y="260">build()</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="280" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff" letter-spacing="1">Future of Software Engineering</text>
+
+  <!-- Subtitle line -->
+  <line x1="240" y1="300" x2="560" y2="300" stroke="url(#accent)" stroke-width="2" opacity="0.6"/>
+
+  <!-- Bottom accent bar -->
+  <rect y="390" width="800" height="10" fill="url(#accent)" opacity="0.8"/>
+</svg>
