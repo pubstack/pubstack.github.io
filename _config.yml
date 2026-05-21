@@ -21,12 +21,13 @@ disclaimer_url: https://www.pubstack.com/disclaimer
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.pubstack.com"
+author: "Carlos Camacho"
 twitter_username: none
 github_username:  none
 
 include: ["_pages"]
 
-keywords: "cloud computing, OpenStack, Kubernetes, engineering, software development"
+keywords: "cloud computing, AI, agentic AI, engineering, software development"
 
 # pagination options
 
@@ -40,7 +41,6 @@ plugins:
 
 exclude:
   - asdf.txt
-markdown: kramdown
 kramdown:
    syntax_highlighter_opts:
       disable : true
