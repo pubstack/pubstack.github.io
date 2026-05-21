@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="50%" style="stop-color:#16213e"/>
+      <stop offset="100%" style="stop-color:#0f3460"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e84545"/>
+      <stop offset="100%" style="stop-color:#ff6b35"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#e84545"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#e84545" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glow-filter">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.05" stroke="#e84545" stroke-width="0.5">
+    <line x1="0" y1="50" x2="800" y2="50"/><line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="250" x2="800" y2="250"/><line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="350" x2="800" y2="350"/>
+    <line x1="100" y1="0" x2="100" y2="400"/><line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/><line x1="400" y1="0" x2="400" y2="400"/>
+    <line x1="500" y1="0" x2="500" y2="400"/><line x1="600" y1="0" x2="600" y2="400"/>
+    <line x1="700" y1="0" x2="700" y2="400"/>
+  </g>
+
+  <!-- Decorative circles -->
+  <circle cx="650" cy="80" r="120" fill="#e84545" opacity="0.06"/>
+  <circle cx="700" cy="120" r="80" fill="#ff6b35" opacity="0.08"/>
+  <circle cx="150" cy="350" r="100" fill="#e84545" opacity="0.05"/>
+
+  <!-- Lobster/Claw Icon -->
+  <g transform="translate(400, 145)" filter="url(#shadow)">
+    <!-- Main body -->
+    <ellipse cx="0" cy="5" rx="35" ry="30" fill="url(#accent)"/>
+    <!-- Left claw -->
+    <g transform="translate(-50, -20)">
+      <path d="M20,10 Q5,-15 -15,-10 Q-25,-8 -20,5 Q-15,15 0,12 Z" fill="url(#glow)" stroke="#1a1a2e" stroke-width="1"/>
+      <path d="M20,10 Q5,30 -10,28 Q-22,26 -20,15 Q-15,5 0,8 Z" fill="url(#accent)" stroke="#1a1a2e" stroke-width="1"/>
+    </g>
+    <!-- Right claw -->
+    <g transform="translate(50, -20) scale(-1,1)">
+      <path d="M20,10 Q5,-15 -15,-10 Q-25,-8 -20,5 Q-15,15 0,12 Z" fill="url(#glow)" stroke="#1a1a2e" stroke-width="1"/>
+      <path d="M20,10 Q5,30 -10,28 Q-22,26 -20,15 Q-15,5 0,8 Z" fill="url(#accent)" stroke="#1a1a2e" stroke-width="1"/>
+    </g>
+    <!-- Eyes -->
+    <circle cx="-12" cy="-10" r="6" fill="#1a1a2e"/>
+    <circle cx="12" cy="-10" r="6" fill="#1a1a2e"/>
+    <circle cx="-10" cy="-11" r="3" fill="#00d4ff"/>
+    <circle cx="14" cy="-11" r="3" fill="#00d4ff"/>
+    <!-- Antenna stalks -->
+    <line x1="-12" y1="-25" x2="-18" y2="-42" stroke="url(#glow)" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="12" y1="-25" x2="18" y2="-42" stroke="url(#glow)" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="-18" cy="-45" r="4" fill="#ff6b35" filter="url(#glow-filter)"/>
+    <circle cx="18" cy="-45" r="4" fill="#ff6b35" filter="url(#glow-filter)"/>
+    <!-- Code brackets on body -->
+    <text x="-12" y="18" font-family="monospace" font-size="18" fill="#1a1a2e" opacity="0.5">{</text>
+    <text x="4" y="18" font-family="monospace" font-size="18" fill="#1a1a2e" opacity="0.5">}</text>
+  </g>
+
+  <!-- Connection nodes around lobster -->
+  <g opacity="0.4">
+    <circle cx="310" cy="100" r="5" fill="#ff6b35"/>
+    <line x1="310" y1="100" x2="360" y2="125" stroke="#ff6b35" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="490" cy="100" r="5" fill="#e84545"/>
+    <line x1="490" y1="100" x2="440" y2="125" stroke="#e84545" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="300" cy="175" r="4" fill="#ff6b35"/>
+    <line x1="300" y1="175" x2="345" y2="155" stroke="#ff6b35" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="500" cy="175" r="4" fill="#e84545"/>
+    <line x1="500" y1="175" x2="455" y2="155" stroke="#e84545" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="270" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="32" font-weight="700" fill="#ffffff" letter-spacing="1">OpenClaw: The Open-Source</text>
+  <text x="400" y="310" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="32" font-weight="700" fill="#ffffff" letter-spacing="1">AI Agent Framework</text>
+
+  <!-- Subtitle line -->
+  <line x1="280" y1="330" x2="520" y2="330" stroke="url(#accent)" stroke-width="2" opacity="0.6"/>
+
+  <!-- Bottom accent bar -->
+  <rect y="390" width="800" height="10" fill="url(#accent)" opacity="0.8"/>
+</svg>
