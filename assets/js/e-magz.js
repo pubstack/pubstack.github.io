@@ -80,10 +80,10 @@ $(function(){
 		}
 	}
 
-	// love
-	var love = function() {	
+	var love = function() {
+		if(!$(".love").length) return;
 		$(".love").each(function(){
-			$(this).find("div").html($.number($(this).find("div").html()));
+			if($.number) $(this).find("div").html($.number($(this).find("div").html()));
 			$(this).click(function(){
 				var countNow = $(this).find("div").html().replace(',', '');
 				if(!$(this).hasClass("active")) {
@@ -91,8 +91,8 @@ $(function(){
 					$(this).addClass("active");
 					$(this).find("i").removeClass("ion-android-favorite-outline");
 					$(this).find("i").addClass("ion-android-favorite");
-					$(this).find("div").html(parseInt(countNow) + 1);
-					$(this).find("div").html($.number($(this).find("div").html()));
+				$(this).find("div").html(parseInt(countNow) + 1);
+				if($.number) $(this).find("div").html($.number($(this).find("div").html()));
 					$(this).append($(this).find("i").clone().addClass("animated"));
 					$(this).find("i.animated").on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(e){
 						$(this).remove();
@@ -104,8 +104,8 @@ $(function(){
 					$(this).removeClass("active");
 					$(this).find("i").addClass("ion-android-favorite-outline");
 					$(this).find("i").removeClass("ion-android-favorite");
-					$(this).find("div").html(parseInt(countNow) - 1);
-					$(this).find("div").html($.number($(this).find("div").html()));
+				$(this).find("div").html(parseInt(countNow) - 1);
+				if($.number) $(this).find("div").html($.number($(this).find("div").html()));
 
 					// add some code ("unlove")
 				}
@@ -137,14 +137,6 @@ $(function(){
 					$this.find(".email").val("");				
 					$this.find(".btn").attr("disabled", false);
 					$this.find(".email").attr("disabled", false);
-					$.toast({
-						text: "Thanks for subscribing!",
-						position: 'bottom-right',
-						bgcolor: '#E01A31',
-						icon: 'success',
-						heading: 'Newsletter',
-						loader: false
-					});
 				},
 				error: function() {
 					$this.find(".icon").removeClass("spin");
@@ -154,13 +146,6 @@ $(function(){
 					$this.find(".icon h1").html("Failed, try again!");
 					$this.find(".btn").attr("disabled", false);
 					$this.find(".email").attr("disabled", false);
-					$.toast({
-						text: "Failed, network error. Please try again!",
-						position: 'bottom-right',
-						icon: 'error',
-						heading: 'Newsletter',
-						loader: false
-					});
 				}
 			}
 
@@ -212,10 +197,10 @@ $(function(){
 	}
 
 	var headline = function() {
+		if(!$.fn.owlCarousel || !$("#headline").length) return;
 	  var headlineCarousel = $("#headline").owlCarousel({
 	  	items: 1,
 	  	dots: false,
-	  	// autoplay: true,
 	  	autoplayTimeout: 3000,
 	  	loop: true
 	  });
@@ -242,20 +227,15 @@ $(function(){
 	  });  	
   }
 
-  // browser
-	if($.browser.safari) {
-		$("head").append($("<link/>", {
-			rel: "stylesheet",
-			href: "css/safari.css"
-		}));
-	}else if($.browser.mozilla) {
+  if(/firefox/i.test(navigator.userAgent)) {
 		$(".social li").each(function() {
 			$(this).find("rect").attr("width", "100%");
 			$(this).find("rect").attr("height", "100%");
 		});
 	}
 
-	var bestOfTheWeek = function() {	
+	var bestOfTheWeek = function() {
+		if(!$.fn.owlCarousel || !$(".carousel-1").length) return;
 		var botwCarousel = $(".carousel-1").owlCarousel({
 			items: 4,
 			itemElement: 'article',
@@ -285,6 +265,7 @@ $(function(){
 	}
 
 	var youtubeAPI = function() {
+		if(!$("[data-youtube]").length) return;
 		$("[data-youtube]").each(function(vl_i){
 			var $this = $(this),
 					$options = $this.data("youtube"),
@@ -471,15 +452,16 @@ $(function(){
 	}
 
 	var featured = function() {
+		if(!$.fn.owlCarousel || !$("#featured").length) return;
 		$("#featured").owlCarousel({
 			items: 1,
 			dots: false,
-			// autoplay: true,
 			loop: true
 		});		
 	}
 
 	var magnificGallery = function() {
+		if(!$.fn.magnificPopup) return;
 		$('[data-magnific="gallery"]').each(function(){
 			var $this = $(this);
 
@@ -494,9 +476,8 @@ $(function(){
 		});		
 	}
 
-	// ease scroll
 	var easeScrollFunc = function() {
-		$("html").easeScroll();
+		if($.fn.easeScroll) $("html").easeScroll();
 	}
 
 	var toggleMobile = function() {
@@ -631,6 +612,7 @@ $(function(){
 	}
 
 	var sendContactForm = function() {
+		if(!$("#contact-form").length) return;
 		$("#contact-form").submit(function() {
 			var $this = $(this);
 			$.ajax({
@@ -646,10 +628,10 @@ $(function(){
 				},
 				success: function(data) {
 					if(data.status == true) {
-						swal("Success", data.data, "success");
+						if(typeof swal === 'function') swal("Success", data.data, "success");
 						$this[0].reset();
 					}else{
-						swal("Failed", data.data, "error");
+						if(typeof swal === 'function') swal("Failed", data.data, "error");
 					}
 				}
 			});
