@@ -2,118 +2,28 @@
 		<footer class="footer">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-3 col-sm-6 col-12">
-						<div class="block">
-							<h2 class="block-title">About</h2>
-                <div class="block-body">
-  								<p>My name is Carlos Camacho, a Software engineer from Madrid, Spain working @Red Hat.</p>
-                  </div>
-						</div>
+					<div class="col-md-4 col-sm-12">
+						<p class="footer-about">Carlos Camacho &mdash; Software engineer from Madrid, Spain working @Red Hat.</p>
 					</div>
-					<div class="col-md-3 col-sm-6 col-12">
-						<div class="block">
-							<h2 class="block-title">Popular Tags</h2>
-							<div class="block-body">
-								<ul class="tags">
-									<li><a href="/cloud">Cloud computing</a></li>
-									<li><a href="/ai">Artificial Intelligence</a></li>
-									<li><a href="/engineering">Engineering</a></li>
-									<li><a href="/engineering">Kubernetes</a></li>
-									<li><a href="/engineering">Software development</a></li>
-								</ul>
-							</div>
-						</div>
+					<div class="col-md-4 col-sm-12 footer-links-col">
+						<ul class="footer-nav-horizontal">
+							<li><a href="/pod">POD</a></li>
+							<li><a href="/cv">CV</a></li>
+							<li><a href="/disclaimer">Disclaimer</a></li>
+							<li><a href="/planet">Planet</a></li>
+						</ul>
 					</div>
-					<div class="col-md-3 col-sm-6 col-12">
-						<div class="block">
-							<h2 class="block-title">Latest articles</h2>
-							<div class="block-body">
-
-
-
-                {% assign posts = site.posts %}
-                {% assign filtered_posts = "" | split: ',' %}
-                {% for post in site.posts %}
-                  {% unless post.tags contains "draft" or post.url == page.url %}
-                  {% assign filtered_posts = filtered_posts | push: post %}
-                  {% endunless %}
-                {% endfor %}
-                {% assign posts = filtered_posts | sort: 'date' | reverse %}
-
-                {% for post in posts | limit: 2 %}
-                <article class="article-mini">
-                  <div class="inner">
-                    <figure>
-                      <a href="{{ post.url }}">
-                        <img src="{{ post.refimage }}" alt="{{ post.title }}" loading="lazy">
-                      </a>
-                    </figure>
-                    <div class="padding">
-                      <h2><a href="{{ post.url }}">{{ post.title | truncate: 15 }}</a></h2>
-                    </div>
-                  </div>
-                </article>
-                {% endfor %}
-
-								<a href="/planet" class="btn btn-magz white w-100">See All <i class="ion-ios-arrow-thin-right"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-12 col-sm-6">
-						<div class="block">
-							<h2 class="block-title">Follow me</h2>
-							<div class="block-body">
-								<p>Follow me and stay in touch to get the latest news</p>
-								<ul class="social trp">
-
-									<li>
-										<a href="https://twitter.com/carlosdcg" class="twitter">
-											<svg><rect width="0" height="0"/></svg>
-											<i class="ion-social-twitter-outline"></i>
-										</a>
-									</li>
-									<li>
-										<a href="https://www.instagram.com/carlosdcg" class="instagram">
-											<svg><rect width="0" height="0"/></svg>
-											<i class="ion-social-instagram-outline"></i>
-										</a>
-									</li>
-									<li>
-										<a href="https://www.linkedin.com/in/carlosdcg" class="linkedin">
-											<svg><rect width="0" height="0"/></svg>
-											<i class="ion-social-linkedin"></i>
-										</a>
-									</li>
-									<li>
-										<a href="https://www.pubstack.com/atom.xml" class="rss">
-											<svg><rect width="0" height="0"/></svg>
-											<i class="ion-social-rss"></i>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="line"></div>
-						<div class="block">
-							<div class="block-body no-margin">
-								<ul class="footer-nav-horizontal">
-									<li><a href="/pod">POD</a></li>
-									<li><a href="/cv">CV</a></li>
-                  <li><a href="/disclaimer">Disclaimer</a></li>
-                  <li><a href="/planet">Planet</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="copyright">
-							www.pubstack.com - 2026 &trade;| Author: Carlos Camacho | Email: ccamacho [at] yandex [dot] com | Proudly hosted in <a href="https://github.com/pubstack/pubstack.github.io"><i class="ion-social-github"></i></a>
-						</div>
+					<div class="col-md-4 col-sm-12 footer-social-col">
+						<ul class="social trp">
+							<li><a href="https://twitter.com/carlosdcg" class="twitter" aria-label="Twitter"><i class="ion-social-twitter-outline"></i></a></li>
+							<li><a href="https://www.instagram.com/carlosdcg" class="instagram" aria-label="Instagram"><i class="ion-social-instagram-outline"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/carlosdcg" class="linkedin" aria-label="LinkedIn"><i class="ion-social-linkedin"></i></a></li>
+							<li><a href="https://github.com/pubstack/pubstack.github.io" class="github" aria-label="GitHub"><i class="ion-social-github"></i></a></li>
+							<li><a href="https://www.pubstack.com/atom.xml" class="rss" aria-label="RSS"><i class="ion-social-rss"></i></a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
-      <script src="{{ "/assets/js/prism.js" | prepend: site.baseurl }}"></script>
+			<script src="{{ "/assets/js/prism.js" | prepend: site.baseurl }}"></script>
 		</footer>
 		<!-- End Footer -->

@@ -194,66 +194,74 @@ header.primary.up nav.menu ul:not(.dropdown-menu) > li > a {
   top: 45px !important;
 }
 
-/* --- Compact footer --- */
+/* --- Minimal footer --- */
 
 footer.footer {
-  padding-top: 30px !important;
-  padding-bottom: 0 !important;
+  padding: 24px 0 18px !important;
 }
 
-footer.footer .block .block-body {
-  margin-top: 18px !important;
-}
-
-footer.footer .block-title {
-  font-size: 13px !important;
-  letter-spacing: 1px;
-}
-
-footer.footer .block-title:after {
-  bottom: -6px !important;
-}
-
-footer.footer .block .block-body p {
+footer.footer .footer-about {
+  margin: 0;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #848f9a;
 }
 
-footer.footer .tags li a {
+footer.footer .footer-links-col {
+  text-align: center;
+}
+
+footer.footer .footer-links-col .footer-nav-horizontal {
+  margin: 0;
+  padding: 0;
+}
+
+footer.footer .footer-links-col .footer-nav-horizontal li {
+  display: inline-block;
+  margin: 0 4px;
+}
+
+footer.footer .footer-links-col .footer-nav-horizontal li a {
   font-size: 12px;
-  padding: 4px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  color: #848f9a;
 }
 
-footer.footer .article-mini {
-  margin-bottom: 12px !important;
+footer.footer .footer-links-col .footer-nav-horizontal li a:hover {
+  color: #fff;
 }
 
-footer.footer .article-mini figure {
-  width: 50px !important;
-  height: 40px !important;
+footer.footer .footer-social-col {
+  text-align: right;
 }
 
-footer.footer .article-mini .padding {
-  margin-left: 58px !important;
+footer.footer .footer-social-col .social.trp {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  gap: 6px;
 }
 
-footer.footer .line {
-  margin: 15px 0 !important;
+footer.footer .footer-social-col .social.trp li {
+  list-style: none;
 }
 
-footer.footer .footer-nav-horizontal li a {
-  font-size: 12px;
+footer.footer .footer-social-col .social.trp li a {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 16px;
 }
 
-footer.footer .social.trp li a {
-  width: 34px;
-  height: 34px;
-  line-height: 34px;
-}
-
-.skin-orange footer.footer .copyright {
-  margin-top: 25px !important;
-  padding-top: 18px !important;
-  padding-bottom: 12px !important;
-  font-size: 11px !important;
+@media (max-width: 767px) {
+  footer.footer .footer-links-col,
+  footer.footer .footer-social-col {
+    text-align: center;
+    margin-top: 12px;
+  }
+  footer.footer .footer-about {
+    text-align: center;
+  }
 }
