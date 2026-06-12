@@ -153,3 +153,107 @@ footer.footer .block-title {
   height: 100%;
   object-fit: cover;
 }
+
+/* --- Compact header --- */
+
+.firstbar {
+  padding-top: 10px !important;
+  padding-bottom: 8px !important;
+}
+
+.firstbar .brand {
+  margin: 8px 0 !important;
+}
+
+.firstbar .brand img {
+  width: 140px !important;
+}
+
+.firstbar .search {
+  margin-top: 10px !important;
+  margin-left: 0 !important;
+}
+
+.firstbar .search .form-text,
+.firstbar .search .help-block {
+  margin-top: 4px !important;
+}
+
+.menu ul > li > a {
+  padding: 8px 14px !important;
+  line-height: 28px !important;
+  font-size: 13px !important;
+}
+
+header.primary.up nav.menu ul:not(.dropdown-menu) > li > a {
+  height: 44px !important;
+  line-height: 44px !important;
+}
+
+.menu ul > li .dropdown-menu {
+  top: 45px !important;
+}
+
+/* --- Compact footer --- */
+
+footer.footer {
+  padding-top: 30px !important;
+  padding-bottom: 0 !important;
+}
+
+footer.footer .block .block-body {
+  margin-top: 18px !important;
+}
+
+footer.footer .block-title {
+  font-size: 13px !important;
+  letter-spacing: 1px;
+}
+
+footer.footer .block-title:after {
+  bottom: -6px !important;
+}
+
+footer.footer .block .block-body p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+footer.footer .tags li a {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+footer.footer .article-mini {
+  margin-bottom: 12px !important;
+}
+
+footer.footer .article-mini figure {
+  width: 50px !important;
+  height: 40px !important;
+}
+
+footer.footer .article-mini .padding {
+  margin-left: 58px !important;
+}
+
+footer.footer .line {
+  margin: 15px 0 !important;
+}
+
+footer.footer .footer-nav-horizontal li a {
+  font-size: 12px;
+}
+
+footer.footer .social.trp li a {
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+}
+
+.skin-orange footer.footer .copyright {
+  margin-top: 25px !important;
+  padding-top: 18px !important;
+  padding-bottom: 12px !important;
+  font-size: 11px !important;
+}
