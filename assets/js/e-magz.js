@@ -310,7 +310,7 @@ $(function(){
 						$item.find(".author").removeClass("loading").html(data.items[i].snippet.channelTitle);
 						if($item.data("action") == 'new_tab') {
 							$item.attr('href', 'https://youtube.com/watch?v=' + data.items[i].id).attr('target', '_blank');
-						}else if($item.data("action") == 'magnific') {
+						}else if($item.data("action") == 'magnific' && $.fn.magnificPopup) {
 							$item.attr('href', 'https://youtube.com/watch?v=' + data.items[i].id);
 							$item.magnificPopup({
 								type: 'iframe',
@@ -334,7 +334,7 @@ $(function(){
 				}
 			});
 
-			if($options.carousel == true) {
+			if($options.carousel == true && $.fn.owlCarousel) {
 				$this.addClass('owl-carousel owl-theme');
 				var video_list = $this.owlCarousel(options);
 				$($options.nav).find(".prev").click(function(){

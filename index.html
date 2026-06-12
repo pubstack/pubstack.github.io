@@ -1,21 +1,16 @@
 ---
 layout: default
 title: Home
-pagination:
-  enabled: true
-  collection:   posts
-  limit:        false
-  sort_reverse: true
 ---
 <section class="home">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-sm-12 col-xs-12">
+      <div class="col-md-8 col-sm-12 col-12">
         <div class="line">
           <div>Latest articles</div>
         </div>
         <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-12">
             <div class="row">
 
               {% assign posts = site.posts %}
@@ -58,12 +53,12 @@ pagination:
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+          <div class="col-md-12 col-sm-12 col-12 text-center">
             {% include pagination.html %}
           </div>
         </div>
       </div>
-      <div class="col-md-4 col-sm-12 col-xs-12 sidebar" id="sidebar">
+      <div class="col-md-4 col-sm-12 col-12 sidebar" id="sidebar">
         <div class="sidebar-title for-tablet">Sidebar</div>
         {% include aside_me.html %}
         {% include aside_the_code.html %}

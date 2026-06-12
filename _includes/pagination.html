@@ -11,24 +11,24 @@
 {% endif %}
 
 <ul class="pagination">
-    <li class="prev">
-      <a href="{% if paginator.previous_page_path == blank %}#{% else %}{{ paginator.previous_page_path }}{% endif %}">
+    <li class="page-item prev">
+      <a class="page-link" href="{% if paginator.previous_page_path == blank %}#{% else %}{{ paginator.previous_page_path }}{% endif %}">
         <i class="ion-ios-arrow-left"></i>
       </a>
     </li>
     {% for page in (1..paginator.total_pages) %}
       {% if page > paginator_min and page < paginator_max %}
         {% if paginator.page == page %}
-        <li class="active"><a href="#">{{ page }}</a></li>
+        <li class="page-item active"><a class="page-link" href="#">{{ page }}</a></li>
         {% elsif page == 1 %}
-        <li><a href="/">{{ page }}</a></li>
+        <li class="page-item"><a class="page-link" href="/">{{ page }}</a></li>
         {% else %}
-        <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
+        <li class="page-item"><a class="page-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
         {% endif %}
       {% endif %}
     {% endfor %}
-    <li class="next">
-      <a href="{% if paginator.next_page_path == blank %}#{% else %}{{ paginator.next_page_path }}{% endif %}">
+    <li class="page-item next">
+      <a class="page-link" href="{% if paginator.next_page_path == blank %}#{% else %}{{ paginator.next_page_path }}{% endif %}">
         <i class="ion-ios-arrow-right"></i>
       </a>
     </li>

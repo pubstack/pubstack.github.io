@@ -473,7 +473,8 @@ a.twitch {
 .pagination {
   margin-bottom: 10px;
 }
-.pagination li a {
+.pagination li a,
+.pagination .page-item .page-link {
   color: #333;
   border-radius: 50% !important;
   margin: 0 2px;
@@ -485,7 +486,8 @@ a.twitch {
   text-align: center;
   padding: 0;
 }
-.pagination li.active a {
+.pagination li.active a,
+.pagination .page-item.active .page-link {
   color: #fff;
   transform: scale(1.16) translateX(-3px);
   -moz-transform: scale(1.16) translateX(-3px);
@@ -495,7 +497,8 @@ a.twitch {
   border-color: transparent;
   background-color: #F73F52;
 }
-.pagination li.active a:hover, .pagination li.active a:focus {
+.pagination li.active a:hover, .pagination li.active a:focus,
+.pagination .page-item.active .page-link:hover, .pagination .page-item.active .page-link:focus {
   border-color: transparent;
   background-color: #F73F52;
 }
@@ -585,11 +588,11 @@ section.most-popular {
 }
 section.most-popular > .row {
   margin: 0;
-  display: table;
+  display: flex;
+  flex-wrap: wrap;
 }
 section.most-popular > .row [class^="col-"] {
-  display: table-cell;
-  float: none;
+  display: flex;
 }
 section.most-popular .image {
   background-size: cover;
@@ -835,19 +838,22 @@ section.search .search-result {
   background-color: #16527a;
 }
 
-.btn-default {
+.btn-default,
+.btn-secondary {
   background-color: #E7E7E7;
   color: #fff !important;
   border-color: #E7E7E7;
 }
-.btn-default:disabled, .btn-default.disabled, .btn-default:hover, .btn-default:active, .btn-default:active:hover, .btn-default:active:focus, .btn-default:focus {
+.btn-default:disabled, .btn-default.disabled, .btn-default:hover, .btn-default:active, .btn-default:active:hover, .btn-default:active:focus, .btn-default:focus,
+.btn-secondary:disabled, .btn-secondary.disabled, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:active:hover, .btn-secondary:active:focus, .btn-secondary:focus {
   background-color: #b4b4b4;
   border-color: #b4b4b4;
   border-color: transparent;
   outline: 0;
   box-shadow: none;
 }
-.btn-default:active:hover {
+.btn-default:active:hover,
+.btn-secondary:active:hover {
   background-color: #a7a7a7;
 }
 
@@ -1250,13 +1256,16 @@ section.search .search-result {
   margin-top: 20px;
   margin-left: 55px;
 }
-.firstbar .search .form-group {
-  margin-bottom: 0;
+.firstbar .search .form-group,
+.firstbar .search .mb-3 {
+  margin-bottom: 0 !important;
 }
-.firstbar .search .form-group .input-group-btn .btn {
+.firstbar .search .form-group .input-group-btn .btn,
+.firstbar .search .mb-3 .input-group > .btn {
   line-height: 0;
 }
-.firstbar .search .help-block div {
+.firstbar .search .help-block div,
+.firstbar .search .form-text div {
   text-transform: uppercase;
   float: left;
   font-weight: 500;
@@ -1264,18 +1273,21 @@ section.search .search-result {
   margin-right: 10px;
   color: #F73F52;
 }
-.firstbar .search .help-block ul {
+.firstbar .search .help-block ul,
+.firstbar .search .form-text ul {
   margin: 0;
   padding: 0;
 }
-.firstbar .search .help-block ul li {
+.firstbar .search .help-block ul li,
+.firstbar .search .form-text ul li {
   float: left;
   padding: 0 8px 0 0;
   display: block;
   font-size: 11px;
   font-weight: 400;
 }
-.firstbar .search .help-block ul li a {
+.firstbar .search .help-block ul li a,
+.firstbar .search .form-text ul li a {
   color: #191E21;
 }
 .firstbar .nav-icons {
@@ -1948,6 +1960,7 @@ article footer .btn-primary:focus {
   border: none;
   top: 54px;
   box-shadow: 0 20px 60px #ddd;
+  display: block;
   opacity: 0;
   visibility: hidden;
   transform: scale(0.5);
@@ -1966,6 +1979,11 @@ article footer .btn-primary:focus {
   right: 15px;
   z-index: 1999;
   background-color: #fff;
+  min-width: auto;
+  padding: 0;
+  --bs-dropdown-padding-x: 0;
+  --bs-dropdown-padding-y: 0;
+  --bs-dropdown-min-width: auto;
 }
 .menu ul > li .dropdown-menu.megamenu .megamenu-inner {
   padding: 20px;
@@ -2224,14 +2242,16 @@ section .container {
 .article-list .details .detail .category {
   margin: 0;
 }
-.article-list .details h1 {
+.article-list .details h1,
+.article-list .details h2 {
   margin: 0;
   margin-top: 5px;
   margin-bottom: 10px;
   font-size: 20px;
   line-height: 28px;
 }
-.article-list .details h1 a {
+.article-list .details h1 a,
+.article-list .details h2 a {
   color: #000;
   text-decoration: none;
   transition: all .5s;
@@ -2239,7 +2259,8 @@ section .container {
   -webkit-transition: all .5s;
   -o-transition: all .5s;
 }
-.article-list .details h1 a:hover {
+.article-list .details h1 a:hover,
+.article-list .details h2 a:hover {
   color: #F73F52;
 }
 .article-list .details p {
@@ -2330,14 +2351,16 @@ section .container {
 .article-mini figure img {
   width: 100%;
 }
-.article-mini h1 {
+.article-mini h1,
+.article-mini h2 {
   margin: 0;
   line-height: 22px;
   text-transform: capitalize;
   font-weight: 700;
   font-size: 14px;
 }
-.article-mini h1 a {
+.article-mini h1 a,
+.article-mini h2 a {
   color: #000;
 }
 .article-mini .detail {
@@ -2435,7 +2458,8 @@ aside .article-mini {
 aside .article-mini figure {
   margin-bottom: 0;
 }
-aside .article-mini h1 {
+aside .article-mini h1,
+aside .article-mini h2 {
   margin-top: -3px;
 }
 aside .nav li a {
@@ -2511,16 +2535,19 @@ aside .ads figcaption {
 .article-fw figure img {
   width: 100%;
 }
-.article-fw .details h1 {
+.article-fw .details h1,
+.article-fw .details h2 {
   margin: 0;
   font-size: 24px;
   line-height: 34px;
 }
-.article-fw .details h1 a {
+.article-fw .details h1 a,
+.article-fw .details h2 a {
   color: #000;
   text-decoration: none;
 }
-.article-fw .details h1 a:hover {
+.article-fw .details h1 a:hover,
+.article-fw .details h2 a:hover {
   color: #F73F52;
 }
 .article-fw .details p {
@@ -2528,12 +2555,14 @@ aside .ads figcaption {
   line-height: 24px;
 }
 
-.comments .media-left {
+.comments .media-left,
+.comments .flex-shrink-0 {
   width: 70px;
   height: 70px;
   overflow: hidden;
 }
-.comments .media-body p {
+.comments .media-body p,
+.comments .ms-3 p {
   font-size: 14px;
   line-height: 22px;
 }
@@ -2861,6 +2890,7 @@ aside .ads figcaption {
   }
   nav.menu ul.nav-list > li .dropdown-menu.active {
     right: 0;
+    display: block;
   }
   nav.menu ul.nav-list > li .dropdown-menu > li > a {
     width: auto;
@@ -3190,10 +3220,12 @@ footer.footer .article-mini {
 footer.footer .article-mini .inner {
   border-bottom: 0;
 }
-footer.footer .article-mini h1 {
+footer.footer .article-mini h1,
+footer.footer .article-mini h2 {
   font-size: 14px;
 }
-footer.footer .article-mini h1 a {
+footer.footer .article-mini h1 a,
+footer.footer .article-mini h2 a {
   color: #ddd;
 }
 footer.footer .article-mini .detail .category a {
