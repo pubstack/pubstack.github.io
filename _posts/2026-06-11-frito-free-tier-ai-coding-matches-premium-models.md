@@ -58,14 +58,14 @@ human intervention — fully autonomous.
 
 ## Results: The Full Comparison
 
-| Model | Pass Rate | Time | Avg Turns |
-|-------|-----------|------|-----------|
-| **FRITO (free tier)** | **10/10 (100%)** | 40 min | 14.6 |
-| Claude Opus 4 | 10/10 (100%) | 7 min | 3.6 |
+| Model | Pass Rate | Total Time | Avg Turns |
+|-------|-----------|------------|-----------|
+| **FRITO (free tier)** | **10/10 (100%)** | **40 min** | **14.6** |
+| Claude Opus 4 | 10/10 (100%) | 7 min | 2.9 |
 | Gemini 2.5 Pro | 9/10 (90%) | 13 min | 11.5 |
 | Gemini 2.5 Flash | 8/10 (80%) | 11 min | 10.4 |
 
-FRITO uses more turns (14.6 average vs 3.6 for Opus 4) and
+FRITO uses more turns (14.6 average vs 2.9 for Opus 4) and
 takes longer (40 minutes vs 7 minutes). But it arrives at
 the same destination — every single challenge solved.
 
@@ -73,16 +73,16 @@ the same destination — every single challenge solved.
 
 | Challenge | FRITO | Opus 4 | Gemini Pro | Gemini Flash |
 |-----------|-------|--------|------------|--------------|
-| 01 Single-file bugfix | 14 turns, 3m | 8 turns, 25s | 7 turns, 43s | 5 turns, FAIL |
-| 02 Multi-file bugfix | 18 turns, 5.5m | 4 turns, 30s | 9 turns, 49s | 17 turns, 1.2m |
-| 03 Code generation | 10 turns, 50s | 3 turns, 15s | 4 turns, 17s | 6 turns, 19s |
-| 04 Refactor extract | 29 turns, 17m | solved, 2.1m | 5 turns, 39s | 8 turns, 24s |
-| 05 Feature addition | 14 turns, 3.2m | 4 turns, 45s | 50 turns, FAIL | 8 turns, 34s |
-| 06 Debug stack trace | 10 turns, 49s | solved, 20s | 7 turns, 1.5m | 4 turns, 7s |
-| 07 Test coverage | 10 turns, 53s | solved, 56s | 4 turns, 20s | 4 turns, 12s |
-| 08 Perf optimization | 11 turns, 1.9m | solved, 28s | 6 turns, 26s | 6 turns, 18s |
-| 09 API migration | 16 turns, 4.2m | 5 turns, 30s | 12 turns, 48s | 12 turns, 39s |
-| 10 Cross-file feature | 14 turns, 3m | 5 turns, 45s | 11 turns, 58s | 34 turns, FAIL |
+| 01 Single-file bugfix | 14 turns, 3m | 8 turns, 25s | 50 turns, 2.9m | 50 turns, 2.4m |
+| 02 Multi-file bugfix | 18 turns, 5.5m | 4 turns, 30s | 50 turns, 2.9m | 50 turns, 2.7m |
+| 03 Code generation | 10 turns, 50s | 3 turns, 15s | 50 turns, FAIL | 3 turns, 13s |
+| 04 Refactor extract | 29 turns, 17m | solved, 2.1m | 9 turns, 1.3m | 50 turns, 2.4m |
+| 05 Feature addition | 14 turns, 3.2m | 4 turns, 45s | 11 turns, 1m | 50 turns, 2.8m |
+| 06 Debug stack trace | 10 turns, 49s | solved, 20s | 50 turns, FAIL | 50 turns, 1.8m |
+| 07 Test coverage | 10 turns, 53s | solved, 56s | — | 50 turns, 3.2m |
+| 08 Perf optimization | 11 turns, 1.9m | solved, 28s | 50 turns, 3.6m | 50 turns, 2.3m |
+| 09 API migration | 16 turns, 4.2m | 5 turns, 30s | 9 turns, FAIL | 50 turns, 2.5m |
+| 10 Cross-file feature | 14 turns, 3m | 5 turns, 45s | 50 turns, FAIL | 50 turns, FAIL |
 
 Notice the pattern: FRITO takes **more turns on every
 challenge**, but it **never fails**. Even on the hardest
@@ -91,11 +91,11 @@ tasks — refactor extract (29 turns) and multi-file bugfix
 through its provider pool, trying different models, and
 self-correcting.
 
-Meanwhile, the premium models sometimes fail outright:
-Gemini 2.5 Pro hit its 50-turn limit on the feature
-addition challenge without solving it, and Gemini Flash
-failed on both the single-file bugfix and cross-file
-feature.
+Meanwhile, the other models sometimes fail outright:
+Gemini 2.5 Pro hit its 50-turn limit on code generation,
+debug stack trace, API migration, and cross-file feature
+without solving them. Gemini Flash failed on the cross-file
+feature too.
 
 ## How FRITO Works
 
@@ -221,19 +221,154 @@ This has implications for:
   codebases, enforcing standards, and catching regressions
   — as a continuous background process.
 
-## Reproducing These Results
+## Try It Yourself
 
-The benchmark framework is part of the
-[SuperInference](https://github.com/superinference/ami)
-repository. To run the FRITO benchmark yourself:
+FRITO is available today through three interfaces in
+[SuperInference](https://www.superinference.org). All
+three require the same one-time setup: create free API
+accounts and configure your keys.
 
-1. Create free API accounts at Google AI Studio, Groq,
-   Cerebras, OpenRouter, Mistral, and HuggingFace
-2. Configure `~/.ami/frito.json` with your API keys
-3. Run `FRITO=1 bash challenges/framework/run-all.sh`
+### 1. Setup: Get your free API keys
 
-The challenge suite, test harnesses, and evaluation
-framework are all open source under Apache 2.0.
+Create free accounts at any combination of these providers
+(the more you configure, the larger your rotation pool):
+
+| Provider | Sign Up |
+|----------|---------|
+| Google AI Studio | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
+| Groq | [console.groq.com/keys](https://console.groq.com/keys) |
+| Cerebras | [cloud.cerebras.ai](https://cloud.cerebras.ai) |
+| OpenRouter | [openrouter.ai/keys](https://openrouter.ai/keys) |
+| Mistral | [console.mistral.ai/api-keys](https://console.mistral.ai/api-keys) |
+| HuggingFace | [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) |
+
+You can provide keys via environment variables:
+
+```bash
+export GOOGLE_API_KEY="AIzaSy..."
+export GROQ_API_KEY="gsk_..."
+export CEREBRAS_API_KEY="csk-..."
+export OPENROUTER_API_KEY="sk-or-..."
+export MISTRAL_API_KEY="your-key"
+export HF_TOKEN="hf_..."
+```
+
+Or create the configuration file directly at
+`~/.ami/frito.json`. This is the file FRITO reads at
+startup — you can build it by hand or let `/frito setup`
+generate it:
+
+```json
+{
+  "enabled": true,
+  "quality": "balanced",
+  "providers": {
+    "google": {
+      "keys": ["AIzaSy..."],
+      "model": "gemini-2.5-flash",
+      "tier": "permanent"
+    },
+    "groq": {
+      "keys": ["gsk_..."],
+      "model": "llama-3.3-70b-versatile",
+      "tier": "permanent"
+    },
+    "cerebras": {
+      "keys": ["csk-..."],
+      "model": "zai-glm-4.7",
+      "tier": "permanent"
+    },
+    "openrouter": {
+      "keys": ["sk-or-..."],
+      "model": "meta-llama/llama-3.3-70b-instruct:free",
+      "tier": "permanent"
+    },
+    "mistral": {
+      "keys": ["your-mistral-key"],
+      "model": "mistral-small-latest",
+      "tier": "permanent"
+    },
+    "huggingface": {
+      "keys": ["hf_..."],
+      "model": "deepseek-ai/DeepSeek-V3-0324",
+      "baseUrl": "https://router.huggingface.co/v1",
+      "tier": "permanent"
+    }
+  }
+}
+```
+
+The `quality` field controls model selection: `"min"`
+accepts any model, `"balanced"` skips budget-tier models,
+and `"max"` uses only premium-tier models. Each provider
+entry supports multiple keys — if you have several Google
+API keys, list them all in the `keys` array and FRITO
+will rotate between them when one hits its rate limit.
+
+You don't need all six providers. Even two or three give
+you meaningful rotation capacity. The more you add, the
+larger the pool and the less likely you are to stall
+waiting for a rate limit to reset.
+
+### 2. Interactive CLI (REPL)
+
+Launch the AMI CLI and use the `/frito` slash command to
+configure and enable free-tier routing:
+
+```bash
+ami
+```
+
+Inside the REPL:
+
+```
+/frito setup      # Interactive wizard — detects your keys
+/frito status     # See which providers are active
+/frito on         # Enable free-tier routing
+```
+
+Once FRITO is active, every prompt you send is automatically
+routed through the provider pool. You'll see which model is
+handling each turn in the status bar.
+
+### 3. CLI Detached Mode (Autonomous)
+
+For autonomous tasks — the mode used in the benchmark —
+run AMI in detached mode with a prompt:
+
+```bash
+ami --prompt "Fix the bug in src/parser.ts — the test
+command is: npm test" --max-turns 50 --yolo
+```
+
+With FRITO configured, AMI automatically uses the provider
+pool. The `--max-turns 50` flag gives the agent room to
+iterate, and `--yolo` auto-approves tool calls for fully
+unattended execution. This is the same mode the benchmark
+uses — the agent reads files, edits code, runs tests, and
+self-corrects until the tests pass.
+
+You can also pipe the output to JSON for programmatic use:
+
+```bash
+ami --prompt "Migrate callback API to async/await in
+src/api.ts" --max-turns 50 --yolo --output-format json
+--quiet > result.json
+```
+
+### 4. VS Code Extension
+
+Install the **SuperInference** extension from the VS Code
+marketplace. Open the AMI chat panel and run:
+
+```
+/frito setup
+```
+
+The extension detects your configured API keys and enables
+provider rotation. From there, every chat message routes
+through the FRITO pool — you get the same multi-provider
+resilience directly in your editor.
 
 ## What's Next
 
@@ -259,6 +394,6 @@ the one with the smartest orchestration.**
 
 *FRITO is part of [SuperInference](https://www.superinference.org),
 an open-source feedback-augmented LLM agent framework.
-The full benchmark results, challenge definitions, and
-provider configuration are available in the
+The full benchmark results and provider configuration
+are available in the
 [GitHub repository](https://github.com/superinference/ami).*
