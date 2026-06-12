@@ -13,7 +13,11 @@ layout: default
         {% include aside_recent_posts.html %}
       </div>
       <div class="col-md-8 col-sm-12 col-xs-12">
-        {% if page.tags contains "cloud" %}
+        {% if page.tags contains "AI" %}
+        <div class="line top">
+          <div>Artificial Intelligence</div>
+        </div>
+        {% elsif page.tags contains "cloud" %}
         <div class="line top">
           <div>Cloud computing</div>
         </div>

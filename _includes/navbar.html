@@ -23,6 +23,58 @@
 					<div id="menu-list">
 						<ul class="nav-list">
 							<li class="for-tablet nav-title"><a>Menu</a></li>
+              <li class="dropdown magz-dropdown-megamenu"><a href="/ai">Artificial Intelligence<i class="ion-ios-arrow-right"></i> </a>
+								<div class="dropdown-menu megamenu">
+									<div class="megamenu-inner">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Latest posts</h2>
+													</div>
+												</div>
+												<ul class="vertical-menu">
+                          {% assign ai_posts = filtered_posts | where:'tags', 'AI' | sort: 'date' | reverse %}
+                          {% for post in ai_posts | limit: 5 %}
+                          <li><a href="{{ post.url }}"><i class="ion-ios-circle-outline"></i> {{ post.title  | truncate: 25 }}</a></li>
+                          {% endfor %}
+												</ul>
+											</div>
+											<div class="col-md-9">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Favorite posts</h2>
+													</div>
+												</div>
+												<div class="row">
+                          {% assign fav_ai_posts = ai_posts | where:'favorite', true | sort: 'date' | reverse %}
+                          {% for post in fav_ai_posts | limit: 3 %}
+                          <article class="article col-md-4 mini">
+														<div class="inner">
+															<figure>
+																<a href="{{ post.url }}">
+																	<img src="{{ post.refimage }}" alt="{{ post.title }}" loading="lazy">
+																</a>
+															</figure>
+															<div class="padding">
+																<div class="detail">
+																	<div class="category">
+                                    {% for sn in post.tags %}{% if forloop.last %}<a href="#">{{ sn | replace: "_", " " }}</a>{% else %}<a href="#">{{ sn | replace: "_", " " }}</a>, {% endif %}{% endfor %}
+                                  </div>
+																</div>
+																<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+																<div class="time">{{ post.date | truncate: 10, "" }}</div>
+															</div>
+														</div>
+													</article>
+                          {% endfor %}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
               <li class="dropdown magz-dropdown-megamenu"><a href="/cloud">Cloud computing<i class="ion-ios-arrow-right"></i> </a>
 								<div class="dropdown-menu megamenu">
 									<div class="megamenu-inner">

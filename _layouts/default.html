@@ -1,49 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<meta name="description" content="{{ site.description}}">
-		<meta name="author" content="{{ site.author}}">
-		<!-- Shareable -->
-		<meta property="og:title" content="{{ site.title }} - {{ page.title }}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% assign page_description = page.description | default: page.excerpt | strip_html | escape | truncate: 160 | default: site.description %}
+		<meta name="description" content="{{ page_description }}">
+		<meta name="author" content="{{ site.author }}">
+		<link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
+
+		<meta property="og:title" content="{% if page.title == 'index' %}{{ site.title }}{% else %}{{ site.title }} - {{ page.title }}{% endif %}" />
+		<meta property="og:site_name" content="{{ site.title }}" />
+		{% if page.layout == 'post' %}
 		<meta property="og:type" content="article" />
-		<meta property="og:url" content="{{ site.url}}{{ page.url }}" />
-    {% if page.categories contains "blog" %}
-    <meta property="og:description" content="{{ page.excerpt | strip_html | escape | truncate: 100 }}" />
-		<meta property="og:image" content="{{ site.url}}{{ page.refimage }}" />
-    <meta name="keywords" content="{% for sn in page.tags %}{% if forloop.last %}{{ sn | replace: "_", " " }}{% else %}{{ sn | replace: "_", " " }}, {% endif %}{% endfor %}">
-    {% else %}
-    <meta property="og:description" content="{{ site.title }} - {{ page.title }}" />
-    <meta property="og:image" content="{{ site.url}}/assets/images/img01.jpg" />
-    <meta name="keywords" content="{{ site.keywords }}">
-    {% endif %}
-		<title>{{ site.title }} - {{ page.title }}</title>
+		<meta property="og:description" content="{{ page.excerpt | strip_html | escape | truncate: 200 }}" />
+		<meta property="og:image" content="{{ site.url }}{{ page.refimage }}" />
+		{% else %}
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="{{ site.description }}" />
+		<meta property="og:image" content="{{ site.url }}/assets/images/img01.jpg" />
+		{% endif %}
+		<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 
-    <link rel="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="{% if page.title == 'index' %}{{ site.title }}{% else %}{{ site.title }} - {{ page.title }}{% endif %}">
+		<meta name="twitter:description" content="{{ page_description }}">
+		{% if page.refimage %}<meta name="twitter:image" content="{{ site.url }}{{ page.refimage }}">{% endif %}
 
-		<!-- Bootstrap -->
+		<title>{% if page.title == 'index' %}{{ site.title }}{% else %}{{ site.title }} - {{ page.title }}{% endif %}</title>
+
+		<link rel="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16">
+
 		<link rel="stylesheet" href="/assets/scripts/bootstrap/bootstrap.min.css">
-		<!-- IonIcons -->
 		<link rel="stylesheet" href="/assets/scripts/ionicons/css/ionicons.min.css">
-		<!-- Toast -->
-		<link rel="stylesheet" href="/assets/scripts/toast/jquery.toast.min.css">
-		<!-- OwlCarousel -->
-		<link rel="stylesheet" href="/assets/scripts/owlcarousel/dist/assets/owl.carousel.min.css">
-		<link rel="stylesheet" href="/assets/scripts/owlcarousel/dist/assets/owl.theme.default.min.css">
-		<!-- Magnific Popup -->
 		<link rel="stylesheet" href="/assets/scripts/magnific-popup/dist/magnific-popup.css">
-		<link rel="stylesheet" href="/assets/scripts/sweetalert/dist/sweetalert.css">
-		<!-- Custom style -->
 		<link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/custom.css">
-		<link rel="stylesheet" href="/assets/css/skins/all.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{{ "/assets/css/prism.css" | prepend: site.baseurl }}">
-    {% include analytics.html %}
+		<link rel="stylesheet" href="/assets/css/custom.css">
+		<link rel="stylesheet" href="/assets/css/skins/orange.css">
+		<link rel="stylesheet" href="{{ "/assets/css/prism.css" | prepend: site.baseurl }}">
 
+		{% include analytics.html %}
+
+		{% if page.tags contains "3D" %}
 		<script src="/assets/js/three/three.js"></script>
 		<script src="/assets/js/three/OrbitControls.js"></script>
 		<script src="/assets/js/three/GLTFLoader.js"></script>
@@ -53,10 +51,6 @@
 		<script src="/assets/js/three/PMREMCubeUVPacker.js"></script>
 		<script src="/assets/js/three/WebGL.js"></script>
 		<script src="/assets/js/three/stats.min.js"></script>
-
-
-
-		{% if page.tags contains "3D" %}
 		{% include render3D_head.html %}
 		{% endif %}
 
@@ -69,20 +63,13 @@
 		</header>
 	{{ content }}
   {% include footer.html %}
-		<!-- JS -->
-		<script src="/assets/js/jquery.js"></script>
-		<script src="/assets/js/jquery.migrate.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 		<script src="/assets/scripts/bootstrap/bootstrap.min.js"></script>
 		<script>var $target_end=$(".best-of-the-week");</script>
 		<script src="/assets/scripts/jquery-number/jquery.number.min.js"></script>
-		<script src="/assets/scripts/owlcarousel/dist/owl.carousel.min.js"></script>
 		<script src="/assets/scripts/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-		<script src="/assets/scripts/easescroll/jquery.easeScroll.js"></script>
-		<script src="/assets/scripts/sweetalert/dist/sweetalert.min.js"></script>
-		<script src="/assets/scripts/toast/jquery.toast.min.js"></script>
 		<script src="/assets/js/e-magz.js"></script>
-		<!-- Google tag (gtag.js) -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TZEE3S9P1"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1TZEE3S9P1"></script>
 
 {% if page.title contains "Planet and archive" %}
 {% include planet_generator.html %}
@@ -92,6 +79,7 @@
 {% include search_generator.html %}
 {% endif %}
 
+{% if page.layout == "post" %}
 <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <script>
 document.querySelectorAll('code.language-mermaid').forEach(function(el) {
@@ -105,6 +93,7 @@ if (typeof mermaid !== 'undefined') {
   mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
 }
 </script>
+{% endif %}
 
 	</body>
 </html>

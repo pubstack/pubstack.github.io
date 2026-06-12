@@ -1,9 +1,8 @@
 ---
 layout: default
-title: index
+title: Home
 pagination:
   enabled: true
-  # tag: blog
   collection:   posts
   limit:        false
   sort_reverse: true
@@ -36,7 +35,7 @@ pagination:
 										<div class="inner">
 											<figure>
 												<a href="{{ post.url }}">
-													<img src="{{ post.refimage }}" alt="{{ post.title }}">
+													<img src="{{ post.refimage }}" alt="{{ post.title }}" loading="lazy">
 												</a>
 											</figure>
 											<div class="padding">

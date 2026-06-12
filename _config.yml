@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: "Pubstack.com"
 email: ccamacho@yandex.com
-description: "Pubstack.com - Write ups about engineering, cloud computing and my hobbies."
+description: "Pubstack.com - Write ups about AI, engineering, cloud computing and my hobbies."
 
 disclaimer_url: https://www.pubstack.com/disclaimer
 
@@ -34,7 +34,6 @@ keywords: "cloud computing, AI, agentic AI, engineering, software development"
 paginate: 6
 
 markdown: kramdown
-theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate
