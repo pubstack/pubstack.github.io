@@ -229,13 +229,16 @@
  * Variable
  */
 /* Colors */
+html {
+  font-size: 14px;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   font-size: 14px;
   line-height: 1.42857;
   color: #191E21;
-  font-size: 1.4em;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -247,27 +250,27 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 36px;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 h3 {
-  font-size: 32px;
+  font-size: 24px;
 }
 
 h4 {
-  font-size: 26px;
+  font-size: 18px;
 }
 
 h5 {
-  font-size: 20px;
+  font-size: 14px;
 }
 
 h6 {
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .input-group .btn {
@@ -2249,8 +2252,8 @@ section .container {
   margin: 0;
   margin-top: 5px;
   margin-bottom: 10px;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 26px;
 }
 .article-list .details h1 a,
 .article-list .details h2 a {
@@ -2540,8 +2543,8 @@ aside .ads figcaption {
 .article-fw .details h1,
 .article-fw .details h2 {
   margin: 0;
-  font-size: 24px;
-  line-height: 34px;
+  font-size: 18px;
+  line-height: 26px;
 }
 .article-fw .details h1 a,
 .article-fw .details h2 a {
