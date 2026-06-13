@@ -477,6 +477,7 @@ a.twitch {
 
 .pagination {
   margin-bottom: 10px;
+  justify-content: center;
 }
 .pagination li a,
 .pagination .page-item .page-link {
@@ -513,6 +514,7 @@ a.twitch {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 400;
+  text-align: center;
 }
 
 .magz-list {
